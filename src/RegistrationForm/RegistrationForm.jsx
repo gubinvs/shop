@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import ApiUrl from '../js/ApiUrl.js';
-
 import "./RegistrationForm.css";
 
 const RegistrationForm = () => {
@@ -10,7 +8,6 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(ApiUrl);
 
   fetch(ApiUrl + "/api/Registration", {
         method: "POST",
@@ -30,8 +27,8 @@ const RegistrationForm = () => {
     .then((data) => console.log(data))
     .catch((error) => console.error(error));
 
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
   };
 
   return (
