@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import ApiUrl from '../js/ApiUrl.js';
+
 import "./RegistrationForm.css";
 
 const RegistrationForm = () => {
@@ -7,12 +10,9 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("Email:", email);
-    // console.log("Password:", password);
-    // console.log(JSON.stringify({ "email" : email, "password" : password  }));
+    console.log(ApiUrl);
 
-
-  fetch("http://178.208.79.34:1010/api/Rigistration", {
+  fetch(ApiUrl + "/api/Registration", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const RegistrationForm = () => {
 
   return (
     <div className="container">
-      <h2>Регистрация</h2>
+      <h2>Регистрация пользователя</h2>
       <form onSubmit={handleSubmit} className="form">
         <input
           type="email"
