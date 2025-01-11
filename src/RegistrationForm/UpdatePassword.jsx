@@ -29,7 +29,7 @@ const UpdatePassword = () => {
     .then((data) => setMessage(data.message))
     .catch((error) => setMessage(data.message));
 
-        // Очистка формы
+    // Очистка формы
     // setEmail("");
     // setPassword("");
     
