@@ -3,7 +3,7 @@ import ApiUrl from '../js/ApiUrl.js';
 import "./RegistrationForm.css";
 import { data } from "react-router-dom";
 
-const RegistrationForm = () => {
+const AuthorizationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -11,13 +11,12 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-  fetch(ApiUrl + "/api/Registration", {
+  fetch(ApiUrl + "/api/Auth", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
-      
     })
 
   .then((response) => {
@@ -26,19 +25,32 @@ const RegistrationForm = () => {
       }
       return response.json();
   })
-  .then((data) => setMessage(data.message))
-  .catch((error) => setMessage(data.message));
+  .then((data) => {
+    // если токен есть
+    if (data.token != undefined) {
+        //console.log(data.token);
+        //setMessage(data.token);
+        // Записываем токет в localStorage
+        localStorage.setItem("token", data.token); // Сохраняем токен
+        // Переадресовываем на защищенную страницу
+        window.location.href = "/Personal"; // Переход на страницу авторизации
+    } else {
+        setMessage(data.message); // если токена нет выводим сообщение
+    }
+    
+  })
+  .catch((error) => setMessage(error));
 
-    // Очистка формы
-  // setEmail("");
-  // setPassword("");
+        // Очистка формы
+        // setEmail("");
+        // setPassword("");
   
   };
   if (message == "") {
     return (
         <div className="container">
           <div className="form-block">
-            <h2>Регистрация пользователя</h2>
+            <h2>Авторизация пользователя</h2>
             <form onSubmit={handleSubmit} className="form">
               <input
                 type="email"
@@ -57,7 +69,7 @@ const RegistrationForm = () => {
                 required
               />
               <button type="submit" className="button">
-                Зарегистрироваться
+                Войти
               </button>
             </form>
           </div>
@@ -67,13 +79,18 @@ const RegistrationForm = () => {
   else 
   {
     const handleRedirect = () => {
-      window.location.href = "/Autorization"; // Переход на страницу авторизации
+      window.location.href = "/Registration"; // Переход на страницу авторизации
       //navigate("/Autorization")
     };
+    const handleRedirectPassword = () => {
+      window.location.href = "/UpdatePassword"; // Переход на страницу авторизации
+      //navigate("/Autorization")
+    };
+    
     return (
       <div className="container">
         <div className="form-block">
-          <h2>Регистрация пользователя</h2>
+          <h2>Авторизация пользователя</h2>
           <form onSubmit={handleSubmit} className="form">
             <input
               type="email"
@@ -92,14 +109,17 @@ const RegistrationForm = () => {
               required
             />
             <button type="submit" className="button">
-              Зарегистрироваться
+              Войти
             </button>
           </form>
         </div>
         <div className="form-block form block-message">
           <h2> {message}</h2>
           <button onClick={handleRedirect} type="submit" className="button">
-            Пройдите авторизацию
+            Пройти регистрацию
+          </button>
+          <button onClick={handleRedirectPassword} type="submit" className="button">
+            Восстановить пароль
           </button>
         </div>
       </div>
@@ -107,4 +127,4 @@ const RegistrationForm = () => {
   };
 };
 
-export default RegistrationForm;
+export default AuthorizationForm;
