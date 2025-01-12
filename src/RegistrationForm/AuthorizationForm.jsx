@@ -48,7 +48,7 @@ const AuthorizationForm = () => {
   };
   if (message == "") {
     return (
-        <div className="container">
+        <div className="registration-form_container">
           <div className="form-block">
             <h2>Авторизация пользователя</h2>
             <form onSubmit={handleSubmit} className="form">

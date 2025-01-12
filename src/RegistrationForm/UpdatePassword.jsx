@@ -36,7 +36,7 @@ const UpdatePassword = () => {
     };
 
     return (
-        <div className="container">
+        <div className="registration-form_container">
           <div className="form-block">
             <h2>Восстановление пароля</h2>
             <form onSubmit={handleSubmit} className="form">
