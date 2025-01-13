@@ -5,6 +5,7 @@ import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
 import AuthorizationForm from './RegistrationForm/AuthorizationForm.jsx';
 import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
+import Basket from './Basket/Basket.jsx';
 
 const Home = () => <h1>Главная страница</h1>;
 
@@ -28,7 +29,7 @@ const App = () => {
           </ProtectedRoute>} />
         <Route path="/Basket" element= {
           <ProtectedRoute>
-            <Home />
+            <Basket />
           </ProtectedRoute>} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
       </Routes>

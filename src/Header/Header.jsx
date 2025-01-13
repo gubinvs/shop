@@ -12,8 +12,8 @@ const Header =() => {
                 <div className="header__container">
                     <div className="header-logo-block">
                         <picture>
-                            <source srcset="../../images/header_logo_1280.svg" media="(max-width: 1280px)"/>
-                            <source srcset="../../images/header_logo_960.svg" media="(max-width: 960px)"/>
+                            <source srcSet="../../images/header_logo_1280.svg" media="(max-width: 1280px)"/>
+                            <source srcSet="../../images/header_logo_960.svg" media="(max-width: 960px)"/>
                             <img src="../../images/header_logo_1920.svg" alt="Логотип компании"/>
                         </picture>
                     </div>
