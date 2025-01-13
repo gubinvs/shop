@@ -26,6 +26,10 @@ const App = () => {
           <ProtectedRoute>
             <PersonalSpace />
           </ProtectedRoute>} />
+        <Route path="/Basket" element= {
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
       </Routes>
     </Router>
