@@ -52,8 +52,9 @@ const Header =() => {
                         </div>  
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
-                                <li className="header-navigation__item"><a href="https://encomponent.ru/">Сборка щитов</a></li>
+                                <li className="header-navigation__item">Типовые решения НКУ</li>
                                 <li className="header-navigation__item">Комплектующие</li>
+                                <li className="header-navigation__item"><a href="https://encomponent.ru/">Сборка щитов</a></li>
                                 <li className="header-navigation__item">Доставка и оплата</li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/about.html">Контакты</a></li>
                             </ul>

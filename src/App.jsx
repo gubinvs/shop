@@ -6,6 +6,8 @@ import AuthorizationForm from './RegistrationForm/AuthorizationForm.jsx';
 import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import Basket from './Basket/Basket.jsx';
+import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
+
 
 const Home = () => <h1>Главная страница</h1>;
 
@@ -31,6 +33,7 @@ const App = () => {
           <ProtectedRoute>
             <Basket />
           </ProtectedRoute>} />
+        <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
       </Routes>
     </Router>
