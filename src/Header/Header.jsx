@@ -46,16 +46,13 @@ const Header =() => {
                                 </svg>
                             </div>
                             <div className="downloud-price"><a href="https://encomponent.ru/files/price-IEK.zip">Прайс-лист</a></div>
-
-
-
                         </div>  
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item">Типовые решения НКУ</li>
                                 <li className="header-navigation__item">Комплектующие</li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/">Сборка щитов</a></li>
-                                <li className="header-navigation__item">Доставка и оплата</li>
+                                <li className="header-navigation__item"><a href="/DeliveryAndPayment">Доставка и оплата</a></li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/about.html">Контакты</a></li>
                             </ul>
                         </div>                          
