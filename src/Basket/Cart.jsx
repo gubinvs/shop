@@ -4,7 +4,7 @@ import "./Cart.css";
 const Cart = () => {
   // Данные о товарах в корзине
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Product 1', price: 19.99, quantity: 1, image: 'https://via.placeholder.com/100' }
+    { id: 1, name: 'NKU10-VRUS-12110000-01, Панель вводно-распределительная ВРУ1-21-10 УХЛ4 рубильник 1х250А выключатели автоматические 1Р 2х6А плавкие вставки 6х63А 9х100А 3х250А и учет IEK', price: 205600, quantity: 1, image: 'https://encomponent.ru/img/NKU10-VRUS-12110000-01/NKU10-VRUS-12110000-01.avif' }
   ]);
 
   // Функция для удаления товара
@@ -34,13 +34,12 @@ const Cart = () => {
       <div className="cart-component-container cart-component-container__main-block">
         <img src="../../images/basket-page-img.jpg" className="cart-main-block__images"  />
         <div className="cart-main-block__slogan-block">
-          <div className="cart-main-block__slogan">Товары ждут, чтобы отправиться к Вам!</div>
-          <img src="../../images/airplane-image.jpg" />
+          <div className="cart-main-block__slogan">Товары ждут</div>
+          <div className="cart-main-block__slogan">и готовы отправиться к Вам!</div>
         </div>
-        
       </div>
       <div className="cart-component-container">
-        <h1>Оформление заказа:</h1>
+        <h1>Перечень товаров:</h1>
 
         <div className="cart-items">
           {cartItems.map(item => (

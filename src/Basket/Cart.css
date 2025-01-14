@@ -24,13 +24,16 @@ body {
 .cart-main-block__slogan-block {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #F3DE09;
 
 }
 
 .cart-main-block__slogan {
-  font-size: 34px;
-  font-weight: 800;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 700;
   margin-bottom: 30px;
 }
 

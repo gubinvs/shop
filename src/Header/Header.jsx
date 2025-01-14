@@ -53,6 +53,7 @@ const Header =() => {
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/">Сборка щитов</a></li>
+                                <li className="header-navigation__item">Комплектующие</li>
                                 <li className="header-navigation__item">Доставка и оплата</li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/about.html">Контакты</a></li>
                             </ul>
@@ -64,8 +65,11 @@ const Header =() => {
                             <li className="header-basket-block-icon__item">Компания</li>
                         </ul>
                         <ul className="header-basket-block__list">
-                            <li className="header-basket-block-icon__item"><img src="../../images/orderBlack.svg" className="header-basket-block-icon__img" /></li>
-                            <li className="header-basket-block-icon__item">Заказы</li>
+                            <li className="header-basket-block-icon__item">
+                                <img src="../../images/orderBlack.svg" className="header-basket-block-icon__img" />
+                          
+                            </li>
+                            <li className="header-basket-block-icon__item hbbi-item">Заказы</li>
                         </ul>
                         <ul className="header-basket-block__list">
                             <li className="header-basket-block-icon__item"><img src="../../images/basketBlack.svg" className="header-basket-block-icon__img header-basket-block-icon__img_basket" /></li>
