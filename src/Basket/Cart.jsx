@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Cart.css";
+import addOrder from './AddOrder.js';
 
-const Cart = () => {
-  // Данные о товарах в корзине
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'NKU10-VRUS-12110000-01, Панель вводно-распределительная ВРУ1-21-10 УХЛ4 рубильник 1х250А выключатели автоматические 1Р 2х6А плавкие вставки 6х63А 9х100А 3х250А и учет IEK', price: 205600, quantity: 1, image: 'https://encomponent.ru/img/NKU10-VRUS-12110000-01/NKU10-VRUS-12110000-01.avif' }
-  ]);
+const Cart = (props) => {
+  const [cartItems, setCartItems] = useState([]);
+
+  // Используем useEffect, чтобы обновить корзину при получении props.item
+  useEffect(() => {
+    if (props.item) {
+      setCartItems(props.item);  // Обновляем состояние с новым товаром из props
+    }
+  }, [props.item]);  // Эффект сработает только при изменении props.item
+
+  //  функия удаляет дубли по id
+  const uniqueItems = Array.from(new Map(cartItems.map(item => [item.id, item])).values());
 
   // Функция для формата в рублевый формат
   const formatPrice = (price) => {
@@ -41,7 +49,7 @@ const Cart = () => {
   return (
     <>
       <div className="cart-component-container cart-component-container__main-block">
-        <img src="../../images/basket-page-img.jpg" className="cart-main-block__images"  />
+        <img src="../../images/basket-page-img.jpg" className="cart-main-block__images" />
         <div className="cart-main-block__slogan-block">
           <div className="cart-main-block__slogan">Товары готовы отправиться к Вам!</div>
         </div>
@@ -51,8 +59,9 @@ const Cart = () => {
         <div className="cart-items">
           {cartItems.map(item => (
             <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} />
+              <img src={item.image} alt={item.name} className="cart-images" />
               <div className="cart-item-details">
+                <p><strong>{item.vendorCode}</strong></p>
                 <p><strong>{item.name}</strong></p>
                 <p>{formatPrice(item.price)}</p>
               </div>
@@ -70,20 +79,13 @@ const Cart = () => {
         </div>
 
         <div className="summary">
-          {/* <h2>Стоимость заказа</h2> */}
           <div className="total" style={{ fontWeight: 'bold' }}>
             <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
           </div>
-          {/* <div className="total">
-            <span>Стандартная доставка</span><span>{formatPrice(shipping)}</span>
-          </div> */}
           <div className="total">
             <span>В том числе, НДС 20%</span><span>{formatPrice(tax)}</span>
           </div>
-          {/* <div className="total" style={{ fontWeight: 'bold' }}>
-            <span>Стоимость заказа</span><span>{formatPrice(total)}</span>
-          </div> */}
-          <button className="checkout-button">Оформить заказ</button>
+          <button className="checkout-button" onClick={() => addOrder(cartItems)}>Оформить заказ</button>
         </div>
       </div>
     </>

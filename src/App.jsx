@@ -10,6 +10,7 @@ import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 
 
 const Home = () => <h1>Главная страница</h1>;
+const DefineUser = () => <h1>Страница пользователя с заказами</h1>
 
 
 // Функция проверки токена, проверяет аутентификацию перед загрузкой страницы
@@ -32,6 +33,10 @@ const App = () => {
         <Route path="/Basket" element= {
           <ProtectedRoute>
             <Basket />
+          </ProtectedRoute>} />
+        <Route path="/DefineUser" element= {
+          <ProtectedRoute>
+            <DefineUser />
           </ProtectedRoute>} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />

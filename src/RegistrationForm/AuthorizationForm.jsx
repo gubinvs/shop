@@ -29,9 +29,9 @@ const AuthorizationForm = () => {
     // если токен есть
     if (data.token != undefined) {
         //console.log(data.token);
-        //setMessage(data.token);
         // Записываем токет в localStorage
         localStorage.setItem("token", data.token); // Сохраняем токен
+        //console.log("В локал =" + localStorage.getItem("token"));
         // Переадресовываем на защищенную страницу
         window.location.href = "/Personal"; // Переход на страницу авторизации
     } else {
@@ -39,7 +39,7 @@ const AuthorizationForm = () => {
     }
     
   })
-  .catch((error) => setMessage(error));
+  .catch((error) => console.log(error));
 
         // Очистка формы
         // setEmail("");

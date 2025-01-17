@@ -1,11 +1,38 @@
-import React, { useState } from "react";
-import ApiUrl from '../js/ApiUrl.js';
-import { data } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./Header.css";
 
+const Header = () => {
+    const [itemBasket, setItemBasket] = useState(null); // Начальное состояние - null
+    const navigate = useNavigate();
 
-const Header =() => {
+    useEffect(() => {
+        const item = localStorage.getItem("basketItem")
 
+        if (item) {
+            try {
+                const parsedItem = JSON.parse(item);
+                
+                setItemBasket(parsedItem.length);
+            } catch (error) {
+               
+                setItemBasket(0); // Если ошибка при парсинге, установим значение 0
+            }
+        } else {
+            setItemBasket(0); // Если нет данных в localStorage, установим 0
+        }
+    });
+
+    const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
+
+    const basketPage = () => {
+        navigate('/Basket');
+    };
+
+    const orderPage = () => {
+        navigate('/DefineUser');
+    };
+    
     return (
         <>
             <header>
@@ -62,18 +89,19 @@ const Header =() => {
                             <li className="header-basket-block-icon__item"><img src="../../images/iconCompanyBlack.svg" className="header-basket-block-icon__img header-basket-block-icon__img_comp" /></li>
                             <li className="header-basket-block-icon__item">Компания</li>
                         </ul>
-                        <ul className="header-basket-block__list">
+                        <ul className="header-basket-block__list" onClick={orderPage}>
                             <li className="header-basket-block-icon__item">
                                 <img src="../../images/orderBlack.svg" className="header-basket-block-icon__img" />
                           
                             </li>
                             <li className="header-basket-block-icon__item hbbi-item">Заказы</li>
                         </ul>
-                        <ul className="header-basket-block__list">
+                        <ul className="header-basket-block__list header-basket-block__list_basket" onClick={basketPage}>
                             <li className="header-basket-block-icon__item"><img src="../../images/basketBlack.svg" className="header-basket-block-icon__img header-basket-block-icon__img_basket" /></li>
                             <li className="header-basket-block-icon__item">Корзина</li>
+                            <li className={itemBasketIcon}>{itemBasket}</li>
                         </ul>
-                    </div>
+                    </div>  
                 </div>
             </header>
         </>

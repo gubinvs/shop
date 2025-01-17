@@ -21,6 +21,10 @@ body {
   margin-right: 20px;
 }
 
+.cart-images {
+  width: 100px;
+}
+
 .cart-main-block__slogan-block {
   display: flex;
   flex-direction: column;

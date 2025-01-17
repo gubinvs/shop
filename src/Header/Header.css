@@ -133,7 +133,32 @@
 
 .header-basket-block-icon__item {
   font-size: 14px;
+}
 
+.header-basket-block__list_basket {
+  position: relative;
+}
+
+.item-basket-icon {
+  position: absolute;
+  top: -14px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #F3DE09;
+  text-align: center;
+  color: #1D252C;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.item-basket-icon_none {
+  display: none;
 }
 
 
