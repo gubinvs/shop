@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
 
 const Header = () => {
@@ -36,8 +36,9 @@ const Header = () => {
     const companyDashboard = () => {
         navigate('/CompanyDashboard');
     };
-    
-    
+
+    const location = useLocation();
+  
     return (
         <>
             <header>
@@ -84,26 +85,74 @@ const Header = () => {
                                 <li className="header-navigation__item">Типовые решения НКУ</li>
                                 <li className="header-navigation__item">Комплектующие</li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/">Сборка щитов</a></li>
-                                <li className="header-navigation__item"><a href="/DeliveryAndPayment">Доставка и оплата</a></li>
+                                <li className="header-navigation__item">
+                                    <a href="/DeliveryAndPayment" className={
+                                                                    location.pathname === '/DeliveryAndPayment' ? 
+                                                                    'nav-active' : 
+                                                                    ''
+                                    }>
+                                        Доставка и оплата
+                                    </a>
+                                </li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/about.html">Контакты</a></li>
                             </ul>
                         </div>                          
                     </div>
                     <div className="header-basket-block">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
-                            <li className="header-basket-block-icon__item"><img src="../../images/iconCompanyBlack.svg" className="header-basket-block-icon__img header-basket-block-icon__img_comp" /></li>
-                            <li className="header-basket-block-icon__item">Компания</li>
+                            <li className="header-basket-block-icon__item">
+                                <img src={
+                                    location.pathname === '/CompanyDashboard' ? 
+                                        '../../images/iconCompanyBlue.svg' :
+                                        '../../images/iconCompanyBlack.svg'
+                                } className="header-basket-block-icon__img header-basket-block-icon__img_comp" />
+                            </li>
+                            <li className={
+                                location.pathname === '/CompanyDashboard' ? 
+                                'header-basket-block-icon__item header-basket-block-icon__item_active' : 
+                                'header-basket-block-icon__item'
+                                }>
+                                    Компания
+                            </li>
                         </ul>
                         <ul className="header-basket-block__list" onClick={orderPage}>
                             <li className="header-basket-block-icon__item">
-                                <img src="../../images/orderBlack.svg" className="header-basket-block-icon__img" />
+                                <img src={
+                                    location.pathname === '/DefineUser' ? 
+                                        '../../images/orderBlue.svg' :
+                                        '../../images/orderBlack.svg'
+                                } className="header-basket-block-icon__img" />
                           
                             </li>
-                            <li className="header-basket-block-icon__item hbbi-item">Заказы</li>
+                            <li className={
+                                location.pathname === '/DefineUser' ? 
+                                    'header-basket-block-icon__item header-basket-block-icon__item_active' : 
+                                    'header-basket-block-icon__item hbbi-item'
+                                }>
+                                    Заказы
+                            </li>
                         </ul>
                         <ul className="header-basket-block__list header-basket-block__list_basket" onClick={basketPage}>
-                            <li className="header-basket-block-icon__item"><img src="../../images/basketBlack.svg" className="header-basket-block-icon__img header-basket-block-icon__img_basket" /></li>
-                            <li className="header-basket-block-icon__item">Корзина</li>
+                            <li className="header-basket-block-icon__item">
+                                <img 
+                                    src={
+                                        location.pathname === '/Basket' ? 
+                                            '../../images/basketBlue.svg' : 
+                                            '../../images/basketBlack.svg'
+                                        } 
+                                    className={
+                                        location.pathname === '/Basket' ? 
+                                        'header-basket-block-icon__img header-basket-block-icon__img_basket' : 
+                                        'header-basket-block-icon__img header-basket-block-icon__img_basket'
+                                    } />
+                            </li>
+                            <li className={
+                                location.pathname === '/Basket' ? 
+                                'header-basket-block-icon__item header-basket-block-icon__item_active' : 
+                                'header-basket-block-icon__item'
+                                }> 
+                                    Корзина
+                            </li>
                             <li className={itemBasketIcon}>{itemBasket}</li>
                         </ul>
                     </div>  

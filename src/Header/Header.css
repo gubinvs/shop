@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding-top: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .header-logo-block {
@@ -105,6 +105,11 @@
   margin-right: 20px;
 }
 
+.nav-active {
+  color: #007BFF;
+}
+
+
 .header-basket-block__list:not(:last-of-type) {
   margin-right: 20px;
 }
@@ -114,6 +119,10 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+}
+
+.header-basket-block-icon__item_active {
+  color: #007BFF;
 }
 
 .header-basket-block__list:hover .header-basket-block-icon__item {

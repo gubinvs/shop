@@ -62,13 +62,10 @@ const CompanyDashboard = () => {
         <Header />
         <div className="company-dashboard">
             {/* Шапка */}
-            <div className="define-user-page__header">
-                <div className="container dup-header__container">
-                    <h1>Личный кабинет компании</h1>
-                    <button>Выйти</button>
-                </div>
+            <div className="cart-component-container cart-component-container__main-block">
+              <img src="../../images/cabiten-page-image.jpg" className="cart-main-block__images" />
             </div>
-
+            <h1>Личный кабинет:</h1>
             <div className="company-info">
                 {!editing ? (
                 <>

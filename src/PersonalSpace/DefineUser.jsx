@@ -70,13 +70,10 @@ const DefineUser =() => {
             <Header/>
             <div className="define-user-page define-user-page__container">
                 {/* Шапка */}
-                <div className="define-user-page__header">
-                    <div className="container dup-header__container">
-                        <h1>Страница заказов</h1>
-                        <button>Выйти</button>
-                    </div>
+                <div className="cart-component-container cart-component-container__main-block">
+                  <img src="../../images/orders-page-images.jpg" className="cart-main-block__images" />
                 </div>
-
+                <h1>Заказы компании:</h1>
                 {/* Информация о пользователе */}
                 <div className="container user-info-container">
                     <div className="user-info">

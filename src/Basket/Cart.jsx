@@ -46,6 +46,68 @@ const Cart = (props) => {
 
   const { subtotal, shipping, tax, total } = calculateTotal();
 
+
+  ///имитация загрузки потом переделать
+  // Тестовые данные
+    const mockUser = {
+          name: "Иван Иванов",
+          email: "ivan.ivanov@example.com",
+      };
+  
+      const mockOrders = [
+          {
+          id: 11223333,
+          date: "2025-01-01",
+          status: "Доставлен",
+          },
+          {
+          id: 21313313,
+          date: "2025-01-05",
+          status: "Ожидает отправки",
+          },
+          {
+          id: 31313334,
+          date: "2025-01-10",
+          status: "Отменён",
+          },
+      ];
+  
+    const [userInfo, setUserInfo] = useState(null);
+    const [orders, setOrders] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+  
+    // Имитация загрузки данных
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          setLoading(true);
+          // Задержка для имитации запроса
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          setUserInfo(mockUser);
+          setOrders(mockOrders);
+        } catch (err) {
+          setError("Не удалось загрузить данные");
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    if (loading) {
+      return (
+        <div className="loading-wrapper">
+          <div className="spinner"></div>
+          <p>Загрузка данных...</p>
+        </div>
+      );
+    }
+  
+    if (error) return <div>Ошибка: {error}</div>;
+  /// ! Завершение блока имитации загрузки 
+
   return (
     <>
       <div className="cart-component-container cart-component-container__main-block">
