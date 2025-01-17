@@ -32,6 +32,11 @@ const Header = () => {
     const orderPage = () => {
         navigate('/DefineUser');
     };
+
+    const companyDashboard = () => {
+        navigate('/CompanyDashboard');
+    };
+    
     
     return (
         <>
@@ -85,7 +90,7 @@ const Header = () => {
                         </div>                          
                     </div>
                     <div className="header-basket-block">
-                        <ul className="header-basket-block__list">
+                        <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item"><img src="../../images/iconCompanyBlack.svg" className="header-basket-block-icon__img header-basket-block-icon__img_comp" /></li>
                             <li className="header-basket-block-icon__item">Компания</li>
                         </ul>

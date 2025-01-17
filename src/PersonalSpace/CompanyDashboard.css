@@ -1,0 +1,107 @@
+/* Общие стили */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F8F9FA;
+  margin: 0;
+  padding: 0;
+  color: #343A40;
+}
+
+/* Шапка */
+.header {
+  background-color: #343A40;
+  color: #F8F9FA;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.header button {
+  background-color: #007BFF;
+  color: #F8F9FA;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background-color: #0056b3;
+}
+
+/* Информация о компании */
+.company-info {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E9ECEF;
+}
+
+.company-info p {
+  margin: 10px 0;
+}
+
+.company-info button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.company-info button:hover {
+  background-color: #0056b3;
+}
+
+/* Редактирование */
+.edit-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #E9ECEF;
+  border-radius: 5px;
+}
+
+.edit-form .preview-logo img {
+  max-width: 100px;
+  margin-top: 10px;
+}
+
+.edit-form button {
+  margin-right: 10px;
+}
+
+/* Логотип */
+.company-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.company-logo img {
+  max-width: 100px;
+  border-radius: 10px;
+  border: 1px solid #E9ECEF;
+}
+
+.placeholder-logo {
+  background-color: #E9ECEF;
+  color: #6C757D;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+}

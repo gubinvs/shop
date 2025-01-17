@@ -7,10 +7,12 @@ import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import Basket from './Basket/Basket.jsx';
 import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
+import DefineUser from "./PersonalSpace/DefineUser.jsx";
+import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
 
 
 const Home = () => <h1>Главная страница</h1>;
-const DefineUser = () => <h1>Страница пользователя с заказами</h1>
+
 
 
 // Функция проверки токена, проверяет аутентификацию перед загрузкой страницы
@@ -38,6 +40,10 @@ const App = () => {
           <ProtectedRoute>
             <DefineUser />
           </ProtectedRoute>} />
+          <Route path="/CompanyDashboard" element= {
+            <ProtectedRoute>
+              <CompanyDashboard />
+            </ProtectedRoute>} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
       </Routes>

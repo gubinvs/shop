@@ -1,0 +1,207 @@
+
+/* Шапка */
+.define-user-page__header {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #DFE0E1;
+    color: #F8F9FA; /* Белый текст */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dup-header__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dup-header__container h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.dup-header__container button {
+  background-color: #F3DE09;
+  color: #1D252C;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dup-header__container button:hover {
+  background-color: #0056b3;
+  color: #FFFFFF;
+}
+
+/* Карточка пользователя */
+.user-info-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.user-info {
+  background: #FFFFFF; /* Белый фон */
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E9ECEF; /* Светло-серая граница */
+}
+
+.user-info:not(:last-of-type) {
+    margin-right: 20px;
+}
+
+.user-info p {
+  margin: 5px 0;
+}
+
+.user-dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 660px;
+    height: 100px;
+}
+
+
+
+.dashboard-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dashboard-info p {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.dashboard-info__result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #007BFF; 
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.dashboard-info__result_2 {
+    background-color: #F3DE09; 
+    color: #1D252C;
+}
+
+.dashboard-info__result_3 {
+    background-color: #DFE0E1;
+    color: #1D252C; 
+}
+
+/* Список заказов */
+
+.orders-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.orders-list {
+  width: 100%;
+}   
+
+.order-card {
+  background: #FFFFFF; /* Белый фон */
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E9ECEF; /* Светло-серая граница */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-card p {
+  margin: 0;
+}
+
+/* Индикаторы статусов */
+.order-card .status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.status.delivered {
+  background-color: #FFD700; /* Желтый */
+  color: #343A40; /* Черный */
+}
+
+.status.pending {
+  background-color: #E9ECEF; /* Светло-серый */
+  color: #343A40; /* Черный */
+}
+
+.status.canceled {
+  background-color: #6C757D; /* Темно-серый */
+  color: #FFFFFF; /* Белый */
+}
+
+/* Стили для ярлыка загрузки */
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #F8F9FA; /* Светлый фон */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #E9ECEF; /* Светло-серый */
+  border-top: 5px solid #007BFF; /* Синий акцент */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-wrapper p {
+  font-size: 1.2rem;
+  color: #343A40; /* Темный текст */
+  margin-top: 10px;
+}
+
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .order-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-card p {
+    margin-bottom: 5px;
+  }
+}
