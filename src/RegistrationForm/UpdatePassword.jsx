@@ -33,7 +33,7 @@ const UpdatePassword = () => {
     // setEmail("");
     // setPassword("");
     
-    };
+};
 
     return (
         <div className="registration-form_container">

@@ -25,6 +25,9 @@ const Header = () => {
 
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
+    const indexPage = () => {
+        navigate('/');
+    };
     const basketPage = () => {
         navigate('/Basket');
     };
@@ -43,7 +46,7 @@ const Header = () => {
         <>
             <header>
                 <div className="header__container">
-                    <div className="header-logo-block">
+                    <div className="header-logo-block" onClick={indexPage}>
                         <picture>
                             <source srcSet="../../images/header_logo_1280.svg" media="(max-width: 1280px)"/>
                             <source srcSet="../../images/header_logo_960.svg" media="(max-width: 960px)"/>
