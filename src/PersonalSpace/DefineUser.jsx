@@ -19,12 +19,14 @@ const DefineUser = () => {
     completed: false,
   });
 
-    // Handles checkbox change to update filterStatus
+// Handles checkbox change to update filterStatus, allowing only one checkbox to be checked at a time
   const handleCheckboxChange = (status) => {
-    setFilterStatus((prev) => ({
-      ...prev,
-      [status]: !prev[status],
-    }));
+    // Reset all checkboxes except the one being clicked
+    setFilterStatus((prev) => {
+      const newFilterStatus = { new: false, assembling: false, completed: false };
+      newFilterStatus[status] = true;
+      return newFilterStatus;
+    });
   };
 
   // Раскрывает состав заказа
