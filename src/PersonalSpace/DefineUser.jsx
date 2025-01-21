@@ -12,6 +12,8 @@ const DefineUser = () => {
   const [error, setError] = useState(null);
   const [visibleOrder, setVisibleOrder] = useState(null);
   const [selectedOption, setSelectedOption] = useState('Собирается');
+  // Номер ордера передаваемый на сервер для изменения состояния заявки
+  const [selectOrderValue, setSelectOrderValue] = useState(0);
   var admin = false;
   
   // State for checkbox filters
@@ -105,11 +107,15 @@ const DefineUser = () => {
     setSelectedOption(event.target.value);
   };
 
+  const selectOrderValueChange = (event) => {
+    
+      setSelectOrderValue(event);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const selectData = { selectedOption }; // Объект с выбранным значением
-console.log(selectData);
+    const selectData = { selectedOption, selectOrderValue }; // Объект с выбранным значением
     try {
       const response = await fetch(`${ApiUrl}/api/ChangeOrderStatus`, {
         method: 'POST',
@@ -256,13 +262,13 @@ console.log(selectData);
                                                 <div className="admin-block" style={admin===true ? {display: "none"} : {display: "flex"} }>
                                                   <button className="admin-block__button">Выгрузка заказа для 1С</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
-                                                    
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>
                                                             <option className="admin-block__option" value="Доставляется">Доставляется</option>
                                                             <option className="admin-block__option" value="Завершен">Завершен</option>
                                                       </select>
-                                                      <button className="admin-block__button" type="submit">Изменить статус заказа</button>
+                                                      <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
+                                                      
                                                   </form>
                                                 </div>
                                                   
