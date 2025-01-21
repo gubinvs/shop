@@ -107,8 +107,9 @@
 }
 
 .nav-active {
-  color: #007BFF;
+  color: #218838;
 }
+
 
 
 .header-basket-block__list:not(:last-of-type) {
@@ -123,11 +124,11 @@
 }
 
 .header-basket-block-icon__item_active {
-  color: #007BFF;
+  color: #218838;
 }
 
 .header-basket-block__list:hover .header-basket-block-icon__item {
-  color: #007BFF;
+  color: #218838;
 }
 
 .header-basket-block-icon__img {
