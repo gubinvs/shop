@@ -4,7 +4,6 @@ import "./PersonalSpace.css";
 import Header from "../Header/Header.jsx";
 
 const DefineUser = () => {
-
   const [userInfo, setUserInfo] = useState([]);
   const [personInfo, setPersonInfo] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -17,25 +16,25 @@ const DefineUser = () => {
   var admin = false;
   
 
-
-
   // State for checkbox filters
   const [filterStatus, setFilterStatus] = useState({
-    new: true,
+    new: false,
     assembling: false,
     delivery: false,
     completed: false,
   });
 
-// Handles checkbox change to update filterStatus, allowing only one checkbox to be checked at a time
-  const handleCheckboxChange = (status) => {
-    // Reset all checkboxes except the one being clicked
-    setFilterStatus((prev) => {
-      const newFilterStatus = { new: false, assembling: false, delivery: false, completed: false };
-      newFilterStatus[status] = true;
-      return newFilterStatus;
-    });
-  };
+const handleCheckboxChange = (status) => {
+  setFilterStatus((prev) => {
+    // Если текущий статус уже выбран, сбрасываем все флажки
+    if (prev[status]) {
+      return { new: false, assembling: false, delivery: false, completed: false };
+    }
+
+    // В противном случае отмечаем только выбранный флажок
+    return { new: false, assembling: false, delivery: false, completed: false, [status]: true };
+  });
+};
 
   // Раскрывает состав заказа
   const toggleFillingBlock = (orderId) => {
@@ -55,8 +54,7 @@ const DefineUser = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //setLoading(true);
-        //await new Promise((resolve) => setTimeout(resolve, 1000));
+        setLoading(true);
 
         const response = await fetch(`${ApiUrl}/api/ListOrder`, {
           method: "POST",
@@ -87,7 +85,7 @@ const DefineUser = () => {
         setError("Не удалось загрузить данные");
         console.error(err);
       } finally {
-        setLoading(false);
+       setLoading(false);
       }
     };
 
@@ -144,8 +142,6 @@ const DefineUser = () => {
     } catch (error) {
       console.error('Ошибка:', error.message);
     }
-    
-    
   };
 
   return (

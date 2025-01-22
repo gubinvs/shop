@@ -83,7 +83,7 @@ const Cart = (props) => {
         try {
           setLoading(true);
           // Задержка для имитации запроса
-          await new Promise((resolve) => setTimeout(resolve, 1000));
+          // await new Promise((resolve) => setTimeout(resolve, 1000));
           setUserInfo(mockUser);
           setOrders(mockOrders);
         } catch (err) {

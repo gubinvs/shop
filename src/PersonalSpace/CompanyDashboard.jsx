@@ -20,7 +20,7 @@ const CompanyDashboard = () => {
     // Имитация загрузки данных
     const fetchData = async () => {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Задержка
+      // await new Promise((resolve) => setTimeout(resolve, 1500)); // Задержка
       setCompanyData(mockCompanyData);
       setFormData(mockCompanyData);
       setLoading(false);

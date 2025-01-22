@@ -33,7 +33,7 @@
 }
 
 .dup-header__container button:hover {
-  background-color: #0056b3;
+  background-color: #218838;
   color: #FFFFFF;
 }
 
@@ -143,7 +143,7 @@
   width: 50px;
   height: 50px;
   border: 5px solid #E9ECEF; /* Светло-серый */
-  border-top: 5px solid #007BFF; /* Синий акцент */
+  border-top: 5px solid #218838; /* Синий акцент */
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 10px;
