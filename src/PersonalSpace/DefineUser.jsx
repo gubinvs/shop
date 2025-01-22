@@ -16,6 +16,9 @@ const DefineUser = () => {
   const [selectOrderValue, setSelectOrderValue] = useState(0);
   var admin = false;
   
+
+
+
   // State for checkbox filters
   const [filterStatus, setFilterStatus] = useState({
     new: true,
@@ -52,8 +55,8 @@ const DefineUser = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        //setLoading(true);
+        //await new Promise((resolve) => setTimeout(resolve, 1000));
 
         const response = await fetch(`${ApiUrl}/api/ListOrder`, {
           method: "POST",
@@ -115,14 +118,17 @@ const DefineUser = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const selectData = { selectedOption, selectOrderValue }; // Объект с выбранным значением
+    const tokenUser = localStorage.getItem("token");
+    const selectData = { tokenUser, selectedOption, selectOrderValue }; // Объект с выбранным значением
+    const selectDataJson = JSON.stringify(selectData);
+    
     try {
       const response = await fetch(`${ApiUrl}/api/ChangeOrderStatus`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(selectData),
+        body:  (selectDataJson),
       });
 
       if (!response.ok) {
@@ -131,9 +137,15 @@ const DefineUser = () => {
 
       const result = await response.json();
       console.log('Ответ сервера:', result);
+
+      // Обновляем текущую страницу
+      window.location.reload();
+
     } catch (error) {
       console.error('Ошибка:', error.message);
     }
+    
+    
   };
 
   return (
@@ -260,7 +272,6 @@ const DefineUser = () => {
                                                                             ))}
                                                   </div>
                                                 <div className="admin-block" style={admin===true ? {display: "none"} : {display: "flex"} }>
-                                                  <button className="admin-block__button">Выгрузка заказа для 1С</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>
