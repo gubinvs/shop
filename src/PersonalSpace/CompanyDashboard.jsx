@@ -35,7 +35,7 @@ const CompanyDashboard = () => {
           setCompanyData({
             name: data.company.nameCompany || "",
             inn: data.company.innCompany || "",
-            address: data.company.adressCompany || "",
+            adress: data.company.adressCompany || "",
             phone: data.company.phoneCompany || "",
           });
 
@@ -48,7 +48,7 @@ const CompanyDashboard = () => {
           setFormData({
             name: data.company.nameCompany || "",
             inn: data.company.innCompany || "",
-            address: data.company.adressCompany || "",
+            adress: data.company.adressCompany || "",
             phone: data.company.phoneCompany || "",
           });
 
@@ -87,6 +87,8 @@ const CompanyDashboard = () => {
       },
       body: JSON.stringify(formData),
     });
+
+    console.log(JSON.stringify(formData));
   };
 
   const handleSaveUser = () => {
@@ -98,10 +100,10 @@ const CompanyDashboard = () => {
       headers: {
           "Content-Type": "application/json",
       },
-      body: formDataUser,
+      body:  JSON.stringify(formDataUser),
     });
 
-
+    console.log(JSON.stringify(formDataUser));
   };
 
   const handleCancel = () => {
