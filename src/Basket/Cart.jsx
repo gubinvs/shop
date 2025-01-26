@@ -5,13 +5,6 @@ import addOrder from './AddOrder.js';
 const Cart = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
-  // Используем useEffect, чтобы обновить корзину при получении props.item
-  useEffect(() => {
-    if (props.item) {
-      setCartItems(props.item);  // Обновляем состояние с новым товаром из props
-    }
-  }, [props.item]);  // Эффект сработает только при изменении props.item
-
   //  функия удаляет дубли по id
   const uniqueItems = Array.from(new Map(cartItems.map(item => [item.id, item])).values());
 
@@ -46,46 +39,23 @@ const Cart = (props) => {
 
   const { subtotal, shipping, tax, total } = calculateTotal();
 
+  
+  const [userInfo, setUserInfo] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  ///имитация загрузки потом переделать
-  // Тестовые данные
-    const mockUser = {
-          name: "Иван Иванов",
-          email: "ivan.ivanov@example.com",
-      };
-  
-      const mockOrders = [
-          {
-          id: 11223333,
-          date: "2025-01-01",
-          status: "Доставлен",
-          },
-          {
-          id: 21313313,
-          date: "2025-01-05",
-          status: "Ожидает отправки",
-          },
-          {
-          id: 31313334,
-          date: "2025-01-10",
-          status: "Отменён",
-          },
-      ];
-  
-    const [userInfo, setUserInfo] = useState(null);
-    const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-  
-    // Имитация загрузки данных
+
+
+    // Используем useEffect, чтобы обновить корзину при получении props.item
     useEffect(() => {
       const fetchData = async () => {
         try {
           setLoading(true);
-          // Задержка для имитации запроса
-          // await new Promise((resolve) => setTimeout(resolve, 1000));
-          setUserInfo(mockUser);
-          setOrders(mockOrders);
+          if (props.item) {
+            setCartItems(props.item);  // Обновляем состояние с новым товаром из props
+          } else {
+    }
         } catch (err) {
           setError("Не удалось загрузить данные");
         } finally {
@@ -94,7 +64,7 @@ const Cart = (props) => {
       };
   
       fetchData();
-    }, []);
+    }, [props.item]);
   
     if (loading) {
       return (

@@ -1,49 +1,44 @@
-/* Общие стили */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #F8F9FA;
-  margin: 0;
-  padding: 0;
-  color: #343A40;
+.company-dashboard-section__container {
+  display: flex;  
 }
 
-/* Шапка */
-.header {
-  background-color: #343A40;
-  color: #F8F9FA;
-  padding: 15px;
+.company-dashboard-section__left-block {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
+  margin-right: 20px;
+  text-align: left;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 1.5rem;
+.company-dashboard-section__right-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%;
+}
+.cart-component-container__main-block {
+  margin-bottom: 40px;
 }
 
-.header button {
-  background-color: #007BFF;
-  color: #F8F9FA;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+.company-dashboard-section__title {
+  padding-left: 20px;
+  margin-bottom: 16px;
+  font-size: 24px;
 }
 
-.header button:hover {
-  background-color: #0056b3;
-}
+
+
 
 /* Информация о компании */
 .company-info {
-  max-width: 600px;
-  margin: 20px auto;
+  width: 100%;
   background: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #E9ECEF;
+  
 }
 
 .company-info p {
@@ -84,24 +79,4 @@ body {
 
 .edit-form button {
   margin-right: 10px;
-}
-
-/* Логотип */
-.company-logo {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.company-logo img {
-  max-width: 100px;
-  border-radius: 10px;
-  border: 1px solid #E9ECEF;
-}
-
-.placeholder-logo {
-  background-color: #E9ECEF;
-  color: #6C757D;
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
 }

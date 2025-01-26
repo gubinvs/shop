@@ -24,17 +24,17 @@ const DefineUser = () => {
     completed: false,
   });
 
-const handleCheckboxChange = (status) => {
-  setFilterStatus((prev) => {
-    // Если текущий статус уже выбран, сбрасываем все флажки
-    if (prev[status]) {
-      return { new: false, assembling: false, delivery: false, completed: false };
-    }
+  const handleCheckboxChange = (status) => {
+    setFilterStatus((prev) => {
+      // Если текущий статус уже выбран, сбрасываем все флажки
+      if (prev[status]) {
+        return { new: false, assembling: false, delivery: false, completed: false };
+      }
 
-    // В противном случае отмечаем только выбранный флажок
-    return { new: false, assembling: false, delivery: false, completed: false, [status]: true };
-  });
-};
+      // В противном случае отмечаем только выбранный флажок
+      return { new: false, assembling: false, delivery: false, completed: false, [status]: true };
+    });
+  };
 
   // Раскрывает состав заказа
   const toggleFillingBlock = (orderId) => {
@@ -50,6 +50,9 @@ const handleCheckboxChange = (status) => {
       .toString()
       .padStart(2, "0")} руб`; // Форматирование строки
   }
+
+  const e = localStorage.getItem("token");
+  console.log(e);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,13 +74,13 @@ const handleCheckboxChange = (status) => {
         const data = await response.json();
         
         setOrders(data.orders);
-        //console.log(data.orders);
+        console.log(data.orders);
 
         setUserInfo(data.company);
-        //console.log(data.company);
+        console.log(data.company);
         
         setPersonInfo(data.person);
-        //console.log(data.person);
+          console.log(data.person);
 
         admin = data.person.isAdmin;
 
@@ -278,7 +281,6 @@ const handleCheckboxChange = (status) => {
                                                       
                                                   </form>
                                                 </div>
-                                                  
                                         </>
                                           
                                         )}

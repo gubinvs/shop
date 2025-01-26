@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
+import "./CompanyDashboard.css";
 
 const CompanyDashboard = () => {
+
+  // Запрос на сервер для получения информации о пользователе и компании
+
+
+
   // Тестовые данные
   const mockCompanyData = {
     name: "ООО Ромашка",
-    email: "contact@romashka.com",
+    inn: "5903115410",
     phone: "+7 (900) 123-45-67",
     address: "Москва, ул. Примерная, д. 1",
-    logo: null, // URL логотипа компании (по умолчанию пусто)
+  };
+
+  // Тестовые данные
+  const mockUserData = {
+    name: "Губин Владимир Сергеевич",
+    phone: "+7 (900) 123-45-67",
+    email: "gubinva@gmail.com",
   };
 
   const [companyData, setCompanyData] = useState(null);
+  const [companyUserData, setCompanyUserData] = useState(null);
   const [formData, setFormData] = useState({});
+  const [formDataUser, setFormDataUser] = useState({});
   const [editing, setEditing] = useState(false);
+  const [editingUser, setEditingUser] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,6 +38,8 @@ const CompanyDashboard = () => {
       // await new Promise((resolve) => setTimeout(resolve, 1500)); // Задержка
       setCompanyData(mockCompanyData);
       setFormData(mockCompanyData);
+      setCompanyUserData(mockUserData);
+      setFormDataUser(mockUserData);
       setLoading(false);
     };
 
@@ -34,19 +51,25 @@ const CompanyDashboard = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleLogoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => setFormData({ ...formData, logo: reader.result });
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleSave = () => {
     setCompanyData(formData);
     setEditing(false);
+    // Отправить данные на сервер
+
   };
+
+  const handleInputChangeUser = (e) => {
+    const { name, value } = e.target;
+    setFormDataUser({ ...formDataUser, [name]: value });
+  };
+
+  const handleSaveUser = () => {
+    setCompanyUserData(formDataUser);
+    setEditingUser(false);
+    // Отправить данные на сервер
+
+  };
+
 
   if (loading) {
     return (
@@ -65,78 +88,61 @@ const CompanyDashboard = () => {
             <div className="cart-component-container cart-component-container__main-block">
               <img src="../../images/cabiten-page-image.jpg" className="cart-main-block__images" />
             </div>
-            <h1>Личный кабинет:</h1>
-            <div className="company-info">
-                {!editing ? (
-                <>
-                    <div className="company-logo">
-                    {companyData.logo ? (
-                        <img src={companyData.logo} alt="Логотип компании" />
-                    ) : (
-                        <div className="placeholder-logo">Логотип отсутствует</div>
-                    )}
-                    </div>
-                    <p><strong>Название:</strong> {companyData.name}</p>
-                    <p><strong>Email:</strong> {companyData.email}</p>
-                    <p><strong>Телефон:</strong> {companyData.phone}</p>
-                    <p><strong>Адрес:</strong> {companyData.address}</p>
-                    <button onClick={() => setEditing(true)}>Редактировать</button>
-                </>
-                ) : (
-                <div className="edit-form">
-                    <label>
-                    Название:
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                    />
-                    </label>
-                    <label>
-                    Email:
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                    />
-                    </label>
-                    <label>
-                    Телефон:
-                    <input
-                        type="text"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                    />
-                    </label>
-                    <label>
-                    Адрес:
-                    <input
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleInputChange}
-                    />
-                    </label>
-                    <label>
-                    Логотип:
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleLogoChange}
-                    />
-                    </label>
-                    {formData.logo && (
-                    <div className="preview-logo">
-                        <img src={formData.logo} alt="Превью логотипа" />
-                    </div>
-                    )}
-                    <button onClick={handleSave}>Сохранить</button>
-                    <button onClick={() => setEditing(false)}>Отмена</button>
-                </div>
-                )}
+            <div className="container company-dashboard-section__container">
+              <div className="company-dashboard-section__left-block">
+                  <h1 className="company-dashboard-section__title">Информация о компании:</h1>
+                  <div className="company-info">
+                      {!editing ? (
+                      <>
+                          <p><strong>Название компании:</strong> {companyData.name}</p>
+                          <p><strong>ИНН:</strong> {companyData.inn}</p>
+                          <p><strong>Телефон:</strong> {companyData.phone}</p>
+                          <p><strong>Адрес доставки:</strong> {companyData.address}</p>
+                          <br /><br />
+                          <button onClick={() => setEditing(true)}>Редактировать</button>
+                      </>
+                      ) : (
+                      <div className="edit-form">
+                          <label>Название компании:</label>
+                            <input type="text" name="name" value={formData.name} onChange={handleInputChange}/>
+                          <label>ИНН:</label>
+                            <input type="text" name="inn" value={formData.inn} onChange={handleInputChange}/>
+                          <label>Телефон:</label>
+                            <input type="text" name="phone" value={formData.phone} onChange={handleInputChange}/>
+                          <label>Адрес:</label>
+                            <input type="text" name="address" value={formData.address} onChange={handleInputChange}/>
+                          <br /><br />
+                          <button onClick={handleSave}>Сохранить</button>
+                          <button onClick={() => setEditing(false)}>Отмена</button>
+                      </div>
+                      )}
+                  </div>
+              </div>
+              <div className="company-dashboard-section__right-block">
+                <h2 className="company-dashboard-section__title">Информация о пользователях:</h2>
+                  <div className="company-info">
+                    {!editingUser ? (
+                      <>
+                        <p><strong>Пользователь:</strong> {companyUserData.name}</p>
+                        <p><strong>Телефон:</strong> {companyUserData.phone}</p>
+                        <p><strong>Email:</strong> {companyUserData.email}</p>
+                        <br /><br />
+                        <button onClick={() => setEditingUser(true)}>Редактировать</button>
+                    </>):
+                      (
+                        <div className="edit-form">
+                          <label>Пользователь:</label>
+                            <input type="text" name="name" value={formDataUser.name} onChange={handleInputChangeUser}/>
+                          <label>Телефон:</label>
+                            <input type="phone" name="phone" value={formDataUser.phone} onChange={handleInputChangeUser}/>
+                          <p><strong>Email:</strong> {companyUserData.email}</p>
+                          <br /><br />
+                          <button onClick={handleSaveUser}>Сохранить</button>
+                          <button onClick={() => setEditingUser(false)}>Отмена</button>
+                      </div>
+                      )}
+                  </div>
+              </div>
             </div>
         </div>
     </>
