@@ -87,8 +87,6 @@ const CompanyDashboard = () => {
       },
       body: JSON.stringify(formData),
     });
-
-    console.log(JSON.stringify(formData));
   };
 
   const handleSaveUser = () => {
@@ -102,8 +100,6 @@ const CompanyDashboard = () => {
       },
       body:  JSON.stringify(formDataUser),
     });
-
-    console.log(JSON.stringify(formDataUser));
   };
 
   const handleCancel = () => {
