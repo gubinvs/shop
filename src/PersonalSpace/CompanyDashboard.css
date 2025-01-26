@@ -1,5 +1,6 @@
 .company-dashboard-section__container {
   display: flex;  
+  min-height: 700px;
 }
 
 .company-dashboard-section__left-block {
@@ -46,16 +47,17 @@
 }
 
 .company-info button {
-  background-color: #007BFF;
-  color: white;
+  background-color: #FFFFFF;
+  color: #1D252C;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
+  border: 1px solid #1D252C;
   cursor: pointer;
 }
 
 .company-info button:hover {
-  background-color: #0056b3;
+  background-color: #f4f4f4;
 }
 
 /* Редактирование */
