@@ -51,9 +51,6 @@ const DefineUser = () => {
       .padStart(2, "0")} руб`; // Форматирование строки
   }
 
-  const e = localStorage.getItem("token");
-  console.log(e);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -74,13 +71,13 @@ const DefineUser = () => {
         const data = await response.json();
         
         setOrders(data.orders);
-        console.log(data.orders);
+        //console.log(data.orders);
 
         setUserInfo(data.company);
-        console.log(data.company);
+        //console.log(data.company);
         
         setPersonInfo(data.person);
-          console.log(data.person);
+        //console.log(data.person);
 
         admin = data.person.isAdmin;
 
@@ -112,7 +109,6 @@ const DefineUser = () => {
   };
 
   const selectOrderValueChange = (event) => {
-    
       setSelectOrderValue(event);
   };
 
@@ -137,7 +133,7 @@ const DefineUser = () => {
       }
 
       const result = await response.json();
-      console.log('Ответ сервера:', result);
+      //console.log('Ответ сервера:', result);
 
       // Обновляем текущую страницу
       window.location.reload();
@@ -155,16 +151,31 @@ const DefineUser = () => {
           <img src="../../images/orders-page-images.jpg" className="cart-main-block__images" />
         </div>
 
-
         <h1>Заказы компании:</h1>
         <div className="container user-info-container">
-          <div className="user-info">
-            {userInfo.map((com) => {
-              return (
-                <p><strong>Компания:</strong> {com.nameCompany === null ? "Нет данных о компании" : com.nameCompany}</p>)
-            })}
-            <p><strong>Пользователь:</strong> {personInfo.nameUser === null ? "Нет данных о пользователе нет" : personInfo.nameUser}</p>
-          </div>
+        <div className="user-info">
+{console.log(userInfo)}
+
+
+          {Array.isArray(userInfo) ? (
+            userInfo.map((com) => (
+              com.guidIdCompany == 
+              <p key={com.id || com.nameCompany}>
+                <strong>Компания:</strong> {com.nameCompany || "Нет данных о компании"}
+              </p>
+            ))
+          ) : (
+            <p>
+              <strong>Компания:</strong>{" "}
+              {userInfo?.nameCompany || "Нет данных о компании"}
+            </p>
+          )}
+          <p>
+            <strong>Пользователь:</strong>{" "}
+            {personInfo?.nameUser || "Нет данных о пользователе"}
+          </p>
+        </div>
+
           <ul className="filter-block__list">
             <li className="filter-block__item">
                 <div><strong>Новый заказ</strong></div>

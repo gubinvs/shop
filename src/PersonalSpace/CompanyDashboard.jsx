@@ -56,6 +56,7 @@ const CompanyDashboard = () => {
             name: data.user.nameUser || "",
             phone: data.user.phoneUser || "",
             email: data.user.email || "",
+            guidIdCompany : data.user.guidIdCompany || ""
           });
         } else {
           throw new Error("Некорректные данные от API");
@@ -85,10 +86,10 @@ const CompanyDashboard = () => {
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({formData, formDataUser}),
     });
   };
-
+  
   const handleSaveUser = () => {
     setCompanyUserData(formDataUser);
     setEditingUser(false);
@@ -111,6 +112,7 @@ const CompanyDashboard = () => {
     setFormDataUser(companyUserData);
     setEditingUser(false);
   };
+  
 
   if (loading) {
     return (
@@ -183,7 +185,7 @@ const CompanyDashboard = () => {
             </div>
           </div>
           <div className="company-dashboard-section__right-block">
-            <h2 className="company-dashboard-section__title">Информация о пользователях:</h2>
+            <h2 className="company-dashboard-section__title">Информация о пользователe:</h2>
             <div className="company-info">
               {!editingUser ? (
                 <>
