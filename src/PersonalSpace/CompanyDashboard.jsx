@@ -31,11 +31,12 @@ const CompanyDashboard = () => {
 
         const data = await response.json();
 
+
         if (data.company && data.user) {
           setCompanyData({
             name: data.company.nameCompany || "",
             inn: data.company.innCompany || "",
-            adress: data.company.adressCompany || "",
+            address: data.company.adressCompany || "",
             phone: data.company.phoneCompany || "",
           });
 
@@ -48,7 +49,7 @@ const CompanyDashboard = () => {
           setFormData({
             name: data.company.nameCompany || "",
             inn: data.company.innCompany || "",
-            adress: data.company.adressCompany || "",
+            address: data.company.adressCompany || "",
             phone: data.company.phoneCompany || "",
           });
 
@@ -71,7 +72,7 @@ const CompanyDashboard = () => {
 
     fetchData();
   }, [param]);
-
+  
   const handleInputChange = (e, setState) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));

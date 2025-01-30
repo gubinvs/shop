@@ -9,16 +9,33 @@ import Basket from './Basket/Basket.jsx';
 import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 import DefineUser from "./PersonalSpace/DefineUser.jsx";
 import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
-
+import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
 
 const Home = () => <h1>Главная страница</h1>;
 
 
 
-// Функция проверки токена, проверяет аутентификацию перед загрузкой страницы
+function isTokenValid(token) {
+  try {
+    const decoded = jwtDecode(token); // Декодируем токен
+    const currentTime = Math.floor(Date.now() / 1000); // Текущее время в секундах
+    return decoded.exp > currentTime; // Проверяем, не истек ли токен
+  } catch (error) {
+    console.error("Ошибка проверки токена:", error);
+    return false; // Если токен невалиден или не может быть декодирован
+  }
+}
+
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/Autorization" />;
+
+  // Проверяем наличие и действительность токена
+  if (token && isTokenValid(token)) {
+    return children; // Если токен валиден, рендерим защищенный маршрут
+  }
+
+  // Если токен недействителен или отсутствует, перенаправляем на авторизацию
+  return <Navigate to="/Autorization" />;
 }
 
 const App = () => {

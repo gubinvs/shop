@@ -3,6 +3,7 @@ import ApiUrl from '../js/ApiUrl.js';
 import "./PersonalSpace.css";
 import Header from "../Header/Header.jsx";
 
+
 const DefineUser = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [personInfo, setPersonInfo] = useState([]);
@@ -13,7 +14,7 @@ const DefineUser = () => {
   const [selectedOption, setSelectedOption] = useState('Собирается');
   // Номер ордера передаваемый на сервер для изменения состояния заявки
   const [selectOrderValue, setSelectOrderValue] = useState(0);
-  var admin = false;
+  var [admin, setAdmin] = useState(false);
   
 
   // State for checkbox filters
@@ -51,6 +52,11 @@ const DefineUser = () => {
       .padStart(2, "0")} руб`; // Форматирование строки
   }
 
+  // Открывает окно с информацией о компании
+  const openCompanyInformation = (guid) => {
+
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -70,8 +76,9 @@ const DefineUser = () => {
 
         const data = await response.json();
         
+        
         setOrders(data.orders);
-        //console.log(data.orders);
+        //console.log(data);
 
         setUserInfo(data.company);
         //console.log(data.company);
@@ -79,7 +86,7 @@ const DefineUser = () => {
         setPersonInfo(data.person);
         //console.log(data.person);
 
-        admin = data.person.isAdmin;
+        setAdmin(data.person.isAdmin);
 
       } catch (err) {
         setError("Не удалось загрузить данные");
@@ -281,7 +288,8 @@ const DefineUser = () => {
                                                                               : ""
                                                                             ))}
                                                   </div>
-                                                <div className="admin-block" style={admin===true ? {display: "none"} : {display: "flex"} }>
+                                                <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
+                                                  <button className="admin-block__button" onClick={() => openCompanyInformation(admin)}>Данные о компании</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>
@@ -289,7 +297,6 @@ const DefineUser = () => {
                                                             <option className="admin-block__option" value="Завершен">Завершен</option>
                                                       </select>
                                                       <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
-                                                      
                                                   </form>
                                                 </div>
                                         </>
