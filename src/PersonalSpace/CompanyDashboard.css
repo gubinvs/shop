@@ -18,6 +18,7 @@
   align-items: flex-start;
   width: 40%;
 }
+
 .cart-component-container__main-block {
   margin-bottom: 40px;
 }
@@ -28,12 +29,10 @@
   font-size: 24px;
 }
 
-
-
-
 /* Информация о компании */
 .company-info {
   width: 100%;
+  min-height: 284px;
   background: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
@@ -60,7 +59,7 @@
   background-color: #f4f4f4;
 }
 
-/* Редактирование */
+/* Редактирование информации */
 .edit-form label {
   display: block;
   margin-bottom: 10px;

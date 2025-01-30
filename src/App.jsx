@@ -10,8 +10,7 @@ import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 import DefineUser from "./PersonalSpace/DefineUser.jsx";
 import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
 import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
-
-const Home = () => <h1>Главная страница</h1>;
+import Home from './Home/Home.jsx';
 
 
 

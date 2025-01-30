@@ -76,7 +76,6 @@ const DefineUser = () => {
 
         const data = await response.json();
         
-        
         setOrders(data.orders);
         //console.log(data);
 
@@ -161,9 +160,6 @@ const DefineUser = () => {
         <h1>Заказы компании:</h1>
         <div className="container user-info-container">
         <div className="user-info">
-{console.log(userInfo)}
-
-
           {Array.isArray(userInfo) ? (
             userInfo.map((com) => (
               com.guidIdCompany == 
