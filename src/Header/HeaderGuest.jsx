@@ -4,7 +4,7 @@ import "./Header.css";
 
 
 
-const Header = () => {
+const HeaderGuest = () => {
     const [itemBasket, setItemBasket] = useState(null); // Начальное состояние - null
     const navigate = useNavigate();
 
@@ -14,7 +14,6 @@ const Header = () => {
         if (item) {
             try {
                 const parsedItem = JSON.parse(item);
-                
                 setItemBasket(parsedItem.length);
             } catch (error) {
                
@@ -56,7 +55,7 @@ const Header = () => {
                         </picture>
                     </div>
                     <div className="header-navigation-block">
-                        <div className="header-navigation-block__top">
+                        <div className="header-navigation-block__top header-navigation-block__top_guest">
                             <div className="search-input-block">
                                 <input className="search-input" placeholder="Поиск по артикулу"/>
                                 <div className="search-icon">
@@ -70,7 +69,7 @@ const Header = () => {
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
-                                                                <li className="header-navigation__item">
+                                <li className="header-navigation__item">
                                     <a href="/Specifications" className={
                                                                     location.pathname === '/Specifications' ? 
                                                                     'nav-active' : 
@@ -92,67 +91,19 @@ const Header = () => {
                             </ul>
                         </div>                          
                     </div>
-                    <div className="header-basket-block">
-                        <ul className="header-basket-block__list" onClick={companyDashboard}>
-                            <li className="header-basket-block-icon__item">
-                                <img src={
-                                    location.pathname === '/CompanyDashboard' ? 
-                                        '../../images/iconCompanyBlue.svg' :
-                                        '../../images/iconCompanyBlack.svg'
-                                } className="header-basket-block-icon__img header-basket-block-icon__img_comp" />
-                            </li>
-                            <li className={
-                                location.pathname === '/CompanyDashboard' ? 
-                                'header-basket-block-icon__item header-basket-block-icon__item_active' : 
-                                'header-basket-block-icon__item'
-                                }>
-                                    Компания
-                            </li>
-                        </ul>
-                        <ul className="header-basket-block__list" onClick={orderPage}>
-                            <li className="header-basket-block-icon__item">
-                                <img src={
-                                    location.pathname === '/DefineUser' ? 
-                                        '../../images/orderBlue.svg' :
-                                        '../../images/orderBlack.svg'
-                                } className="header-basket-block-icon__img" />
-                          
-                            </li>
-                            <li className={
-                                location.pathname === '/DefineUser' ? 
-                                    'header-basket-block-icon__item header-basket-block-icon__item_active' : 
-                                    'header-basket-block-icon__item hbbi-item'
-                                }>
-                                    Заказы
-                            </li>
-                        </ul>
-                        <ul className="header-basket-block__list header-basket-block__list_basket" onClick={basketPage}>
-                            <li className="header-basket-block-icon__item">
-                                <img 
-                                    src={
-                                        location.pathname === '/Basket' ? 
-                                            '../../images/basketBlue.svg' : 
-                                            '../../images/basketBlack.svg'
-                                        } 
-                                    className={
-                                        location.pathname === '/Basket' ? 
-                                        'header-basket-block-icon__img header-basket-block-icon__img_basket' : 
-                                        'header-basket-block-icon__img header-basket-block-icon__img_basket'
-                                    } />
-                            </li>
-                            <li className={
-                                location.pathname === '/Basket' ? 
-                                'header-basket-block-icon__item header-basket-block-icon__item_active' : 
-                                'header-basket-block-icon__item'
-                                }> 
-                                    Корзина
-                            </li>
-                            <li className={itemBasketIcon}>{itemBasket}</li>
-                        </ul>
-                    </div>  
+                    <div class="header-navigation-block__top">
+                        <div class="header-validation-block header-validation-block__guest">
+                            <a href="/Autorization">
+                                <div class="button-verification">Вход</div>
+                            </a>
+                            <a href="/Registration">
+                                <div class="button-registrasion">Регистрация</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </header>
         </>
     );
 };
-export default Header;
+export default HeaderGuest;

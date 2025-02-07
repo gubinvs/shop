@@ -3,12 +3,12 @@ import { useState } from "react";
 import ApiUrl from '../js/ApiUrl.js';
 import { data } from "react-router-dom";
 import './DeliveryAndPayment.css';
-import Header from '../Header/Header.jsx';
+import HeaderGuest from '../Header/HeaderGuest.jsx';
 
 const DeliveryAndPayment = () => {
   return (
     <>
-      <Header />
+      <HeaderGuest />
       <div className="delivery-payment-container">
         <h1>Доставка и оплата</h1>
 

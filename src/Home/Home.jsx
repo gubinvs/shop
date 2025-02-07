@@ -1,11 +1,12 @@
 import React from 'react';
-import Header from '../Header/Header.jsx';
+import HeaderGuest from '../Header/HeaderGuest.jsx';
+import './Home.css';
 
 const Home = () => {
 
 
     return (
-        <Header />
+        <HeaderGuest />
     );
 
 };
