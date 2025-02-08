@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home/Home.jsx';
 import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
@@ -8,10 +9,8 @@ import Basket from './Basket/Basket.jsx';
 import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 import DefineUser from "./PersonalSpace/DefineUser.jsx";
 import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
-import Specifications from './Specifications/Specifications.jsx';
 import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
-
-
+import Specifications from './Specifications/Specifications.jsx';
 
 
 
@@ -27,26 +26,24 @@ function isTokenValid(token) {
 }
 
 function ProtectedRoute({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (token && isTokenValid(token)) {
       setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
     }
+    setLoading(false);
   }, []);
 
-  if (isAuthenticated === null) {
-    return <div>Загрузка...</div>; // Пока проверяем токен, показываем загрузку
+  if (loading) {
+    return <div>Загрузка...</div>; 
   }
 
-  return isAuthenticated ? children : <Navigate to="/Autorization" replace />;
+  return isAuthenticated ? children : <Navigate to="/Authorization" replace />;
 }
-
-
 
 
 
@@ -55,9 +52,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Autorization" element={<AuthorizationForm />} />
+        <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
-        <Route path='/Specifications' element={<Specifications />}/>
+        <Route path="/Specifications" element={<Specifications />}/>
+        <Route path="/Personal" element={<Specifications />}/>
         <Route path="/Basket" element= {
                                     <ProtectedRoute>
                                       <Basket />

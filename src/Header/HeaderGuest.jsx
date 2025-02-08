@@ -70,8 +70,8 @@ const HeaderGuest = () => {
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
                                 <li className="header-navigation__item">
-                                    <a href="/Specification" className={
-                                                                    location.pathname === '/Specification' ? 
+                                    <a href="/Specifications" className={
+                                                                    location.pathname === '/Specifications' ? 
                                                                     'nav-active' : 
                                                                     ''
                                     }>
@@ -93,7 +93,7 @@ const HeaderGuest = () => {
                     </div>
                     <div class="header-navigation-block__top">
                         <div class="header-validation-block header-validation-block__guest">
-                            <a href="/Autorization">
+                            <a href="/Authorization">
                                 <div class="button-verification">Вход</div>
                             </a>
                             <a href="/Registration">
