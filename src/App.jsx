@@ -1,15 +1,17 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home/Home.jsx';
 import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
 import AuthorizationForm from './RegistrationForm/AuthorizationForm.jsx';
-import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import Basket from './Basket/Basket.jsx';
 import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 import DefineUser from "./PersonalSpace/DefineUser.jsx";
 import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
+import Specifications from './Specifications/Specifications.jsx';
 import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
-import Home from './Home/Home.jsx';
+
+
 
 
 
@@ -25,18 +27,29 @@ function isTokenValid(token) {
 }
 
 function ProtectedRoute({ children }) {
-  const token = localStorage.getItem("token");
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  // Проверяем наличие и действительность токена
-  if (token && isTokenValid(token)) {
-    return children; // Если токен валиден, рендерим защищенный маршрут
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token && isTokenValid(token)) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+
+  if (isAuthenticated === null) {
+    return <div>Загрузка...</div>; // Пока проверяем токен, показываем загрузку
   }
 
-  // Если токен недействителен или отсутствует, перенаправляем на авторизацию
-  return <Navigate to="/Autorization" />;
+  return isAuthenticated ? children : <Navigate to="/Autorization" replace />;
 }
 
-localStorage.clear();
+
+
+
+
 const App = () => {
   return (
     <Router>
@@ -44,6 +57,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Autorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
+        <Route path='/Specifications' element={<Specifications />}/>
         <Route path="/Basket" element= {
                                     <ProtectedRoute>
                                       <Basket />
@@ -55,10 +69,6 @@ const App = () => {
         <Route path="/CompanyDashboard" element= {
                                   <ProtectedRoute>
                                     <CompanyDashboard />
-                                  </ProtectedRoute>} />
-        <Route path="/Specifications" element= {
-                                  <ProtectedRoute>
-                                    <Home />
                                   </ProtectedRoute>} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
       </Routes>

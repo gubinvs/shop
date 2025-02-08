@@ -50,7 +50,7 @@ const AuthorizationForm = () => {
     return (
         <div className="registration-form_container">
           <div className="form-block">
-            <h2>Авторизация пользователя</h2>
+            <h2 className='form-block__title'>Авторизация пользователя</h2>
             <form onSubmit={handleSubmit} className="form">
               <input
                 type="email"

@@ -45,7 +45,7 @@ const RegistrationForm = () => {
     return (
       <div className="registration-form_container">
         <div className="form-block">
-          <h2>Регистрация пользователя</h2>
+          <h2 className="form-block__title">Регистрация пользователя</h2>
           <form onSubmit={handleSubmit} className="form">
             <input
               type="email"
