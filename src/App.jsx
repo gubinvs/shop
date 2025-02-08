@@ -9,8 +9,8 @@ import Basket from './Basket/Basket.jsx';
 import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 import DefineUser from "./PersonalSpace/DefineUser.jsx";
 import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
+import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
-import Specifications from './Specifications/Specifications.jsx';
 
 
 
@@ -24,6 +24,7 @@ function isTokenValid(token) {
     return false; // Если токен невалиден или не может быть декодирован
   }
 }
+
 
 function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -46,7 +47,6 @@ function ProtectedRoute({ children }) {
 }
 
 
-
 const App = () => {
   return (
     <Router>
@@ -54,8 +54,10 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
-        <Route path="/Specifications" element={<Specifications />}/>
-        <Route path="/Personal" element={<Specifications />}/>
+        <Route path="/Personal" element= {
+                                    <ProtectedRoute>
+                                      <PersonalSpace />
+                                    </ProtectedRoute>} />
         <Route path="/Basket" element= {
                                     <ProtectedRoute>
                                       <Basket />

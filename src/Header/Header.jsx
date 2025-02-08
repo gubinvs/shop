@@ -70,13 +70,13 @@ const Header = () => {
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
-                                                                <li className="header-navigation__item">
-                                    <a href="/Specifications" className={
-                                                                    location.pathname === '/Specifications' ? 
+                                <li className="header-navigation__item">
+                                    <a href="/Personal" className={
+                                                                    location.pathname === '/Personal' ? 
                                                                     'nav-active' : 
                                                                     ''
                                     }>
-                                        Спецификации
+                                        Комплектующие
                                     </a>
                                 </li>
                                 <li className="header-navigation__item">

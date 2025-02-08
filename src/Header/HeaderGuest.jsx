@@ -70,15 +70,6 @@ const HeaderGuest = () => {
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
                                 <li className="header-navigation__item">
-                                    <a href="/Specifications" className={
-                                                                    location.pathname === '/Specifications' ? 
-                                                                    'nav-active' : 
-                                                                    ''
-                                    }>
-                                        Спецификации
-                                    </a>
-                                </li>
-                                <li className="header-navigation__item">
                                     <a href="/DeliveryAndPayment" className={
                                                                     location.pathname === '/DeliveryAndPayment' ? 
                                                                     'nav-active' : 
