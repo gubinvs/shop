@@ -35,11 +35,6 @@
   margin-bottom: 30px;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
-}
-
 .cart-items {
   display: flex;
   flex-direction: column;

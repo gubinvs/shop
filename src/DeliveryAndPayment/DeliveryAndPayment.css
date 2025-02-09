@@ -6,11 +6,6 @@
   line-height: 1.6;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .delivery-section, .payment-section {
   margin-bottom: 40px;
 }
@@ -20,11 +15,11 @@ h1 {
 }
 
 .delivery-option h3, .payment-option h3 {
-  color: #333;
+  color: #1D252C;
 }
 
 .link {
-  color: #007bff;
+  color: #F3DE09;
   text-decoration: none;
 }
 

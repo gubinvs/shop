@@ -1,0 +1,73 @@
+.directory-groups__container {
+    margin-bottom: 50px;
+}
+
+.directory-groups__title {
+    font-size: 38px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.dg-card-section {
+    display: flex;
+}
+
+.dg-card__groop:not(:last-of-type) {
+    margin-right: 20px;
+}
+
+.dg-card {
+    padding: 10px;
+    background-color: #F0F0F0;
+}
+
+.dg-card__title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.dg-card__title_card4 {
+    width: 182px;
+}
+
+.dg-card__title_dg-card5 {
+    width: 120px;
+}
+
+.dg-card1 {
+    width: 196px;
+    height: 320px;
+    margin-right: 20px;
+}
+
+.dg-card2 {
+    width: 196px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.dg-card3 {
+    display: flex;
+    align-items: flex-end;
+    width: 196px;
+    height: 150px;
+}
+
+.dg-card4 {
+    display: flex;
+    align-items: flex-end;
+    width: 414px;
+    height: 320px;
+    margin-right: 20px;
+}
+
+.dg-card5 {
+    width: 412px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.dg-card6 {
+    width: 412px;
+    height: 150px;
+}
