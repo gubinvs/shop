@@ -3,6 +3,7 @@ import HeaderGuest from '../Header/HeaderGuest.jsx';
 import './Home.css';
 import HomeMainSection from "./HomeMainSection.jsx";
 import DirectoryGroups from "./DirectoryGroups.jsx";
+import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx"
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
             <HeaderGuest />
             <HomeMainSection />
             <DirectoryGroups />
+            <CardComponetGroop />
         </> 
     );
 
