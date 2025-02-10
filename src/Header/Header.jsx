@@ -47,7 +47,7 @@ const Header = () => {
     return (
         <>
             <header>
-                <div className="header__container">
+                <div className="container header__container">
                     <div className="header-logo-block" onClick={indexPage}>
                         <picture>
                             <source srcSet="../../images/header_logo_1280.svg" media="(max-width: 1280px)"/>

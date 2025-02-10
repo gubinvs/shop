@@ -12,8 +12,8 @@ const Home = () => {
         <>
             <HeaderGuest />
             <HomeMainSection />
-            <DirectoryGroups />
-            <CardComponetGroop />
+            {/* <DirectoryGroups />
+            <CardComponetGroop /> */}
         </> 
     );
 

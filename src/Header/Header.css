@@ -196,13 +196,13 @@
   }
 
   .search-input {
-    width: 255px;
+    width: 404px;
     height: 24px;
   }
 
   .search-icon {
     top: 2px;
-    right: 4px;
+    right: -114px;
   }
 }
 

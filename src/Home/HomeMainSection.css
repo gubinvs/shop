@@ -116,3 +116,53 @@
     clip-path: polygon(0 0, 100% 0, 0 100%);
     transform: rotateY(180deg);
 }
+
+
+
+@media only screen and (max-width: 1280px) {
+     .container {
+        width: 1000px;
+    }
+
+    .home-main-section__title_big {
+        width: 680px;
+        font-size: 92px;
+        line-height: 110px;
+    }
+
+    .hms-title__logo {
+        left: 510px;
+        bottom: 72px;
+    }
+
+    .bottom-bord {
+        width: 494px;
+        height: 350px;
+    }
+
+    .bottom-shape {
+        width: 350px;
+        height: 351px;
+        bottom: 0;
+        left: 157px;
+    }
+
+    .top-bord {
+        width: 702px;
+        height: 320px;
+        top: -50px;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 960px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+
+}
