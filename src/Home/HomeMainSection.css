@@ -157,12 +157,78 @@
 
 @media only screen and (max-width: 1024px) {
 
+    .home-main-section__top {
+        padding-top: 20px;
+    }
+
+    .container {
+    width: 960px;
+    }
+
+    .home-main-section__title_big {
+        width: 680px;
+        font-size: 92px;
+        line-height: 110px;
+    }
+
+    .hms-title__logo {
+        left: 510px;
+        bottom: 72px;
+    }
+
+    .bottom-bord {
+        width: 453px;
+        height: 350px;
+    }
+
+    .bottom-shape {
+        width: 350px;
+        height: 351px;
+        bottom: 0;
+        left: 157px;
+    }
+
+    .top-bord {
+        width: 544px;
+        height: 290px;
+        top: -20px;
+    }
+
+    .top-shape {
+        left: 544px;
+        width: 210px;
+        height: 290px;
+    }
+
+    .hms-title__discr {
+        width: 530px;
+        font-size: 16px;
+    }
 }
 
 @media only screen and (max-width: 960px) {
+    .container {
+        width: 800px;
+    }
+    .hms-title__logo {
+        left: 344px;
+        bottom: 63px;
+    }
+    .home-main-section__title_big {
+        width: 366px;
+        font-size: 64px;
+        line-height: 77px;
+    }
+
+    .bottom-bord {
+        width: 293px;
+        height: 284px;
+    }
 
 }
 
 @media only screen and (max-width: 800px) {
-
+  .container {
+    width: 640px;
+  }
 }
