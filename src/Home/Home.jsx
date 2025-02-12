@@ -10,10 +10,10 @@ const Home = () => {
 
     return (
         <>
-            <HeaderGuest />
-            <HomeMainSection />
-            {/* <DirectoryGroups />
-            <CardComponetGroop /> */}
+            {/* <HeaderGuest />
+            <HomeMainSection /> */}
+            <DirectoryGroups />
+            {/* <CardComponetGroop /> */}
         </> 
     );
 
