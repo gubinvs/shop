@@ -69,6 +69,10 @@
     cursor: pointer;
 }
 
+.card-component__name:hover {
+  color: #32C120;
+}
+
 .card-component__basket-block{
     display: flex;
 }
