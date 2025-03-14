@@ -21,6 +21,7 @@
     border: 1px solid #DFE0E1;
     margin-right: 20px;
     margin-bottom: 20px;
+    z-index: 0;
 }
 
 .card-component__top {
@@ -38,11 +39,6 @@
 
 .card-component:hover {
     border: 1px solid #F3DE09;
-}
-
-.card-component:hover 
-.card-component__vendor {
-    color: #F3DE09;
 }
 
 .card-component:nth-child(4) {
@@ -69,7 +65,8 @@
     text-align: center;
     font-size: 16px;
     font-weight: 400;
-    color: #6F7172;
+    color: #3E6BA7;
+    cursor: pointer;
 }
 
 .card-component__basket-block{
@@ -91,10 +88,15 @@
     margin-right: 20px;
     font-size: 16px;
     font-weight: 600;
-    color: #6F7172;
+    color: #32C120;
     background-image: url(../../public/images/check.svg);
     background-position: left;
     background-repeat: no-repeat;
+}
+
+.delivry-block__quantity_0 {
+    color: #B63333;
+    background-image: url(../../public/images/check_red.svg);
 }
 
 .delivry-block__delivery-time {
@@ -146,7 +148,7 @@
     width: 70px;
     height: 40px;
     border: 1px solid #DFE0E1;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #6F7172;
 }
@@ -154,9 +156,9 @@
 .basket-block__button {
     width: 132px;
     height: 40px;
-    padding-top: 4px;
+    padding-top: 6px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     color: #1D252C;
     background-color: #DFE0E1;

@@ -4,16 +4,18 @@ import './Home.css';
 import HomeMainSection from "./HomeMainSection.jsx";
 import DirectoryGroups from "./DirectoryGroups.jsx";
 import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx"
+import Footer from "../Footer/Footer.jsx"
 
 
 const Home = () => {
 
     return (
         <>
-            {/* <HeaderGuest />
-            <HomeMainSection /> */}
+            <HeaderGuest />
+            <HomeMainSection />
             <DirectoryGroups />
-            {/* <CardComponetGroop /> */}
+            <CardComponetGroop />
+            <Footer />
         </> 
     );
 
