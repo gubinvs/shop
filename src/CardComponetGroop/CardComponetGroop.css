@@ -160,11 +160,11 @@
 .basket-block__button {
     width: 132px;
     height: 40px;
-    padding-top: 6px;
     text-align: center;
     font-size: 16px;
     font-weight: 500;
     color: #1D252C;
+    border: 0px;
     background-color: #DFE0E1;
 }
 
@@ -172,4 +172,20 @@
     background-color: #F3DE09;
     cursor: pointer;
 }
+
+.basket-block__button.disabled {
+    background-color: #ffffff;
+    cursor: not-allowed;
+    border: 0.5px solid #DFE0E1;
+}
+
+.quantity-item__minus, .quantity-item__plus {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.quantity-item__minus:hover, .quantity-item__plus:hover {
+    transform: scale(1.1);
+}
+
 
