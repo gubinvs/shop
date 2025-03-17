@@ -1,76 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import './CardComponetGroop.css';
-
+import ApiUrl from '../js/ApiUrl.js';
 
 const CardComponetGroop = () => {
-    const item = [
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/A9D56616/A9D56616.jpg",
-            vendorСode : "A9D56616",
-            nameComponent : "Дифавтомат Schneider Electric Acti9 2P 16А (B) 6кА 30мА (AC)",
-            quantity : 0,
-            linkPage: "https://shop.encomponent.ru/page-component/9f69c252-cd77-4f5e-9958-7c8341a82f83.php",
-            price : 11800
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 2,
-            price : 999000
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 2,
-            price : 999000
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 1,
-            price : 999000
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 2,
-            price : 999000
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 2,
-            price : 999000
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 2,
-            price : 999000
-        },
-        {
-            imgLinkIconCard : "https://shop.encomponent.ru/img/img-product/1SFA898116R7000/1SFA898116R7000_icon-card.jpg",
-            vendorСode : "1SFA898116R7000",
-            nameComponent : "Софтстартер PSTX470-600-70 250кВт 400В 470A , с функцией защиты двигателя",
-            quantity : 2,
-            price : 999000
-        }
-    ];
+    const [items, setItems] = useState([]); // Store fetched data here
+    const [quantities, setQuantities] = useState([]);
+    const [loading, setLoading] = useState(true); // Loading state
 
-        const [quantities, setQuantities] = useState(() => {
-        const saved = localStorage.getItem('quantities');
-        return saved ? JSON.parse(saved) : Array(item.length).fill(0);
-    });
+    // Fetch data on mount
+    useEffect(() => {
+        fetch(ApiUrl + "/api/Bestsellers", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const formattedData = data.map((item) => ({
+                    imgLinkIconCard: item.imgLinkIconCard,
+                    vendorСode: item.vendorCode,
+                    nameComponent: item.nameComponent,
+                    quantity: item.quantity,
+                    linkPage: item.linkPage,
+                    price: item.price,
+                }));
+                setItems(formattedData);
+                setQuantities(Array(formattedData.length).fill(0)); // Initialize quantities
+                setLoading(false); // Stop loading
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false); // Stop loading in case of error
+            });
+    }, []); // Empty dependency array means it runs only once on mount
 
     useEffect(() => {
-        localStorage.setItem('quantities', JSON.stringify(quantities));
-    }, [quantities]);
+        if (items.length > 0) {
+            localStorage.setItem('quantities', JSON.stringify(quantities));
+        }
+    }, [quantities, items.length]); // Only save to localStorage if items and quantities are updated
 
     const handleIncrement = (index) => {
         const newQuantities = [...quantities];
@@ -96,7 +70,7 @@ const CardComponetGroop = () => {
 
     const handleAddToCart = (index) => {
         const cartData = JSON.parse(localStorage.getItem('cart')) || [];
-        const product = item[index];
+        const product = items[index];
 
         const existingIndex = cartData.findIndex(cartItem => cartItem.vendorСode === product.vendorСode);
 
@@ -114,8 +88,15 @@ const CardComponetGroop = () => {
         }
 
         localStorage.setItem('cart', JSON.stringify(cartData));
-        // console.log(JSON.parse(localStorage.getItem('cart')));
     };
+
+    if (loading) {
+        return (
+            <div className="loading">
+                <p>Загрузка...</p> {/* Можно добавить анимацию или спиннер */}
+            </div>
+        );
+    }
 
     return (
         <div className="card-componet-groop-section">
@@ -123,7 +104,7 @@ const CardComponetGroop = () => {
                 <h2 className="directory-groups__title">Популярные товары</h2>  
             </div>
             <div className="container card-componet-groop-section__container">
-                {item.map((element, index) => (
+                {items.map((element, index) => (
                     <div className="card-component" key={index}>
                         <div className="card-component__top">
                             <img src={element.imgLinkIconCard} className="card-component__img" alt="Фото компонента" />
