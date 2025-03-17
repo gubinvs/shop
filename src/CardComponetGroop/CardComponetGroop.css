@@ -50,7 +50,7 @@
 }
 
 .card-component__img {
-    width: 140px;
+    /* width: 140px; */
     height: 180px;
     margin-bottom: 20px;
 }
@@ -189,3 +189,70 @@
 }
 
 
+@media only screen and (max-width: 1280px) {
+    .container {
+        width: 1000px;
+    }
+
+    .card-component {
+        width: 235px;
+        height: 424px;
+        padding: 20px 10px 20px 10px;
+    }
+
+    .card-component__img {
+        height: 140px;
+    }
+
+    .card-component__vendor {
+        font-size: 22px;
+    }
+
+    .card-component__name {
+        font-size: 14px;
+    }
+
+    .delivry-block__quantity {
+        font-size: 14px;
+    }
+
+    .card-component__price {
+        font-size: 28px;
+    }
+
+
+    .quantity-item__minus,
+    .quantity-item__plus {
+        width: 16px;
+        height: 30px;
+    }
+
+    .quantity-item__input {
+        width: 50px;
+        height: 30px;
+    }
+
+    .basket-block__button {
+        height: 30px;
+    }
+
+
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    width: 800px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 640px;
+  }
+}

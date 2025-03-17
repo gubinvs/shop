@@ -56,6 +56,8 @@ const addOrder = async (props) => {
         NumberOrder: parseInt(numberOrder),
     }));
 
+    // console.log("Отправляемые на сервер данные" + JSON.stringify(items));
+
     // Отправка данных
     const saveRequests = items.map((item) =>
         fetch(`${ApiUrl}/api/SaveOrder`, {
@@ -73,6 +75,7 @@ const addOrder = async (props) => {
 
     // Очистка корзины и перенаправление пользователя
     localStorage.removeItem("basketItem");
+    localStorage.removeItem("cart");
     window.location.href = "/DefineUser";
 
     } catch (error) {

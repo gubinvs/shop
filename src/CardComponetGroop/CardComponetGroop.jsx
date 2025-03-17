@@ -23,12 +23,15 @@ const CardComponetGroop = () => {
             })
             .then((data) => {
                 const formattedData = data.map((item) => ({
+                    id: item.id,
                     imgLinkIconCard: item.imgLinkIconCard,
                     vendorСode: item.vendorCode,
                     nameComponent: item.nameComponent,
                     quantity: item.quantity,
                     linkPage: item.linkPage,
                     price: item.price,
+                    basketImgPath: item.basketImgPath,
+                    guidId: item.guid
                 }));
                 setItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0)); // Initialize quantities
@@ -71,6 +74,7 @@ const CardComponetGroop = () => {
     const handleAddToCart = (index) => {
         const cartData = JSON.parse(localStorage.getItem('cart')) || [];
         const product = items[index];
+        console.log(product);
 
         const existingIndex = cartData.findIndex(cartItem => cartItem.vendorСode === product.vendorСode);
 
@@ -82,19 +86,24 @@ const CardComponetGroop = () => {
                     vendorСode: product.vendorСode,
                     nameComponent: product.nameComponent,
                     quantity: quantities[index],
-                    price: product.price
+                    price: product.price,
+                    basketImgPath: product.basketImgPath,
+                    guidId: product.guidId,
+                    id: product.id
                 });
             }
         }
 
         localStorage.setItem('cart', JSON.stringify(cartData));
+        // console.log(JSON.stringify(cartData));
     };
 
     if (loading) {
         return (
-            <div className="loading">
-                <p>Загрузка...</p> {/* Можно добавить анимацию или спиннер */}
-            </div>
+        <div className="loading-wrapper">
+          <div className="spinner"></div>
+          <p>Загрузка данных...</p>
+        </div>
         );
     }
 

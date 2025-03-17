@@ -27,14 +27,9 @@ const Basket = () => {
                 return response.json();
             })
             .then((data) => {
-                // Предполагаем, что данные — это массив
                 const item = data[0]; // Возьмем первый элемент, если он один
                 setNewItem({
-                    // Прибавил 1000 для того, 
-                    // чтобы комплектующее при добавлении из самого магазина на них будет другой запрос в базу не дублировались, 
-                    // данные о них будут браться из localStorage("componentItem") 
-                    // к комплектующим например iek буду прибавлять 2000
-                    id: item.Id+1000, 
+                    id: item.Id + 1000, 
                     guidId: item.GuidId,
                     vendorCode: item.VendorCode,
                     name: item.Name,
@@ -50,33 +45,58 @@ const Basket = () => {
     // Обновление корзины при изменении newItem
     useEffect(() => {
         if (newItem) {
-            // Получаем товары из localStorage
             const basketItemString = localStorage.getItem("basketItem");
             const basketItem = basketItemString ? JSON.parse(basketItemString) : [];
 
-            // Обновляем корзину
             const updatedBasket = [...basketItem, newItem];
-
-            // Удаляем дубликаты по id
             const uniqueItems = Array.from(
                 new Map(updatedBasket.map((item) => [item.id, item])).values()
             );
 
-            // Сохраняем уникальные элементы в состояние и localStorage
             setFullBasket(uniqueItems);
             localStorage.setItem("basketItem", JSON.stringify(uniqueItems));
         }
     }, [newItem]);
 
-    // Получение корзины из localStorage
+    // Получение корзины из localStorage - НКУ
     const item = JSON.parse(localStorage.getItem("basketItem")) || [];
+
+    // Данные о товарах в корзине - комплектующие
+    const comp = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    // Обработка и объединение элементов через map
+    const processedItem = item.map(i => ({
+        id: i.id,
+        guidId: i.guidId,
+        vendorCode: i.vendorCode,
+        name: i.name, // Если нужно изменить название, можно здесь скорректировать
+        price: i.price,
+        quantity: i.quantity,
+        image: i.image
+    }));
+
+    const processedComp = comp.map(c => ({
+        id: c.id + 2000, // Здесь можно прибавить к id, если нужно
+        guidId: c.guidId,
+        vendorCode: c.vendorСode,
+        name: c.nameComponent, // Например, если название в комплектующих — это 'title'
+        price: c.price,
+        quantity: c.quantity,
+        image: c.basketImgPath // Если в комплектующих используется другой ключ для изображения
+    }));
+
+    // Объединяем обработанные массивы
+    const combinedItems = [...processedItem, ...processedComp];
 
     return (
         <>
             <Header />
-            <Cart item={item} />
+            {/* Выводит информацию по добавленным в корзину НКУ и комплектующим */}
+            <Cart item={combinedItems} />
         </>
     );
 };
 
 export default Basket;
+
