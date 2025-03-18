@@ -156,8 +156,9 @@ const DefineUser = () => {
         <div className="cart-component-container cart-component-container__main-block">
           <img src="../../images/orders-page-images.jpg" className="cart-main-block__images" />
         </div>
-
-        <h1>Заказы компании:</h1>
+        <div className="container">
+          <h1>Заказы компании:</h1>
+        </div>
         <div className="container user-info-container">
         <div className="user-info">
           {Array.isArray(userInfo) ? (

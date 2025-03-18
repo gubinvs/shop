@@ -35,7 +35,7 @@
 .dup-header__container button:hover {
   background-color: #218838;
   color: #FFFFFF;
-}
+} 
 
 /* Карточка пользователя */
 .user-info-container {
@@ -48,8 +48,7 @@
   background: #FFFFFF; /* Белый фон */
   padding: 20px;
   width: 100%;
-  /* max-width: 600px; */
-  min-height: 200px;
+  min-height: 100px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #E9ECEF; /* Светло-серая граница */

@@ -10,6 +10,7 @@ import DeliveryAndPayment from "./DeliveryAndPayment/DeliveryAndPayment.jsx";
 import DefineUser from "./PersonalSpace/DefineUser.jsx";
 import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
 import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
+import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
 
 
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
+        <Route path="/UpdatePassword" element={<UpdatePassword />} />
         <Route path="/Personal" element= {
                                     <ProtectedRoute>
                                       <PersonalSpace />

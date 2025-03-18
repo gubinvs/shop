@@ -13,7 +13,6 @@ const Home = () => {
     // Простейший стейт для проверки авторизации
     const isAuthenticated = localStorage.getItem('token') !== null;
 
-
     return (
         <>
         {/* Если не авторизован выводим шапку для гостя */}
