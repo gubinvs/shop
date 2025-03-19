@@ -76,20 +76,24 @@ const Header = () => {
     const basketPage = () => navigate('/Basket');
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');
+    const [isCatalogVisible, setCatalogVisible] = useState(false);
+    const catalogDisplay = () => {
+        setCatalogVisible(prev => !prev); // Переключаем состояние
+    };
 
     return (
         <>
             <header>
-                               <div className="container contact-header-block">
-                        <div className="contact-header-block__phone">
-                            8 (812) 921-59-71
-                        </div>
-                        <div className="contact-header-block__adress">
-                            Санкт-Петербург
-                        </div>
-                        <div className="contact-header-block__email">
-                            office@encomponent.ru
-                        </div>
+                <div className="container contact-header-block">
+                    <div className="contact-header-block__phone">
+                        8 (812) 921-59-71
+                    </div>
+                    <div className="contact-header-block__adress">
+                        Санкт-Петербург
+                    </div>
+                    <div className="contact-header-block__email">
+                        office@encomponent.ru
+                    </div>
                 </div>
                 <div className="container header__container">
                     <div className="header-logo-block" onClick={indexPage}>
@@ -101,7 +105,21 @@ const Header = () => {
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
                               <div className="search-input-block">
-                                <button className="button-catalog">Каталог</button>
+                
+                                    <button className="button-catalog" onClick={catalogDisplay}>
+                                        {isCatalogVisible ? 'X' : 'Каталог'}
+                                    </button>
+
+                                    {isCatalogVisible && (
+                                        <ul className="catalog__list">
+                                        <li className="catalog__item">Модульное оборудование</li>
+                                        <li className="catalog__item">Источники питания</li>
+                                        <li className="catalog__item">Клеммы и маркировка</li>
+                                        <li className="catalog__item">Щитовое оборудование</li>
+                                        <li className="catalog__item">Логические контроллеры</li>
+                                        <li className="catalog__item">Модули расширения</li>
+                                        </ul>
+                                    )}
                                 <input 
                                     className="search-input" 
                                     placeholder="Поиск по артикулу" 

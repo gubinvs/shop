@@ -227,8 +227,8 @@ const DefineUser = () => {
                   (() => {
                       // Множество для хранения уникальных ID
                       const uniqueOrders = new Set(); 
-                      return orders
-                          // Отфильтровали по уникальному номкру заказа
+                      return orders.slice().reverse()
+                          // Отфильтровали по уникальному номеру заказа
                           .filter((order) => {
                               if (uniqueOrders.has(order.numberOrder)) {
                                   return false; // Пропустить, если ID уже добавлен

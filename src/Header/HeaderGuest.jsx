@@ -2,60 +2,96 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
 
-
-
 const HeaderGuest = () => {
-    const [itemBasket, setItemBasket] = useState(null); // Начальное состояние - null
+const [itemBasket, setItemBasket] = useState(0);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [isFocused, setIsFocused] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
+
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const updateBasketCount = () => {
+        let totalCount = 0;
+
+        // basketItem
+        const basketItem = localStorage.getItem("basketItem");
+        if (basketItem) {
+            try {
+                const parsedBasket = JSON.parse(basketItem);
+                totalCount += Array.isArray(parsedBasket) ? parsedBasket.length : 0;
+            } catch (error) {
+                console.error("Ошибка парсинга basketItem:", error);
+            }
+        }
+
+        // cart
+        const cartItem = localStorage.getItem("cart");
+        if (cartItem) {
+            try {
+                const parsedCart = JSON.parse(cartItem);
+                totalCount += Array.isArray(parsedCart) ? parsedCart.length : 0;
+            } catch (error) {
+                console.error("Ошибка парсинга cart:", error);
+            }
+        }
+
+        setItemBasket(totalCount);
+    };
 
     useEffect(() => {
-        const item = localStorage.getItem("basketItem")
+        updateBasketCount();
 
-        if (item) {
-            try {
-                const parsedItem = JSON.parse(item);
-                setItemBasket(parsedItem.length);
-            } catch (error) {
-               
-                setItemBasket(0); // Если ошибка при парсинге, установим значение 0
+        const handleStorageChange = (event) => {
+            if (event.key === "basketItem" || event.key === "cart") {
+                updateBasketCount();
             }
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+        };
+    }, []);
+
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+
+        if (value.trim() !== "") {
+            setSearchResults([
+                `Результат для "${value}" 1`,
+                `Результат для "${value}" 2`,
+                `Результат для "${value}" 3`,
+            ]);
         } else {
-            setItemBasket(0); // Если нет данных в localStorage, установим 0
+            setSearchResults([]);
         }
-    });
+    };
 
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
-    const indexPage = () => {
-        navigate('/');
+    const indexPage = () => navigate('/');
+    
+    const [isCatalogVisible, setCatalogVisible] = useState(false);
+    const catalogDisplay = () => {
+        setCatalogVisible(prev => !prev); // Переключаем состояние
     };
-    const basketPage = () => {
-        navigate('/Basket');
-    };
-
-    const orderPage = () => {
-        navigate('/DefineUser');
-    };
-
-    const companyDashboard = () => {
-        navigate('/CompanyDashboard');
-    };
-
-    const location = useLocation();
   
     return (
         <>
-            <header>                 
+        <header>
                 <div className="container contact-header-block">
-                        <div className="contact-header-block__phone">
-                            8 (812) 921-59-71
-                        </div>
-                        <div className="contact-header-block__adress">
-                            Санкт-Петербург
-                        </div>
-                        <div className="contact-header-block__email">
-                            office@encomponent.ru
-                        </div>
+                    <div className="contact-header-block__phone">
+                        8 (812) 921-59-71
+                    </div>
+                    <div className="contact-header-block__adress">
+                        Санкт-Петербург
+                    </div>
+                    <div className="contact-header-block__email">
+                        office@encomponent.ru
+                    </div>
                 </div>
                 <div className="container header__container">
                     <div className="header-logo-block" onClick={indexPage}>
@@ -66,9 +102,41 @@ const HeaderGuest = () => {
                     </div>
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
-                            <div className="search-input-block">
-                                <button className="button-catalog">Каталог</button>
-                                <input className="search-input" placeholder="Поиск по артикулу"/>
+                              <div className="search-input-block search-input-block_guest">
+                
+                                    <button className="button-catalog" onClick={catalogDisplay}>
+                                        {isCatalogVisible ? 'X' : 'Каталог'}
+                                    </button>
+
+                                    {isCatalogVisible && (
+                                        <ul className="catalog__list">
+                                        <li className="catalog__item">Модульное оборудование</li>
+                                        <li className="catalog__item">Источники питания</li>
+                                        <li className="catalog__item">Клеммы и маркировка</li>
+                                        <li className="catalog__item">Щитовое оборудование</li>
+                                        <li className="catalog__item">Логические контроллеры</li>
+                                        <li className="catalog__item">Модули расширения</li>
+                                        </ul>
+                                    )}
+                                <input 
+                                    className="search-input" 
+                                    placeholder="Поиск по артикулу" 
+                                    value={searchTerm}
+                                    onChange={handleInputChange}
+                                    onFocus={() => setIsFocused(true)}
+                                    onBlur={() => setTimeout(() => setIsFocused(false), 150)}
+                                />
+                                {isFocused && searchResults.length > 0 && (
+                                    <div className="search-results">
+                                        <ul>
+                                            {searchResults.map((result, index) => (
+                                                <li key={index} className="search-result-item">
+                                                    {result}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
                         </div>  
                         <div className="header-navigation-block__botttom">
