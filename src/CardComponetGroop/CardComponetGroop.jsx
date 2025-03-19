@@ -123,7 +123,7 @@ const CardComponetGroop = () => {
                         <div className="card-component__bottom"> 
                             <div className="cc-basket-block__delivry-block">
                                 <div className={element.quantity === 0 ? "delivry-block__quantity delivry-block__quantity_0" : "delivry-block__quantity"}>
-                                    Наличие: {element.quantity} шт.
+                                    {element.quantity === 0 ? "Под заказ" : "Наличие: " + element.quantity + "шт."}
                                 </div>
                             </div>
                             <div className="card-component__price">{formatPrice(element.price)}</div>
