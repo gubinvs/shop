@@ -45,7 +45,18 @@ const HeaderGuest = () => {
   
     return (
         <>
-            <header>
+            <header>                 
+                <div className="container contact-header-block">
+                        <div className="contact-header-block__phone">
+                            8 (812) 921-59-71
+                        </div>
+                        <div className="contact-header-block__adress">
+                            Санкт-Петербург
+                        </div>
+                        <div className="contact-header-block__email">
+                            office@encomponent.ru
+                        </div>
+                </div>
                 <div className="container header__container">
                     <div className="header-logo-block" onClick={indexPage}>
                         <picture>
@@ -56,13 +67,8 @@ const HeaderGuest = () => {
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
                             <div className="search-input-block">
+                                <button className="button-catalog">Каталог</button>
                                 <input className="search-input" placeholder="Поиск по артикулу"/>
-                                <div className="search-icon">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line y1="-0.5" x2="11.612" y2="-0.5" transform="matrix(0.707961 0.706251 -0.707961 0.706251 5.81306 6.29901)" stroke="#1D252C" />
-                                        <path d="M11.1261 6.29899C11.1261 9.2244 8.74848 11.598 5.81303 11.598C2.87758 11.598 0.5 9.2244 0.5 6.29899C0.5 3.37358 2.87758 1 5.81303 1C8.74848 1 11.1261 3.37358 11.1261 6.29899Z" fill="white" stroke="#1D252C" />
-                                    </svg>
-                                </div>
                             </div>
                         </div>  
                         <div className="header-navigation-block__botttom">
