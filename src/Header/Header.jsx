@@ -10,53 +10,50 @@ const Header = () => {
     const [isHoveringResults, setIsHoveringResults] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [isCatalogVisible, setCatalogVisible] = useState(false);
-
     const [showNotification, setShowNotification] = useState(false);
     const [notificationText, setNotificationText] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    const updateBasketCount = () => {
+    const countBasketItems = () => {
         let totalCount = 0;
-        const basketItem = localStorage.getItem("basketItem");
-        if (basketItem) {
-            try {
-                const parsedBasket = JSON.parse(basketItem);
-                totalCount += Array.isArray(parsedBasket) ? parsedBasket.length : 0;
-            } catch (error) {
-                console.error("Ошибка парсинга basketItem:", error);
+        const keys = ["basketItem", "cart", "search"];
+
+        keys.forEach(key => {
+            const item = localStorage.getItem(key);
+            if (item) {
+                try {
+                    const parsed = JSON.parse(item);
+                    totalCount += Array.isArray(parsed) ? parsed.length : 0;
+                } catch (error) {
+                    console.error(`Ошибка парсинга ${key}:`, error);
+                }
             }
-        }
-        const cartItem = localStorage.getItem("cart");
-        if (cartItem) {
-            try {
-                const parsedCart = JSON.parse(cartItem);
-                totalCount += Array.isArray(parsedCart) ? parsedCart.length : 0;
-            } catch (error) {
-                console.error("Ошибка парсинга cart:", error);
-            }
-        }
+        });
+
         setItemBasket(totalCount);
     };
 
     useEffect(() => {
-        updateBasketCount();
+        countBasketItems();
+
         const handleStorageChange = (event) => {
-            if (event.key === "basketItem" || event.key === "cart") {
-                updateBasketCount();
+            if (["basketItem", "cart", "search"].includes(event.key)) {
+                countBasketItems();
             }
         };
         window.addEventListener("storage", handleStorageChange);
+
         return () => {
             window.removeEventListener("storage", handleStorageChange);
         };
     }, []);
 
-    // Реальный поиск
     const handleInputChange = async (e) => {
         const value = e.target.value;
         setSearchTerm(value);
+
         if (value.trim() !== "") {
             try {
                 const response = await fetch(`${ApiUrl}/api/SearchArticle/${value}`);
@@ -76,19 +73,18 @@ const Header = () => {
         }
     };
 
-    // Добавление товара в корзину
     const handleAddToBasket = (item) => {
-        const basketItem = localStorage.getItem("basketItem");
+        const searchBasket = localStorage.getItem("search");
         let updatedBasket = [];
 
-        if (basketItem) {
+        if (searchBasket) {
             try {
-                updatedBasket = JSON.parse(basketItem);
+                updatedBasket = JSON.parse(searchBasket);
                 if (!Array.isArray(updatedBasket)) {
                     updatedBasket = [];
                 }
             } catch (error) {
-                console.error("Ошибка парсинга basketItem:", error);
+                console.error("Ошибка парсинга searchBasket:", error);
             }
         }
 
@@ -100,10 +96,9 @@ const Header = () => {
             updatedBasket.push({ ...item, quantity: 1 });
         }
 
-        localStorage.setItem("basketItem", JSON.stringify(updatedBasket));
-        updateBasketCount();
+        localStorage.setItem("search", JSON.stringify(updatedBasket));
+        countBasketItems();
 
-        // Показ уведомления
         setNotificationText(`Товар "${item.name}" добавлен в корзину`);
         setShowNotification(true);
 
@@ -118,38 +113,26 @@ const Header = () => {
     const basketPage = () => navigate('/Basket');
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');
-    const catalogDisplay = () => {
-        setCatalogVisible(prev => !prev);
-    };
+    const toggleCatalog = () => setCatalogVisible(prev => !prev);
 
     return (
         <>
             <header>
-                {/* Верхний блок контактов */}
                 <div className="container contact-header-block">
-                    <div className="contact-header-block__phone">
-                        8 (812) 921-59-71
-                    </div>
-                    <div className="contact-header-block__adress">
-                        Санкт-Петербург
-                    </div>
-                    <div className="contact-header-block__email">
-                        office@encomponent.ru
-                    </div>
+                    <div className="contact-header-block__phone">8 (812) 921-59-71</div>
+                    <div className="contact-header-block__adress">Санкт-Петербург</div>
+                    <div className="contact-header-block__email">office@encomponent.ru</div>
                 </div>
 
-                {/* Основной блок хедера */}
                 <div className="container header__container">
                     <div className="header-logo-block" onClick={indexPage}>
-                        <picture>
-                            <source srcSet="../../images/header_logo_1280.svg" media="(max-width: 1280px)" />
-                            <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
-                        </picture>
+                        <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                     </div>
+
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
                             <div className="search-input-block">
-                                <button className="button-catalog" onClick={catalogDisplay}>
+                                <button className="button-catalog" onClick={toggleCatalog}>
                                     {isCatalogVisible ? 'X' : 'Каталог'}
                                 </button>
 
@@ -189,7 +172,7 @@ const Header = () => {
                                                         className="search-result-item__add-button"
                                                         onClick={() => handleAddToBasket(result)}
                                                     >
-                                                        Добавить в корзину
+                                                        В корзину
                                                     </button>
                                                 </li>
                                             ))}
@@ -199,7 +182,6 @@ const Header = () => {
                             </div>
                         </div>
 
-                        {/* Нижняя навигация */}
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
@@ -213,7 +195,6 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Блок иконок справа */}
                     <div className="header-basket-block">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item">

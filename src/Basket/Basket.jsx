@@ -11,7 +11,23 @@ const Basket = () => {
     // Получаем артикул из строки запроса
     const param = new URLSearchParams(window.location.search).get("vendorCode");
 
-    // Отправляем артикул в базу данных, для получения информации о товаре
+    // Получаем данные из localStorage с безопасным парсингом
+    const getParsedLocalStorage = (key) => {
+        try {
+            const item = localStorage.getItem(key);
+            return item ? JSON.parse(item) : [];
+        } catch (error) {
+            console.error(`Ошибка парсинга ${key}:`, error);
+            localStorage.removeItem(key); // очищаем поврежденный ключ
+            return [];
+        }
+    };
+
+    const nkuItem = getParsedLocalStorage("basketItem");
+    const cardItem = getParsedLocalStorage("cart");
+    const searchItem = getParsedLocalStorage("search");
+
+    // Получаем товар по vendorCode из URL
     useEffect(() => {
         if (param) {
             fetch(ApiUrl + "/api/BasketItem/" + param, {
@@ -20,33 +36,34 @@ const Basket = () => {
                     "Content-Type": "application/json",
                 },
             })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                const item = data[0]; // Возьмем первый элемент, если он один
-                setNewItem({
-                    id: item.Id + 1000, 
-                    guidId: item.GuidId,
-                    vendorCode: item.VendorCode,
-                    name: item.Name,
-                    price: item.PriceNku,
-                    quantity: 1,
-                    image: item.ImagesLink
-                });
-            })
-            .catch((error) => console.log(error));
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    if (data.length > 0) {
+                        const item = data[0];
+                        setNewItem({
+                            id: item.Id + 1000,
+                            guidId: item.GuidId,
+                            vendorCode: item.VendorCode,
+                            name: item.Name,
+                            price: item.PriceNku,
+                            quantity: 1,
+                            image: item.ImagesLink
+                        });
+                    }
+                })
+                .catch((error) => console.log("Ошибка получения данных:", error));
         }
     }, [param]);
 
-    // Обновление корзины при изменении newItem
+    // Обновляем корзину при добавлении нового товара
     useEffect(() => {
         if (newItem) {
-            const basketItemString = localStorage.getItem("basketItem");
-            const basketItem = basketItemString ? JSON.parse(basketItemString) : [];
+            const basketItem = getParsedLocalStorage("basketItem");
 
             const updatedBasket = [...basketItem, newItem];
             const uniqueItems = Array.from(
@@ -58,45 +75,45 @@ const Basket = () => {
         }
     }, [newItem]);
 
-    // Получение корзины из localStorage - НКУ
-    const item = JSON.parse(localStorage.getItem("basketItem")) || [];
-
-    // Данные о товарах в корзине - комплектующие
-    const comp = JSON.parse(localStorage.getItem("cart")) || [];
-
-
-    // Обработка и объединение элементов через map
-    const processedItem = item.map(i => ({
+    // Обработка элементов из localStorage
+    const processedNku = nkuItem.map(i => ({
         id: i.id,
         guidId: i.guidId,
         vendorCode: i.vendorCode,
-        name: i.name, // Если нужно изменить название, можно здесь скорректировать
+        name: i.name,
         price: i.price,
         quantity: i.quantity,
         image: i.image
     }));
 
-    const processedComp = comp.map(c => ({
-        id: c.id + 2000, // Здесь можно прибавить к id, если нужно
+    const processedCard = cardItem.map(c => ({
+        id: c.id + 2000,
         guidId: c.guidId,
         vendorCode: c.vendorСode,
-        name: c.nameComponent, // Например, если название в комплектующих — это 'title'
+        name: c.nameComponent,
         price: c.price,
         quantity: c.quantity,
-        image: c.basketImgPath // Если в комплектующих используется другой ключ для изображения
+        image: c.basketImgPath
     }));
 
-    // Объединяем обработанные массивы
-    const combinedItems = [...processedItem, ...processedComp];
+    const processedSearch = searchItem.map(x => ({
+        id: x.id + 3000,
+        guidId: x.guidId,
+        vendorCode: x.vendorCode,
+        name: x.name,
+        price: x.price,
+        quantity: x.quantity,
+        image: x.basketImgPath
+    }));
+
+    const combinedItems = [...processedNku, ...processedCard, ...processedSearch];
 
     return (
         <>
             <Header />
-            {/* Выводит информацию по добавленным в корзину НКУ и комплектующим */}
             <Cart item={combinedItems} />
         </>
     );
 };
 
 export default Basket;
-
