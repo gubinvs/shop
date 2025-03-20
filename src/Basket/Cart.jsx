@@ -91,7 +91,9 @@ const Cart = (props) => {
         <div className="cart-items">
           {cartItems.map(item => (
             <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-images" />
+              <div className="cart-images-container">
+                <img src={item.image} alt={item.name} className="cart-images" />
+              </div>
               <div className="cart-item-details">
                 <p><strong>{item.vendorCode}</strong></p>
                 <p><strong>{item.name}</strong></p>
