@@ -63,7 +63,6 @@ const Header = () => {
                 if (response.ok) {
                     const data = await response.json();
                     setSearchResults(data);
-                    console.log(data);
                 } else {
                     console.error("Ошибка при получении данных поиска");
                     setSearchResults([]);
@@ -180,9 +179,9 @@ const Header = () => {
                                         onMouseEnter={() => setIsHoveringResults(true)}
                                         onMouseLeave={() => setIsHoveringResults(false)}
                                     >
-                                        <ul>
+                                        <ul className="search-result__list">
                                             {searchResults.map((result, index) => (
-                                                <li key={index} className="search-result-item">
+                                                <li key={index} className="search-result__item">
                                                     <div className="search-result-item__info">
                                                         {result.article} - {result.name}
                                                     </div>
