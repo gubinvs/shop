@@ -181,8 +181,8 @@ const Header = () => {
                                         onMouseLeave={() => setIsHoveringResults(false)}
                                     >
                                         <ul>
-                                            {searchResults.map((result) => (
-                                                <li key={result.id} className="search-result-item">
+                                            {searchResults.map((result, index) => (
+                                                <li key={index} className="search-result-item">
                                                     <div className="search-result-item__info">
                                                         {result.article} - {result.name}
                                                     </div>
