@@ -81,7 +81,7 @@ const RegistrationForm = () => {
     );
   } else {
     const handleRedirect = () => {
-      window.location.href = "/Autorization"; // Переход на страницу авторизации
+      window.location.href = "/Authorization"; // Переход на страницу авторизации
     };
 
     return (

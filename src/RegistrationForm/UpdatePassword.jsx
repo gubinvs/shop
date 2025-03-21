@@ -6,41 +6,49 @@ import { useNavigate } from "react-router-dom";
 const UpdatePassword = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false); // Для индикатора загрузки
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true); // Начинаем загрузку
+
+        const requestData = { email: email.trim() };
 
         fetch(ApiUrl + "/api/UpdatePassword", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify(requestData),
         })
         .then((response) => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                // Обработка ошибок, если статус не OK
+                return response.json().then((data) => {
+                    throw new Error(data.message || "Ошибка при отправке запроса");
+                });
             }
             return response.json();
         })
         .then((data) => {
             setMessage("Пароль отправлен на почту");
+            setLoading(false);
         })
         .catch((error) => {
-            setMessage("Ошибка при отправке. Попробуйте снова.");
+            setMessage(error.message); // Показать ошибку, если она произошла
+            setLoading(false);
             console.error(error);
         });
     };
 
-    // Redirect effect
     useEffect(() => {
         if (message === "Пароль отправлен на почту") {
             const timer = setTimeout(() => {
                 navigate('/Authorization');
             }, 3000); // 3 секунды
 
-            return () => clearTimeout(timer); // Очистка таймера при размонтировании
+            return () => clearTimeout(timer);
         }
     }, [message, navigate]);
 
@@ -57,11 +65,11 @@ const UpdatePassword = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <button type="submit" className="button">
-                        Сбросить пароль
+                    <button type="submit" className="button" disabled={loading}>
+                        {loading ? "Загружается..." : "Сбросить пароль"}
                     </button>
                 </form>
-                {message && <p style={{ marginTop: '15px', color: 'green' }}>{message}</p>}
+                {message && <p style={{ marginTop: '15px', color: 'red' }}>{message}</p>}
             </div>
         </div>
     );
