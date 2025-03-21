@@ -125,14 +125,14 @@ const HeaderGuest = () => {
                 </div>
 
                 <div className="container header__container">
-                    <div className="header-logo-block" onClick={indexPage}>
+                    <div className="header-logo-block header-logo-block_guest" onClick={indexPage}>
                         <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                     </div>
 
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
                             <div className="search-input-block search-input-block_guest">
-                                <button className="button-catalog" onClick={toggleCatalog}>
+                                <button className="button-catalog button-catalog_guest" onClick={toggleCatalog}>
                                     {isCatalogVisible ? 'X' : 'Каталог'}
                                 </button>
 
@@ -184,13 +184,13 @@ const HeaderGuest = () => {
 
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
-                                <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
-                                <li className="header-navigation__item">
+                                <li className="header-navigation__item header-navigation__item_guest"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
+                                <li className="header-navigation__item header-navigation__item_guest">
                                     <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>
                                         Доставка и оплата
                                     </a>
                                 </li>
-                                <li className="header-navigation__item"><a href="https://encomponent.ru/about.php">Контакты</a></li>
+                                <li className="header-navigation__item header-navigation__item_guest"><a href="https://encomponent.ru/about.php">Контакты</a></li>
                             </ul>
                         </div>
                     </div>
@@ -199,10 +199,10 @@ const HeaderGuest = () => {
                     <div class="header-navigation-block__top">
                         <div class="header-validation-block header-validation-block__guest">
                             <a href="/Authorization">
-                                <div class="button-verification">Вход</div>
+                                <button class="button-verification">Вход</button>
                             </a>
                             <a href="/Registration">
-                                <div class="button-registrasion">Регистрация</div>
+                                <button class="button-registrasion">Регистрация</button>
                             </a>
                         </div>
                     </div>
