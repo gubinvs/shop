@@ -19,7 +19,7 @@ const Home = () => {
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
             {/* <HomeMainSection /> */}
             {/* <DirectoryGroups /> */}
-            <CardComponetGroop />
+            {/* <CardComponetGroop /> */}
             {/* <Footer /> */}
         </> 
     );

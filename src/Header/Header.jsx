@@ -4,6 +4,7 @@ import "./Header.css";
 import ApiUrl from '../js/ApiUrl';
 
 const Header = () => {
+    
     const [itemBasket, setItemBasket] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [isFocused, setIsFocused] = useState(false);
@@ -166,7 +167,7 @@ const Header = () => {
                                             {searchResults.map((result, index) => (
                                                 <li key={index} className="search-result__item">
                                                     <div className="search-result-item__info">
-                                                        {result.article} - {result.name}
+                                                        {result.vendorCode} - {result.name}
                                                     </div>
                                                     <button
                                                         className="search-result-item__add-button"
@@ -226,7 +227,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-
+            {/* Сообщение о добавленном товаре */}
             {showNotification && (
                 <div className="basket-notification">
                     {notificationText}

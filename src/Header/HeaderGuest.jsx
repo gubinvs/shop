@@ -1,53 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
+import ApiUrl from '../js/ApiUrl';
 
 const HeaderGuest = () => {
-const [itemBasket, setItemBasket] = useState(0);
+    const [itemBasket, setItemBasket] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [isFocused, setIsFocused] = useState(false);
+    const [isHoveringResults, setIsHoveringResults] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
+    const [isCatalogVisible, setCatalogVisible] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
+    const [notificationText, setNotificationText] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    const updateBasketCount = () => {
+    const countBasketItems = () => {
         let totalCount = 0;
+        const keys = ["basketItem", "cart", "search"];
 
-        // basketItem
-        const basketItem = localStorage.getItem("basketItem");
-        if (basketItem) {
-            try {
-                const parsedBasket = JSON.parse(basketItem);
-                totalCount += Array.isArray(parsedBasket) ? parsedBasket.length : 0;
-            } catch (error) {
-                console.error("Ошибка парсинга basketItem:", error);
+        keys.forEach(key => {
+            const item = localStorage.getItem(key);
+            if (item) {
+                try {
+                    const parsed = JSON.parse(item);
+                    totalCount += Array.isArray(parsed) ? parsed.length : 0;
+                } catch (error) {
+                    console.error(`Ошибка парсинга ${key}:`, error);
+                }
             }
-        }
-
-        // cart
-        const cartItem = localStorage.getItem("cart");
-        if (cartItem) {
-            try {
-                const parsedCart = JSON.parse(cartItem);
-                totalCount += Array.isArray(parsedCart) ? parsedCart.length : 0;
-            } catch (error) {
-                console.error("Ошибка парсинга cart:", error);
-            }
-        }
+        });
 
         setItemBasket(totalCount);
     };
 
     useEffect(() => {
-        updateBasketCount();
+        countBasketItems();
 
         const handleStorageChange = (event) => {
-            if (event.key === "basketItem" || event.key === "cart") {
-                updateBasketCount();
+            if (["basketItem", "cart", "search"].includes(event.key)) {
+                countBasketItems();
             }
         };
-
         window.addEventListener("storage", handleStorageChange);
 
         return () => {
@@ -55,107 +50,152 @@ const [itemBasket, setItemBasket] = useState(0);
         };
     }, []);
 
-    const handleInputChange = (e) => {
+    const handleInputChange = async (e) => {
         const value = e.target.value;
         setSearchTerm(value);
 
         if (value.trim() !== "") {
-            setSearchResults([
-                `Результат для "${value}" 1`,
-                `Результат для "${value}" 2`,
-                `Результат для "${value}" 3`,
-            ]);
+            try {
+                const response = await fetch(`${ApiUrl}/api/SearchArticle/${value}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setSearchResults(data);
+                } else {
+                    console.error("Ошибка при получении данных поиска");
+                    setSearchResults([]);
+                }
+            } catch (error) {
+                console.error("Ошибка сети:", error);
+                setSearchResults([]);
+            }
         } else {
             setSearchResults([]);
         }
     };
 
+    const handleAddToBasket = (item) => {
+        const searchBasket = localStorage.getItem("search");
+        let updatedBasket = [];
+
+        if (searchBasket) {
+            try {
+                updatedBasket = JSON.parse(searchBasket);
+                if (!Array.isArray(updatedBasket)) {
+                    updatedBasket = [];
+                }
+            } catch (error) {
+                console.error("Ошибка парсинга searchBasket:", error);
+            }
+        }
+
+        const existingItem = updatedBasket.find(b => b.id === item.id);
+
+        if (existingItem) {
+            existingItem.quantity = existingItem.quantity ? existingItem.quantity + 1 : 2;
+        } else {
+            updatedBasket.push({ ...item, quantity: 1 });
+        }
+
+        localStorage.setItem("search", JSON.stringify(updatedBasket));
+        countBasketItems();
+
+        setNotificationText(`Товар "${item.name}" добавлен в корзину`);
+        setShowNotification(true);
+
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 2500);
+    };
+
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
     const indexPage = () => navigate('/');
-    
-    const [isCatalogVisible, setCatalogVisible] = useState(false);
-    const catalogDisplay = () => {
-        setCatalogVisible(prev => !prev); // Переключаем состояние
-    };
-  
+    const basketPage = () => navigate('/Basket');
+    const orderPage = () => navigate('/DefineUser');
+    const companyDashboard = () => navigate('/CompanyDashboard');
+    const toggleCatalog = () => setCatalogVisible(prev => !prev);
+
     return (
         <>
-        <header>
+            <header>
                 <div className="container contact-header-block">
-                    <div className="contact-header-block__phone">
-                        8 (812) 921-59-71
-                    </div>
-                    <div className="contact-header-block__adress">
-                        Санкт-Петербург
-                    </div>
-                    <div className="contact-header-block__email">
-                        office@encomponent.ru
-                    </div>
+                    <div className="contact-header-block__phone">8 (812) 921-59-71</div>
+                    <div className="contact-header-block__adress">Санкт-Петербург</div>
+                    <div className="contact-header-block__email">office@encomponent.ru</div>
                 </div>
+
                 <div className="container header__container">
                     <div className="header-logo-block" onClick={indexPage}>
-                        <picture>
-                            <source srcSet="../../images/header_logo_1280.svg" media="(max-width: 1280px)"/>
-                            <img src="../../images/header_logo_1920.svg" alt="Логотип компании"/>
-                        </picture>
+                        <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                     </div>
+
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
-                              <div className="search-input-block search-input-block_guest">
-                
-                                    <button className="button-catalog" onClick={catalogDisplay}>
-                                        {isCatalogVisible ? 'X' : 'Каталог'}
-                                    </button>
+                            <div className="search-input-block search-input-block_guest">
+                                <button className="button-catalog" onClick={toggleCatalog}>
+                                    {isCatalogVisible ? 'X' : 'Каталог'}
+                                </button>
 
-                                    {isCatalogVisible && (
-                                        <ul className="catalog__list">
+                                {isCatalogVisible && (
+                                    <ul className="catalog__list">
                                         <li className="catalog__item">Модульное оборудование</li>
                                         <li className="catalog__item">Источники питания</li>
                                         <li className="catalog__item">Клеммы и маркировка</li>
                                         <li className="catalog__item">Щитовое оборудование</li>
                                         <li className="catalog__item">Логические контроллеры</li>
                                         <li className="catalog__item">Модули расширения</li>
-                                        </ul>
-                                    )}
-                                <input 
-                                    className="search-input" 
-                                    placeholder="Поиск по артикулу" 
+                                    </ul>
+                                )}
+
+                                <input
+                                    className="search-input search-input_guest"
+                                    placeholder="Поиск по артикулу"
                                     value={searchTerm}
                                     onChange={handleInputChange}
                                     onFocus={() => setIsFocused(true)}
                                     onBlur={() => setTimeout(() => setIsFocused(false), 150)}
                                 />
-                                {isFocused && searchResults.length > 0 && (
-                                    <div className="search-results">
-                                        <ul>
+
+                                {(isFocused || isHoveringResults) && searchResults.length > 0 && (
+                                    <div
+                                        className="search-results"
+                                        onMouseEnter={() => setIsHoveringResults(true)}
+                                        onMouseLeave={() => setIsHoveringResults(false)}
+                                    >
+                                        <ul className="search-result__list">
                                             {searchResults.map((result, index) => (
-                                                <li key={index} className="search-result-item">
-                                                    {result}
+                                                <li key={index} className="search-result__item">
+                                                    <div className="search-result-item__info">
+                                                        {result.vendorCode} - {result.name}
+                                                    </div>
+                                                    <button
+                                                        className="search-result-item__add-button"
+                                                        onClick={() => handleAddToBasket(result)}
+                                                    >
+                                                        В корзину
+                                                    </button>
                                                 </li>
                                             ))}
                                         </ul>
                                     </div>
                                 )}
                             </div>
-                        </div>  
+                        </div>
+
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
                                 <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
-                                
                                 <li className="header-navigation__item">
-                                    <a href="/DeliveryAndPayment" className={
-                                                                    location.pathname === '/DeliveryAndPayment' ? 
-                                                                    'nav-active' : 
-                                                                    ''
-                                    }>
+                                    <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>
                                         Доставка и оплата
                                     </a>
                                 </li>
                                 <li className="header-navigation__item"><a href="https://encomponent.ru/about.php">Контакты</a></li>
                             </ul>
-                        </div>                          
+                        </div>
                     </div>
+
+
                     <div class="header-navigation-block__top">
                         <div class="header-validation-block header-validation-block__guest">
                             <a href="/Authorization">
