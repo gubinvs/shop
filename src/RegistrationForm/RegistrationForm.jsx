@@ -81,6 +81,11 @@ const RegistrationForm = () => {
     );
   } else {
     const handleRedirect = () => {
+      // Записываю email для удобства авторизации  автоматического заполнения формы
+      const newLogin = email;
+      console.log(email);
+      localStorage.setItem("newLogin", email);
+      console.log(localStorage.getItem("newLogin"));
       window.location.href = "/Authorization"; // Переход на страницу авторизации
     };
 

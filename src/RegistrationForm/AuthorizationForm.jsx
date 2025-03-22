@@ -4,7 +4,9 @@ import "./RegistrationForm.css";
 import { data } from "react-router-dom";
 
 const AuthorizationForm = () => {
-  const [email, setEmail] = useState("");
+  
+  const newLogin = localStorage.getItem("newLogin"); // если регистрировались заполним сразу поле логина
+  const [email, setEmail] = useState(newLogin);
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
