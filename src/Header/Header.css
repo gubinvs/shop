@@ -15,6 +15,10 @@
   margin-bottom: 20px;
 }
 
+.contact-header-block__nav {
+  display: flex;
+}
+
 .contact-header-block__phone {
   padding-left: 20px;
   font-size: 12px;
@@ -43,6 +47,17 @@
   background-repeat: no-repeat;
   background-position: left;
   margin-right: 20px;
+}
+
+.contact-header-block__button-out {
+  border: 1px solid #F3DE09;
+  background-color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.contact-header-block__button-out:hover {
+  background-color: #F3DE09;
 }
 
 .header-logo-block {

@@ -115,14 +115,21 @@ const Header = () => {
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');
     const toggleCatalog = () => setCatalogVisible(prev => !prev);
+    const ClearToken = () => {
+        localStorage.clear("token");
+        window.location.href="/";
+    }; // Очиста localStorage("token"); Выход из системы
 
     return (
         <>
             <header>
                 <div className="container contact-header-block">
-                    <div className="contact-header-block__phone">8 (812) 921-59-71</div>
-                    <div className="contact-header-block__adress">Санкт-Петербург</div>
-                    <div className="contact-header-block__email">office@encomponent.ru</div>
+                    <div className="contact-header-block__nav">
+                        <div className="contact-header-block__phone">8 (812) 921-59-71</div>
+                        <div className="contact-header-block__adress">Санкт-Петербург</div>
+                        <div className="contact-header-block__email">office@encomponent.ru</div>
+                    </div>
+                    <button className="contact-header-block__button-out" onClick={()=>ClearToken()}>Выйти</button>
                 </div>
 
                 <div className="container header__container">
