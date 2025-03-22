@@ -17,8 +17,8 @@ const Home = () => {
         <>
         {/* Если не авторизован выводим шапку для гостя */}
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
-            {/* <HomeMainSection /> */}
-            {/* <DirectoryGroups /> */}
+            <HomeMainSection />
+            <DirectoryGroups />
             {/* <CardComponetGroop /> */}
             {/* <Footer /> */}
         </> 

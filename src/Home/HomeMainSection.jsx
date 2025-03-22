@@ -9,7 +9,7 @@ const HomeMainSection = () => {
                     <div className="top-bord"></div>
                     <div className="top-shape"></div>
                     <div className="home-main-section__title-block">
-                        <h1 className="home-main-section__title">Energy Components</h1>
+                        <h1 className="home-main-section__title">Компоненты Энергии</h1>
                         <div className="hms-title__fon"></div>
                         <div className="hms-title__discr">
                             <strong>Доставляем любые бренды!</strong><br /> Мы обеспечиваем доступ к широкому ассортименту товаров, поставляя их через альтернативные каналы 
@@ -19,6 +19,7 @@ const HomeMainSection = () => {
                 </div>
             </section>
             <section className="home-main-section home-main-section__bottom">
+               
                 <div className="container home-main-section__container__bottom">
                     <div className="bottom-bord"></div>
                     <div className="bottom-shape"></div>
