@@ -122,6 +122,14 @@ const HeaderGuest = () => {
                     <div className="contact-header-block__phone">8 (812) 921-59-71</div>
                     <div className="contact-header-block__adress">Санкт-Петербург</div>
                     <div className="contact-header-block__email">office@encomponent.ru</div>
+                    <div class="header-validation-block header-validation-block__guest header-validation-block__guest_mobile">
+                        <a href="/Authorization">
+                            <button class="button-verification">Вход</button>
+                        </a>
+                        <a href="/Registration">
+                            <button class="button-registrasion">Регистрация</button>
+                        </a>
+                    </div>
                 </div>
 
                 <div className="container header__container">

@@ -81,6 +81,7 @@
     width: 475px;
   }
 }
+
 @media only screen and (max-width: 960px) {
   .footer-logo-block,
   .footer-contact {
@@ -101,5 +102,22 @@
   }
   .copyright {
     font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .footer-logo-block {
+    width: 100px;
+  }
+
+  .footer-nav {
+    width: 320px;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 640px) { 
+  .footer-logo-block {
+    display: none;
   }
 }

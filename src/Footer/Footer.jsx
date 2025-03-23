@@ -1,8 +1,6 @@
 import React from 'react';
 import "./Footer.css"
 
-
-
 const Footer = () => {
     return (
         <>
@@ -12,7 +10,7 @@ const Footer = () => {
                         <div class="header-logo-block footer-logo-block">
                             <div class="footer-logo-block__logo flex">
                                 <div class="logo-icon">
-                                    <img src="../../images/footer_logo_1920.svg" alt="Логотип компании в желто-черных красках с изображением кнопки и названия на английском языке энерджи копмонентс" />
+                                    <img class="foter-logo-icon" src="../../images/footer_logo_1920.svg" alt="Логотип компании в желто-черных красках с изображением кнопки и названия на английском языке энерджи копмонентс" />
                                 </div>
                                 <div class="logo-title"></div>
                             </div>

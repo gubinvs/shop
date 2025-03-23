@@ -17,10 +17,10 @@ const Home = () => {
         <>
         {/* Если не авторизован выводим шапку для гостя */}
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
-            {/* <HomeMainSection /> */}
+            <HomeMainSection />
             <DirectoryGroups />
-            {/* <CardComponetGroop /> */}
-            {/* <Footer /> */}
+            <CardComponetGroop />
+            <Footer />
         </> 
     );
 
