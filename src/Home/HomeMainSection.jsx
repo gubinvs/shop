@@ -7,6 +7,7 @@ const HomeMainSection = () => {
             <section className="home-main-section home-main-section__top">
                 <div className="container home-main-section__container__top">
                     <div className="top-bord"></div>
+                    
                     <div className="top-shape"></div>
                     <div className="home-main-section__title-block">
                         <h1 className="home-main-section__title">Компоненты Энергии</h1>

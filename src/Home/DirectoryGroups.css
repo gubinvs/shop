@@ -199,7 +199,7 @@
     }
 
     .dg-card4 {
-        width: 202px;
+        width: 175px;
         height: unset;
     }
 
@@ -211,4 +211,19 @@
        height: 111px;
     }
 
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        width: 480px;
+    }
+
+    .dg-card4 {
+        width: 168px;
+    }
+
+    .dg-card5,
+    .dg-card6 {
+       display: none;
+    }
 }

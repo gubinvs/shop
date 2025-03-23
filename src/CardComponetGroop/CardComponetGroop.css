@@ -220,7 +220,6 @@
         font-size: 28px;
     }
 
-
     .quantity-item__minus,
     .quantity-item__plus {
         width: 16px;
@@ -235,24 +234,118 @@
     .basket-block__button {
         height: 30px;
     }
-
-
 }
 
 @media only screen and (max-width: 1024px) {
-  .container {
-    width: 960px;
-  }
+    .container {
+        width: 960px;
+    }
+  
+    .card-component {
+        width: 232px;
+        height: 410px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 960px) {
-  .container {
-    width: 800px;
-  }
+    .container {
+        width: 800px;
+    }
+
+    .card-component {
+        width: 192px;
+    }
+
+    .card-component__vendor {
+        font-size: 18px;
+    }
+
+    .card-component__name {
+        font-size: 12px;
+    }
+
+    .basket-block__quantity-item {
+        margin-right: 10px;
+    }
+
+    .basket-block__button {
+        width: 78px;
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 800px) {
-  .container {
-    width: 640px;
-  }
+    .container {
+        width: 640px;
+    }
+
+    .card-component {
+        width: 208px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .card-component:nth-child(3) {
+        margin-right: 0px;
+    }
+
+    .card-component:nth-child(6) {
+        margin-right: 0px;
+    }
+
+    .card-component:nth-child(4) {
+        margin-right: 8px;
+    }
+
+    .card-component:nth-child(7) {
+        display: none;
+    }
+
+    .card-component:nth-child(8) {
+        display: none;
+    }
+
+        .basket-block__quantity-item {
+        margin-right: 20px;
+    }
+
+    .basket-block__button {
+        width: 78px;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        width: 480px;
+    }
+
+    .card-component {
+        width: 236px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .card-component:nth-child(2) {
+        margin-right: 0px;
+    }
+
+      .card-component:nth-child(3) {
+        margin-right: 8px;
+    }
+
+    .card-component:nth-child(4) {
+        margin-right: 0px;
+    }
+
+    .card-component:nth-child(6) {
+        margin-right: 0px;
+    }
+
+    .basket-block__button {
+        width: 110px;
+        font-size: 14px;
+    }
 }
