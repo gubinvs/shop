@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import './CardComponetGroop.css';
 import ApiUrl from '../js/ApiUrl.js';
 
-const CardComponetGroop = () => {
+const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]); // Store fetched data here
     const [quantities, setQuantities] = useState([]);
     const [loading, setLoading] = useState(true); // Loading state
 
+    const api = 
+
     // Fetch data on mount
     useEffect(() => {
-        fetch(ApiUrl + "/api/Bestsellers", {
+        fetch(ApiUrl + param.api, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -110,7 +112,7 @@ const CardComponetGroop = () => {
     return (
         <div className="card-componet-groop-section">
             <div className="container">
-                <h2 className="directory-groups__title">Популярные товары</h2>  
+                <h2 className="directory-groups__title">{param.h2}</h2>  
             </div>
             <div className="container card-componet-groop-section__container">
                 {items.map((element, index) => (
