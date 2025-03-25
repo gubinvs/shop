@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
 import ApiUrl from '../js/ApiUrl';
+import { 
+    chapterMa, chapterBp, chapterK, chapterSch, 
+    chapterPlk, chapterMplk, chapterSl, chapterUps, 
+    OpenSection 
+} from "../js/LinkSectionGroup.js";
 
 const HeaderGuest = () => {
     const [itemBasket, setItemBasket] = useState(0);
@@ -146,12 +151,12 @@ const HeaderGuest = () => {
 
                                 {isCatalogVisible && (
                                     <ul className="catalog__list">
-                                        <li className="catalog__item">Модульное оборудование</li>
-                                        <li className="catalog__item">Источники питания</li>
-                                        <li className="catalog__item">Клеммы и маркировка</li>
-                                        <li className="catalog__item">Щитовое оборудование</li>
-                                        <li className="catalog__item">Логические контроллеры</li>
-                                        <li className="catalog__item">Модули расширения</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterMa)}>Модульные автоматы</li>
+                                        <li className="catalog__item"onClick={() => OpenSection(chapterBp)}>Блоки питания</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Клеммы и маркировка</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Типовые решения НКУ</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Логические контроллеры</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения</li>
                                     </ul>
                                 )}
 

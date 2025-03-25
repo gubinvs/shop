@@ -114,12 +114,19 @@
 
 .catalog__item {
   padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 10px;
-  margin-bottom: 6px;
+  cursor: pointer;
 }
 
 .catalog__item:last-of-type {
   margin-bottom: 30px;
+}
+
+.catalog__item:hover {
+  background-color: #ffffff;
+  border-right: 1px solid #F3DE09;
+  border-left: 1px solid #F3DE09;
 }
 
 .search-input {
