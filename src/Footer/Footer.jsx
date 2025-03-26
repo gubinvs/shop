@@ -45,7 +45,7 @@ const Footer = () => {
                                         <circle cx="8" cy="8" r="2.5" fill="#1D252C" stroke="#1D252C" />
                                     </svg>
                                 </div>
-                                <div class="footer-contact-item__text">Санкт-Перетбург:<br /> 197349, ул. Вербная, 27 БЦ Лайнер</div>
+                                <div class="footer-contact-item__text">Санкт-Перетбург:<br /> 194292, 3-й Верхний переулок, 17Д</div>
                             </div>
                             <div class="footer-contact__item">
                                 <div class="footer-contact-item__icon">

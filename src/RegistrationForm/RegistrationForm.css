@@ -41,14 +41,16 @@
   padding: 10px;
   font-size: 16px;
   border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  border: 1px solid #F3DE09;
+  background-color: #f9f9f9;
+  color: #1D252C;
+
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #F3DE09;
+  
 }
 
 .button:not(:last-of-type) {

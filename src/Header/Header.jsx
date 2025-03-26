@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
 import ApiUrl from '../js/ApiUrl';
@@ -21,6 +21,8 @@ const Header = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const catalogRef = useRef(null);
+    const catalogButtonRef = useRef(null);
 
     const countBasketItems = () => {
         let totalCount = 0;
@@ -51,8 +53,21 @@ const Header = () => {
         };
         window.addEventListener("storage", handleStorageChange);
 
+        // Close catalog when clicking outside
+        const handleClickOutside = (event) => {
+            if (
+                catalogRef.current && !catalogRef.current.contains(event.target) &&
+                catalogButtonRef.current && !catalogButtonRef.current.contains(event.target)
+            ) {
+                setCatalogVisible(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
         return () => {
             window.removeEventListener("storage", handleStorageChange);
+            document.removeEventListener("click", handleClickOutside);
         };
     }, []);
 
@@ -134,7 +149,7 @@ const Header = () => {
                         <div className="contact-header-block__adress">Санкт-Петербург</div>
                         <div className="contact-header-block__email">office@encomponent.ru</div>
                     </div>
-                    <button className="contact-header-block__button-out" onClick={()=>ClearToken()}>Выйти</button>
+                    <button className="contact-header-block__button-out" onClick={() => ClearToken()}>Выйти</button>
                     <div className="header-basket-block_mobile">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item">
@@ -174,14 +189,14 @@ const Header = () => {
                     <div className="header-navigation-block">
                         <div className="header-navigation-block__top header-navigation-block__top_guest">
                             <div className="search-input-block">
-                                <button className="button-catalog" onClick={toggleCatalog}>
+                                <button className="button-catalog" ref={catalogButtonRef} onClick={toggleCatalog}>
                                     {isCatalogVisible ? 'X' : 'Каталог'}
                                 </button>
 
                                 {isCatalogVisible && (
-                                    <ul className="catalog__list">
+                                    <ul className="catalog__list" ref={catalogRef}>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterMa)}>Модульные автоматы</li>
-                                        <li className="catalog__item"onClick={() => OpenSection(chapterBp)}>Блоки питания</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Блоки питания</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Клеммы и маркировка</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Типовые решения НКУ</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Логические контроллеры</li>

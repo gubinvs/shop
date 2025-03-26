@@ -12,6 +12,7 @@ import CompanyDashboard from './PersonalSpace/CompanyDashboard.jsx';
 import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import CatalogSection from "./CatalogSection/CatalogSection.jsx";
+import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx"
 import { jwtDecode } from "jwt-decode"; // Установите эту библиотеку: npm install jwt-decode
 
 
@@ -54,6 +55,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='/ApiDiscription' element={<ApiDiscription />}/>
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
