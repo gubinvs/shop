@@ -12,12 +12,8 @@ const DefineUser = () => {
   const [error, setError] = useState(null);
   const [visibleOrder, setVisibleOrder] = useState(null);
   const [selectedOption, setSelectedOption] = useState('Собирается');
-  const [companyData, setCompanyData] = useState([]);
-  const [companyUserData, setCompanyUserData] = useState([]);
-  const [isCardCompanyVisible, setIsCardCompanyVisible] = useState(false);
   // Номер ордера передаваемый на сервер для изменения состояния заявки
   const [selectOrderValue, setSelectOrderValue] = useState(0);
-  
   var [admin, setAdmin] = useState(false);
   
 
@@ -57,46 +53,9 @@ const DefineUser = () => {
   }
 
   // Открывает окно с информацией о компании
-  const OpenCompanyInformation = async (param) => {
-    try {
-      const response = await fetch(`${ApiUrl}/api/CompanyInformation/${param}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  const openCompanyInformation = (guid) => {
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      if (data.company && data.user) {
-        setCompanyData({
-          name: data.company.nameCompany || "",
-          inn: data.company.innCompany || "",
-          address: data.company.adressCompany || "",
-          phone: data.company.phoneCompany || "",
-        });
-
-        setCompanyUserData({
-          name: data.user.nameUser || "",
-          phone: data.user.phoneUser || "",
-          email: data.user.email || "",
-        });
-      } else {
-        throw new Error("Некорректные данные от API");
-      }
-    } catch (error) {
-      console.error(error);
-      setError("Ошибка загрузки данных. Попробуйте снова.");
-    } finally {
-      setLoading(false);
-      setIsCardCompanyVisible(true);
-    }
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -136,9 +95,8 @@ const DefineUser = () => {
       }
     };
 
-  fetchData();
+    fetchData();
   }, []);
-  
 
   if (loading) {
     return (
@@ -190,7 +148,6 @@ const DefineUser = () => {
       console.error('Ошибка:', error.message);
     }
   };
-
 
   return (
     <>
@@ -298,66 +255,47 @@ const DefineUser = () => {
                                         </div>
                                         {visibleOrder === order.numberOrder && (
                                           <>
-                                                <div className="filling-block">
-                                                          <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>
-                                                          <div className="filling-order-table">
-                                                            <div className="filling-order-table__item filling-order-table__item_id"><strong>ID</strong></div>
-                                                            <div className="filling-order-table__item filling-order-table__item_vendor"><strong>Артикул</strong></div>
-                                                            <div className="filling-order-table__item filling-order-table__item_name"><strong>Наименование</strong></div>
-                                                            <div className="filling-order-table__item filling-order-table__item_quantity"><strong>Кол-во</strong></div>
-                                                            <div className="filling-order-table__item filling-order-table__item_price"><strong>Цена</strong></div>
-                                                          </div>
-                                                  {orders.map((item) => (order.numberOrder === item.numberOrder ? 
-                                                                            <div key={item.id} className="filling-order-table">
-                                                                              <div className="filling-order-table__item filling-order-table__item_id">
-                                                                                {item.id}
+                                                  <div className="filling-block">
+                                                            <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>
+                                                            <div className="filling-order-table">
+                                                              <div className="filling-order-table__item filling-order-table__item_id"><strong>ID</strong></div>
+                                                              <div className="filling-order-table__item filling-order-table__item_vendor"><strong>Артикул</strong></div>
+                                                              <div className="filling-order-table__item filling-order-table__item_name"><strong>Наименование</strong></div>
+                                                              <div className="filling-order-table__item filling-order-table__item_quantity"><strong>Кол-во</strong></div>
+                                                              <div className="filling-order-table__item filling-order-table__item_price"><strong>Цена</strong></div>
+                                                            </div>
+                                                    {orders.map((item) => (order.numberOrder === item.numberOrder ? 
+                                                                              <div key={item.id} className="filling-order-table">
+                                                                                <div className="filling-order-table__item filling-order-table__item_id">
+                                                                                  {item.id}
+                                                                                </div>
+                                                                                <div className="filling-order-table__item filling-order-table__item_vendor">
+                                                                                  {item.vendorCode}
+                                                                                </div>
+                                                                                <div className="filling-order-table__item filling-order-table__item_name">
+                                                                                  {item.nameItem}
+                                                                                </div>
+                                                                                <div className="filling-order-table__item filling-order-table__item_quantity">
+                                                                                  {item.quantityItem}
+                                                                                </div>
+                                                                                <div className="filling-order-table__item filling-order-table__item_price">
+                                                                                  {formatCurrency(item.priceItem * item.quantityItem)}
+                                                                                </div>
                                                                               </div>
-                                                                              <div className="filling-order-table__item filling-order-table__item_vendor">
-                                                                                {item.vendorCode}
-                                                                              </div>
-                                                                              <div className="filling-order-table__item filling-order-table__item_name">
-                                                                                {item.nameItem}
-                                                                              </div>
-                                                                              <div className="filling-order-table__item filling-order-table__item_quantity">
-                                                                                {item.quantityItem}
-                                                                              </div>
-                                                                              <div className="filling-order-table__item filling-order-table__item_price">
-                                                                                {formatCurrency(item.priceItem * item.quantityItem)}
-                                                                              </div>
-                                                                            </div>
-                                                                            : ""
-                                                                          ))}
-                                                </div>
+                                                                              : ""
+                                                                            ))}
+                                                  </div>
                                                 <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
-                                                  <button className="admin-block__button" onClick={() => OpenCompanyInformation(order.guidIdUser)}>Данные о компании</button>
+                                                  <button className="admin-block__button" onClick={() => openCompanyInformation(admin)}>Данные о компании</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>
                                                             <option className="admin-block__option" value="Доставляется">Доставляется</option>
                                                             <option className="admin-block__option" value="Завершен">Завершен</option>
                                                       </select>
-                                                      <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(isCardCompanyVisible)}>Изменить статус заказа</button>
+                                                      <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
                                                   </form>
                                                 </div>
-                                                {/* // Отображение данных о компании: */}
-                                                {isCardCompanyVisible && (
-                                                      <>
-                                                        <div className="card-company-discription">
-                                                          <h4 className="card-company-discription__title-card">Данные о компании заказчика:</h4>
-                                                          <ul className="card-company-discription__list">
-                                                            <li className="card-company-discription__item">Наименование компании: {companyData.name}</li>
-                                                            <li className="card-company-discription__item">ИНН: {companyData.inn}</li>
-                                                            <li className="card-company-discription__item">Адрес: {companyData.address} </li>
-                                                            <li className="card-company-discription__item">Телефон: {companyData.phone} </li>
-                                                            <li className="card-company-discription__item">Пользователь: {companyUserData.name}</li>
-                                                            <li className="card-company-discription__item"> Email пользователя: {companyUserData.email}</li>
-                                                            <li className="card-company-discription__item">Телефон пользователя: {companyUserData.phoneUser}</li>
-                                                          </ul>
-                                                          <button onClick={()=> setIsCardCompanyVisible(false)}>Скрыть данные о компании</button>
-                                                        </div>
-                                                      </>
-                                                )}
-                                                
                                         </>
                                           
                                         )}
