@@ -53,7 +53,7 @@ const DefineUser = () => {
   }
 
   // Открывает окно с информацией о компании
-  const openCompanyInformation = (guid) => {
+  const openCompanyInformation = (guidIdUser) => {
 
   };
 
@@ -77,13 +77,13 @@ const DefineUser = () => {
         const data = await response.json();
         
         setOrders(data.orders);
-        //console.log(data);
+        console.log(data);
 
         setUserInfo(data.company);
         //console.log(data.company);
         
         setPersonInfo(data.person);
-        //console.log(data.person);
+        console.log(data.person);
 
         setAdmin(data.person.isAdmin);
 
@@ -286,7 +286,7 @@ const DefineUser = () => {
                                                                             ))}
                                                   </div>
                                                 <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
-                                                  <button className="admin-block__button" onClick={() => openCompanyInformation(admin)}>Данные о компании</button>
+                                                  <button className="admin-block__button" onClick={() => openCompanyInformation(order.guidIdUser)}>Карта компании</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>

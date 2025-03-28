@@ -50,7 +50,7 @@
     height: 150px;
     margin-bottom: 20px;
     background-image: url(../../public/images/img-groop/section_card2_img_1920.png);
-    background-position: right 4px bottom 4px;
+    background-position: right 10px bottom 6px;
 }
 
 .dg-card3 {
@@ -59,7 +59,7 @@
     width: 176px;
     height: 150px;
     background-image: url(../../public/images/img-groop/section_card3_img_1920.png);
-    background-position: left 0px top 4px;
+    background-position: left 30px top 4px;
 }
 
 .dg-card4 {
