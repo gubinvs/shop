@@ -18,9 +18,10 @@ const DefineUser = () => {
   var [admin, setAdmin] = useState(false);
   
 
-  // State for checkbox filters
+  // Настройка фильтации закозов по умолчанию
   const [filterStatus, setFilterStatus] = useState({
-    new: false,
+    new: true,
+    payment: false,
     assembling: false,
     delivery: false,
     completed: false,
@@ -30,11 +31,11 @@ const DefineUser = () => {
     setFilterStatus((prev) => {
       // Если текущий статус уже выбран, сбрасываем все флажки
       if (prev[status]) {
-        return { new: false, assembling: false, delivery: false, completed: false };
+        return { new: false, payment: false, assembling: false, delivery: false, completed: false };
       }
 
       // В противном случае отмечаем только выбранный флажок
-      return { new: false, assembling: false, delivery: false, completed: false, [status]: true };
+      return { new: false, payment: false, assembling: false, delivery: false, completed: false, [status]: true };
     });
   };
 
@@ -186,6 +187,15 @@ const DefineUser = () => {
                 onChange={() => handleCheckboxChange("new")}
               />
             </li>
+            <li className="filter-block__item">
+                <div><strong>Ожидает оплаты</strong></div>
+                <input
+                type="checkbox"
+                className="filter-block__check"
+                checked={filterStatus.payment}
+                onChange={() => handleCheckboxChange("payment")}
+              />
+            </li>
              <li className="filter-block__item">
                 <div><strong>Собирается</strong></div>
                 <input
@@ -231,11 +241,12 @@ const DefineUser = () => {
                               }
                               uniqueOrders.add(order.numberOrder);
                               return true; // Добавить в список для отображения
-                          })
+                          })  
                           .map((order) => {
                             // Проверяем, скрывать ли заказ  
                             const shouldHide =
                               (filterStatus.new && order.statusOrder !== "Новый заказ") ||
+                              (filterStatus.payment && order.statusOrder !== "Ожидает оплаты") ||
                               (filterStatus.assembling && order.statusOrder !== "Собирается") ||
                               (filterStatus.delivery && order.statusOrder !== "Доставляется") ||
                               (filterStatus.completed && order.statusOrder !== "Завершен");
@@ -285,6 +296,7 @@ const DefineUser = () => {
                                                   <button className="admin-block__button" onClick={() => FullOrderInformation(order.numberOrder)}>Полная информация о заказе</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
+                                                            <option className="admin-block__option" value="Ожидает оплаты">Ожидает оплаты</option>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>
                                                             <option className="admin-block__option" value="Доставляется">Доставляется</option>
                                                             <option className="admin-block__option" value="Завершен">Завершен</option>
