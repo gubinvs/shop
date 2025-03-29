@@ -98,8 +98,8 @@ const uploadTo = (numberOrder) => {
 
       // Создаем окно с результатами
       const width = window.screen.width;
-const height = window.screen.height * 0.9;
-const newWindow = window.open("", "_blank", `width=${width},height=${height}`);
+      const height = window.screen.height * 0.9;
+    const newWindow = window.open("", "_blank", `width=${width},height=${height}`);
       // const newWindow = window.open("", "_blank", "width=800,height=600");
       newWindow.document.write(`
         <html>
