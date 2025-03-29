@@ -52,8 +52,9 @@ const DefineUser = () => {
       .padStart(2, "0")} руб`; // Форматирование строки
   }
 
-  // Открывает окно с информацией о компании
-  const openCompanyInformation = (guidIdUser) => {
+  // Формирование данных и отправка на сервер, для скачивания файла выгрузки в 1с
+  // принимает данные о номере заказа
+  const uploadTo1c = (numberOrder) => {
 
   };
 
@@ -80,7 +81,7 @@ const DefineUser = () => {
         console.log(data);
 
         setUserInfo(data.company);
-        //console.log(data.company);
+        console.log(data.company);
         
         setPersonInfo(data.person);
         console.log(data.person);
@@ -286,7 +287,7 @@ const DefineUser = () => {
                                                                             ))}
                                                   </div>
                                                 <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
-                                                  <button className="admin-block__button" onClick={() => openCompanyInformation(order.guidIdUser)}>Карта компании</button>
+                                                  <button className="admin-block__button" onClick={() => uploadTo1c(order.numberOrder)}>Выгрузить в 1С</button>
                                                   <form className="admin-block__select-block" onSubmit={handleSubmit}>
                                                       <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
                                                             <option className="admin-block__option" value="Собирается">Собирается</option>
