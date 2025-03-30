@@ -77,6 +77,7 @@ const Cart = (props) => {
   
     if (error) return <div>Ошибка: {error}</div>;
   /// ! Завершение блока имитации загрузки 
+  console.log(cartItems);
 
   return (
     <>

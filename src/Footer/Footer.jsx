@@ -17,11 +17,9 @@ const Footer = () => {
                         </div>
                         <div class="footer-nav">
                             <ul class="footer-nav__list">
-                                <div class="footer-nav__item"><a href="https://www.iek.ru/support/faq/" class="footer-nav__link">Часто задаваемые вопросы</a></div>
-                                <div class="footer-nav__item"><a href="https://www.iek.ru/support/equipment/" class="footer-nav__link">Помощь в поиске информации по продукции</a></div>
-                                <div class="footer-nav__item"><a href="https://encomponent.ru/production.php" class="footer-nav__link">Услуги по сборке щитов автоматики</a></div>
+                                <div class="footer-nav__item"><a href="https://encomponent.ru/production.php" class="footer-nav__link">Производство щитов автоматики</a></div>
                                 {/* <div class="footer-nav__item"><a href="https://encomponent.ru/snab.html" class="footer-nav__link">Аутсорсинг рутины снабжения</a></div> */}
-                                <div class="footer-nav__item"><a href="closed.php" class="footer-nav__link">Интернет магазин комплектующих</a></div>
+                                <div class="footer-nav__item"><a href="closed.php" class="footer-nav__link">Интернет-магазин комплектующих</a></div>
                                 <div class="footer-nav__item"><a href="https://encomponent.ru/about.php" class="footer-nav__link">Центр раскрытия корпоративной информации</a></div>
                                 <div class="footer-nav__item"><a href="https://encomponent.ru/pp-page.html" class="footer-nav__link">Политика обработки персональных данных</a></div>
                             </ul>

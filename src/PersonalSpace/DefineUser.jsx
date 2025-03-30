@@ -75,13 +75,13 @@ const DefineUser = () => {
         const data = await response.json();
         
         setOrders(data.orders);
-        console.log(data);
+        //console.log(data);
 
         setUserInfo(data.company);
-        console.log(data.company);
+        //console.log(data.company);
         
         setPersonInfo(data.person);
-        console.log(data.person);
+        //console.log(data.person);
 
         setAdmin(data.person.isAdmin);
 
