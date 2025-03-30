@@ -261,50 +261,51 @@ const DefineUser = () => {
                                           <span className={`status ${order.statusOrder?.toLowerCase() || "unknown"}`}>{order.statusOrder || "Неизвестный статус"}</span>
                                         </div>
                                         {visibleOrder === order.numberOrder && (
-                                          <>
-                                                  <div className="filling-block">
-                                                            <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>
-                                                            <div className="filling-order-table">
-                                                              <div className="filling-order-table__item filling-order-table__item_id"><strong>ID</strong></div>
-                                                              <div className="filling-order-table__item filling-order-table__item_vendor"><strong>Артикул</strong></div>
-                                                              <div className="filling-order-table__item filling-order-table__item_name"><strong>Наименование</strong></div>
-                                                              <div className="filling-order-table__item filling-order-table__item_quantity"><strong>Кол-во</strong></div>
-                                                              <div className="filling-order-table__item filling-order-table__item_price"><strong>Цена</strong></div>
-                                                            </div>
-                                                    {orders.map((item) => (order.numberOrder === item.numberOrder ? 
-                                                                              <div key={item.id} className="filling-order-table">
-                                                                                <div className="filling-order-table__item filling-order-table__item_id">
-                                                                                  {item.id}
-                                                                                </div>
-                                                                                <div className="filling-order-table__item filling-order-table__item_vendor">
-                                                                                  {item.vendorCode}
-                                                                                </div>
-                                                                                <div className="filling-order-table__item filling-order-table__item_name">
-                                                                                  {item.nameItem}
-                                                                                </div>
-                                                                                <div className="filling-order-table__item filling-order-table__item_quantity">
-                                                                                  {item.quantityItem}
-                                                                                </div>
-                                                                                <div className="filling-order-table__item filling-order-table__item_price">
-                                                                                  {formatCurrency(item.priceItem * item.quantityItem)}
-                                                                                </div>
-                                                                              </div>
-                                                                              : ""
-                                                                            ))}
-                                                  </div>
-                                                <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
-                                                  <button className="admin-block__button" onClick={() => FullOrderInformation(order.numberOrder)}>Полная информация о заказе</button>
-                                                  <form className="admin-block__select-block" onSubmit={handleSubmit}>
-                                                      <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
-                                                            <option className="admin-block__option" value="Ожидает оплаты">Ожидает оплаты</option>
-                                                            <option className="admin-block__option" value="Собирается">Собирается</option>
-                                                            <option className="admin-block__option" value="Доставляется">Доставляется</option>
-                                                            <option className="admin-block__option" value="Завершен">Завершен</option>
-                                                      </select>
-                                                      <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
-                                                  </form>
-                                                </div>
-                                        </>
+                                                                  <>
+                                                                    <div className="filling-block">
+                                                                                  <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>
+                                                                                  <div className="filling-order-table">
+                                                                                    <div className="filling-order-table__item filling-order-table__item_id"><strong>ID</strong></div>
+                                                                                    <div className="filling-order-table__item filling-order-table__item_vendor"><strong>Артикул</strong></div>
+                                                                                    <div className="filling-order-table__item filling-order-table__item_name"><strong>Наименование</strong></div>
+                                                                                    <div className="filling-order-table__item filling-order-table__item_quantity"><strong>Кол-во</strong></div>
+                                                                                    <div className="filling-order-table__item filling-order-table__item_price"><strong>Цена</strong></div>
+                                                                                  </div>
+                                                                          
+                                                                        {orders.map((item) => (order.numberOrder === item.numberOrder ? 
+                                                                                                    <div key={item.id} className="filling-order-table">
+                                                                                                      <div className="filling-order-table__item filling-order-table__item_id">
+                                                                                                        {item.id}
+                                                                                                      </div>
+                                                                                                      <div className="filling-order-table__item filling-order-table__item_vendor">
+                                                                                                        {item.vendorCode}
+                                                                                                      </div>
+                                                                                                      <div className="filling-order-table__item filling-order-table__item_name">
+                                                                                                        {item.nameItem}
+                                                                                                      </div>
+                                                                                                      <div className="filling-order-table__item filling-order-table__item_quantity">
+                                                                                                        {item.quantityItem}
+                                                                                                      </div>
+                                                                                                      <div className="filling-order-table__item filling-order-table__item_price">
+                                                                                                        {formatCurrency(item.priceItem * item.quantityItem)}
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                                    : ""
+                                                                                                  ))}
+                                                                      </div>
+                                                                      <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
+                                                                        <button className="admin-block__button" onClick={() => FullOrderInformation(order.numberOrder)}>Полная информация о заказе</button>
+                                                                        <form className="admin-block__select-block" onSubmit={handleSubmit}>
+                                                                            <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
+                                                                                  <option className="admin-block__option" value="Ожидает оплаты">Ожидает оплаты</option>
+                                                                                  <option className="admin-block__option" value="Собирается">Собирается</option>
+                                                                                  <option className="admin-block__option" value="Доставляется">Доставляется</option>
+                                                                                  <option className="admin-block__option" value="Завершен">Завершен</option>
+                                                                            </select>
+                                                                            <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
+                                                                        </form>
+                                                                      </div>
+                                                                  </>
                                           
                                         )}
                                     </div>

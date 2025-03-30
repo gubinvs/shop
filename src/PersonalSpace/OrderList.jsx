@@ -1,9 +1,13 @@
-// OrderList.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import OrderCard from './OrderCard';
 
-const OrderList = ({ orders, filterStatus, toggleFillingBlock, visibleOrder }) => {
+const OrderList = ({ orders, filterStatus }) => {
+  const [visibleOrder, setVisibleOrder] = useState(null);
   const uniqueOrders = new Set();
+
+  const toggleFillingBlock = (orderId) => {
+    setVisibleOrder((prev) => (prev === orderId ? null : orderId));
+  };
 
   return (
     <div className="orders-list">
@@ -21,6 +25,7 @@ const OrderList = ({ orders, filterStatus, toggleFillingBlock, visibleOrder }) =
           .map((order) => {
             const shouldHide =
               (filterStatus.new && order.statusOrder !== "Новый заказ") ||
+              (filterStatus.payment && order.statusOrder !== "Ожидает оплаты") ||
               (filterStatus.assembling && order.statusOrder !== "Собирается") ||
               (filterStatus.delivery && order.statusOrder !== "Доставляется") ||
               (filterStatus.completed && order.statusOrder !== "Завершен");

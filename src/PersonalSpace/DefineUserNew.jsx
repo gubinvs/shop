@@ -20,6 +20,7 @@ const DefineUser = () => {
     completed: false,
   });
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -50,9 +51,14 @@ const DefineUser = () => {
   return (
     <>
       <Header />
-      <div className="define-user-page define-user-page__container">
-        <UserInfo userInfo={userInfo} personInfo={personInfo} />
-        <OrderFilters filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
+      <div className="container define-user-page define-user-page__container">
+        <div className="cart-component-container cart-component-container__main-block">
+          <img src="../../images/orders-page-images.jpg" className="cart-main-block__images" />
+        </div>
+        <div className="container user-info-container">
+          <UserInfo userInfo={userInfo} personInfo={personInfo} />
+          <OrderFilters filterStatus={filterStatus} setFilterStatus={setFilterStatus} /> 
+        </div>
         <OrderList orders={orders} visibleOrder={visibleOrder} setVisibleOrder={setVisibleOrder} filterStatus={filterStatus} />
       </div>
     </>
