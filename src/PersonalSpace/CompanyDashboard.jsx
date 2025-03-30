@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Header from "../Header/Header";
 import "./CompanyDashboard.css";
 import ApiUrl from "../js/ApiUrl";
+import Footer from "../Footer/Footer.jsx";
 
 const CompanyDashboard = () => {
   const [companyData, setCompanyData] = useState(null);
@@ -222,6 +223,7 @@ const CompanyDashboard = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

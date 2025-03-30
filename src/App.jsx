@@ -60,6 +60,7 @@ const App = () => {
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
         <Route path="/CatalogSection" element={<CatalogSection />} />
+        <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/Personal" element= {
                                     <ProtectedRoute>
                                       <PersonalSpace />
@@ -76,7 +77,7 @@ const App = () => {
                                   <ProtectedRoute>
                                     <CompanyDashboard />
                                   </ProtectedRoute>} />
-        <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
+        
       </Routes>
     </Router>
   );
