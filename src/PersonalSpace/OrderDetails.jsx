@@ -1,6 +1,6 @@
 // OrderDetails.jsx
 import React from 'react';
-import { formatCurrency } from './formatCurrency'; // Функция для форматирования валюты
+import { formatCurrency } from '../Function/formatCurrency'; // Функция для форматирования валюты
 
 const OrderDetails = ({ order }) => {
   console.log(order);

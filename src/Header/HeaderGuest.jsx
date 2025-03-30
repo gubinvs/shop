@@ -129,7 +129,7 @@ const HeaderGuest = () => {
 
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
-    const indexPage = () => navigate('/');
+    const indexPage = () => {window.location.href = 'https://encomponent.ru'};
     const basketPage = () => navigate('/Basket');
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');

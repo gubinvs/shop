@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ApiUrl from '../js/ApiUrl.js';
 import "./PersonalSpace.css";
 import Header from "../Header/Header.jsx";
+import Footer from "../Footer/Footer.jsx";
 import FullOrderInformation from "./FullOrderInformation.jsx";
 
 
@@ -317,6 +318,7 @@ const DefineUser = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
