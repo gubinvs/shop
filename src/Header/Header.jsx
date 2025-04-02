@@ -130,7 +130,7 @@ const Header = () => {
 
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
-   const indexPage = () => {window.location.href = 'https://encomponent.ru'};
+    const indexPage = () => {window.location.href = 'https://encomponent.ru'};
     const basketPage = () => navigate('/Basket');
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');
@@ -139,6 +139,13 @@ const Header = () => {
         localStorage.clear("token");
         window.location.href="/";
     }; // Очиста localStorage("token"); Выход из системы
+
+    // Переход на страницу товара
+    const GoToPageComp = (link) => {
+        window.location.href=link;
+    };
+
+    console.log(searchResults);
 
     return (
         <>
@@ -222,7 +229,7 @@ const Header = () => {
                                         <ul className="search-result__list">
                                             {searchResults.map((result, index) => (
                                                 <li key={index} className="search-result__item">
-                                                    <div className="search-result-item__info">
+                                                    <div className="search-result-item__info" onClick={()=>GoToPageComp(result.linkPage)}>
                                                         {result.vendorCode} - {result.name}
                                                     </div>
                                                     <button

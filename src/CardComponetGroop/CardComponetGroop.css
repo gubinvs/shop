@@ -188,6 +188,11 @@
     transform: scale(1.1);
 }
 
+.basket-block__button.added {
+    background-color: green;
+    color: white;
+}
+
 
 @media only screen and (max-width: 1280px) {
     .container {

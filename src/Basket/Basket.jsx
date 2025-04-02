@@ -40,19 +40,21 @@ const Basket = () => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
+                    
                     return response.json();
                 })
                 .then((data) => {
+                    
                     if (data.length > 0) {
                         const item = data[0];
                         setNewItem({
                             id: item.Id + 1000,
-                            guidId: item.GuidId,
+                            guidId: item.GuidId || item.Guid,
                             vendorCode: item.VendorCode,
-                            name: item.Name,
-                            price: item.PriceNku,
+                            name: item.Name || item.NameComponent,
+                            price: item.PriceNku || item.Price,
                             quantity: 1,
-                            image: item.ImagesLink
+                            image: item.ImagesLink || item.ImgLinkIconCard
                         });
                     }
                 })

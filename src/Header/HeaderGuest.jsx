@@ -139,6 +139,11 @@ const HeaderGuest = () => {
         window.location.href="/";
     }; // Очиста localStorage("token"); Выход из системы
 
+       // Переход на страницу товара
+    const GoToPageComp = (link) => {
+        window.location.href=link;
+    };
+
     return (
         <>
             <header>
@@ -197,7 +202,7 @@ const HeaderGuest = () => {
                                         <ul className="search-result__list">
                                             {searchResults.map((result, index) => (
                                                 <li key={index} className="search-result__item">
-                                                    <div className="search-result-item__info">
+                                                    <div className="search-result-item__info" onClick={()=>GoToPageComp(result.linkPage)}>
                                                         {result.vendorCode} - {result.name}
                                                     </div>
                                                     <button
