@@ -183,7 +183,6 @@ const HeaderGuest = () => {
                                         <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения</li>
                                     </ul>
                                 )}
-
                                 <input
                                     className="search-input search-input_guest"
                                     placeholder="Поиск по артикулу"
@@ -221,18 +220,18 @@ const HeaderGuest = () => {
 
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
-                                <li className="header-navigation__item header-navigation__item_guest"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
                                 <li className="header-navigation__item header-navigation__item_guest">
-                                    <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>
-                                        Доставка и оплата
-                                    </a>
+                                    <a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a>
                                 </li>
-                                <li className="header-navigation__item header-navigation__item_guest"><a href="https://encomponent.ru/about.php">Контакты</a></li>
+                                <li className="header-navigation__item header-navigation__item_guest">
+                                    <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>Доставка и оплата</a>
+                                </li>
+                                <li className="header-navigation__item header-navigation__item_guest">
+                                    <a href="https://encomponent.ru/about.php">Контакты</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
-
-
                     <div class="header-navigation-block__top">
                         <div class="header-validation-block header-validation-block__guest">
                             <a href="/Authorization">
