@@ -9,6 +9,7 @@ export const chapterPlk = "Программируемые контроллеры
 export const chapterMplk = "Модули расширения";
 export const chapterSl = "Сигнальные лампы";
 export const chapterUps = "Устройства плавного пуска";
+export const chapterСable = "Кабель и провод";
 
 export const OpenSection = (param) => {
     window.location.href = "/CatalogSection/?chapter=" + param;
