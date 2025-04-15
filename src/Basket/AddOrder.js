@@ -56,7 +56,7 @@ const addOrder = async (props) => {
         NumberOrder: parseInt(numberOrder),
     }));
 
-    console.log("Отправляемые на сервер данные" + JSON.stringify(items));
+    //console.log("Отправляемые на сервер данные" + JSON.stringify(items));
 
     // Отправка данных
     const saveRequests = items.map((item) =>
@@ -71,7 +71,7 @@ const addOrder = async (props) => {
 
     await Promise.all(saveRequests);
 
-    console.log("Все элементы успешно отправлены");
+    //console.log("Все элементы успешно отправлены");
 
     // Очистка корзины и перенаправление пользователя
     localStorage.removeItem("basketItem");
