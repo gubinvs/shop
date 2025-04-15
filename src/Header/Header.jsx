@@ -204,7 +204,7 @@ const Header = () => {
                                     <ul className="catalog__list" ref={catalogRef}>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterMa)}>Модульные автоматы</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Блоки питания</li>
-                                        <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Клеммы и маркировка</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Клеммы и провода</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Типовые решения НКУ</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Логические контроллеры</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения</li>
