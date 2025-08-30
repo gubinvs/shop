@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 
 
 const AvailableForOrder =({h2Title, cardItem})=> {
-    const [items, setItems] = useState([]);
-    const [quantities, setQuantities] = useState([]);
+    const [items, setItems] = useState(cardItem);
+    const [quantities, setQuantities] = useState(Array(items.length).fill(0)); // Присваиваем значения "0"
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
 
     // Фильтруем данные 
-    
-    const result = cardItem.filter((cardItem) => cardItem.bestseller == 1);
-    
+    const filterItems = items.filter((cardItem) => cardItem.bestseller == 1);
 
     const handleIncrement = (index) => {
         const newQuantities = [...quantities];
@@ -61,7 +59,7 @@ const AvailableForOrder =({h2Title, cardItem})=> {
                 <h2 className="directory-groups__title">{h2Title}</h2>
             </div>
             <div className="container card-componet-groop-section__container">
-                {result.map((element, index) => (
+                {filterItems.map((element, index) => (
                     <div className="card-component" key={element.vendorСode}>
                         <div className="card-component__top">
                             <img src={element.imgLinkIconCard} className="card-component__img" alt="Фото компонента" />
