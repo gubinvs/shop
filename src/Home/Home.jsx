@@ -5,7 +5,7 @@ import './Home.css';
 import HomeMainSection from "./HomeMainSection.jsx";
 import DirectoryGroups from "./DirectoryGroups.jsx";
 import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
-import Footer from "../Footer/Footer.jsx"
+import Footer from "../Footer/Footer.jsx";
 
 
 const Home = () => {
@@ -16,10 +16,9 @@ const Home = () => {
         <>
         {/* Если не авторизован выводим шапку для гостя */}
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
-            <HomeMainSection />
-            {/* <DirectoryGroups /> */}
+            {/* <HomeMainSection /> */}
+            <DirectoryGroups />
             <CardComponetGroop h2="Доступно для заказа" api={"/api/Bestsellers"} />
-            {/* <AvailableForOrder h2Title="Доступно для заказа" cardItem={cardItem} /> */}
             <Footer />
         </> 
     );

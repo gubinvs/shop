@@ -248,13 +248,9 @@ const Header = () => {
 
                         <div className="header-navigation-block__botttom">
                             <ul className="header-navigation__list">
-                                <li className="header-navigation__item"><a href="https://www.iek.ru/products/catalog/tipovye_resheniya_nku">Типовые решения</a></li>
                                 <li className="header-navigation__item">
-                                    <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>
-                                        Доставка и оплата
-                                    </a>
+                                    <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>Доставка и оплата</a>
                                 </li>
-                                <li className="header-navigation__item"><a href="https://encomponent.ru/about.php">Контакты</a></li>
                             </ul>
                         </div>
                     </div>
