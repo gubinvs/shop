@@ -9,10 +9,10 @@ import {
 const DirectoryGroups = () => {
     return (
         <div className="container directory-groups__container">
-            <h2 className="directory-groups__title">Популярные категории</h2>
+            <h2 className="directory-groups__title">Категории магазина</h2>
             <div className="dg-card-section">
                 <div className="dg-card dg-card1 hvr-grow-shadow" onClick={() => OpenSection(chapterMa)}>
-                    <div className="dg-card__title">Модульные автоматы</div>
+                    <div className="dg-card__title">Модульное оборудование</div>
                 </div>
                 <div className="dg-card__groop">
                     <div className="dg-card dg-card2 hvr-grow-shadow" onClick={() => OpenSection(chapterBp)}>
