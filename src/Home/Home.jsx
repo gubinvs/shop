@@ -18,7 +18,7 @@ const Home = () => {
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
             {/* <HomeMainSection /> */}
             <DirectoryGroups />
-            <CardComponetGroop h2="Доступно для заказа" api={"/api/Bestsellers"} />
+            <CardComponetGroop h2="Популярные запросы" api={"/api/Bestsellers"} />
             <Footer />
         </> 
     );
