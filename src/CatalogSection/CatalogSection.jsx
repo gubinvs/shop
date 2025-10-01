@@ -10,6 +10,9 @@ import Footer from '../Footer/Footer.jsx';
 const CatalogSection = () => {
     // Получаем группу товара из строки запроса
     const chapter = new URLSearchParams(window.location.search).get("chapter");
+
+    const newChapter = chapter == "Модульные автоматы"? "Модульное оборудование" : chapter;
+
     // Простейший стейт для проверки авторизации
     const isAuthenticated = localStorage.getItem('token') !== null;
 
@@ -18,7 +21,7 @@ const CatalogSection = () => {
         <>
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
             <DirectoryGroups />
-            <CardComponetGroop h2={chapter} api={"/api/CatalogSectionSearchItem/" + chapter} />
+            <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} />
             <Footer />
         </>
     )
