@@ -112,7 +112,12 @@ const CardComponetGroop = (param) => {
                                     {element.quantity === 0 ? "Под заказ" : `Наличие: ${element.quantity} шт.`}
                                 </div>
                             </div>
-                            <div className="card-component__price">{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}</div>
+                            <div className="card-component__price-block">
+                                <div className="card-component__price">
+                                    {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
+                                </div>
+                                <div className="card-component__price-nalog">в т.ч. НДС</div>
+                            </div>
                             <div className="card-component__basket-block">
                                 <div className="basket-block__quantity-item">
                                     <div className="quantity-item__minus" onClick={() => handleDecrement(index)}>-</div>
