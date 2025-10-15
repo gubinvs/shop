@@ -162,7 +162,7 @@ const HeaderGuest = () => {
                 </div>
 
                 <div className="container header__container">
-                    <div className="header-logo-block header-logo-block_guest" onClick={indexPage}>
+                    <div className="header-logo-block header-logo-block_guest">
                         <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                     </div>
 

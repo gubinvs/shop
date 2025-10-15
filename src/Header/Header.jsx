@@ -189,7 +189,7 @@ const Header = () => {
                 </div>
 
                 <div className="container header__container">
-                    <div className="header-logo-block" onClick={indexPage}>
+                    <div className="header-logo-block">
                         <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                     </div>
 

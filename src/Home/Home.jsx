@@ -18,11 +18,12 @@ const Home = () => {
             {isAuthenticated ? <Header /> : <HeaderGuest />} 
             {/* <HomeMainSection /> */}
             <DirectoryGroups />
-            <CardComponetGroop h2="Популярные запросы" api={"/api/Bestsellers"} />
+            <CardComponetGroop h2="Schneider & Phoenix" api={"/api/Bestsellers"} />
+            <CardComponetGroop h2="KEAZ" api={"/api/BestsellersKeaz"} />
             <Footer />
         </> 
     );
 
 };
 
-export default Home;
+export default Home;    
