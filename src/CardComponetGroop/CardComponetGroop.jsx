@@ -19,14 +19,14 @@ const CardComponetGroop = (param) => {
             .then(data => {
                 const formattedData = data.map(item => ({
                     id: item.id,
-                    imgLinkIconCard: item.imgLinkIconCard || item.imagesLink || item.productMainImgUrl,
-                    vendorСode: item.vendorCode || item.vendorCode,
-                    nameComponent: item.nameComponent || item.name || item.productTitle,
-                    quantity: item.quantity || 0,
-                    linkPage: item.linkPage || item.productPageUrl,
-                    price: item.price || item.priceNku || item.priceWithVat,
+                    imgLinkIconCard: item.imgLinkIconCard || item.imagesLink,
+                    vendorСode: item.vendorCode,
+                    nameComponent: item.nameComponent || item.name,
+                    quantity: item.quantity,
+                    linkPage: item.linkPage,
+                    price: item.price || item.priceNku,
                     basketImgPath: item.basketImgPath || item.productMainImgUrl,
-                    guidId: item.guid || item.productGuidId
+                    guidId: item.guid
                 }));
                 setItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0));
