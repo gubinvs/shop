@@ -20,7 +20,7 @@ const CardComponetGroop = (param) => {
                 const formattedData = data.map(item => ({
                     id: item.id,
                     imgLinkIconCard: item.imgLinkIconCard || item.imagesLink || item.productMainImgUrl,
-                    vendorСode: item.vendorCode || item.productArticle,
+                    vendorСode: item.vendorCode || item.vendorCode,
                     nameComponent: item.nameComponent || item.name || item.productTitle,
                     quantity: item.quantity || 0,
                     linkPage: item.linkPage || item.productPageUrl,
