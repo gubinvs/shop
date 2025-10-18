@@ -48,12 +48,12 @@ const Basket = () => {
                         const item = data[0];
                         setNewItem({
                             id: item.Id + 1000,
-                            guidId: item.GuidId || item.Guid,
+                            guidId: item.Guid,
                             vendorCode: item.VendorCode,
-                            name: item.Name || item.NameComponent,
-                            price: item.PriceNku || item.Price,
+                            name: item.NameComponent,
+                            price: item.Price,
                             quantity: 1,
-                            image: item.ImagesLink || item.ImgLinkIconCard
+                            image: item.ImgLinkIconCard
                         });
                     }
                 })
@@ -76,16 +76,6 @@ const Basket = () => {
         }
     }, [newItem]);
 
-    // Обработка элементов из localStorage
-    const processedBasketItem = fullBasket.map(i => ({
-        id: i.id,
-        guidId: i.guidId,
-        vendorCode: i.vendorCode,
-        name: i.name,
-        price: i.price,
-        quantity: i.quantity,
-        image: i.image
-    }));
 
     const processedCard = cardItem.map(c => ({
         id: c.id + 2000,
@@ -107,11 +97,15 @@ const Basket = () => {
         image: x.basketImgPath
     }));
 
-    const combinedItems = [...processedBasketItem, ...processedCard, ...processedSearch];
+    const combinedItems = [...fullBasket, ...processedCard, ...processedSearch];
+
+    localStorage.setItem("basketItem", JSON.stringify(combinedItems));
+    console.log(JSON.parse(localStorage.getItem('cart')))
+    
 
     return (
         <>
-            <Header />
+            <Header />  
             <Cart item={combinedItems} />
         </>
     );

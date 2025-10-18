@@ -4,7 +4,7 @@ import "./Header.css";
 import ApiUrl from '../js/ApiUrl';
 import { 
     chapterMa, chapterBp, chapterK, chapterSch, 
-    chapterPlk, chapterMplk, chapterSl, chapterUps, 
+    chapterPlk, chapterMplk,
     OpenSection 
 } from "../js/LinkSectionGroup.js";
 import { handleAddToBasket } from "../js/handleAddToBasket.js";

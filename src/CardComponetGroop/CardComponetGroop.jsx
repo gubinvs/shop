@@ -9,8 +9,6 @@ const CardComponetGroop = (param) => {
     const [loading, setLoading] = useState(true);
 
 
-    console.log();
-
     useEffect(() => {
         fetch(ApiUrl + param.api, {
             method: "GET",
@@ -22,13 +20,13 @@ const CardComponetGroop = (param) => {
             .then(data => {
                 const formattedData = data.map(item => ({
                     id: item.id,
-                    imgLinkIconCard: item.imgLinkIconCard || item.imagesLink,
+                    imgLinkIconCard: item.imgLinkIconCard,
                     vendorСode: item.vendorCode,
-                    nameComponent: item.nameComponent || item.name,
+                    nameComponent: item.nameComponent,
                     quantity: item.quantity,
                     linkPage: item.linkPage,
-                    price: item.price || item.priceNku,
-                    basketImgPath: item.basketImgPath || item.productMainImgUrl,
+                    price: item.price,
+                    basketImgPath: item.basketImgPath,
                     guidId: item.guid
                 }));
                 setItems(formattedData);
