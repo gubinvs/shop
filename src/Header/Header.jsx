@@ -29,7 +29,7 @@ const Header = () => {
 
     const countBasketItems = () => {
         let totalCount = 0;
-        const keys = ["basketItem", "cart", "search"];
+        const keys = ["basketItem"];
 
         keys.forEach(key => {
             const item = localStorage.getItem(key);
@@ -50,7 +50,7 @@ const Header = () => {
         countBasketItems();
 
         const handleStorageChange = (event) => {
-            if (["basketItem", "cart", "search"].includes(event.key)) {
+            if (["basketItem"].includes(event.key)) {
                 countBasketItems();
             }
         };
@@ -115,6 +115,7 @@ const Header = () => {
     const GoToPageComp = (link) => {
         window.location.href=link;
     };
+
 
     return (
         <>

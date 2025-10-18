@@ -100,7 +100,8 @@ const Basket = () => {
     const combinedItems = [...fullBasket, ...processedCard, ...processedSearch];
 
     localStorage.setItem("basketItem", JSON.stringify(combinedItems));
-    console.log(JSON.parse(localStorage.getItem('cart')))
+    
+    console.log(combinedItems)
     
 
     return (

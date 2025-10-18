@@ -38,7 +38,7 @@ const CardComponetGroop = (param) => {
                 console.log(error);
                 setLoading(false);
             });
-    }, []);
+    }, [param.api]);
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));

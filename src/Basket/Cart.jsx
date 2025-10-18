@@ -7,7 +7,7 @@ const Cart = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   //  функия удаляет дубли по id
-  const uniqueItems = Array.from(new Map(cartItems.map(item => [item.id, item])).values());
+  //const uniqueItems = Array.from(new Map(cartItems.map(item => [item.id, item])).values());
 
   // Функция для удаления товара
   const removeItem = (id) => {
@@ -69,7 +69,7 @@ const Cart = (props) => {
   return (
     <>
       <div className="cart-component-container cart-component-container__main-block">
-        <img src="../../images/basket-page-img.jpg" className="cart-main-block__images" />
+        <img src="../../images/basket-page-img.jpg" className="cart-main-block__images" alt="Компания"/>
         <div className="cart-main-block__slogan-block">
           <div className="cart-main-block__slogan">Товары готовы отправиться к Вам!</div>
         </div>
