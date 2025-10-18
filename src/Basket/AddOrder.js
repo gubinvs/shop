@@ -76,6 +76,7 @@ const addOrder = async (props) => {
     // Очистка корзины и перенаправление пользователя
     localStorage.removeItem("basketItem");
     localStorage.removeItem("cart");
+    localStorage.removeItem("search");
     window.location.href = "/DefineUser";
 
     } catch (error) {
