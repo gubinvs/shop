@@ -97,11 +97,11 @@ const Basket = () => {
         image: x.basketImgPath
     }));
 
+    // Собираем все данные о товарах в корзине в одну переменную
     const combinedItems = [...fullBasket, ...processedCard, ...processedSearch];
 
+    // Добавляем полные данные в хранилище
     localStorage.setItem("basketItem", JSON.stringify(combinedItems));
-    
-    console.log(combinedItems)
     
 
     return (

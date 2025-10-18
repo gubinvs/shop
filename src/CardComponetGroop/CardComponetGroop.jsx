@@ -5,7 +5,7 @@ import ApiUrl from '../js/ApiUrl.js';
 const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
     const [quantities, setQuantities] = useState([]);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
     const [loading, setLoading] = useState(true);
 
 
@@ -84,6 +84,8 @@ const CardComponetGroop = (param) => {
     const isInCart = (index) => {
         return cart.some(cartItem => cartItem.vendorСode === items[index].vendorСode);
     };
+
+
 
     if (loading) {
         return (
