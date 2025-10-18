@@ -99,7 +99,7 @@ const Header = () => {
 
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
-        const indexPage = () => {window.location.href = 'https://encomponent.ru'};
+        //const indexPage = () => {window.location.href = 'https://encomponent.ru'};
         const basketPage = () => navigate('/Basket');
         const orderPage = () => navigate('/DefineUser');
         const companyDashboard = () => navigate('/CompanyDashboard');
@@ -130,7 +130,7 @@ const Header = () => {
                     <div className="header-basket-block_mobile">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item">
-                                <img src={location.pathname === '/CompanyDashboard' ? '../../images/iconCompanyBlue.svg' : '../../images/iconCompanyBlack.svg'} className="header-basket-block-icon__img header-basket-block-icon__img_comp" />
+                                <img src={location.pathname === '/CompanyDashboard' ? '../../images/iconCompanyBlue.svg' : '../../images/iconCompanyBlack.svg'} className="header-basket-block-icon__img header-basket-block-icon__img_comp" alt="#" />
                             </li>
                             <li className={location.pathname === '/CompanyDashboard' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
                                 Компания
@@ -138,7 +138,7 @@ const Header = () => {
                         </ul>
                         <ul className="header-basket-block__list" onClick={orderPage}>
                             <li className="header-basket-block-icon__item">
-                                <img src={location.pathname === '/DefineUser' ? '../../images/orderBlue.svg' : '../../images/orderBlack.svg'} className="header-basket-block-icon__img" />
+                                <img src={location.pathname === '/DefineUser' ? '../../images/orderBlue.svg' : '../../images/orderBlack.svg'} className="header-basket-block-icon__img" alt="#"/>
                             </li>
                             <li className={location.pathname === '/DefineUser' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item hbbi-item header-basket-block-icon__item_mobile'}>
                                 Заказы
@@ -148,7 +148,7 @@ const Header = () => {
                             <li className="header-basket-block-icon__item">
                                 <img
                                     src={location.pathname === '/Basket' ? '../../images/basketBlue.svg' : '../../images/basketBlack.svg'}
-                                    className="header-basket-block-icon__img header-basket-block-icon__img_basket" />
+                                    className="header-basket-block-icon__img header-basket-block-icon__img_basket" alt="#"/>
                             </li>
                             <li className={location.pathname === '/Basket' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
                                 Корзина
@@ -228,7 +228,7 @@ const Header = () => {
                     <div className="header-basket-block">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item">
-                                <img src={location.pathname === '/CompanyDashboard' ? '../../images/iconCompanyBlue.svg' : '../../images/iconCompanyBlack.svg'} className="header-basket-block-icon__img header-basket-block-icon__img_comp" />
+                                <img src={location.pathname === '/CompanyDashboard' ? '../../images/iconCompanyBlue.svg' : '../../images/iconCompanyBlack.svg'} className="header-basket-block-icon__img header-basket-block-icon__img_comp" alt="#"/>
                             </li>
                             <li className={location.pathname === '/CompanyDashboard' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
                                 Компания
@@ -236,7 +236,7 @@ const Header = () => {
                         </ul>
                         <ul className="header-basket-block__list" onClick={orderPage}>
                             <li className="header-basket-block-icon__item">
-                                <img src={location.pathname === '/DefineUser' ? '../../images/orderBlue.svg' : '../../images/orderBlack.svg'} className="header-basket-block-icon__img" />
+                                <img src={location.pathname === '/DefineUser' ? '../../images/orderBlue.svg' : '../../images/orderBlack.svg'} className="header-basket-block-icon__img" alt="#"/>
                             </li>
                             <li className={location.pathname === '/DefineUser' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item hbbi-item header-basket-block-icon__item_mobile'}>
                                 Заказы
@@ -246,7 +246,7 @@ const Header = () => {
                             <li className="header-basket-block-icon__item">
                                 <img
                                     src={location.pathname === '/Basket' ? '../../images/basketBlue.svg' : '../../images/basketBlack.svg'}
-                                    className="header-basket-block-icon__img header-basket-block-icon__img_basket" />
+                                    className="header-basket-block-icon__img header-basket-block-icon__img_basket" alt="#" />
                             </li>
                             <li className={location.pathname === '/Basket' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
                                 Корзина
