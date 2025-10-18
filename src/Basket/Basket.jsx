@@ -26,7 +26,7 @@ const Basket = () => {
     const cardItem = getParsedLocalStorage("cart");
     const searchItem = getParsedLocalStorage("search");
 
-    // Получаем товар по vendorCode из URL
+    // Получаем данные о товаре по vendorCode полученном из URL страницы с которой перешли в магазин 
     useEffect(() => {
         if (param) {
             fetch(ApiUrl + "/api/BasketItem/" + param, {
