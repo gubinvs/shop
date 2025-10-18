@@ -5,22 +5,32 @@ import ApiUrl from '../js/ApiUrl.js';
 const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
     const [quantities, setQuantities] = useState([]);
-    const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem('cart')) || []);
+    const [basket, setBasket] = useState(() => {
+        // 🧠 читаем только два ключа: cart и search
+        const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
+        const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
+
+        // объединяем, убираем дубли по vendorCode
+        const merged = [...fromCart, ...fromSearch];
+        const unique = merged.filter(
+            (v, i, a) => a.findIndex(t => t.vendorCode === v.vendorCode) === i
+        );
+
+        return unique;
+    });
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(ApiUrl + param.api, {
             method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
         })
             .then(response => response.json())
             .then(data => {
                 const formattedData = data.map(item => ({
                     id: item.id,
                     imgLinkIconCard: item.imgLinkIconCard,
-                    vendorCode: item.vendorCode, // ❗ исправил букву С (в исходнике была кириллическая)
+                    vendorCode: item.vendorCode,
                     nameComponent: item.nameComponent,
                     quantity: item.quantity,
                     linkPage: item.linkPage,
@@ -28,20 +38,24 @@ const CardComponetGroop = (param) => {
                     basketImgPath: item.basketImgPath,
                     guidId: item.guid
                 }));
+
                 setItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0));
                 setLoading(false);
             })
             .catch(error => {
-                console.log(error);
+                console.error('Ошибка при загрузке данных:', error);
                 setLoading(false);
             });
     }, [param.api]);
 
-    // сохраняем cart при изменении
+    // 🔁 синхронизация — обновляем только cart и search
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
+        if (basket && basket.length) {
+            localStorage.setItem('cart', JSON.stringify(basket));
+            localStorage.setItem('search', JSON.stringify(basket));
+        }
+    }, [basket]);
 
     const handleIncrement = (index) => {
         const newQuantities = [...quantities];
@@ -57,16 +71,16 @@ const CardComponetGroop = (param) => {
         }
     };
 
-    const handleAddToCart = (index) => {
+    const handleAddToBasket = (index) => {
         const product = items[index];
-        const newCart = [...cart];
-        const existingIndex = newCart.findIndex(cartItem => cartItem.vendorCode === product.vendorCode);
+        const newBasket = [...basket];
+        const existingIndex = newBasket.findIndex(item => item.vendorCode === product.vendorCode);
 
         if (quantities[index] > 0) {
             if (existingIndex !== -1) {
-                newCart[existingIndex].quantity = quantities[index];
+                newBasket[existingIndex].quantity = quantities[index];
             } else {
-                newCart.push({
+                newBasket.push({
                     vendorCode: product.vendorCode,
                     nameComponent: product.nameComponent,
                     quantity: quantities[index],
@@ -76,12 +90,12 @@ const CardComponetGroop = (param) => {
                     id: product.id
                 });
             }
-            setCart(newCart);
+            setBasket(newBasket);
         }
     };
 
-    const isInCart = (index) => {
-        return cart.some(cartItem => cartItem.vendorCode === items[index].vendorCode);
+    const isInBasket = (index) => {
+        return basket.some(item => item.vendorCode === items[index].vendorCode);
     };
 
     if (loading) {
@@ -102,34 +116,57 @@ const CardComponetGroop = (param) => {
                 {items.map((element, index) => (
                     <div className="card-component" key={element.vendorCode}>
                         <div className="card-component__top">
-                            <img src={element.imgLinkIconCard} className="card-component__img" alt="Фото компонента" />
+                            <img
+                                src={element.imgLinkIconCard}
+                                className="card-component__img"
+                                alt={element.nameComponent || "Фото компонента"}
+                            />
                             <div className="card-component__vendor">{element.vendorCode}</div>
-                            <div className="card-component__name" onClick={() => window.open(element.linkPage, '_blank')}>{element.nameComponent}</div>
+                            <div
+                                className="card-component__name"
+                                onClick={() => window.open(element.linkPage, '_blank')}
+                            >
+                                {element.nameComponent}
+                            </div>
                         </div>
                         <div className="card-component__bottom">
                             <div className="cc-basket-block__delivry-block">
-                                <div className={element.quantity === 0 ? "delivry-block__quantity delivry-block__quantity_0" : "delivry-block__quantity"}>
-                                    {element.quantity === 0 ? "Под заказ" : `Наличие: ${element.quantity} шт.`}
+                                <div
+                                    className={
+                                        element.quantity === 0
+                                            ? "delivry-block__quantity delivry-block__quantity_0"
+                                            : "delivry-block__quantity"
+                                    }
+                                >
+                                    {element.quantity === 0
+                                        ? "Под заказ"
+                                        : `Наличие: ${element.quantity} шт.`}
                                 </div>
                             </div>
+
                             <div className="card-component__price-block">
                                 <div className="card-component__price">
-                                    {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
+                                    {new Intl.NumberFormat("ru-RU", {
+                                        style: "currency",
+                                        currency: "RUB",
+                                        minimumFractionDigits: 0
+                                    }).format(element.price)}
                                 </div>
                                 <div className="card-component__price-nalog">в т.ч. НДС</div>
                             </div>
+
                             <div className="card-component__basket-block">
                                 <div className="basket-block__quantity-item">
                                     <div className="quantity-item__minus" onClick={() => handleDecrement(index)}>-</div>
                                     <div className="quantity-item__input">{quantities[index]}</div>
                                     <div className="quantity-item__plus" onClick={() => handleIncrement(index)}>+</div>
                                 </div>
-                                <button 
-                                    className={`basket-block__button ${isInCart(index) ? 'added' : ''} ${quantities[index] === 0 ? 'disabled' : ''}`} 
-                                    disabled={quantities[index] === 0} 
-                                    onClick={() => handleAddToCart(index)}
+                                <button
+                                    className={`basket-block__button ${isInBasket(index) ? 'added' : ''} ${quantities[index] === 0 ? 'disabled' : ''}`}
+                                    disabled={quantities[index] === 0}
+                                    onClick={() => handleAddToBasket(index)}
                                 >
-                                    {isInCart(index) ? 'В корзине' : 'В корзину'}
+                                    {isInBasket(index) ? 'В корзине' : 'В корзину'}
                                 </button>
                             </div>
                         </div>
