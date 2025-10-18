@@ -23,7 +23,6 @@ const Basket = () => {
         }
     };
 
-    const nkuItem = getParsedLocalStorage("basketItem");
     const cardItem = getParsedLocalStorage("cart");
     const searchItem = getParsedLocalStorage("search");
 
@@ -78,7 +77,7 @@ const Basket = () => {
     }, [newItem]);
 
     // Обработка элементов из localStorage
-    const processedNku = nkuItem.map(i => ({
+    const processedBasketItem = fullBasket.map(i => ({
         id: i.id,
         guidId: i.guidId,
         vendorCode: i.vendorCode,
@@ -108,7 +107,7 @@ const Basket = () => {
         image: x.basketImgPath
     }));
 
-    const combinedItems = [...processedNku, ...processedCard, ...processedSearch];
+    const combinedItems = [...processedBasketItem, ...processedCard, ...processedSearch];
 
     return (
         <>

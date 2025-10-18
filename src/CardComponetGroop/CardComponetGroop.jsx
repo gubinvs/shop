@@ -8,6 +8,9 @@ const CardComponetGroop = (param) => {
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
+    console.log();
+
     useEffect(() => {
         fetch(ApiUrl + param.api, {
             method: "GET",

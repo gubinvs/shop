@@ -7,6 +7,8 @@ import {
     chapterPlk, chapterMplk, chapterSl, chapterUps, 
     OpenSection 
 } from "../js/LinkSectionGroup.js";
+import { handleAddToBasket } from "../js/handleAddToBasket.js";
+
 
 const Header = () => {
     
@@ -18,6 +20,7 @@ const Header = () => {
     const [isCatalogVisible, setCatalogVisible] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
     const [notificationText, setNotificationText] = useState("");
+    
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -94,58 +97,24 @@ const Header = () => {
         }
     };
 
-    const handleAddToBasket = (item) => {
-        const searchBasket = localStorage.getItem("search");
-        let updatedBasket = [];
-
-        if (searchBasket) {
-            try {
-                updatedBasket = JSON.parse(searchBasket);
-                if (!Array.isArray(updatedBasket)) {
-                    updatedBasket = [];
-                }
-            } catch (error) {
-                console.error("Ошибка парсинга searchBasket:", error);
-            }
-        }
-
-        const existingItem = updatedBasket.find(b => b.id === item.id);
-
-        if (existingItem) {
-            existingItem.quantity = existingItem.quantity ? existingItem.quantity + 1 : 2;
-        } else {
-            updatedBasket.push({ ...item, quantity: 1 });
-        }
-
-        localStorage.setItem("search", JSON.stringify(updatedBasket));
-        countBasketItems();
-
-        setNotificationText(`Товар "${item.name}" добавлен в корзину`);
-        setShowNotification(true);
-
-        setTimeout(() => {
-            setShowNotification(false);
-        }, 2500);
-    };
-
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
-    const indexPage = () => {window.location.href = 'https://encomponent.ru'};
-    const basketPage = () => navigate('/Basket');
-    const orderPage = () => navigate('/DefineUser');
-    const companyDashboard = () => navigate('/CompanyDashboard');
-    const toggleCatalog = () => setCatalogVisible(prev => !prev);
-    const ClearToken = () => {
-        localStorage.clear("token");
+        const indexPage = () => {window.location.href = 'https://encomponent.ru'};
+        const basketPage = () => navigate('/Basket');
+        const orderPage = () => navigate('/DefineUser');
+        const companyDashboard = () => navigate('/CompanyDashboard');
+        const toggleCatalog = () => setCatalogVisible(prev => !prev);
+        const ClearToken = () => {
+            
+        localStorage.clear("token");// Очиста localStorage("token"); Выход из системы
         window.location.href="/";
-    }; // Очиста localStorage("token"); Выход из системы
+
+    }; 
 
     // Переход на страницу товара
     const GoToPageComp = (link) => {
         window.location.href=link;
     };
-
-    console.log(searchResults);
 
     return (
         <>
@@ -234,7 +203,7 @@ const Header = () => {
                                                     </div>
                                                     <button
                                                         className="search-result-item__add-button"
-                                                        onClick={() => handleAddToBasket(result)}
+                                                        onClick={() => handleAddToBasket(result, countBasketItems, setNotificationText, setShowNotification)}
                                                     >
                                                         В корзину
                                                     </button>

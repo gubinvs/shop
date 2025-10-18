@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import "./Cart.css";
 import addOrder from './AddOrder.js';
+import {formatPrice} from "../js/formatPrice.js";
 
 const Cart = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   //  функия удаляет дубли по id
   const uniqueItems = Array.from(new Map(cartItems.map(item => [item.id, item])).values());
-
-  // Функция для формата в рублевый формат
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: 'RUB',
-      minimumFractionDigits: 2,
-    }).format(price);
-  };
 
   // Функция для удаления товара
   const removeItem = (id) => {
@@ -37,47 +29,42 @@ const Cart = (props) => {
     return { subtotal, shipping, tax, total: subtotal  + shipping + tax };
   };
 
-  const { subtotal, shipping, tax, total } = calculateTotal();
-
-  
-  const [userInfo, setUserInfo] = useState(null);
-  const [orders, setOrders] = useState([]);
+  const {subtotal, tax} = calculateTotal();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
 
 
-    // Используем useEffect, чтобы обновить корзину при получении props.item
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          setLoading(true);
-          if (props.item) {
-            setCartItems(props.item);  // Обновляем состояние с новым товаром из props
-          } else {
-    }
-        } catch (err) {
-          setError("Не удалось загрузить данные");
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchData();
-    }, [props.item]);
-  
-    if (loading) {
-      return (
-        <div className="loading-wrapper">
-          <div className="spinner"></div>
-          <p>Загрузка данных...</p>
-        </div>
-      );
-    }
-  
-    if (error) return <div>Ошибка: {error}</div>;
-  /// ! Завершение блока имитации загрузки 
-  // console.log(cartItems);
+  // Используем useEffect, чтобы обновить корзину при получении props.item
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        if (props.item) {
+          setCartItems(props.item);  // Обновляем состояние с новым товаром из props
+        } else {
+  }
+      } catch (err) {
+        setError("Не удалось загрузить данные");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [props.item]);
+
+  if (loading) {
+    return (
+      <div className="loading-wrapper">
+        <div className="spinner"></div>
+        <p>Загрузка данных...</p>
+      </div>
+    );
+  }
+
+  if (error) return <div>Ошибка: {error}</div>;
+
 
   return (
     <>
