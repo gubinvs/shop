@@ -12,7 +12,7 @@ import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
 const Header = () => {
     
-       const [itemBasket, setItemBasket] = useState(0);
+    const [itemBasket, setItemBasket] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const [isHoveringResults, setIsHoveringResults] = useState(false);

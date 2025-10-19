@@ -165,14 +165,14 @@ const CompanyDashboard = () => {
                     value={formData.inn}
                     onChange={(e) => handleInputChange(e, setFormData)}
                   />
-                  <label>Телефон:</label>
+                  <label>Телефон контакта:</label>
                   <input
                     type="text"
                     name="phone"
                     value={formData.phone}
                     onChange={(e) => handleInputChange(e, setFormData)}
                   />
-                  <label>Адрес:</label>
+                  <label>Адрес доставки:</label>
                   <input
                     type="text"
                     name="address"
