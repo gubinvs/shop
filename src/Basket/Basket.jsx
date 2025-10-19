@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useMemo } from "react";
 import Header from "../Header/Header.jsx";
 import "./Basket.css";
 import Cart from "./Cart.jsx";
@@ -72,29 +73,51 @@ const Basket = () => {
         localStorage.setItem("basketItem", JSON.stringify(uniqueItems));
     }, [newItem]);
 
-    // Формируем объединённую корзину из cart и search
-    const processedCard = cardItem.map(c => ({
-        id: c.id + 2000,
-        guidId: c.guidId,
-        vendorCode: c.vendorCode,
-        name: c.nameComponent,
-        price: c.price || 0,
-        quantity: c.quantity || 1,
-        image: c.basketImgPath || "",
-    }));
+    
+    // // Формируем объединённую корзину из cart и search
+    // const processedCard = cardItem.map(c => ({
+    //     id: c.id + 2000,
+    //     guidId: c.guidId,
+    //     vendorCode: c.vendorCode,
+    //     name: c.nameComponent,
+    //     price: c.price || 0,
+    //     quantity: c.quantity || 1,
+    //     image: c.basketImgPath || "",
+    // }));
 
-    const processedSearch = searchItem.map(x => ({
-        id: x.id + 3000,
-        guidId: x.guidId,
-        vendorCode: x.vendorCode,
-        name: x.name,
-        price: x.price || 0,
-        quantity: x.quantity || 1,
-        image: x.basketImgPath || "",
-    }));
+    // const processedSearch = searchItem.map(x => ({
+    //     id: x.id + 3000,
+    //     guidId: x.guidId,
+    //     vendorCode: x.vendorCode,
+    //     name: x.name,
+    //     price: x.price || 0,
+    //     quantity: x.quantity || 1,
+    //     image: x.basketImgPath || "",
+    // }));
 
-    // Финальная корзина
-    const combinedItems = [...fullBasket, ...processedCard, ...processedSearch];
+    // Объединяем корзину
+    const combinedItems = useMemo(() => {
+        return [...fullBasket, 
+                ...cardItem.map(c => ({
+                    id: c.id + 2000,
+                    guidId: c.guidId,
+                    vendorCode: c.vendorCode,
+                    name: c.nameComponent || c.name || "Без названия",
+                    price: c.price || 0,
+                    quantity: c.quantity || 1,
+                    image: c.basketImgPath || "",
+                })),
+                ...searchItem.map(x => ({
+                    id: x.id + 3000,
+                    guidId: x.guidId,
+                    vendorCode: x.vendorCode,
+                    name: x.nameComponent || x.name || "Без названия",
+                    price: x.price || 0,
+                    quantity: x.quantity || 1,
+                    image: x.basketImgPath || "",
+                }))
+        ];
+    }, [fullBasket, cardItem, searchItem]);
 
     // Сохраняем в localStorage
     useEffect(() => {

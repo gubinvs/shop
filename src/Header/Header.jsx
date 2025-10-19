@@ -110,7 +110,7 @@ const Header = () => {
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
     // Навигация
-    const indexPage = () => { window.location.href = 'https://encomponent.ru'; };
+    // const indexPage = () => { window.location.href = 'https://encomponent.ru'; };
     const basketPage = () => navigate('/Basket');
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');

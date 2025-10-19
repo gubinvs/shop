@@ -21,7 +21,7 @@ const CardComponetGroop = (param) => {
         return unique;
     });
 
-    let discount = 0; // Переменная которая будет высчитываться в зависимости от производителя 
+    // let discount = 0; // Переменная которая будет высчитываться в зависимости от производителя 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
