@@ -30,6 +30,12 @@ export function handleAddToBasket(item, countBasketItems, setNotificationText, s
         setTimeout(() => {
             setShowNotification(false);
         }, 2500);
+
+        // Обновляем страницу, если пользователь на /Basket
+        if (window.location.pathname === "/Basket") {
+            window.location.reload();
+        }
+
     } catch (error) {
         console.error("Ошибка в handleAddToBasket:", error);
     }
