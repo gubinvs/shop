@@ -37,6 +37,8 @@ const Basket = () => {
                 return res.json();
             })
             .then(data => {
+
+                
                 if (data.length > 0) {
                     const item = data[0];
                     setNewItem({
