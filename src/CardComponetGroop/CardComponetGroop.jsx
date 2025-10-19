@@ -21,6 +21,7 @@ const CardComponetGroop = (param) => {
         return unique;
     });
 
+    let discount = 0; // Переменная которая будет высчитываться в зависимости от производителя 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -39,9 +40,11 @@ const CardComponetGroop = (param) => {
                     linkPage: item.linkPage,
                     price: item.price,
                     basketImgPath: item.basketImgPath,
-                    guidId: item.guid
+                    guidId: item.guid,
+                    manufacturer: item.manufacturer
                 }));
 
+            
                 setItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0));
                 setLoading(false);
@@ -113,65 +116,90 @@ const CardComponetGroop = (param) => {
                 <h2 className="directory-groups__title">{param.h2}</h2>
             </div>
             <div className="container card-componet-groop-section__container">
-                {items.map((element, index) => (
-                    <div className="card-component" key={element.vendorCode}>
-                        <div className="card-component__top">
-                            <img
-                                src={element.imgLinkIconCard}
-                                className="card-component__img"
-                                alt={element.nameComponent || "Фото компонента"}
-                            />
-                            <div className="card-component__vendor">{element.vendorCode}</div>
-                            <div
-                                className="card-component__name"
-                                onClick={() => window.open(element.linkPage, '_blank')}
-                            >
-                                {element.nameComponent}
-                            </div>
-                        </div>
-                        <div className="card-component__bottom">
-                            <div className="cc-basket-block__delivry-block">
-                                <div
-                                    className={
-                                        element.quantity === 0
-                                            ? "delivry-block__quantity delivry-block__quantity_0"
-                                            : "delivry-block__quantity"
-                                    }
-                                >
-                                    {element.quantity === 0
-                                        ? "Под заказ"
-                                        : `Наличие: ${element.quantity} шт.`}
-                                </div>
-                            </div>
+                {items.map((element, index) => {
+                        // Определяем процент скидки в зависимости от производителя
+                        const discount =
+                            element.manufacturer === "KEAZ" ? 0.9 : // 10% скидка = умножаем на 0.9
+                            element.manufacturer === "IEK" ? 0.95 : // 5% скидка
+                            element.manufacturer === "EKF" ? 0.93 : // 7% скидка
+                            1; // без скидки
 
-                            <div className="card-component__price-block">
-                                <div className="card-component__price">
-                                    {new Intl.NumberFormat("ru-RU", {
-                                        style: "currency",
-                                        currency: "RUB",
-                                        minimumFractionDigits: 0
-                                    }).format(element.price)}
+                        return (
+                            <div className="card-component" key={element.vendorCode}>
+                                <div className="card-component__top">
+                                    <img
+                                        src={element.imgLinkIconCard}
+                                        className="card-component__img"
+                                        alt={element.nameComponent || "Фото компонента"}
+                                    />
+                                    <div className="card-component__vendor">{element.vendorCode}</div>
+                                    <div
+                                        className="card-component__name"
+                                        onClick={() => window.open(element.linkPage, "_blank")}
+                                    >
+                                        {element.nameComponent}
+                                    </div>
                                 </div>
-                                <div className="card-component__price-nalog">в т.ч. НДС</div>
-                            </div>
 
-                            <div className="card-component__basket-block">
-                                <div className="basket-block__quantity-item">
-                                    <div className="quantity-item__minus" onClick={() => handleDecrement(index)}>-</div>
-                                    <div className="quantity-item__input">{quantities[index]}</div>
-                                    <div className="quantity-item__plus" onClick={() => handleIncrement(index)}>+</div>
+                                <div className="card-component__bottom">
+                                    <div className="cc-basket-block__delivry-block">
+                                        <div
+                                            className={
+                                                element.quantity === 0
+                                                    ? "delivry-block__quantity delivry-block__quantity_0"
+                                                    : "delivry-block__quantity"
+                                            }
+                                        >
+                                            {element.quantity === 0
+                                                ? "Под заказ"
+                                                : `Наличие: ${element.quantity} шт.`}
+                                        </div>
+                                    </div>
+
+                                    <div className="card-component__price-block">
+                                        <div className="card-component__price">
+                                            {new Intl.NumberFormat("ru-RU", {
+                                                style: "currency",
+                                                currency: "RUB",
+                                                minimumFractionDigits: 0,
+                                            }).format(element.price * discount)}{" "}
+                                            {/* Применяем скидку */}
+                                        </div>
+                                        <div className="card-component__price-nalog">в т.ч. НДС</div>
+                                    </div>
+
+                                    <div className="card-component__basket-block">
+                                        <div className="basket-block__quantity-item">
+                                            <div
+                                                className="quantity-item__minus"
+                                                onClick={() => handleDecrement(index)}
+                                            >
+                                                -
+                                            </div>
+                                            <div className="quantity-item__input">
+                                                {quantities[index]}
+                                            </div>
+                                            <div
+                                                className="quantity-item__plus"
+                                                onClick={() => handleIncrement(index)}
+                                            >
+                                                +
+                                            </div>
+                                        </div>
+                                        <button
+                                            className={`basket-block__button ${
+                                                isInBasket(index) ? "added" : ""
+                                            } ${quantities[index] === 0 ? "disabled" : ""}`}
+                                            disabled={quantities[index] === 0}
+                                            onClick={() => handleAddToBasket(index)}
+                                        >
+                                            {isInBasket(index) ? "В корзине" : "В корзину"}
+                                        </button>
+                                    </div>
                                 </div>
-                                <button
-                                    className={`basket-block__button ${isInBasket(index) ? 'added' : ''} ${quantities[index] === 0 ? 'disabled' : ''}`}
-                                    disabled={quantities[index] === 0}
-                                    onClick={() => handleAddToBasket(index)}
-                                >
-                                    {isInBasket(index) ? 'В корзине' : 'В корзину'}
-                                </button>
                             </div>
-                        </div>
-                    </div>
-                ))}
+                        );
+                    })}
             </div>
         </div>
     );
