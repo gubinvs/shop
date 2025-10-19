@@ -73,7 +73,7 @@ const Basket = () => {
     const processedCard = cardItem.map(c => ({
         id: c.id + 2000,
         guidId: c.guidId,
-        vendorCode: c.vendorCode || c.vendorСode || "UNKNOWN",
+        vendorCode: c.vendorCode || c.vendorCode || "UNKNOWN",
         name: c.nameComponent || "Без названия",
         price: c.price || 0,
         quantity: c.quantity || 1,

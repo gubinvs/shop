@@ -1,4 +1,4 @@
-import ApiUrl from '../js/ApiUrl.js';
+import ApiUrl from './ApiUrl.js';
 import { v4 as uuidv4 } from 'uuid';
 
 const addOrder = async (props) => {
@@ -50,6 +50,7 @@ const addOrder = async (props) => {
 
     alert("✅ Заказ успешно оформлен!");
     localStorage.removeItem("cart");
+    localStorage.removeItem("search");
     window.location.href = "/DefineUser";
 
   } catch (error) {
