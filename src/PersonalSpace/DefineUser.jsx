@@ -5,7 +5,6 @@ import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import FullOrderInformation from "./FullOrderInformation.jsx";
 
-
 const DefineUser = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [personInfo, setPersonInfo] = useState([]);
@@ -14,12 +13,14 @@ const DefineUser = () => {
   const [error, setError] = useState(null);
   const [visibleOrder, setVisibleOrder] = useState(null);
   const [selectedOption, setSelectedOption] = useState('Собирается');
-  // Номер ордера передаваемый на сервер для изменения состояния заявки
   const [selectOrderValue, setSelectOrderValue] = useState(0);
-  var [admin, setAdmin] = useState(false);
-  
+  const [admin, setAdmin] = useState(false);
 
-  // Настройка фильтации закозов по умолчанию
+  // Пагинация
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersPerPage, setOrdersPerPage] = useState(5);
+
+  // Настройка фильтрации заказов
   const [filterStatus, setFilterStatus] = useState({
     new: true,
     payment: false,
@@ -30,29 +31,22 @@ const DefineUser = () => {
 
   const handleCheckboxChange = (status) => {
     setFilterStatus((prev) => {
-      // Если текущий статус уже выбран, сбрасываем все флажки
       if (prev[status]) {
         return { new: false, payment: false, assembling: false, delivery: false, completed: false };
       }
-
-      // В противном случае отмечаем только выбранный флажок
       return { new: false, payment: false, assembling: false, delivery: false, completed: false, [status]: true };
     });
+    setCurrentPage(1); // сбрасываем на первую страницу при смене фильтра
   };
 
-  // Раскрывает состав заказа
   const toggleFillingBlock = (orderId) => {
     setVisibleOrder((prev) => (prev === orderId ? null : orderId));
   };
-  
-  /// Преобразование числа в рубли
-  function formatCurrency(amount) {
-    const rubles = Math.floor(amount); // Целая часть числа (рубли)
-    const kopecks = Math.round((amount - rubles) * 100); // Дробная часть числа (копейки)
 
-    return `${rubles.toLocaleString("ru-RU")}.${kopecks
-      .toString()
-      .padStart(2, "0")} руб`; // Форматирование строки
+  function formatCurrency(amount) {
+    const rubles = Math.floor(amount);
+    const kopecks = Math.round((amount - rubles) * 100);
+    return `${rubles.toLocaleString("ru-RU")}.${kopecks.toString().padStart(2, "0")} руб`;
   }
 
   useEffect(() => {
@@ -62,90 +56,82 @@ const DefineUser = () => {
 
         const response = await fetch(`${ApiUrl}/api/ListOrder`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(localStorage.getItem("token")),
         });
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
-        
         setOrders(data.orders);
-        //console.log(data);
-
         setUserInfo(data.company);
-        //console.log(data.company);
-        
         setPersonInfo(data.person);
-        //console.log(data.person);
-
         setAdmin(data.person.isAdmin);
 
       } catch (err) {
         setError("Не удалось загрузить данные");
         console.error(err);
       } finally {
-       setLoading(false);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="loading-wrapper">
-        <div className="spinner"></div>
-        <p>Загрузка данных...</p>
-      </div>
-    );
-  }
-
-  if (error) return <div>Ошибка: {error}</div>;
-
-  // Отправка сообщения на сервер с номером ордера и его новым состоянием
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  const selectOrderValueChange = (event) => {
-      setSelectOrderValue(event);
-  };
+  const handleChange = (event) => setSelectedOption(event.target.value);
+  const selectOrderValueChange = (event) => setSelectOrderValue(event);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const tokenUser = localStorage.getItem("token");
-    const selectData = { tokenUser, selectedOption, selectOrderValue }; // Объект с выбранным значением
-    const selectDataJson = JSON.stringify(selectData);
-    
+    const selectData = { tokenUser, selectedOption, selectOrderValue };
     try {
       const response = await fetch(`${ApiUrl}/api/ChangeOrderStatus`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body:  (selectDataJson),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(selectData),
       });
-
-      if (!response.ok) {
-        throw new Error('Ошибка при отправке данных');
-      }
-
+      if (!response.ok) throw new Error('Ошибка при отправке данных');
       const result = await response.json();
-      //console.log('Ответ сервера:', result);
-
-      // Обновляем текущую страницу
       window.location.reload();
-
     } catch (error) {
       console.error('Ошибка:', error.message);
     }
   };
+
+  if (loading) return (
+    <div className="loading-wrapper">
+      <div className="spinner"></div>
+      <p>Загрузка данных...</p>
+    </div>
+  );
+
+  if (error) return <div>Ошибка: {error}</div>;
+
+  // Фильтруем уникальные заказы
+  const filteredOrders = orders.slice().reverse()
+    .filter((order, index, self) =>
+      index === self.findIndex((o) => o.numberOrder === order.numberOrder)
+    )
+    .filter((order) => {
+      return (
+        (filterStatus.new && order.statusOrder !== "Новый заказ") ||
+        (filterStatus.payment && order.statusOrder !== "Ожидает оплаты") ||
+        (filterStatus.assembling && order.statusOrder !== "Собирается") ||
+        (filterStatus.delivery && order.statusOrder !== "Доставляется") ||
+        (filterStatus.completed && order.statusOrder !== "Завершен")
+      ) ? false : true;
+    });
+
+  // Пагинация
+  const indexOfLastOrder = currentPage * ordersPerPage;
+  const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
+  const currentOrders = filteredOrders.slice(indexOfFirstOrder, indexOfLastOrder);
+  const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+
+  const handlePrevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
+  const handleNextPage = () => { if (currentPage < totalPages) setCurrentPage(currentPage + 1); };
 
   return (
     <>
@@ -154,168 +140,124 @@ const DefineUser = () => {
         <div className="cart-component-container cart-component-container__main-block">
           <img src="../../images/orders-page-images.jpg" className="cart-main-block__images" />
         </div>
+
         <div className="container">
           <h1>Заказы компании:</h1>
         </div>
+
         <div className="container user-info-container">
-        <div className="user-info">
-          {Array.isArray(userInfo) ? (
-            userInfo.map((com) => (
-              com.guidIdCompany == 
-              <p key={com.id || com.nameCompany}>
-                <strong>Компания:</strong> {com.nameCompany || "Нет данных о компании"}
+          <div className="user-info">
+            {Array.isArray(userInfo) ? (
+              userInfo.map((com) => (
+                <p key={com.id || com.nameCompany}>
+                  <strong>Компания:</strong> {com.nameCompany || "Нет данных о компании"}
+                </p>
+              ))
+            ) : (
+              <p>
+                <strong>Компания:</strong> {userInfo?.nameCompany || "Нет данных о компании"}
               </p>
-            ))
-          ) : (
-            <p>
-              <strong>Компания:</strong>{" "}
-              {userInfo?.nameCompany || "Нет данных о компании"}
-            </p>
-          )}
-          <p>
-            <strong>Пользователь:</strong>{" "}
-            {personInfo?.nameUser || "Нет данных о пользователе"}
-          </p>
-        </div>
+            )}
+            <p><strong>Пользователь:</strong> {personInfo?.nameUser || "Нет данных о пользователе"}</p>
+          </div>
 
           <ul className="filter-block__list">
-            <li className="filter-block__item">
-                <div><strong>Новый заказ</strong></div>
-                <input
-                type="checkbox"
-                className="filter-block__check"
-                checked={filterStatus.new}
-                onChange={() => handleCheckboxChange("new")}
-              />
-            </li>
-            <li className="filter-block__item">
-                <div><strong>Ожидает оплаты</strong></div>
-                <input
-                type="checkbox"
-                className="filter-block__check"
-                checked={filterStatus.payment}
-                onChange={() => handleCheckboxChange("payment")}
-              />
-            </li>
-             <li className="filter-block__item">
-                <div><strong>Собирается</strong></div>
+            {["new", "payment", "assembling", "delivery", "completed"].map((status) => (
+              <li key={status} className="filter-block__item">
+                <div><strong>{
+                  status === "new" ? "Новый заказ" :
+                  status === "payment" ? "Ожидает оплаты" :
+                  status === "assembling" ? "Собирается" :
+                  status === "delivery" ? "Доставляется" :
+                  "Завершен"
+                }</strong></div>
                 <input
                   type="checkbox"
                   className="filter-block__check"
-                  checked={filterStatus.assembling}
-                  onChange={() => handleCheckboxChange("assembling")}
+                  checked={filterStatus[status]}
+                  onChange={() => handleCheckboxChange(status)}
                 />
               </li>
-              <li className="filter-block__item">
-                <div><strong>Доставляется</strong></div>
-                <input
-                  type="checkbox"
-                  className="filter-block__check"
-                  checked={filterStatus.delivery}
-                  onChange={() => handleCheckboxChange("delivery")}
-                />
-              </li>
-            <li className="filter-block__item">
-              <div><strong>Завершен</strong></div>
-              <input
-                type="checkbox"
-                className="filter-block__check"
-                checked={filterStatus.completed}
-                onChange={() => handleCheckboxChange("completed")}
-              />
-            </li>
+            ))}
           </ul>
         </div>
+
         <div className="container orders-list-container">
           <div className="orders-list">
-              {orders.length === 0 ? (
-                  <p>Заказы отсутствуют</p>
-              ) : (
-                  (() => {
-                      // Множество для хранения уникальных ID
-                      const uniqueOrders = new Set(); 
-                      return orders.slice().reverse()
-                          // Отфильтровали по уникальному номеру заказа
-                          .filter((order) => {
-                              if (uniqueOrders.has(order.numberOrder)) {
-                                  return false; // Пропустить, если ID уже добавлен
-                              }
-                              uniqueOrders.add(order.numberOrder);
-                              return true; // Добавить в список для отображения
-                          })  
-                          .map((order) => {
-                            // Проверяем, скрывать ли заказ  
-                            const shouldHide =
-                              (filterStatus.new && order.statusOrder !== "Новый заказ") ||
-                              (filterStatus.payment && order.statusOrder !== "Ожидает оплаты") ||
-                              (filterStatus.assembling && order.statusOrder !== "Собирается") ||
-                              (filterStatus.delivery && order.statusOrder !== "Доставляется") ||
-                              (filterStatus.completed && order.statusOrder !== "Завершен");
-                              return (
-                                  <>
-                                    <div key={order.numberOrder} style={{ display: shouldHide ? "none" : "block" }}>
-                                        <div className="order-card" onClick={() => toggleFillingBlock(order.numberOrder)} style={{ cursor: "pointer" }}>
-                                          <div className="order-card__name">
-                                            <p><strong>Заказ №:</strong> {order.numberOrder}</p>
-                                            <p><strong>Дата:</strong> {order.dataOrder ? new Date(order.dataOrder).toLocaleDateString("ru-RU") : "Дата неизвестна"}</p>
-                                          </div>
-                                          <span className={`status ${order.statusOrder?.toLowerCase() || "unknown"}`}>{order.statusOrder || "Неизвестный статус"}</span>
-                                        </div>
-                                        {visibleOrder === order.numberOrder && (
-                                                                  <>
-                                                                    <div className="filling-block">
-                                                                                  <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>
-                                                                                  <div className="filling-order-table">
-                                                                                    <div className="filling-order-table__item filling-order-table__item_id"><strong>ID</strong></div>
-                                                                                    <div className="filling-order-table__item filling-order-table__item_vendor"><strong>Артикул</strong></div>
-                                                                                    <div className="filling-order-table__item filling-order-table__item_name"><strong>Наименование</strong></div>
-                                                                                    <div className="filling-order-table__item filling-order-table__item_quantity"><strong>Кол-во</strong></div>
-                                                                                    <div className="filling-order-table__item filling-order-table__item_price"><strong>Цена</strong></div>
-                                                                                  </div>
-                                                                          
-                                                                        {orders.map((item) => (order.numberOrder === item.numberOrder ? 
-                                                                                                    <div key={item.id} className="filling-order-table">
-                                                                                                      <div className="filling-order-table__item filling-order-table__item_id">
-                                                                                                        {item.id}
-                                                                                                      </div>
-                                                                                                      <div className="filling-order-table__item filling-order-table__item_vendor">
-                                                                                                        {item.vendorCode}
-                                                                                                      </div>
-                                                                                                      <div className="filling-order-table__item filling-order-table__item_name">
-                                                                                                        {item.nameItem}
-                                                                                                      </div>
-                                                                                                      <div className="filling-order-table__item filling-order-table__item_quantity">
-                                                                                                        {item.quantityItem}
-                                                                                                      </div>
-                                                                                                      <div className="filling-order-table__item filling-order-table__item_price">
-                                                                                                        {formatCurrency(item.priceItem * item.quantityItem)}
-                                                                                                      </div>
-                                                                                                    </div>
-                                                                                                    : ""
-                                                                                                  ))}
-                                                                      </div>
-                                                                      <div className="admin-block" style={admin===false ? {display: "none"} : {display: "flex"} }>
-                                                                        <button className="admin-block__button" onClick={() => FullOrderInformation(order.numberOrder)}>Полная информация о заказе</button>
-                                                                        <form className="admin-block__select-block" onSubmit={handleSubmit}>
-                                                                            <select className="admin-block__select" id="select" value={selectedOption} onChange={handleChange}>
-                                                                                  <option className="admin-block__option" value="Ожидает оплаты">Ожидает оплаты</option>
-                                                                                  <option className="admin-block__option" value="Собирается">Собирается</option>
-                                                                                  <option className="admin-block__option" value="Доставляется">Доставляется</option>
-                                                                                  <option className="admin-block__option" value="Завершен">Завершен</option>
-                                                                            </select>
-                                                                            <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
-                                                                        </form>
-                                                                      </div>
-                                                                  </>
-                                          
-                                        )}
-                                    </div>
-                                  </>
-                              );
-                          });
-                  })()
-              )}
+            {currentOrders.length === 0 ? (
+              <p>Заказы отсутствуют</p>
+            ) : currentOrders.map((order) => {
+              const shouldHide =
+                (filterStatus.new && order.statusOrder !== "Новый заказ") ||
+                (filterStatus.payment && order.statusOrder !== "Ожидает оплаты") ||
+                (filterStatus.assembling && order.statusOrder !== "Собирается") ||
+                (filterStatus.delivery && order.statusOrder !== "Доставляется") ||
+                (filterStatus.completed && order.statusOrder !== "Завершен");
+              return (
+                <div key={order.numberOrder} style={{ display: shouldHide ? "none" : "block" }}>
+                  <div className="order-card" onClick={() => toggleFillingBlock(order.numberOrder)} style={{ cursor: "pointer" }}>
+                    <div className="order-card__name">
+                      <p><strong>Заказ №:</strong> {order.numberOrder}</p>
+                      <p><strong>Дата:</strong> {order.dataOrder ? new Date(order.dataOrder).toLocaleDateString("ru-RU") : "Дата неизвестна"}</p>
+                    </div>
+                    <span className={`status ${order.statusOrder?.toLowerCase() || "unknown"}`}>{order.statusOrder || "Неизвестный статус"}</span>
+                  </div>
+
+                  {visibleOrder === order.numberOrder && (
+                    <>
+                      <div className="filling-block">
+                        <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>
+                        <div className="filling-order-table">
+                          <div className="filling-order-table__item filling-order-table__item_id"><strong>ID</strong></div>
+                          <div className="filling-order-table__item filling-order-table__item_vendor"><strong>Артикул</strong></div>
+                          <div className="filling-order-table__item filling-order-table__item_name"><strong>Наименование</strong></div>
+                          <div className="filling-order-table__item filling-order-table__item_quantity"><strong>Кол-во</strong></div>
+                          <div className="filling-order-table__item filling-order-table__item_price"><strong>Цена</strong></div>
+                        </div>
+
+                        {orders.map((item) => order.numberOrder === item.numberOrder ? (
+                          <div key={item.id} className="filling-order-table">
+                            <div className="filling-order-table__item filling-order-table__item_id">{item.id}</div>
+                            <div className="filling-order-table__item filling-order-table__item_vendor">{item.vendorCode}</div>
+                            <div className="filling-order-table__item filling-order-table__item_name">{item.nameItem}</div>
+                            <div className="filling-order-table__item filling-order-table__item_quantity">{item.quantityItem}</div>
+                            <div className="filling-order-table__item filling-order-table__item_price">{formatCurrency(item.priceItem * item.quantityItem)}</div>
+                          </div>
+                        ) : null)}
+                      </div>
+
+                      <div className="admin-block" style={admin ? {display: "flex"} : {display: "none"}}>
+                        <button className="admin-block__button" onClick={() => FullOrderInformation(order.numberOrder)}>Полная информация о заказе</button>
+                        <form className="admin-block__select-block" onSubmit={handleSubmit}>
+                          <select className="admin-block__select" value={selectedOption} onChange={handleChange}>
+                            <option value="Ожидает оплаты">Ожидает оплаты</option>
+                            <option value="Собирается">Собирается</option>
+                            <option value="Доставляется">Доставляется</option>
+                            <option value="Завершен">Завершен</option>
+                          </select>
+                          <button className="admin-block__button" type="submit" onClick={() => selectOrderValueChange(order.numberOrder)}>Изменить статус заказа</button>
+                        </form>
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
+
+          {/* Пагинация */}
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button onClick={handlePrevPage} disabled={currentPage === 1}>Предыдущая</button>
+              <span> Страница {currentPage} из {totalPages} </span>
+              <button onClick={handleNextPage} disabled={currentPage === totalPages}>Следующая</button>
+              <select value={ordersPerPage} onChange={(e) => { setOrdersPerPage(Number(e.target.value)); setCurrentPage(1); }}>
+                <option value={5}>5 на странице</option>
+                <option value={10}>10 на странице</option>
+                <option value={20}>20 на странице</option>
+              </select>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

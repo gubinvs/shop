@@ -12,7 +12,7 @@ import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
 const Header = () => {
     
-    const [itemBasket, setItemBasket] = useState(0);
+       const [itemBasket, setItemBasket] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const [isHoveringResults, setIsHoveringResults] = useState(false);
@@ -20,17 +20,16 @@ const Header = () => {
     const [isCatalogVisible, setCatalogVisible] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
     const [notificationText, setNotificationText] = useState("");
-    
 
     const navigate = useNavigate();
     const location = useLocation();
     const catalogRef = useRef(null);
     const catalogButtonRef = useRef(null);
 
+    // Функция подсчета товаров в корзине
     const countBasketItems = () => {
         let totalCount = 0;
-        const keys = ["basketItem"];
-
+        const keys = ["cart", "search"];
         keys.forEach(key => {
             const item = localStorage.getItem(key);
             if (item) {
@@ -42,21 +41,31 @@ const Header = () => {
                 }
             }
         });
-
         setItemBasket(totalCount);
     };
 
+    // Перехватываем setItem для отслеживания изменений в текущей вкладке
     useEffect(() => {
+        const originalSetItem = localStorage.setItem;
+        localStorage.setItem = function(key, value) {
+            originalSetItem.apply(this, [key, value]);
+            if (["cart", "search"].includes(key)) {
+                countBasketItems();
+            }
+        };
+
+        // Первоначальный подсчёт
         countBasketItems();
 
+        // Событие изменения localStorage в других вкладках
         const handleStorageChange = (event) => {
-            if (["basketItem"].includes(event.key)) {
+            if (["cart", "search"].includes(event.key)) {
                 countBasketItems();
             }
         };
         window.addEventListener("storage", handleStorageChange);
 
-        // Close catalog when clicking outside
+        // Закрытие каталога при клике вне
         const handleClickOutside = (event) => {
             if (
                 catalogRef.current && !catalogRef.current.contains(event.target) &&
@@ -65,15 +74,16 @@ const Header = () => {
                 setCatalogVisible(false);
             }
         };
-
         document.addEventListener("click", handleClickOutside);
 
         return () => {
             window.removeEventListener("storage", handleStorageChange);
             document.removeEventListener("click", handleClickOutside);
+            localStorage.setItem = originalSetItem; // восстанавливаем
         };
     }, []);
 
+    // Обработка поиска
     const handleInputChange = async (e) => {
         const value = e.target.value;
         setSearchTerm(value);
@@ -99,21 +109,21 @@ const Header = () => {
 
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
-        //const indexPage = () => {window.location.href = 'https://encomponent.ru'};
-        const basketPage = () => navigate('/Basket');
-        const orderPage = () => navigate('/DefineUser');
-        const companyDashboard = () => navigate('/CompanyDashboard');
-        const toggleCatalog = () => setCatalogVisible(prev => !prev);
-        const ClearToken = () => {
-            
-        localStorage.clear("token");// Очиста localStorage("token"); Выход из системы
-        window.location.href="/";
+    // Навигация
+    const indexPage = () => { window.location.href = 'https://encomponent.ru'; };
+    const basketPage = () => navigate('/Basket');
+    const orderPage = () => navigate('/DefineUser');
+    const companyDashboard = () => navigate('/CompanyDashboard');
+    const toggleCatalog = () => setCatalogVisible(prev => !prev);
 
-    }; 
+    const ClearToken = () => {
+        localStorage.removeItem("token"); // удаляем только токен
+        window.location.href="/";
+    };
 
     // Переход на страницу товара
     const GoToPageComp = (link) => {
-        window.location.href=link;
+        window.location.href = link;
     };
 
 

@@ -6,18 +6,21 @@ const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
     const [quantities, setQuantities] = useState([]);
     const [basket, setBasket] = useState(() => {
-        // 🧠 читаем только два ключа: cart и search
+        // 🧠 при первом рендере объединяем cart и search
         const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
         const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
 
-        // объединяем, убираем дубли по vendorCode
+        // объединяем без дубликатов
         const merged = [...fromCart, ...fromSearch];
         const unique = merged.filter(
             (v, i, a) => a.findIndex(t => t.vendorCode === v.vendorCode) === i
         );
 
+        // сохраняем объединённый результат только в cart
+        localStorage.setItem('cart', JSON.stringify(unique));
         return unique;
     });
+
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -49,12 +52,9 @@ const CardComponetGroop = (param) => {
             });
     }, [param.api]);
 
-    // 🔁 синхронизация — обновляем только cart и search
+    // 🔁 синхронизация — теперь только cart
     useEffect(() => {
-        if (basket && basket.length) {
-            localStorage.setItem('cart', JSON.stringify(basket));
-            localStorage.setItem('search', JSON.stringify(basket));
-        }
+        localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
 
     const handleIncrement = (index) => {

@@ -1,79 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import "./Cart.css";
 import addOrder from './AddOrder.js';
-import {formatPrice} from "../js/formatPrice.js";
+import { formatPrice } from "../js/formatPrice.js";
 
 const Cart = (props) => {
   const [cartItems, setCartItems] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false); // новое состояние
+  const [error, setError] = useState(null);
 
-  //  функия удаляет дубли по id
-  //const uniqueItems = Array.from(new Map(cartItems.map(item => [item.id, item])).values());
-
-  // Функция для удаления товара
   const removeItem = (id) => {
     setCartItems(cartItems.filter(item => item.id !== id));
   };
 
-  // Функция для обновления количества товара
   const updateQuantity = (id, quantity) => {
     setCartItems(cartItems.map(item => 
       item.id === id ? { ...item, quantity: Math.max(quantity, 1) } : item
     ));
   };
 
-  // Функция для расчета общей суммы
   const calculateTotal = () => {
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const shipping = 5.00; // фиксированная доставка
-    const tax = subtotal * 0.20; // например, налог 20%
-    return { subtotal, shipping, tax, total: subtotal  + shipping + tax };
+    const shipping = 5.00;
+    const tax = subtotal * 0.20;
+    return { subtotal, shipping, tax, total: subtotal + shipping + tax };
   };
 
-  const {subtotal, tax} = calculateTotal();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { subtotal, tax } = calculateTotal();
 
-
-
-  // Используем useEffect, чтобы обновить корзину при получении props.item
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        if (props.item) {
-          setCartItems(props.item);  // Обновляем состояние с новым товаром из props
-        } else {
-  }
-      } catch (err) {
-        setError("Не удалось загрузить данные");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    if (props.item) setCartItems(props.item);
   }, [props.item]);
 
-  if (loading) {
-    return (
-      <div className="loading-wrapper">
-        <div className="spinner"></div>
-        <p>Загрузка данных...</p>
-      </div>
-    );
-  }
-
-  if (error) return <div>Ошибка: {error}</div>;
-
+  const handleOrder = async () => {
+    setIsSubmitting(true);
+    try {
+      await addOrder(cartItems);
+    } catch (err) {
+      setError("Не удалось оформить заказ.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
-      <div className="cart-component-container cart-component-container__main-block">
-        <img src="../../images/basket-page-img.jpg" className="cart-main-block__images" alt="Компания"/>
-        <div className="cart-main-block__slogan-block">
-          <div className="cart-main-block__slogan">Товары готовы отправиться к Вам!</div>
-        </div>
-      </div>
       <div className="cart-component-container">
         <h1>Комплектация заказа:</h1>
         <div className="cart-items">
@@ -88,12 +58,13 @@ const Cart = (props) => {
                 <p>{formatPrice(item.price)}</p>
               </div>
               <div className="cart-item-actions">
-                <button onClick={() => removeItem(item.id)}>Удалить</button>
+                <button onClick={() => removeItem(item.id)} disabled={isSubmitting}>Удалить</button>
                 <input 
                   type="number" 
                   value={item.quantity} 
                   min="1"
                   onChange={(e) => updateQuantity(item.id, parseInt(e.target.value, 10))}
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -101,13 +72,23 @@ const Cart = (props) => {
         </div>
 
         <div className="summary">
-          <div className="total" style={{ fontWeight: 'bold' }}>
-            <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
-          </div>
-          <div className="total">
-            <span>В том числе, НДС 20%</span><span>{formatPrice(tax)}</span>
-          </div>
-          <button className="checkout-button" onClick={() => addOrder(cartItems)}>Оформить заказ</button>
+            <div className="total" style={{ fontWeight: 'bold' }}>
+              <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
+            </div>
+            <div className="total">
+              <span>В том числе, НДС 20%</span><span>{formatPrice(tax)}</span>
+            </div>
+            <button 
+              className="checkout-button" 
+              onClick={handleOrder} 
+              disabled={isSubmitting || cartItems.length === 0}
+            >
+              {isSubmitting ? "Оформление заказа..." : "Оформить заказ"}
+            </button>
+            {isSubmitting && (
+              <p style={{ marginTop: "10px", color: "#555" }}>Идет оформление заказа, подождите...</p>
+            )}
+            {error && <p className="error">{error}</p>}
         </div>
       </div>
     </>
