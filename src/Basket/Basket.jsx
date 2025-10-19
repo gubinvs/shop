@@ -21,8 +21,12 @@ const Basket = () => {
         }
     };
 
+    
     const cardItem = getParsedLocalStorage("cart");
     const searchItem = getParsedLocalStorage("search");
+
+    console.log(cardItem);
+    console.log(searchItem);
 
     // Загружаем товар по vendorCode из URL
     useEffect(() => {
@@ -86,7 +90,7 @@ const Basket = () => {
         id: x.id + 3000,
         guidId: x.guidId,
         vendorCode: x.vendorCode,
-        name: x.nameComponent,
+        name: x.name,
         price: x.price || 0,
         quantity: x.quantity || 1,
         image: x.basketImgPath || "",
