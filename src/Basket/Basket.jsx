@@ -42,8 +42,8 @@ const Basket = () => {
                     setNewItem({
                         id: item.Id + 1000,
                         guidId: item.Guid,
-                        vendorCode: item.VendorCode || "UNKNOWN",
-                        name: item.NameComponent || "Без названия",
+                        vendorCode: item.VendorCode,
+                        name: item.NameComponent,
                         price: item.Price || 0,
                         quantity: 1,
                         image: item.ImgLinkIconCard || "",
