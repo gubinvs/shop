@@ -72,9 +72,18 @@ const RegistrationForm = () => {
               style={{ display: "none" }}
               autoComplete="off"
             />
-            <button type="submit" className="button">
+            <button type="submit" className="button button__regitration">
               Зарегистрироваться
             </button>
+                 {/* Политика ОПД */}
+            <div className="check-box">
+                <input className="check-box__input" type="checkbox" name="chekBox" required />
+                <div className="check-box__discr">
+                    Даю согласие на обработку персональных данных согласно
+                    <a href="https://encomponent.ru/pp-page.html"> Политике ОПД</a>
+                </div>
+                <input type="hidden" name="active-form" value="massage" />
+            </div>
           </form>
         </div>
       </div>
@@ -125,10 +134,10 @@ const RegistrationForm = () => {
           </form>
         </div>
         <div className="form-block form block-message">
-          <h2>{message}</h2>
-          <button onClick={handleRedirect} type="submit" className="button">
-            Пройдите авторизацию
-          </button>
+            <h2>{message}</h2>
+            <button onClick={handleRedirect} type="submit" className="button">
+              Пройдите авторизацию
+            </button>
         </div>
       </div>
     );

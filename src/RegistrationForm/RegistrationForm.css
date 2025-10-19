@@ -55,3 +55,22 @@
 .button:not(:last-of-type) {
   margin-bottom: 20px;
 }
+
+.button__regitration {
+  margin-bottom: 20px;
+}
+
+.check-box {
+  display: flex;
+  align-items: flex-start;
+}
+
+.check-box__discr {
+    text-align: left;
+    font-size: 12px;
+
+}
+
+.check-box__input  {
+  margin-right: 10px;
+}
