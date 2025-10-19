@@ -1,0 +1,33 @@
+.orders-list {
+    margin-bottom: 40px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.pagination__button {
+    height: 40px;
+    border: 1px solid #F5EA29;
+    border-radius: 4px;
+    background-color: #F5EA29;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pagination__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.pagination__select {
+    width: 180px;
+    border: 1px solid #F5EA29;
+}

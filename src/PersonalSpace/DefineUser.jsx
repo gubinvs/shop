@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./defineUser.css";
 import ApiUrl from '../js/ApiUrl.js';
 import "./PersonalSpace.css";
 import Header from "../Header/Header.jsx";
@@ -248,10 +249,10 @@ const DefineUser = () => {
           {/* Пагинация */}
           {totalPages > 1 && (
             <div className="pagination">
-              <button onClick={handlePrevPage} disabled={currentPage === 1}>Предыдущая</button>
-              <span> Страница {currentPage} из {totalPages} </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages}>Следующая</button>
-              <select value={ordersPerPage} onChange={(e) => { setOrdersPerPage(Number(e.target.value)); setCurrentPage(1); }}>
+              <button className="pagination__button" onClick={handlePrevPage} disabled={currentPage === 1}>Предыдущая</button>
+              <span className="pagination__info"> Страница {currentPage} из {totalPages} </span>
+              <button className="pagination__button" onClick={handleNextPage} disabled={currentPage === totalPages}>Следующая</button>
+              <select className="pagination__select" value={ordersPerPage} onChange={(e) => { setOrdersPerPage(Number(e.target.value)); setCurrentPage(1); }}>
                 <option value={5}>5 на странице</option>
                 <option value={10}>10 на странице</option>
                 <option value={20}>20 на странице</option>
