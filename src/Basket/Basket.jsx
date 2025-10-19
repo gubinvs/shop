@@ -21,12 +21,9 @@ const Basket = () => {
         }
     };
 
-    
+
     const cardItem = getParsedLocalStorage("cart");
     const searchItem = getParsedLocalStorage("search");
-
-    console.log(cardItem);
-    console.log(searchItem);
 
     // Загружаем товар по vendorCode из URL
     useEffect(() => {
