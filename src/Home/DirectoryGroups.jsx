@@ -2,7 +2,7 @@ import React from 'react';
 import './DirectoryGroups.css';
 import { 
     chapterMa, chapterBp, chapterK, chapterSch, 
-    chapterPlk, chapterMplk, chapterSl, chapterUps, 
+    chapterPlk, chapterMplk,
     OpenSection 
 } from "../js/LinkSectionGroup.js";
 
@@ -23,7 +23,7 @@ const DirectoryGroups = () => {
                     </div>
                 </div>
                 <div className="dg-card dg-card4 hvr-grow-shadow" onClick={() => OpenSection(chapterSch)}>
-                    <div className="dg-card__title dg-card__title_card4">Типовые решения НКУ</div>
+                    <div className="dg-card__title dg-card__title_card4">Силовые автоматические выключатели</div>
                 </div>
                 <div className="dg-card__groop">
                     <div className="dg-card dg-card5 hvr-grow-shadow" onClick={() => OpenSection(chapterPlk)}>

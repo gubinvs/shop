@@ -4,7 +4,7 @@
 export const chapterMa = "Модульные автоматы";
 export const chapterBp = "Блоки питания";
 export const chapterK = "Клеммы и провода";
-export const chapterSch = "Типовые решения";
+export const chapterSch = "Силовые автоматические выключатели";
 export const chapterPlk = "Программируемые контроллеры";
 export const chapterMplk = "Модули расширения";
 export const chapterSl = "Сигнальные лампы";

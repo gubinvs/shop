@@ -68,6 +68,7 @@
     width: 100%;
     height: 320px;
     margin-right: 20px;
+    /* background-image: url(../../public/images/img-groop/section_card4_img_1920.png); */
     background-image: url(../../public/images/img-groop/section_card4_img_1920.png);
     background-position: right 10px top 10px;
 }
