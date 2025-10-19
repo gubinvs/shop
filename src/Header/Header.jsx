@@ -207,19 +207,34 @@ const Header = () => {
                                         onMouseLeave={() => setIsHoveringResults(false)}
                                     >
                                         <ul className="search-result__list">
-                                            {searchResults.map((result, index) => (
-                                                <li key={index} className="search-result__item">
-                                                    <div className="search-result-item__info" onClick={()=>GoToPageComp(result.linkPage)}>
-                                                        {result.vendorCode} - {result.name}
-                                                    </div>
-                                                    <button
-                                                        className="search-result-item__add-button"
-                                                        onClick={() => handleAddToBasket(result, countBasketItems, setNotificationText, setShowNotification)}
-                                                    >
-                                                        В корзину
-                                                    </button>
-                                                </li>
-                                            ))}
+                                            {searchResults.map((result, index) => {
+                                                    // Проверяем, есть ли товар в корзине
+                                                    let cartItems = [];
+                                                    const cartData = localStorage.getItem("cart");
+                                                    if (cartData) {
+                                                        try {
+                                                            cartItems = JSON.parse(cartData);
+                                                        } catch (error) {
+                                                            console.error("Ошибка парсинга cart:", error);
+                                                        }
+                                                    }
+
+                                                    const isInCart = cartItems.some(item => item.vendorCode === result.vendorCode);
+
+                                                    return (
+                                                        <li key={index} className="search-result__item">
+                                                            <div className="search-result-item__info" onClick={() => GoToPageComp(result.linkPage)}>
+                                                                {result.vendorCode} - {result.name}
+                                                            </div>
+                                                            <button
+                                                                className={`search-result-item__add-button ${isInCart ? 'in-cart' : ''}`}
+                                                                onClick={() => handleAddToBasket(result, countBasketItems, setNotificationText, setShowNotification)}
+                                                            >
+                                                                {isInCart ? 'В корзине' : 'В корзину'}
+                                                            </button>
+                                                        </li>
+                                                    );
+                                                })}
                                         </ul>
                                     </div>
                                 )}
