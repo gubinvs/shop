@@ -73,8 +73,8 @@ const Basket = () => {
     const processedCard = cardItem.map(c => ({
         id: c.id + 2000,
         guidId: c.guidId,
-        vendorCode: c.vendorCode || c.vendorCode || "UNKNOWN",
-        name: c.nameComponent || "Без названия",
+        vendorCode: c.vendorCode,
+        name: c.nameComponent,
         price: c.price || 0,
         quantity: c.quantity || 1,
         image: c.basketImgPath || "",
@@ -83,8 +83,8 @@ const Basket = () => {
     const processedSearch = searchItem.map(x => ({
         id: x.id + 3000,
         guidId: x.guidId,
-        vendorCode: x.vendorCode || "UNKNOWN",
-        name: x.name || "Без названия",
+        vendorCode: x.vendorCode,
+        name: x.nameComponent,
         price: x.price || 0,
         quantity: x.quantity || 1,
         image: x.basketImgPath || "",
