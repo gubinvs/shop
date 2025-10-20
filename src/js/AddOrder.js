@@ -51,6 +51,7 @@ const addOrder = async (props) => {
     alert("✅ Заказ успешно оформлен!");
     localStorage.removeItem("cart");
     localStorage.removeItem("search");
+    localStorage.removeItem("basketItem");
     window.location.href = "/DefineUser";
 
   } catch (error) {

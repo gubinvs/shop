@@ -28,20 +28,31 @@ const Header = () => {
 
     // Функция подсчета товаров в корзине
     const countBasketItems = () => {
-        let totalCount = 0;
-        const keys = ["cart", "search"];
+        const keys = ["cart", "search", "basketItem"];
+        const allItems = [];
+
         keys.forEach(key => {
             const item = localStorage.getItem(key);
             if (item) {
                 try {
                     const parsed = JSON.parse(item);
-                    totalCount += Array.isArray(parsed) ? parsed.length : 0;
+                    if (Array.isArray(parsed)) {
+                        allItems.push(...parsed);
+                    }
                 } catch (error) {
                     console.error(`Ошибка парсинга ${key}:`, error);
                 }
             }
         });
-        setItemBasket(totalCount);
+
+        // убираем дубли по guidId (или vendorCode, если guidId нет)
+        const uniqueItems = Array.from(
+            new Map(
+                allItems.map(i => [i.guidId || i.vendorCode, i])
+            ).values()
+        );
+
+        setItemBasket(uniqueItems.length);
     };
 
     // Перехватываем setItem для отслеживания изменений в текущей вкладке

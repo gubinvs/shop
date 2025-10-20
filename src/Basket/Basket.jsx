@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect, useMemo } from "react";
 import Header from "../Header/Header.jsx";
 import "./Basket.css";
 import Cart from "./Cart.jsx";
-import ApiUrl from '../js/ApiUrl.js';
+import ApiUrl from "../js/ApiUrl.js";
 
 const Basket = () => {
     const [fullBasket, setFullBasket] = useState([]);
@@ -22,11 +21,10 @@ const Basket = () => {
         }
     };
 
-
     const cardItem = getParsedLocalStorage("cart");
     const searchItem = getParsedLocalStorage("search");
 
-    // Загружаем товар по vendorCode из URL
+    // Загрузка товара по vendorCode из URL
     useEffect(() => {
         if (!param) return;
 
@@ -34,13 +32,11 @@ const Basket = () => {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })
-            .then(res => {
+            .then((res) => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 return res.json();
             })
-            .then(data => {
-
-                
+            .then((data) => {
                 if (data.length > 0) {
                     const item = data[0];
                     setNewItem({
@@ -54,10 +50,10 @@ const Basket = () => {
                     });
                 }
             })
-            .catch(err => console.log("Ошибка получения данных:", err));
+            .catch((err) => console.log("Ошибка получения данных:", err));
     }, [param]);
 
-    // Обновляем корзину при добавлении нового товара
+    // Добавление нового товара в basketItem
     useEffect(() => {
         if (!newItem) return;
 
@@ -66,67 +62,52 @@ const Basket = () => {
 
         // Убираем дубли по guidId
         const uniqueItems = Array.from(
-            new Map(updatedBasket.map(item => [item.guidId, item])).values()
+            new Map(updatedBasket.map((item) => [item.guidId, item])).values()
         );
 
         setFullBasket(uniqueItems);
         localStorage.setItem("basketItem", JSON.stringify(uniqueItems));
     }, [newItem]);
 
-    
-    // // Формируем объединённую корзину из cart и search
-    // const processedCard = cardItem.map(c => ({
-    //     id: c.id + 2000,
-    //     guidId: c.guidId,
-    //     vendorCode: c.vendorCode,
-    //     name: c.nameComponent,
-    //     price: c.price || 0,
-    //     quantity: c.quantity || 1,
-    //     image: c.basketImgPath || "",
-    // }));
+    // Загружаем текущую корзину при монтировании
+    useEffect(() => {
+        const savedBasket = getParsedLocalStorage("basketItem");
+        setFullBasket(savedBasket);
+    }, []);
 
-    // const processedSearch = searchItem.map(x => ({
-    //     id: x.id + 3000,
-    //     guidId: x.guidId,
-    //     vendorCode: x.vendorCode,
-    //     name: x.name,
-    //     price: x.price || 0,
-    //     quantity: x.quantity || 1,
-    //     image: x.basketImgPath || "",
-    // }));
-
-    // Объединяем корзину
+    // Объединяем все источники для отображения (но не сохраняем)
     const combinedItems = useMemo(() => {
-        return [...fullBasket, 
-                ...cardItem.map(c => ({
-                    id: c.id + 2000,
-                    guidId: c.guidId,
-                    vendorCode: c.vendorCode,
-                    name: c.nameComponent || c.name || "Без названия",
-                    price: c.price || 0,
-                    quantity: c.quantity || 1,
-                    image: c.basketImgPath || "",
-                })),
-                ...searchItem.map(x => ({
-                    id: x.id + 3000,
-                    guidId: x.guidId,
-                    vendorCode: x.vendorCode,
-                    name: x.nameComponent || x.name || "Без названия",
-                    price: x.price || 0,
-                    quantity: x.quantity || 1,
-                    image: x.basketImgPath || "",
-                }))
+        const allItems = [
+            ...fullBasket,
+            ...cardItem.map((c) => ({
+                id: c.id + 2000,
+                guidId: c.guidId,
+                vendorCode: c.vendorCode,
+                name: c.nameComponent || c.name || "Без названия",
+                price: c.price || 0,
+                quantity: c.quantity || 1,
+                image: c.basketImgPath || "",
+            })),
+            ...searchItem.map((x) => ({
+                id: x.id + 3000,
+                guidId: x.guidId,
+                vendorCode: x.vendorCode,
+                name: x.nameComponent || x.name || "Без названия",
+                price: x.price || 0,
+                quantity: x.quantity || 1,
+                image: x.basketImgPath || "",
+            })),
         ];
+
+        // Убираем дубли по guidId
+        return Array.from(new Map(allItems.map((i) => [i.guidId, i])).values());
     }, [fullBasket, cardItem, searchItem]);
 
-    // Сохраняем в localStorage
-    useEffect(() => {
-        localStorage.setItem("basketItem", JSON.stringify(combinedItems));
-    }, [combinedItems]);
+    console.log("combinedItems:", combinedItems);
 
     return (
         <>
-            <Header />  
+            <Header />
             <Cart item={combinedItems} />
         </>
     );
