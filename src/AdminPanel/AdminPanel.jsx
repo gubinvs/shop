@@ -9,9 +9,7 @@ const AdminPanel =()=> {
 
     return(
         <>
-
             <UploadManufacturerForm />
-
         </>
     );
 
