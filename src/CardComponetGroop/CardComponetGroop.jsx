@@ -44,7 +44,7 @@ const CardComponetGroop = (param) => {
                     manufacturer: item.manufacturer
                 }));
 
-            
+            console.log(data);
                 setItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0));
                 setLoading(false);
