@@ -19,7 +19,7 @@ const DirectoryGroups = () => {
                         <div className="dg-card__title">Блоки питания</div>
                     </div>
                     <div className="dg-card dg-card3 hvr-grow-shadow" onClick={() => OpenSection(chapterK)}>
-                        <div className="dg-card__title">Клеммы и ...</div>
+                        <div className="dg-card__title">Средства монтажа</div>
                     </div>
                 </div>
                 <div className="dg-card dg-card4 hvr-grow-shadow" onClick={() => OpenSection(chapterSch)}>
@@ -27,7 +27,7 @@ const DirectoryGroups = () => {
                 </div>
                 <div className="dg-card__groop">
                     <div className="dg-card dg-card5 hvr-grow-shadow" onClick={() => OpenSection(chapterPlk)}>
-                        <div className="dg-card__title dg-card__title_dg-card5">Логические контроллеры</div>
+                        <div className="dg-card__title dg-card__title_dg-card5">Программируемые контроллеры</div>
                     </div>
                     <div className="dg-card dg-card6 hvr-grow-shadow" onClick={() => OpenSection(chapterMplk)}>
                         <div className="dg-card__title dg-card__title_dg-card5">Модули расширения</div>

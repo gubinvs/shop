@@ -6,23 +6,20 @@ const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
     const [quantities, setQuantities] = useState([]);
     const [basket, setBasket] = useState(() => {
-        // 🧠 при первом рендере объединяем cart и search
         const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
         const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
-
-        // объединяем без дубликатов
         const merged = [...fromCart, ...fromSearch];
         const unique = merged.filter(
             (v, i, a) => a.findIndex(t => t.vendorCode === v.vendorCode) === i
         );
-
-        // сохраняем объединённый результат только в cart
         localStorage.setItem('cart', JSON.stringify(unique));
         return unique;
     });
-
-    // let discount = 0; // Переменная которая будет высчитываться в зависимости от производителя 
     const [loading, setLoading] = useState(true);
+
+    // Пагинация
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(8); // по умолчанию 8 на странице
 
     useEffect(() => {
         fetch(ApiUrl + param.api, {
@@ -43,8 +40,6 @@ const CardComponetGroop = (param) => {
                     guidId: item.guid,
                     manufacturer: item.manufacturer
                 }));
-
-            console.log(data);
                 setItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0));
                 setLoading(false);
@@ -55,7 +50,6 @@ const CardComponetGroop = (param) => {
             });
     }, [param.api]);
 
-    // 🔁 синхронизация — теперь только cart
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
@@ -68,10 +62,8 @@ const CardComponetGroop = (param) => {
 
     const handleDecrement = (index) => {
         const newQuantities = [...quantities];
-        if (newQuantities[index] > 0) {
-            newQuantities[index]--;
-            setQuantities(newQuantities);
-        }
+        if (newQuantities[index] > 0) newQuantities[index]--;
+        setQuantities(newQuantities);
     };
 
     const handleAddToBasket = (index) => {
@@ -97,9 +89,16 @@ const CardComponetGroop = (param) => {
         }
     };
 
-    const isInBasket = (index) => {
-        return basket.some(item => item.vendorCode === items[index].vendorCode);
-    };
+    const isInBasket = (index) => basket.some(item => item.vendorCode === items[index].vendorCode);
+
+    // Пагинация
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+
+    const handlePrevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
+    const handleNextPage = () => { if (currentPage < totalPages) setCurrentPage(currentPage + 1); };
 
     if (loading) {
         return (
@@ -116,91 +115,72 @@ const CardComponetGroop = (param) => {
                 <h2 className="directory-groups__title">{param.h2}</h2>
             </div>
             <div className="container card-componet-groop-section__container">
-                {items.map((element, index) => {
-                        // Определяем процент скидки в зависимости от производителя
-                        const discount =
-                            element.manufacturer === "KEAZ" ? 0.9 : // 10% скидка = умножаем на 0.9
-                            element.manufacturer === "IEK" ? 0.95 : // 5% скидка
-                            element.manufacturer === "EKF" ? 0.93 : // 7% скидка
-                            1; // без скидки
+                {currentItems.map((element, index) => {
+                    const globalIndex = indexOfFirstItem + index; // ⚡ корректный глобальный индекс
+                    const discount =
+                        element.manufacturer === "KEAZ" ? 0.9 :
+                        element.manufacturer === "IEK" ? 0.95 :
+                        element.manufacturer === "EKF" ? 0.93 :
+                        1;
 
-                        return (
-                            <div className="card-component" key={element.vendorCode}>
-                                <div className="card-component__top">
-                                    <img
-                                        src={element.imgLinkIconCard}
-                                        className="card-component__img"
-                                        alt={element.nameComponent || "Фото компонента"}
-                                    />
-                                    <div className="card-component__vendor">{element.vendorCode}</div>
-                                    <div
-                                        className="card-component__name"
-                                        onClick={() => window.open(element.linkPage, "_blank")}
-                                    >
-                                        {element.nameComponent}
-                                    </div>
-                                </div>
-
-                                <div className="card-component__bottom">
-                                    <div className="cc-basket-block__delivry-block">
-                                        <div
-                                            className={
-                                                element.quantity === 0
-                                                    ? "delivry-block__quantity delivry-block__quantity_0"
-                                                    : "delivry-block__quantity"
-                                            }
-                                        >
-                                            {element.quantity === 0
-                                                ? "Под заказ"
-                                                : `Наличие: ${element.quantity} шт.`}
-                                        </div>
-                                    </div>
-
-                                    <div className="card-component__price-block">
-                                        <div className="card-component__price">
-                                            {new Intl.NumberFormat("ru-RU", {
-                                                style: "currency",
-                                                currency: "RUB",
-                                                minimumFractionDigits: 0,
-                                            }).format(element.price * discount)}{" "}
-                                            {/* Применяем скидку */}
-                                        </div>
-                                        <div className="card-component__price-nalog">в т.ч. НДС</div>
-                                    </div>
-
-                                    <div className="card-component__basket-block">
-                                        <div className="basket-block__quantity-item">
-                                            <div
-                                                className="quantity-item__minus"
-                                                onClick={() => handleDecrement(index)}
-                                            >
-                                                -
-                                            </div>
-                                            <div className="quantity-item__input">
-                                                {quantities[index]}
-                                            </div>
-                                            <div
-                                                className="quantity-item__plus"
-                                                onClick={() => handleIncrement(index)}
-                                            >
-                                                +
-                                            </div>
-                                        </div>
-                                        <button
-                                            className={`basket-block__button ${
-                                                isInBasket(index) ? "added" : ""
-                                            } ${quantities[index] === 0 ? "disabled" : ""}`}
-                                            disabled={quantities[index] === 0}
-                                            onClick={() => handleAddToBasket(index)}
-                                        >
-                                            {isInBasket(index) ? "В корзине" : "В корзину"}
-                                        </button>
-                                    </div>
+                    return (
+                        <div className="card-component" key={element.vendorCode}>
+                            <div className="card-component__top">
+                                <img src={element.imgLinkIconCard} className="card-component__img" alt={element.nameComponent || "Фото компонента"} />
+                                <div className="card-component__vendor">{element.vendorCode}</div>
+                                <div className="card-component__name" onClick={() => window.open(element.linkPage, "_blank")}>
+                                    {element.nameComponent}
                                 </div>
                             </div>
-                        );
-                    })}
+
+                            <div className="card-component__bottom">
+                                <div className="cc-basket-block__delivry-block">
+                                    <div className={element.quantity === 0 ? "delivry-block__quantity delivry-block__quantity_0" : "delivry-block__quantity"}>
+                                        {element.quantity === 0 ? "Под заказ" : `Наличие: ${element.quantity} шт.`}
+                                    </div>
+                                </div>
+
+                                <div className="card-component__price-block">
+                                    <div className="card-component__price">
+                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price * discount)}
+                                    </div>
+                                    <div className="card-component__price-nalog">в т.ч. НДС</div>
+                                </div>
+
+                                <div className="card-component__basket-block">
+                                    <div className="basket-block__quantity-item">
+                                        <div className="quantity-item__minus" onClick={() => handleDecrement(globalIndex)}>−</div>
+                                        <div className="quantity-item__input">{quantities[globalIndex]}</div>
+                                        <div className="quantity-item__plus" onClick={() => handleIncrement(globalIndex)}>+</div>
+                                    </div>
+                                    <button
+                                        className={`basket-block__button ${isInBasket(globalIndex) ? "added" : ""} ${quantities[globalIndex] === 0 ? "disabled" : ""}`}
+                                        disabled={quantities[globalIndex] === 0}
+                                        onClick={() => handleAddToBasket(globalIndex)}
+                                    >
+                                        {isInBasket(globalIndex) ? "В корзине" : "В корзину"}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
+
+            {/* Пагинация */}
+            {totalPages > 1 && (
+                <div className="pagination">
+                    <button className="pagination__button" onClick={handlePrevPage} disabled={currentPage === 1}>Предыдущая</button>
+                    <span className="pagination__info"> Страница {currentPage} из {totalPages} </span>
+                    <button className="pagination__button" onClick={handleNextPage} disabled={currentPage === totalPages}>Следующая</button>
+                    <select className="pagination__select" value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}>
+                        <option value={8}>8 на странице</option>
+                        <option value={12}>12 на странице</option>
+                        <option value={16}>16 на странице</option>
+                        <option value={20}>20 на странице</option>
+                    </select>
+                </div>
+            )}
         </div>
     );
 };
