@@ -117,11 +117,6 @@ const CardComponetGroop = (param) => {
             <div className="container card-componet-groop-section__container">
                 {currentItems.map((element, index) => {
                     const globalIndex = indexOfFirstItem + index; // ⚡ корректный глобальный индекс
-                    const discount =
-                        element.manufacturer === "KEAZ" ? 0.9 :
-                        element.manufacturer === "IEK" ? 0.95 :
-                        element.manufacturer === "EKF" ? 0.93 :
-                        1;
 
                     return (
                         <div className="card-component" key={element.vendorCode}>
@@ -142,7 +137,7 @@ const CardComponetGroop = (param) => {
 
                                 <div className="card-component__price-block">
                                     <div className="card-component__price">
-                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price * discount)}
+                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
                                     </div>
                                     <div className="card-component__price-nalog">в т.ч. НДС</div>
                                 </div>

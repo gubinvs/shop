@@ -14,6 +14,7 @@ import CatalogSection from "./CatalogSection/CatalogSection.jsx";
 import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
 import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
+import SearchResults from "./Header/SearchResults.jsx";
 
 
 // ===== Проверка токена =====
@@ -107,6 +108,7 @@ const App = () => {
           }
         />
 
+        <Route path="/SearchResults" element={<SearchResults />} />
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />

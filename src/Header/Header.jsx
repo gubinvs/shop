@@ -138,6 +138,11 @@ const Header = () => {
         window.location.href = link;
     };
 
+    // Переход на страницу товара внутри приложения
+    const GoToPageComponent = (vendorCode) => {
+        localStorage.setItem("vendorCode_GoToPageComp", vendorCode);
+        window.location.href = navigate('/SearchResults');
+    };
 
     return (
         <>
@@ -235,7 +240,8 @@ const Header = () => {
 
                                                     return (
                                                         <li key={index} className="search-result__item">
-                                                            <div className="search-result-item__info" onClick={() => GoToPageComp(result.linkPage)}>
+                                                            {/* <div className="search-result-item__info" onClick={() => GoToPageComp(result.linkPage)}> */}
+                                                            <div className="search-result-item__info" onClick={() => GoToPageComponent(result.vendorCode)}>
                                                                 {result.vendorCode} - {result.name}
                                                             </div>
                                                             <button

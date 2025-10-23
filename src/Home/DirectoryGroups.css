@@ -38,6 +38,7 @@
 }
 
 .dg-card1 {
+    padding-top: 30px;
     width: 176px;
     height: 320px;
     margin-right: 20px;
@@ -50,7 +51,7 @@
     height: 150px;
     margin-bottom: 20px;
     background-image: url(../../public/images/img-groop/section_card2_img_1920.png);
-    background-position: right 10px bottom 6px;
+    background-position: right 0px bottom -10px;
 }
 
 .dg-card3 {
@@ -59,7 +60,7 @@
     width: 176px;
     height: 150px;
     background-image: url(../../public/images/img-groop/section_card3_img_1920.png);
-    background-position: left 30px top 4px;
+    background-position: right -20px top -24px;
 }
 
 .dg-card4 {
@@ -73,7 +74,6 @@
     background-position: right 10px top 10px;
 }
 
-
 .dg-card5 {
     width: 412px;
     height: 150px;
@@ -83,12 +83,19 @@
 }
 
 .dg-card6 {
-    width: 412px;
+    width: 196px;
     height: 150px;
-    background-image: url(../../public/images/img-groop/section_card6_img_1920.png);
+    margin-right: 20px;
+    background-image: url(../../public/images/img-groop/section_cardSl_img_1920.png);
     background-position: right 10px bottom 10px;
 }
 
+.dg-card7 {
+    width: 196px;
+    height: 150px;
+    background-image: url(../../public/images/img-groop/section_card6_img_1920.png);
+    background-position: right -30px bottom -30px;
+}
 
 
 @media only screen and (max-width: 1280px) {

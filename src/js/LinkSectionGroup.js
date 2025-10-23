@@ -7,7 +7,7 @@ export const chapterK = "Средства монтажа";
 export const chapterSch = "Силовые автоматические выключатели";
 export const chapterPlk = "Программируемые контроллеры";
 export const chapterMplk = "Модули расширения";
-export const chapterSl = "Сигнальные лампы";
+export const chapterSl = "Индикация";
 export const chapterUps = "Устройства плавного пуска";
 
 export const OpenSection = (param) => {
