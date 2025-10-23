@@ -2,11 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
 import ApiUrl from '../js/ApiUrl';
-import { 
-    chapterMa, chapterBp, chapterK, chapterSch, 
-    chapterPlk, chapterMplk,
-    OpenSection 
-} from "../js/LinkSectionGroup.js";
+import { chapterMa, chapterBp, chapterK, chapterSch, chapterPlk, chapterMplk, chapterSl, OpenSection } from "../js/LinkSectionGroup.js";
 import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
 
@@ -134,13 +130,13 @@ const Header = () => {
     };
 
     // Переход на страницу товара
-    const GoToPageComp = (link) => {
-        window.location.href = link;
-    };
+    // const GoToPageComp = (link) => {
+    //     window.location.href = link;
+    // };
 
     // Переход на страницу товара внутри приложения
     const GoToPageComponent = (vendorCode) => {
-        localStorage.setItem("vendorCode_GoToPageComp", vendorCode);
+        localStorage.setItem("vendorCode_GoToPageComponent", vendorCode);
         window.location.href = navigate('/SearchResults');
     };
 
@@ -204,6 +200,7 @@ const Header = () => {
                                         <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Средства монтажа</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Силовые автоматы</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Логические контроллеры</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterSl)}>Индикация</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения</li>
                                     </ul>
                                 )}

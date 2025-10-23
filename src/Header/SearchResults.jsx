@@ -10,7 +10,10 @@ import Footer from "../Footer/Footer.jsx";
 
 const SearchResults = () => {
     // Cчитываем артикул товара который хотим открыть
-    const vendorCode = localStorage.getItem("vendorCode_GoToPageComp");
+    const vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
+
+    console.log(vendorCode);
+
     const [component, SetComponent] = useState([]);
    
         const [basket, setBasket] = useState(() => {
@@ -23,9 +26,7 @@ const SearchResults = () => {
             localStorage.setItem('cart', JSON.stringify(unique));
             return unique;
         });
-        const [loading, setLoading] = useState(true);
-    
-    console.log(vendorCode)
+        
     const [items, setItems] = useState([]);
     const [quantities, setQuantities] = useState([]);
     const isInBasket = (index) => basket.some(item => item.vendorCode === items[index].vendorCode);
@@ -60,8 +61,8 @@ const SearchResults = () => {
      // Пагинация
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(items.length / itemsPerPage);
+    // const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+    // const totalPages = Math.ceil(items.length / itemsPerPage);
 
 
     useEffect(() => {
@@ -112,51 +113,80 @@ const SearchResults = () => {
             <Header />
             <DirectoryGroups />
             <div className="container search-results__container">
-                {component.map((element) => {
-                    const globalIndex = indexOfFirstItem; // ⚡ корректный глобальный индекс
-                    return (
-                        <div className="card-component" key={element.id}>
-                            <div className="card-component__top">
-                                <img src={element.imgLinkIconCard} className="card-component__img" alt={element.nameComponent || "Фото компонента"} />
-                                <div className="card-component__vendor">{element.vendorCode}</div>
-                                <div className="card-component__name" onClick={() => window.open(element.linkPage, "_blank")}>
-                                    {element.nameComponent}
-                                </div>
-                            </div>
-
-                            <div className="card-component__bottom">
-                                <div className="cc-basket-block__delivry-block">
-                                    <div className={element.quantity === 0 ? "delivry-block__quantity delivry-block__quantity_0" : "delivry-block__quantity"}>
-                                        {element.quantity === 0 ? "Под заказ" : `Наличие: ${element.quantity} шт.`}
-                                    </div>
-                                </div>
-
-                                <div className="card-component__price-block">
-                                    <div className="card-component__price">
-                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
-                                    </div>
-                                    <div className="card-component__price-nalog">в т.ч. НДС</div>
-                                </div>
-
-                                <div className="card-component__basket-block">
-                                    <div className="basket-block__quantity-item">
-                                        <div className="quantity-item__minus" onClick={() => handleDecrement(globalIndex)}>−</div>
-                                        <div className="quantity-item__input">{quantities[globalIndex]}</div>
-                                        <div className="quantity-item__plus" onClick={() => handleIncrement(globalIndex)}>+</div>
-                                    </div>
-                                    <button
-                                        className={`basket-block__button ${isInBasket(globalIndex) ? "added" : ""} ${quantities[globalIndex] === 0 ? "disabled" : ""}`}
-                                        disabled={quantities[globalIndex] === 0}
-                                        onClick={() => handleAddToBasket(globalIndex)}
-                                    >
-                                        {isInBasket(globalIndex) ? "В корзине" : "В корзину"}
-                                    </button>
-                                </div>
+                {component && (
+                    <div className="card-component" key={component.id}>
+                        <div className="card-component__top">
+                            <img
+                                src={component.imageCard}
+                                className="card-component__img"
+                                alt={component.nameComponent || "Фото компонента"}
+                            />
+                            <div className="card-component__vendor">{component.vendorCode}</div>
+                            <div
+                                className="card-component__name"
+                                onClick={() => window.open(component.linkPage, "_blank")}
+                            >
+                                {component.nameComponent}
                             </div>
                         </div>
-                    );
-                })}
+
+                        <div className="card-component__bottom">
+                            <div className="cc-basket-block__delivry-block">
+                                <div
+                                    className={
+                                        component.quantity === 0
+                                            ? "delivry-block__quantity delivry-block__quantity_0"
+                                            : "delivry-block__quantity"
+                                    }
+                                >
+                                    {component.quantity === 0
+                                        ? "Под заказ"
+                                        : `Наличие: ${component.quantity} шт.`}
+                                </div>
+                            </div>
+
+                            <div className="card-component__price-block">
+                                <div className="card-component__price">
+                                    {new Intl.NumberFormat("ru-RU", {
+                                        style: "currency",
+                                        currency: "RUB",
+                                        minimumFractionDigits: 0,
+                                    }).format(component.price)}
+                                </div>
+                                <div className="card-component__price-nalog">в т.ч. НДС</div>
+                            </div>
+
+                            <div className="card-component__basket-block">
+                                <div className="basket-block__quantity-item">
+                                    <div
+                                        className="quantity-item__minus"
+                                        onClick={() => handleDecrement(0)}
+                                    >
+                                        −
+                                    </div>
+                                    <div className="quantity-item__input">{quantities[0]}</div>
+                                    <div
+                                        className="quantity-item__plus"
+                                        onClick={() => handleIncrement(0)}
+                                    >
+                                        +
+                                    </div>
+                                </div>
+                                <button
+                                    className={`basket-block__button ${
+                                        isInBasket(0) ? "added" : ""
+                                    } ${quantities[0] === 0 ? "disabled" : ""}`}
+                                    disabled={quantities[0] === 0}
+                                    onClick={() => handleAddToBasket(0)}
+                                >
+                                    {isInBasket(0) ? "В корзине" : "В корзину"}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
+
             <Footer />
         </> 
     );
