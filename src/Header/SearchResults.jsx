@@ -25,7 +25,7 @@ const SearchResults = () => {
         });
         const [loading, setLoading] = useState(true);
     
-
+    console.log(vendorCode)
     const [items, setItems] = useState([]);
     const [quantities, setQuantities] = useState([]);
     const isInBasket = (index) => basket.some(item => item.vendorCode === items[index].vendorCode);
