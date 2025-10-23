@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+  <product>
+    <article>100179</article>
+    <title>Выключатель автоматический ВА21-29-320010-0,6А-12Iн-400AC-З/П-У3-КЭАЗ</title>
+    <description>Силовой 3 полюсный автоматический выключатель переменного тока в литом корпусе на номинальный ток 0.6 А.</description>
+    <measure>
+      <name>шт</name>
+      <rate>1.00</rate>
+    </measure>
+    <barcode>4600572045766</barcode>
+    <package_quantity>1</package_quantity>
+    <weight>1.21</weight>
+    <volume>0.00225</volume>
+    <pack_width>150</pack_width>
+    <pack_depth>150</pack_depth>
+    <pack_height>100</pack_height>
+    <price>18 436,80</price>
+    <category>
+      <id>2950</id>
+      <name>ВА21 Автоматические выключатели в литом корпусе на токи от 0,6А до 100А</name>
+    </category>
+    <brand>КЭАЗ</brand>
+    <image>https://files.keaz.ru/f/7654/102262-va21-29-340010-16a-12in-400ac-u3.png</image>
+    <files>
+      <file>
+        <name>Каталог ВА21</name>
+        <path>https://files.keaz.ru/f/192/catalog-va21.pdf</path>
+      </file>
+      <file>
+        <name>Руководство по эксплуатации ВА21-29</name>
+        <path>https://files.keaz.ru/f/577/rucovod-info-va21.pdf</path>
+      </file>
+      <file>
+        <name>Референция МРСК Сибири - АлтайЭнерго</name>
+        <path>https://files.keaz.ru/f/3951/refer-altayenergo.pdf</path>
+      </file>
+      <file>
+        <name>Сертификат ТР ТС ВА21</name>
+        <path>https://files.keaz.ru/f/2234/sert-trts-va21.pdf</path>
+      </file>
+      <file>
+        <name>Сертификат пожарной безопасности </name>
+        <path>https://files.keaz.ru/f/987/sert-a63-ae20-ak50b-va13-va21-va53-va55-va57-va51-35-va04-36-ak50kb.pdf</path>
+      </file>
+      <file>
+        <name>Декларация ТР ТС 001-2011 ВА21-29, OptiDin ВМ63</name>
+        <path>https://files.keaz.ru/f/12443/ds-tr-ts-001-2011-va21-29-optidin-vm63.pdf</path>
+      </file>
+      <file>
+        <name>ДС ТР ТС 001 ВА21</name>
+        <path>https://files.keaz.ru/f/47869/ds-tr-ts-001-va21.pdf</path>
+      </file>
+      <file>
+        <name>ДС ТР ЕАЭС 037 ВА21</name>
+        <path>https://files.keaz.ru/f/16766/ds-tr-eaes-037-va21.pdf</path>
+      </file>
+      <file>
+        <name>3D-модель ВА21-29-3</name>
+        <path>https://files.keaz.ru/f/2453/va21-29-3pol.zip</path>
+      </file>
+      <file>
+        <name>Чертеж ВА21-29 3-х полюсный</name>
+        <path>https://files.keaz.ru/f/14971/chertej-va21-29-3-h-polusniy.dwg.zip</path>
+      </file>
+      <file>
+        <name>Заключение Минпромторга О подтверждении КЭАЗ по 719</name>
+        <path>https://files.keaz.ru/f/16921/zakluchenie-minpromtorga-o-podtverjdenii-keaz-po-719.pdf</path>
+      </file>
+      <file>
+        <name>Выписки из Реестров отечественной продукции  и производителей отечественной продукции</name>
+        <path>https://files.keaz.ru/f/17340/vipiski-iz-reestrov-otechestvennoy-produkcii-i-proizvoditeley-otechestvennoy-produkcii.xlsx</path>
+      </file>
+      <file>
+        <name>Выписка из Акта экспертизы КТПП (2022)</name>
+        <path>https://files.keaz.ru/f/16920/vipiska-iz-akta-ekspertizi-ktpp-2019.pdf</path>
+      </file>
+      <file>
+        <name>База данных для EPLAN Electric P8 ВА21</name>
+        <path>https://files.keaz.ru/f/8042/va21.zip</path>
+      </file>
+      <file>
+        <name>Лицензия на изготовление оборудования для ядерных установок</name>
+        <path>https://files.keaz.ru/f/13287/licenziya-na-izgotovlenie-oborudovaniya-dlya-yadernih-ustanovok.pdf</path>
+      </file>
+      <file>
+        <name>Каталог ВА21</name>
+        <path>https://files.keaz.ru/f/192/catalog-va21.pdf</path>
+      </file>
+    </files>
+    <etim_class>
+      <id>EC000228</id>
+      <title>Силовой автоматический выключатель</title>
+    </etim_class>
+    <features>
+      <feature>
+        <id>KF000003</id>
+        <name>Гарантийный срок (лет)</name>
+        <value>5</value>
+      </feature>
+      <feature>
+        <id>NF000001</id>
+        <name>Раздел</name>
+        <value>0,6А</value>
+      </feature>
+      <feature>
+        <id>NF000002</id>
+        <name>Серия</name>
+        <value>ВА21</value>
+      </feature>
+      <feature>
+        <id>NF000003</id>
+        <name>Номинальное напряжение сети</name>
+        <value>380/220;660/380</value>
+      </feature>
+      <feature>
+        <id>NF000004</id>
+        <name>Наличие теплового расцепителя</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>NF000005</id>
+        <name>Наличие электромагнитного расцепителя</name>
+        <value>true</value>
+      </feature>
+      <feature>
+        <id>NF000006</id>
+        <name>Наличие электронного расцепителя</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>NF000007</id>
+        <name>Наличие дифференциального расцепителя</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>NF000008</id>
+        <name>Электродинамическая стойкость при 380/220В Icm</name>
+        <value>17</value>
+        <unit>
+          <id/>
+          <descriptionRu>кА</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000009</id>
+        <name>Предельная коммутационная способность при 660/380В Ics</name>
+        <value>7.5</value>
+        <unit>
+          <id/>
+          <descriptionRu>кА</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000010</id>
+        <name>Электродинамическая стойкость при 660/380В Icm</name>
+        <value>0</value>
+        <unit>
+          <id/>
+          <descriptionRu>кА</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000011</id>
+        <name>Токи уставки расцепителя в зоне перегрузки Ir, А</name>
+        <value>0,6</value>
+        <unit>
+          <id/>
+          <descriptionRu>кА</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000012</id>
+        <name>Кратность тока для времени tr, о.е.</name>
+        <value>6</value>
+      </feature>
+      <feature>
+        <id>NF000013</id>
+        <name>Кратность нижней границы, о.е.</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000014</id>
+        <name>Кратность верхней границы, о.е.</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000015</id>
+        <name>Коэффициент гарантированного несрабатывания, о.е.</name>
+        <value>1</value>
+      </feature>
+      <feature>
+        <id>NF000016</id>
+        <name>Коэффициент гарантированного срабатывания, о.е.</name>
+        <value>1</value>
+      </feature>
+      <feature>
+        <id>NF000017</id>
+        <name>Время срабатывания расцепителя в зоне КЗ tm</name>
+        <value>0.1</value>
+        <unit>
+          <id>EU570103</id>
+          <descriptionRu>с</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000018</id>
+        <name>Кратности уставки мгновенного расцепителя Ki, о.е.</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000019</id>
+        <name>Время срабатывания мгновенного расцепителя ti</name>
+        <value>0.05</value>
+        <unit>
+          <id>EU570103</id>
+          <descriptionRu>с</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000020</id>
+        <name>Токи уставок I∆, мА</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000021</id>
+        <name>Активное сопротивление полюса R, мОм</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000022</id>
+        <name>Реактивное сопротивление полюса X, мОм</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000023</id>
+        <name>Высота</name>
+        <value>220</value>
+        <unit>
+          <id>EU570448</id>
+          <descriptionRu>мм</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000024</id>
+        <name>Ширина</name>
+        <value>88</value>
+        <unit>
+          <id>EU570448</id>
+          <descriptionRu>мм</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000025</id>
+        <name>Глубина</name>
+        <value>122</value>
+        <unit>
+          <id>EU570448</id>
+          <descriptionRu>мм</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000026</id>
+        <name>Масса</name>
+        <value>1.6</value>
+        <unit>
+          <id>EU570039</id>
+          <descriptionRu>кг</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>NF000027</id>
+        <name>Тип монтажной рейки</name>
+        <value>35х7.5; 35х15</value>
+      </feature>
+      <feature>
+        <id>NF000028</id>
+        <name>Крепление</name>
+        <value>Монтажная рейка</value>
+      </feature>
+      <feature>
+        <id>NF000029</id>
+        <name>Климатическое исполнение</name>
+        <value>У3</value>
+      </feature>
+      <feature>
+        <id>NF000030</id>
+        <name>Время срабатывания в зоне перегрузки tr, c</name>
+        <value>12</value>
+      </feature>
+      <feature>
+        <id>NF000031</id>
+        <name>Способ задания уставки расцепителя</name>
+        <value>По кратности (Km)</value>
+      </feature>
+      <feature>
+        <id>NF000032</id>
+        <name>Кратности уставки расцепителя Кm, о.е</name>
+        <value>12</value>
+      </feature>
+      <feature>
+        <id>NF000033</id>
+        <name>Способ задания уставки мгновенного расцепителя</name>
+        <value>По току (Ii)</value>
+      </feature>
+      <feature>
+        <id>NF000034</id>
+        <name>Тип характеристики срабатывания расцепителя Tm</name>
+        <value>B</value>
+      </feature>
+      <feature>
+        <id>NF000035</id>
+        <name>Нормативный документ</name>
+        <value>ГОСТ Р 50030.2, ТУ16-90 ИКЖШ.641211.002ТУ</value>
+      </feature>
+      <feature>
+        <id>NF000036</id>
+        <name>Количество модулей</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>NF000037</id>
+        <name>Токи уставки мгновенного расцепителя Ii, о.е.</name>
+        <value>Нет (без)</value>
+      </feature>
+      <feature>
+        <id>NF000038</id>
+        <name>Максимальное сечение проводника, мм^2</name>
+        <value>25</value>
+      </feature>
+      <feature>
+        <id>NF000039</id>
+        <name>Токи уставки расцепителя Im, А</name>
+        <value>Нет (без)</value>
+      </feature>
+      <feature>
+        <id>EF001389</id>
+        <name>Номинальный продолжительный ток Iu</name>
+        <value>0.6</value>
+        <unit>
+          <id>EU570459</id>
+          <descriptionRu>А</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>EF001391</id>
+        <name>Количество полюсов</name>
+        <value>3</value>
+      </feature>
+      <feature>
+        <id>EF006976</id>
+        <name>Тип элемента управления</name>
+        <value>Рычажковый (перекидной рычаг)</value>
+      </feature>
+      <feature>
+        <id>EF005474</id>
+        <name>Степень защиты (IP)</name>
+        <value>IP20</value>
+      </feature>
+      <feature>
+        <id>EF006819</id>
+        <name>Тип подключения силовой электрической цепи</name>
+        <value>Винтовое соединение</value>
+      </feature>
+      <feature>
+        <id>EF001377</id>
+        <name>Количество вспомогательных нормально замкнутых (НЗ) контактов</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>EF001376</id>
+        <name>Количество вспомогательных нормально разомкнутых (НО) контактов</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>RF000040</id>
+        <name>Тип изделия/компонента</name>
+        <value>Выключатель автоматический в литом корпусе</value>
+      </feature>
+      <feature>
+        <id>EF008240</id>
+        <name>Конструкция прибора</name>
+        <value>Встраиваемое устройство фиксированной установки (стационарный)</value>
+      </feature>
+      <feature>
+        <id>EF002336</id>
+        <name>Диапазон регулировки теплового расцепителя</name>
+        <value>0.6...0.6</value>
+        <unit>
+          <id>EU570459</id>
+          <descriptionRu>А</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>EF003977</id>
+        <name>Номинальное напряжение</name>
+        <value>400...400</value>
+        <unit>
+          <id>EU570079</id>
+          <descriptionRu>В</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>EF007518</id>
+        <name>С расцепителем минимального напряжения</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>EF007386</id>
+        <name>Моторный привод опционально</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>EF007296</id>
+        <name>Встроенная защита от замыканий на землю</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>EF007250</id>
+        <name>Подходит для монтажа на DIN-рейку (Ω-типа)</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>EF007048</id>
+        <name>Номинальная отключающая способность Icu при 400 В, 50 Гц</name>
+        <value>10</value>
+        <unit>
+          <id>EU570170</id>
+          <descriptionRu>кА</descriptionRu>
+        </unit>
+      </feature>
+      <feature>
+        <id>EF007006</id>
+        <name>Возможность установки индикатора отключения</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>EF006697</id>
+        <name>Моторный привод встроенный</name>
+        <value>false</value>
+      </feature>
+      <feature>
+        <id>EF006671</id>
+        <name>Вид подключения главной электрической цепи</name>
+        <value>Подключение спереди</value>
+      </feature>
+      <feature>
+        <id>EF003531</id>
+        <name>Количество вспомогательных переключающих контактов</name>
+        <value>0</value>
+      </feature>
+      <feature>
+        <id>KF000001</id>
+        <name>Страна производитель</name>
+        <value>Россия</value>
+      </feature>
+      <feature>
+        <id>KF000002</id>
+        <name>ТНВЭД код</name>
+        <value>8536201007</value>
+      </feature>
+    </features>
+  </product>
+</products>
