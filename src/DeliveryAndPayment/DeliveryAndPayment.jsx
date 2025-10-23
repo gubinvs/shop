@@ -29,7 +29,7 @@ const PaymentOption = ({ icon, title, description }) => (
 );
 
 const DeliveryAndPayment = () => {
-    const isAuthenticated = localStorage.getItem('token') !== null;
+    // const isAuthenticated = localStorage.getItem('token') !== null;
 
     const handleCompanyDataClick = () => {
       navigate('/CompanyDashboard');
