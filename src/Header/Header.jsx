@@ -123,6 +123,7 @@ const Header = () => {
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');
     const toggleCatalog = () => setCatalogVisible(prev => !prev);
+    
 
     const ClearToken = () => {
         localStorage.removeItem("token"); // удаляем только токен
@@ -137,7 +138,12 @@ const Header = () => {
     // Переход на страницу товара внутри приложения
     const GoToPageComponent = (vendorCode) => {
         localStorage.setItem("vendorCode_GoToPageComponent", vendorCode);
-        window.location.href = navigate('/SearchResults');
+
+        if (location.pathname === '/SearchResults') {
+            window.location.reload(); // 🔹 перезагружает текущую страницу
+        } else {
+            navigate('/SearchResults'); // 🔹 переходит на страницу
+        }
     };
 
     return (
