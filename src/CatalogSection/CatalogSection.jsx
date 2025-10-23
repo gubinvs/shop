@@ -19,7 +19,8 @@ const CatalogSection = () => {
 
     return (
         <>
-            {isAuthenticated ? <Header /> : <HeaderGuest />} 
+            {/* {isAuthenticated ? <Header /> : <HeaderGuest />}  */}
+            <Header />
             <DirectoryGroups />
             <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} />
             <Footer />

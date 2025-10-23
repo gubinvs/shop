@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DeliveryAndPayment.css';
-import HeaderGuest from '../Header/HeaderGuest.jsx';
+// import HeaderGuest from '../Header/HeaderGuest.jsx';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 
@@ -40,7 +40,8 @@ const DeliveryAndPayment = () => {
 
   return (
     <>
-      {isAuthenticated ? <Header /> : <HeaderGuest />}
+      {/* {isAuthenticated ? <Header /> : <HeaderGuest />} */}
+      <Header /> 
       <div className="container delivery-payment-container">
         <div className="cart-component-container cart-component-container__main-block">
           <img

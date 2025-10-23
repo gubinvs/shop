@@ -15,7 +15,8 @@ const Home = () => {
     return (
         <>
         {/* Если не авторизован выводим шапку для гостя */}
-            {isAuthenticated ? <Header /> : <HeaderGuest />} 
+            {/* {isAuthenticated ? <Header /> : <HeaderGuest />}  */}
+            <Header />
             <HomeMainSection />
             <DirectoryGroups />
             <CardComponetGroop h2="" api={"/api/Bestsellers"} />

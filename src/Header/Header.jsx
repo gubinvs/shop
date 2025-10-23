@@ -122,6 +122,7 @@ const Header = () => {
 
     // Навигация
     // const indexPage = () => { window.location.href = 'https://encomponent.ru'; };
+    const indexPage = () => navigate('/');
     const basketPage = () => navigate('/Basket');
     const orderPage = () => navigate('/DefineUser');
     const companyDashboard = () => navigate('/CompanyDashboard');
@@ -180,7 +181,7 @@ const Header = () => {
                 </div>
 
                 <div className="container header__container">
-                    <div className="header-logo-block">
+                    <div className="header-logo-block" onClick={indexPage}>
                         <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                     </div>
 
