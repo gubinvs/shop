@@ -103,13 +103,14 @@
         width: 1000px;
     }
 
+    .dg-card__title {
+        font-size: 18px;
+    }
+
     .dg-card1 {
         width: 150px;
         height: 244px;
-    }
-
-    .dg-card__title {
-        font-size: 18px;
+        background-position: left 10px bottom -10px;
     }
 
     .dg-card2 {
@@ -120,20 +121,30 @@
     .dg-card3 {
         width: 150px;
         height: 114px;
+        background-position: right -70px top -20px;
     }
 
     .dg-card4 {
         height: 248px;
+        background-position: right -70px bottom -10px;
     }
 
     .dg-card5 {
         width: 320px;
         height: 116px;
+        background-position: right -10px bottom -10px;
     }
 
     .dg-card6 {
-        width: 320px;
+        width: 150px;
         height: 116px;
+        background-position: right -10px bottom -10px;
+    }
+
+    .dg-card7 {
+        width: 150px;
+        height: 116px;
+        background-position: right -30px bottom -50px;
     }
 } 
 
@@ -169,8 +180,14 @@
     }
 
     .dg-card6 {
-        width: 313px;
+        width: 146px;
         height: 114px;
+    }
+
+    .dg-card7 {
+        width: 146px;
+        height: 114px;
+        background-position: right -30px bottom -60px;
     }
 }
 
@@ -182,30 +199,40 @@
     .dg-card1 {
         width: 138px;
         height: 222px;
+        padding: 4px;
     }
 
     .dg-card2 {
        width: 139px;
        height: 106px;
+       background-position: right -10px bottom -20px;
     }
 
     .dg-card3 {
         width: 139px;
         height: 106px;
+        background-position: right -40px top -50px;
     }
 
     .dg-card4 {
         width: 100%;
         height: 222px;
+        background-position: right -70px top -105px;
     }
 
     .dg-card5 {
         width: 287px;   
         height: 106px; 
+        background-position: right -60px bottom -5px;
     }
 
     .dg-card6 {
-        width: 287px;   
+        width: 133px;   
+        height: 106px; 
+    }
+
+    .dg-card7 {
+        width: 133px;   
         height: 106px; 
     }
 
@@ -229,7 +256,8 @@
     .dg-card2, 
     .dg-card3,
     .dg-card5,
-    .dg-card6 {
+    .dg-card6,
+    .dg-card7 {
        width: 144px;
        height: 111px;
     }
