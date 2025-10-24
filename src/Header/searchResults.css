@@ -1,6 +1,7 @@
 .search-results__card-component {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 20px;
     width: 100%;
     height: 500px;
@@ -9,11 +10,64 @@
     margin-bottom: 40px;
 }
 
-
-.search-results__card-component-img {
+.sr-card-component__img{
     height: 300px;
 }
 
-.search-results__card-component-vendor {
+.sr-card-component__vendor {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    font-weight: 200;
+}
+
+.sr-card-component__vendor p {
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.sr-card-component__name {
+    width: 300px;
+    margin-bottom: 50px;
+}
+
+.sr-card-component-bottom__discription {
+    display: flex;
+    flex-direction: column;
+    min-width: 340px;
+    max-width: 520px;
+    margin-bottom: 60px;
+}
+
+.sccb-discription__link-manufacturer {
+    display: flex;
+    justify-content: space-between;
+    min-width: 340px;
+    max-width: 520px;
+    height: 150px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #E0E0E0;
+    cursor: pointer;
+}
+
+.sccb-discription__title {
     font-size: 24px;
+    font-weight: 400;
+}
+
+.sccb-discription__discription {
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.sccb-discription-lm__title {
+    padding-top: 40px;
+    width: 50%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
 }

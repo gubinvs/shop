@@ -41,6 +41,7 @@ const SearchResults = () => {
                     vendorCode: item.VendorCode,
                     nameComponent: item.NameComponent || "Нет данных",
                     productDescription: item.ProductDescription,
+                    manufacturer: item.Manufacturer,
                     linkPage: item.LinkPage || "",
                     price: item.Price || 0,
                     quantity: 1,
@@ -95,12 +96,12 @@ const SearchResults = () => {
                         <div className="card-component__top">
                             <img
                                 src={component.imageCard}
-                                className="card-component__img search-results__card-component-img"
+                                className="card-component__img sr-card-component__img"
                                 alt={component.nameComponent || "Фото компонента"}
                             />
-                            <div className="search-results__card-component-vendor">Артикул товара: {component.vendorCode}</div>
+                            <div className="sr-card-component__vendor"><p className=''>Артикул: </p> {component.vendorCode}</div>
                             <div
-                                className="card-component__name"
+                                className="card-component__name sr-card-component__name"
                                 onClick={() => window.open(component.linkPage, "_blank")}
                             >
                                 {component.nameComponent}
@@ -108,6 +109,23 @@ const SearchResults = () => {
                         </div>
 
                         <div className="card-component__bottom">
+                            <div className="sr-card-component-bottom__discription">
+                                <div className="sccb-discription__link-manufacturer" onClick={() => window.open(component.linkPage, "_blank")}>
+                                    <div className="sccb-discription-lm__title">Подробнее на сайте производителя</div>
+                                    <img 
+                                        src={component.manufacturer === "KEAZ"? "../images/logo-keaz.png":""} 
+                                        alt="Логотип" 
+                                        className='sccb-discription-lm__img' 
+                                    />
+                                </div>
+                                <div className="sccb-discription__title">
+                                    Описание товара:
+                                </div>
+                                <div className="sccb-discription__discription">
+                                    {component.productDescription}
+                                </div>
+                               
+                            </div>
                             <div className="cc-basket-block__delivry-block">
                                 <div
                                     className={
@@ -132,8 +150,6 @@ const SearchResults = () => {
                                 </div>
                                 <div className="card-component__price-nalog">в т.ч. НДС</div>
                             </div>
-                            <>{component.productDescription}</>
-
                             <div className="card-component__basket-block">
                                 <div className="basket-block__quantity-item">
                                     <div className="quantity-item__minus" onClick={handleDecrement}>−</div>
