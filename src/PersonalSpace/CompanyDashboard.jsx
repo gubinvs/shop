@@ -126,7 +126,7 @@ const CompanyDashboard = () => {
   }
 
   if (error) {
-    return <p className="error-message">{error}</p>;
+    if (error) return  <div className="container define-user-page__container">Необходима верификация! {window.location.href = "/Authorization"}</div>;
   }
 
   return (

@@ -103,8 +103,6 @@ const Basket = () => {
         return Array.from(new Map(allItems.map((i) => [i.guidId, i])).values());
     }, [fullBasket, cardItem, searchItem]);
 
-    console.log("combinedItems:", combinedItems);
-
     return (
         <>
             <Header />

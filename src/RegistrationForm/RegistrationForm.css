@@ -44,6 +44,7 @@
   border: 1px solid #F3DE09;
   background-color: #f9f9f9;
   color: #1D252C;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -73,4 +74,16 @@
 
 .check-box__input  {
   margin-right: 10px;
+}
+
+.registration-form__registration-link {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.registration-form__registration-link:hover {
+  color: #F3DE09;
 }

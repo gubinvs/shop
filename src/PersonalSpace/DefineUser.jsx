@@ -108,7 +108,7 @@ const DefineUser = () => {
     </div>
   );
 
-  if (error) return <div>Ошибка: {error}</div>;
+  if (error) return  <div className="container define-user-page__container">Необходима верификация! {window.location.href = "/Authorization"}</div>;
 
   // Фильтруем уникальные заказы
   const filteredOrders = orders.slice().reverse()
