@@ -94,8 +94,8 @@ const DefineUser = () => {
         body: JSON.stringify(selectData),
       });
       if (!response.ok) throw new Error('Ошибка при отправке данных');
-      const result = await response.json();
-      window.location.reload();
+        //const result = await response.json();
+        window.location.reload();
     } catch (error) {
       console.error('Ошибка:', error.message);
     }
@@ -139,7 +139,7 @@ const DefineUser = () => {
       <Header />
       <div className="define-user-page define-user-page__container">
         <div className="cart-component-container cart-component-container__main-block">
-          <img src="../../images/orders-page-images.jpg" className="cart-main-block__images" />
+          <img src="../../images/orders-page-images.jpg" className="cart-main-block__images"  alt="#"/>
         </div>
 
         <div className="container">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ApiUrl from '../js/ApiUrl.js';
 import "./RegistrationForm.css";
-import { data } from "react-router-dom";
 
 const AuthorizationForm = () => {
   
@@ -29,7 +28,7 @@ const AuthorizationForm = () => {
   })
   .then((data) => {
     // если токен есть
-    if (data.token != undefined) {
+    if (data.token !== undefined) {
         //console.log(data.token);
         // Записываем токет в localStorage
         localStorage.setItem("token", data.token); // Сохраняем токен
@@ -48,7 +47,7 @@ const AuthorizationForm = () => {
         // setPassword("");
   
   };
-  if (message == "") {
+  if (message === "") {
     return (
         <div className="registration-form_container">
           <div className="form-block">
