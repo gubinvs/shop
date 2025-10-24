@@ -38,7 +38,7 @@
     flex-direction: column;
     min-width: 340px;
     max-width: 520px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .sccb-discription__link-manufacturer {
@@ -50,7 +50,7 @@
     border: 1px solid #D9D9D9;
     border-radius: 8px;
     margin-bottom: 20px;
-    background-color: #E0E0E0;
+    background-color: #DCDDE2;
     cursor: pointer;
 }
 
