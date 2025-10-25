@@ -4,6 +4,7 @@ import ApiUrl from '../js/ApiUrl.js';
 
 const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
+    const [filterItems, setFilterItems] = useState([]); // для фильтрации по производителям
     const [quantities, setQuantities] = useState([]);
     const [basket, setBasket] = useState(() => {
         const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -19,7 +20,6 @@ const CardComponetGroop = (param) => {
 
     // Состояния кнопок переключателей загрузки предложений производителей
     const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
-
     const editStateSwitch = () => {
         if (stateSwitchKeaz === true) {
             setStateSwitchKeaz(false);
@@ -27,6 +27,7 @@ const CardComponetGroop = (param) => {
             setStateSwitchKeaz(true);
         }
     };
+
 
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
@@ -52,6 +53,7 @@ const CardComponetGroop = (param) => {
                     manufacturer: item.manufacturer
                 }));
                 setItems(formattedData);
+                setFilterItems(formattedData);
                 setQuantities(Array(formattedData.length).fill(0));
                 setLoading(false);
             })
@@ -60,6 +62,16 @@ const CardComponetGroop = (param) => {
                 setLoading(false);
             });
     }, [param.api]);
+
+    // Фильтруем данные по производителю
+    useEffect(() => {
+    if (stateSwitchKeaz) {
+        setFilterItems(items);
+    } else {
+        const filter = items.filter(item => item.manufacturer !== "KEAZ")
+        setFilterItems(filter);
+    }
+    }, [stateSwitchKeaz]);
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(basket));
@@ -105,7 +117,7 @@ const CardComponetGroop = (param) => {
     // Пагинация
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filterItems.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
     const handlePrevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
