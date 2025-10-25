@@ -39,7 +39,6 @@ const Cart = (props) => {
       setError("Не удалось оформить заказ.");
     } finally {
       setIsSubmitting(false);
-      // window.location.href = "/Authorization";
     }
   };
 
