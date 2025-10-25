@@ -251,13 +251,26 @@
         height: unset;
     }
 
-    .dg-card2, 
+    .dg-card2,  
     .dg-card3,
     .dg-card5,
     .dg-card6,
     .dg-card7 {
        width: 144px;
        height: 111px;
+    }
+
+    .dg-card5 {
+        display: none;
+    }
+
+    .dg-card6 {
+        margin-bottom: 10px;
+        margin-right: 0px;
+    } 
+    
+    .dg-card7 {
+        margin-right: 0px;
     }
 
 }
@@ -272,7 +285,8 @@
     }
 
     .dg-card5,
-    .dg-card6 {
+    .dg-card6, 
+    .dg-card7 {
        display: none;
     }
 }
