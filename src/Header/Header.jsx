@@ -158,6 +158,7 @@ const Header = () => {
                         <div className="contact-header-block__email">office@encomponent.ru</div>
                     </div>
                     <button className="contact-header-block__button-out" onClick={() => ClearToken()}>Выйти</button>
+                    <button className="contact-header-block__button-out button-registrasion" onClick={()=> window.location.href = "/Authorization"}>Авторизация</button>
                     <div className="header-basket-block_mobile">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item">
