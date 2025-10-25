@@ -215,6 +215,36 @@
 }
 
 
+
+
+
+
+
+
+.directory-groups__filter-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dg-filter-block__img-icon {
+    margin-right: 10px;
+}
+
+.dg-filter-block__img-prod {
+    height: 30px;
+    
+}
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 1280px) {
     .container {
         width: 1000px;

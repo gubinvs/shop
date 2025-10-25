@@ -17,6 +17,17 @@ const CardComponetGroop = (param) => {
     });
     const [loading, setLoading] = useState(true);
 
+    // Состояния кнопок переключателей загрузки предложений производителей
+    const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
+
+    const editStateSwitch = () => {
+        if (stateSwitchKeaz === true) {
+            setStateSwitchKeaz(false);
+        } else {
+            setStateSwitchKeaz(true);
+        }
+    };
+
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8); // по умолчанию 8 на странице
@@ -113,6 +124,10 @@ const CardComponetGroop = (param) => {
         <div className="card-componet-groop-section">
             <div className="container">
                 <h2 className="directory-groups__title">{param.h2}</h2>
+                <div className="directory-groups__filter-block">
+                    <img className="dg-filter-block__img-icon"  src={stateSwitchKeaz? "../images/icon-switch__on.svg": "../images/icon-switch__of.svg"} alt="#" onClick={()=>editStateSwitch()} />
+                    <img className="dg-filter-block__img-prod" src="../images/logo-keaz__min.png" alt="#" />
+                </div>
             </div>
             <div className="container card-componet-groop-section__container">
                 {currentItems.map((element, index) => {
