@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
 import ApiUrl from '../js/ApiUrl.js';
 
 const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
+    const location = useLocation();
     const [filterItems, setFilterItems] = useState([]); // для фильтрации по производителям
     const [quantities, setQuantities] = useState([]);
     const [basket, setBasket] = useState(() => {
@@ -65,15 +67,15 @@ const CardComponetGroop = (param) => {
 
     // Фильтруем данные по производителю
     useEffect(() => {
-    if (stateSwitchKeaz) {
-        setFilterItems(items);
-    } else {
-        const filter = items.filter(item => item.manufacturer !== "KEAZ")
-        setFilterItems(filter);
-    }
-    }, [stateSwitchKeaz]);
+        if (stateSwitchKeaz) {
+            setFilterItems(items);
+        } else {
+            const filter = items.filter(item => item.manufacturer !== "KEAZ");
+            setFilterItems(filter);
+        }
+        }, [stateSwitchKeaz, items]);
 
-    useEffect(() => {
+        useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
 
@@ -136,10 +138,21 @@ const CardComponetGroop = (param) => {
         <div className="card-componet-groop-section">
             <div className="container">
                 <h2 className="directory-groups__title">{param.h2}</h2>
-                <div className="directory-groups__filter-block">
-                    <img className="dg-filter-block__img-icon"  src={stateSwitchKeaz? "../images/icon-switch__on.svg": "../images/icon-switch__of.svg"} alt="#" onClick={()=>editStateSwitch()} />
-                    <img className="dg-filter-block__img-prod" src="../images/logo-keaz__min.png" alt="#" />
-                </div>
+                {location.pathname !== '/' && (
+                    <div className="directory-groups__filter-block">
+                        <img
+                        className="dg-filter-block__img-icon"
+                        src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                        alt="Переключатель"
+                        onClick={editStateSwitch}
+                        />
+                        <img
+                        className="dg-filter-block__img-prod"
+                        src="/images/logo-keaz__min.png"
+                        alt="KEAZ"
+                        />
+                    </div>
+                    )}
             </div>
             <div className="container card-componet-groop-section__container">
                 {currentItems.map((element, index) => {

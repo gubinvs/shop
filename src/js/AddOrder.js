@@ -37,7 +37,7 @@ const addOrder = async (props) => {
       NumberOrder: parseInt(numberOrder),
     }));
 
-    console.log("📦 Отправляем заказ:", items);
+    //console.log("📦 Отправляем заказ:", items);
 
     // Отправляем одним запросом
     const response = await fetch(`${ApiUrl}/api/SaveOrder`, {
