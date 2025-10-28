@@ -6,6 +6,16 @@ import DirectoryGroups from "../Home/DirectoryGroups.jsx"
 import Footer from "../Footer/Footer.jsx";
 
 const SearchResults = () => {
+    // Сначала получаем vendorCode из URL, если он есть
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const vendorCodeFromUrl = urlParams.get("vendorCode");
+        if (vendorCodeFromUrl) {
+            localStorage.setItem("vendorCode_GoToPageComponent", vendorCodeFromUrl);
+        }
+    }, []);
+    
+    // Теперь можно безопасно читать из localStorage
     const vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
     const [component, setComponent] = useState(null);
     const [basket, setBasket] = useState(() => {
