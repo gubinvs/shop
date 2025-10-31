@@ -91,6 +91,15 @@ function AdminRoute({ children }) {
 }
 
 
+
+// Загружаем всю номенклатуру в фоне
+useEffect(() => {
+  loadNomenclature().then(() => {
+    setReady(true);
+  });
+}, []);
+
+
 // ===== Основное приложение =====
 const App = () => {
   return (

@@ -27,3 +27,9 @@ export function isLoaded() {
 
 
 /// Реализация в компоненте import { loadNomenclature, isLoaded } from "./js/nomenclatureStore";
+///   useEffect(() => {
+///    // Загружаем номенклатуру в фоне
+///    loadNomenclature().then(() => {
+///      setReady(true);
+///    });
+///  }, []);
