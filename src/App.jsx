@@ -15,6 +15,7 @@ import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
 import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./Header/SearchResults.jsx";
+import { loadNomenclature} from "./js/nomenclatureStore";
 
 
 // ===== Проверка токена =====
