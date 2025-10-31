@@ -8,43 +8,47 @@ let nomenclature = [];
 let loaded = false;
 
 export async function loadNomenclature() {
-  
-  if (loaded) return nomenclature;
+    if (loaded) return nomenclature; // данные уже загружены
 
-  fetch(ApiUrl + "/api/Bestsellers", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-      })
-      .then(response => response.json())
-      .then(data => {
-          const nomenclature = data.map(item => ({
-              id: item.id,
-              imgLinkIconCard: item.imgLinkIconCard,
-              vendorCode: item.vendorCode,
-              nameComponent: item.nameComponent,
-              quantity: item.quantity,
-              linkPage: item.linkPage,
-              price: item.price,
-              basketImgPath: item.basketImgPath,
-              guidId: item.guid,
-              manufacturer: item.manufacturer
-          }));
-          
-          loaded = true;
-          return nomenclature;
-      })
-      .catch(error => {
-          console.error('Ошибка при загрузке данных:', error);
-      });
+    try {
+        const response = await fetch(ApiUrl + "/api/ReturnAllItem", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        });
+
+        const data = await response.json();
+
+        // Обновляем глобальный массив
+        nomenclature = data.map(item => ({
+            id: item.id,
+            imgLinkIconCard: item.imgLinkIconCard,
+            vendorCode: item.vendorCode,
+            nameComponent: item.nameComponent,
+            quantity: item.quantity,
+            linkPage: item.linkPage,
+            price: item.price,
+            basketImgPath: item.basketImgPath,
+            guidId: item.guid,
+            manufacturer: item.manufacturer
+        }));
+console.log(nomenclature);
+        loaded = true;
+        return nomenclature;
+
+    } catch (err) {
+        console.error("Ошибка загрузки номенклатуры:", err);
+        return [];
+    }
 }
 
 export function getNomenclature() {
-  return nomenclature;
+    return nomenclature;
 }
 
 export function isLoaded() {
-  return loaded;
+    return loaded;
 }
+
 
 
 /// Реализация в компоненте import { loadNomenclature, isLoaded } from "./js/nomenclatureStore";
