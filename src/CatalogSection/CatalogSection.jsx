@@ -3,7 +3,9 @@ import React from 'react';
 import DirectoryGroups from "../Home/DirectoryGroups.jsx";
 import Header from '../Header/Header';
 // import HeaderGuest from '../Header/HeaderGuest';
-import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
+// import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
+import CardComponetGroopLocalData from "../CardComponetGroop/CardComponetGroop.jsx";
+
 import Footer from '../Footer/Footer.jsx';
 
 
@@ -22,7 +24,8 @@ const CatalogSection = () => {
             {/* {isAuthenticated ? <Header /> : <HeaderGuest />}  */}
             <Header />
             <DirectoryGroups />
-            <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} />
+            {/* <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} /> */}
+            <CardComponetGroopLocalData h2={newChapter} />
             <Footer />
         </>
     )
