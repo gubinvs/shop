@@ -8,13 +8,34 @@ let nomenclature = [];
 let loaded = false;
 
 export async function loadNomenclature() {
+  
   if (loaded) return nomenclature;
-  const response = await fetch(ApiUrl + "/api/nomenclature");
-  const data = await response.json();
-  nomenclature = data;
-  loaded = true;
-  console.log("Номенклатура загружена:", data.length, "позиций");
-  return nomenclature;
+
+  fetch(ApiUrl + "/api/Bestsellers", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+      })
+      .then(response => response.json())
+      .then(data => {
+          const nomenclature = data.map(item => ({
+              id: item.id,
+              imgLinkIconCard: item.imgLinkIconCard,
+              vendorCode: item.vendorCode,
+              nameComponent: item.nameComponent,
+              quantity: item.quantity,
+              linkPage: item.linkPage,
+              price: item.price,
+              basketImgPath: item.basketImgPath,
+              guidId: item.guid,
+              manufacturer: item.manufacturer
+          }));
+          
+          loaded = true;
+          return nomenclature;
+      })
+      .catch(error => {
+          console.error('Ошибка при загрузке данных:', error);
+      });
 }
 
 export function getNomenclature() {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
-import { loadNomenclature} from "../js/nomenclatureStore";
+import { loadNomenclature, getNomenclature } from "../js/nomenclatureStore";
 
 
 
@@ -24,6 +24,8 @@ const CardComponetGroopLocalData = (param) => {
         localStorage.setItem('cart', JSON.stringify(unique));
         return unique;
     });
+
+
     const [loading, setLoading] = useState(true);
 
     // Состояния кнопок переключателей загрузки предложений производителей
@@ -131,7 +133,7 @@ const CardComponetGroopLocalData = (param) => {
                     )}
             </div>
             <div className="container card-componet-groop-section__container">
-                {currentItems.map((element, index) => {
+                {nomenclature.map((element, index) => {
                     const globalIndex = indexOfFirstItem + index; // ⚡ корректный глобальный индекс
 
                     return (
