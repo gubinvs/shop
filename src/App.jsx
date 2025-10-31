@@ -92,17 +92,26 @@ function AdminRoute({ children }) {
 }
 
 
-
-// Загружаем всю номенклатуру в фоне
-useEffect(() => {
-  loadNomenclature().then(() => {
-    setReady(true);
-  });
-}, []);
-
-
 // ===== Основное приложение =====
 const App = () => {
+
+
+  // 1️⃣ Объявляем состояние
+  const [ready, setReady] = useState(false);
+
+  // 2️⃣ useEffect для загрузки номенклатуры
+  useEffect(() => {
+    loadNomenclature().then(() => {
+      setReady(true); // теперь setReady определён
+    });
+  }, []);
+
+  // 3️⃣ Пока данные не загружены — показываем экран загрузки
+  if (!ready) {
+    return <div>Загрузка данных...</div>;
+  }
+
+
   return (
     <Router>
       <Routes>
