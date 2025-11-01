@@ -43,6 +43,9 @@ const SearchResults = () => {
             return res.json();
         })
         .then(data => {
+
+            console.log(JSON.stringify(data));
+            
             if (data.length > 0) {
                 const item = data[0];
                 setComponent({
@@ -54,7 +57,7 @@ const SearchResults = () => {
                     manufacturer: item.Manufacturer,
                     linkPage: item.LinkPage || "",
                     price: item.Price || 0,
-                    quantity: 1,
+                    quantity: item.Quantity,
                     imageCard: item.ImgLinkIconCard || "",
                 });
             }
@@ -62,7 +65,7 @@ const SearchResults = () => {
         .catch(err => console.log("Ошибка получения данных:", err));
     }, [vendorCode]);
 
-    console.log(component);
+
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(basket));
@@ -80,13 +83,15 @@ const SearchResults = () => {
             newBasket.push({
                 vendorCode: component.vendorCode,
                 nameComponent: component.nameComponent,
-                quantity: quantity,
+                quantity: component.quantity,
                 price: component.price,
                 basketImgPath: component.imageCard,
                 guidId: component.guidId,
                 id: component.id
             });
         }
+
+        console.log(JSON.stringify(component.quantity));
 
         setBasket(newBasket);
     };
