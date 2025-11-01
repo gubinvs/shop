@@ -24,6 +24,23 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
 
     // Состояние переключателя KEAZ
     const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
+    const toggleSwitchKeaz = () => setStateSwitchKeaz(prev => !prev);
+    
+    // Состояние переключателя EKF
+    const [stateSwitchEkf, setStateSwitchEkf] = useState(false);
+    const toggleSwitchEkf = () => setStateSwitchEkf(prev => !prev);
+
+    // Состояние переключателя IEK
+    const [stateSwitchIek, setStateSwitchIek] = useState(false);
+    const toggleSwitchIek = () => setStateSwitchIek(prev => !prev);
+
+    // Состояние переключателя CHINT
+    const [stateSwitchChint, setStateSwitchChint] = useState(false);
+    const toggleSwitchChint = () => setStateSwitchChint(prev => !prev);
+
+    // Состояние переключателя SCHNAIDER
+    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(false);
+    const toggleSwitchShnaider = () => setStateSwitchShnaider(prev => !prev);
 
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
@@ -69,7 +86,6 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
         localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
 
-    const toggleSwitch = () => setStateSwitchKeaz(prev => !prev);
 
     // -----------------------
     // Работа с корзиной
@@ -145,7 +161,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
                                     alt="Переключатель"
-                                    onClick={toggleSwitch}
+                                    onClick={toggleSwitchKeaz}
                                 />
                                 <img
                                     className="dg-filter-block__img-prod"
@@ -157,9 +173,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                             <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
-                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    src={stateSwitchEkf ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
                                     alt="Переключатель"
-                                    onClick={toggleSwitch}
+                                    onClick={toggleSwitchEkf}
                                 />
                                 <img
                                     className="dg-filter-block__img-prod"
@@ -171,9 +187,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                             <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
-                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    src={stateSwitchIek ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
                                     alt="Переключатель"
-                                    onClick={toggleSwitch}
+                                    onClick={toggleSwitchIek}
                                 />
                                 <img
                                     className="dg-filter-block__img-prod"
@@ -185,9 +201,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                             <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
-                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    src={stateSwitchChint ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
                                     alt="Переключатель"
-                                    onClick={toggleSwitch}
+                                    onClick={toggleSwitchChint}
                                 />
                                 <img
                                     className="dg-filter-block__img-prod"
@@ -199,9 +215,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                             <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
-                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    src={stateSwitchShnaider ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
                                     alt="Переключатель"
-                                    onClick={toggleSwitch}
+                                    onClick={toggleSwitchShnaider}
                                 />
                                 <img
                                     className="dg-filter-block__img-prod"
