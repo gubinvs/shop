@@ -1,11 +1,16 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
 
-const CardComponetGroopLocalData = ({ h2, nomenclature }) => {
+const CardComponetGroopLocalData = ({ h2, item }) => {
     const location = useLocation();
 
-    const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
+    console.log(item);
+    
+    // Основные состояния
+    const [items, setItems] = useState([]);
+    const [filterItems, setFilterItems] = useState([]);
+    const [quantities, setQuantities] = useState([]);
     const [basket, setBasket] = useState(() => {
         const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
         const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
@@ -16,77 +21,108 @@ const CardComponetGroopLocalData = ({ h2, nomenclature }) => {
         localStorage.setItem('cart', JSON.stringify(unique));
         return unique;
     });
+    const [loading, setLoading] = useState(true);
 
+    // Состояние переключателя KEAZ
+    const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
+
+    // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8);
 
-    // --- Фильтруем элементы один раз через useMemo ---
-    const filteredItems = useMemo(() => {
-        return stateSwitchKeaz
-            ? nomenclature
-            : nomenclature.filter(item => item.manufacturer !== "KEAZ");
-    }, [nomenclature, stateSwitchKeaz]);
+    // -----------------------
+    // Синхронизация пропса nomenclature
+    useEffect(() => {
+        if (item && item.length > 0) {
+            setItems(item);
+        }
+    }, [item]);
 
-    // --- Элементы текущей страницы ---
-    const currentItems = useMemo(() => {
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        return filteredItems.slice(start, end);
-    }, [filteredItems, currentPage, itemsPerPage]);
+    // Инициализация количеств
+    useEffect(() => {
+        if (items.length > 0) {
+            setQuantities(items.map(() => 0));
+            setLoading(false);
+        }
+    }, [items]);
 
-    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+    // Фильтрация по KEAZ
+    useEffect(() => {
+        if (stateSwitchKeaz) {
+            setFilterItems(items);
+        } else {
+            setFilterItems(items.filter(item => item.manufacturer !== "KEAZ"));
+        }
+        setCurrentPage(1); // сброс страницы при фильтре
+    }, [stateSwitchKeaz, items]);
 
-    // --- Пагинация ---
-    const handlePrevPage = () => { if (currentPage > 1) setCurrentPage(prev => prev - 1); };
-    const handleNextPage = () => { if (currentPage < totalPages) setCurrentPage(prev => prev + 1); };
-
-    // --- Корзина ---
-    const handleAddToBasket = (product, quantity) => {
-        if (quantity <= 0) return;
-        setBasket(prev => {
-            const idx = prev.findIndex(item => item.vendorCode === product.vendorCode);
-            if (idx !== -1) {
-                const updated = [...prev];
-                updated[idx].quantity = quantity;
-                return updated;
-            } else {
-                return [...prev, { ...product, quantity }];
-            }
-        });
-    };
-
+    // Сохраняем корзину
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
 
-    // --- Локальный стейт для количеств на текущей странице ---
-    const [quantities, setQuantities] = useState(() => currentItems.map(() => 0));
+    const toggleSwitch = () => setStateSwitchKeaz(prev => !prev);
 
-    useEffect(() => {
-        // Сброс количеств при смене страницы
-        setQuantities(currentItems.map(() => 0));
-    }, [currentItems]);
-
+    // -----------------------
+    // Работа с корзиной
     const handleIncrement = (index) => {
-        const newQ = [...quantities];
-        newQ[index]++;
-        setQuantities(newQ);
+        const newQuantities = [...quantities];
+        newQuantities[index]++;
+        setQuantities(newQuantities);
     };
 
     const handleDecrement = (index) => {
-        const newQ = [...quantities];
-        if (newQ[index] > 0) newQ[index]--;
-        setQuantities(newQ);
+        const newQuantities = [...quantities];
+        if (newQuantities[index] > 0) newQuantities[index]--;
+        setQuantities(newQuantities);
     };
 
-    const editStateSwitch = () => {
-        setStateSwitchKeaz(prev => !prev);
-        setCurrentPage(1); // Сбрасываем на первую страницу при фильтре
+    const handleAddToBasket = (index) => {
+        const product = filterItems[index];
+        const newBasket = [...basket];
+        const existingIndex = newBasket.findIndex(item => item.vendorCode === product.vendorCode);
+
+        if (quantities[index] > 0) {
+            if (existingIndex !== -1) {
+                newBasket[existingIndex].quantity = quantities[index];
+            } else {
+                newBasket.push({
+                    vendorCode: product.vendorCode,
+                    nameComponent: product.nameComponent,
+                    quantity: quantities[index],
+                    price: product.price,
+                    basketImgPath: product.basketImgPath,
+                    guidId: product.guidId,
+                    id: product.id
+                });
+            }
+            setBasket(newBasket);
+        }
     };
 
-    const isInBasket = (product) => basket.some(item => item.vendorCode === product.vendorCode);
+    const isInBasket = (index) => basket.some(item => item.vendorCode === filterItems[index].vendorCode);
 
-    console.log("CardComponetGroopLocalData" + nomenclature);
+    // -----------------------
+    // Пагинация
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filterItems.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(filterItems.length / itemsPerPage);
+
+    const handlePrevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
+    const handleNextPage = () => { if (currentPage < totalPages) setCurrentPage(currentPage + 1); };
+
+    if (loading) {
+        return (
+            <div className="loading-wrapper">
+                <div className="spinner"></div>
+                <p>Загрузка данных...</p>
+            </div>
+        );
+    }
+
+    // -----------------------
+    // Рендер
     return (
         <div className="card-componet-groop-section">
             <div className="container">
@@ -98,7 +134,7 @@ const CardComponetGroopLocalData = ({ h2, nomenclature }) => {
                             className="dg-filter-block__img-icon"
                             src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
                             alt="Переключатель"
-                            onClick={editStateSwitch}
+                            onClick={toggleSwitch}
                         />
                         <img
                             className="dg-filter-block__img-prod"
@@ -110,53 +146,56 @@ const CardComponetGroopLocalData = ({ h2, nomenclature }) => {
             </div>
 
             <div className="container card-componet-groop-section__container">
-                {currentItems.map((element, index) => (
-                    <div className="card-component" key={element.vendorCode}>
-                        <div className="card-component__top">
-                            <img src={element.imgLinkIconCard} className="card-component__img" alt={element.nameComponent || "Фото компонента"} />
-                            <div className="card-component__vendor">{element.vendorCode}</div>
-                            <div className="card-component__name" onClick={() => window.open(element.linkPage, "_blank")}>
-                                {element.nameComponent}
+                {currentItems.map((element, idx) => {
+                    const globalIndex = indexOfFirstItem + idx;
+                    return (
+                        <div className="card-component" key={element.vendorCode}>
+                            <div className="card-component__top">
+                                <img src={element.imgLinkIconCard} className="card-component__img" alt={element.nameComponent || "Фото компонента"} />
+                                <div className="card-component__vendor">{element.vendorCode}</div>
+                                <div className="card-component__name" onClick={() => window.open(element.linkPage, "_blank")}>
+                                    {element.nameComponent}
+                                </div>
+                            </div>
+
+                            <div className="card-component__bottom">
+                                <div className="cc-basket-block__delivry-block">
+                                    <div className={element.quantity === 0 ? "delivry-block__quantity delivry-block__quantity_0" : "delivry-block__quantity"}>
+                                        {element.quantity === 0 ? "Под заказ" : `Наличие: ${element.quantity} шт.`}
+                                    </div>
+                                </div>
+
+                                <div className="card-component__price-block">
+                                    <div className="card-component__price">
+                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
+                                    </div>
+                                    <div className="card-component__price-nalog">в т.ч. НДС</div>
+                                </div>
+
+                                <div className="card-component__basket-block">
+                                    <div className="basket-block__quantity-item">
+                                        <div className="quantity-item__minus" onClick={() => handleDecrement(globalIndex)}>−</div>
+                                        <div className="quantity-item__input">{quantities[globalIndex]}</div>
+                                        <div className="quantity-item__plus" onClick={() => handleIncrement(globalIndex)}>+</div>
+                                    </div>
+                                    <button
+                                        className={`basket-block__button ${isInBasket(globalIndex) ? "added" : ""} ${quantities[globalIndex] === 0 ? "disabled" : ""}`}
+                                        disabled={quantities[globalIndex] === 0}
+                                        onClick={() => handleAddToBasket(globalIndex)}
+                                    >
+                                        {isInBasket(globalIndex) ? "В корзине" : "В корзину"}
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
-                        <div className="card-component__bottom">
-                            <div className="cc-basket-block__delivry-block">
-                                <div className={element.quantity === 0 ? "delivry-block__quantity delivry-block__quantity_0" : "delivry-block__quantity"}>
-                                    {element.quantity === 0 ? "Под заказ" : `Наличие: ${element.quantity} шт.`}
-                                </div>
-                            </div>
-
-                            <div className="card-component__price-block">
-                                <div className="card-component__price">
-                                    {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
-                                </div>
-                                <div className="card-component__price-nalog">в т.ч. НДС</div>
-                            </div>
-
-                            <div className="card-component__basket-block">
-                                <div className="basket-block__quantity-item">
-                                    <div className="quantity-item__minus" onClick={() => handleDecrement(index)}>−</div>
-                                    <div className="quantity-item__input">{quantities[index]}</div>
-                                    <div className="quantity-item__plus" onClick={() => handleIncrement(index)}>+</div>
-                                </div>
-                                <button
-                                    className={`basket-block__button ${isInBasket(element) ? "added" : ""} ${quantities[index] === 0 ? "disabled" : ""}`}
-                                    disabled={quantities[index] === 0}
-                                    onClick={() => handleAddToBasket(element, quantities[index])}
-                                >
-                                    {isInBasket(element) ? "В корзине" : "В корзину"}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             {totalPages > 1 && (
                 <div className="pagination">
                     <button className="pagination__button" onClick={handlePrevPage} disabled={currentPage === 1}>Предыдущая</button>
-                    <span className="pagination__info"> Страница {currentPage} из {totalPages} </span>
+                    <span className="pagination__info">Страница {currentPage} из {totalPages}</span>
                     <button className="pagination__button" onClick={handleNextPage} disabled={currentPage === totalPages}>Следующая</button>
                     <select className="pagination__select" value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}>
                         <option value={8}>8 на странице</option>

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { getAllItems, saveOrUpdateItems } from "./js/db.js";
 import ApiUrl from "./js/ApiUrl.js";
 import Home from './Home/Home.jsx';
 import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
@@ -15,6 +16,7 @@ import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
 import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./Header/SearchResults.jsx";
+
 
 
 // ===== Проверка токена =====
@@ -90,48 +92,55 @@ function AdminRoute({ children }) {
   return isAdmin ? children : <Navigate to="/" replace />;
 }
 
-
 // ===== Основное приложение =====
 const App = () => {
-  // const [nomenclature, setNomenclature] = useState([]);
 
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch(ApiUrl + "/api/ReturnAllItem", {
-  //           method: "GET",
-  //           headers: { "Content-Type": "application/json" },
-  //         });
+    const [nomenclature, setNomenclature] = useState([]);
 
-  //         if (!response.ok) {
-  //           throw new Error("Ошибка запроса: " + response.status);
-  //         }
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          // 1. Загружаем данные из IndexedDB сразу
+          const cachedData = await getAllItems();
+          if (cachedData.length > 0) {
+            setNomenclature(cachedData);
+            console.log("Данные загружены из IndexedDB");
+          }
 
-  //         const data = await response.json();
-          
-  //         console.log("Ответ API:", data); // ← смотри, что реально приходит
+          // 2. Делаем запрос к API
+          const response = await fetch(ApiUrl + "/api/ReturnAllItem");
+          if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
 
-  //         const formattedData = data.map(item => ({
-  //           id: item.id,
-  //           imgLinkIconCard: item.imgLinkIconCard,
-  //           vendorCode: item.vendorCode,
-  //           nameComponent: item.nameComponent,
-  //           quantity: item.quantity,
-  //           linkPage: item.linkPage,
-  //           price: item.price,
-  //           basketImgPath: item.basketImgPath,
-  //           guidId: item.guid,
-  //           manufacturer: item.manufacturer,
-  //         }));
-  //         console.log("Сформировали formattedData :", data); // ← смотри, что реально приходит
-  //         setNomenclature(formattedData);
-  //       } catch (err) {
-  //         console.error("Ошибка загрузки номенклатуры:", err);
-  //       }
-  //     };
+          const data = await response.json();
+          const formattedData = data.map(item => ({
+            id: item.id,
+            imgLinkIconCard: item.imgLinkIconCard,
+            vendorCode: item.vendorCode,
+            nameComponent: item.nameComponent,
+            quantity: item.quantity,
+            linkPage: item.linkPage,
+            price: item.price,
+            basketImgPath: item.basketImgPath,
+            guidId: item.guid,
+            manufacturer: item.manufacturer,
+          }));
 
-  //     fetchData();
-  //   }, []);
+          // 3. Сохраняем новые или обновленные элементы в IndexedDB
+          await saveOrUpdateItems(formattedData);
+
+          // 4. Обновляем стейт — загружаем всё заново из IndexedDB, чтобы быть уверенным
+          const updatedData = await getAllItems();
+          setNomenclature(updatedData);
+
+          //console.log("Данные обновлены с API и сохранены в IndexedDB");
+
+        } catch (err) {
+          console.error("Ошибка загрузки номенклатуры:", err);
+        }
+      };
+
+      fetchData();
+    }, []);
 
     
 
@@ -155,7 +164,7 @@ const App = () => {
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
-        <Route path="/CatalogSection" element={<CatalogSection />} />
+        <Route path="/CatalogSection" element={<CatalogSection nomenclature={nomenclature} />} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
 
         {/* Только для авторизованных */}
