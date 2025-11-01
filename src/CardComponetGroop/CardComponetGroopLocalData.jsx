@@ -153,6 +153,34 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     alt="KEAZ"
                                 />
                             </div>
+                            {/* // Переключатель EKF */}
+                            <div className="directory-groups__filter-block">
+                                <img
+                                    className="dg-filter-block__img-icon"
+                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    alt="Переключатель"
+                                    onClick={toggleSwitch}
+                                />
+                                <img
+                                    className="dg-filter-block__img-prod"
+                                    src="/images/logo-ekf__min.png"
+                                    alt="KEAZ"
+                                />
+                            </div>
+                            {/* // Переключатель IEK */}
+                            <div className="directory-groups__filter-block">
+                                <img
+                                    className="dg-filter-block__img-icon"
+                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    alt="Переключатель"
+                                    onClick={toggleSwitch}
+                                />
+                                <img
+                                    className="dg-filter-block__img-prod"
+                                    src="/images/logo-iek__min.png"
+                                    alt="KEAZ"
+                                />
+                            </div>
                             {/* // Переключатель CHINT */}
                             <div className="directory-groups__filter-block">
                                 <img
@@ -163,7 +191,21 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                 />
                                 <img
                                     className="dg-filter-block__img-prod"
-                                    src="/images/logo-keaz__min.png"
+                                    src="/images/logo-chint__min.png"
+                                    alt="KEAZ"
+                                />
+                            </div>
+                               {/* // Переключатель SHNAIDER */}
+                            <div className="directory-groups__filter-block">
+                                <img
+                                    className="dg-filter-block__img-icon"
+                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    alt="Переключатель"
+                                    onClick={toggleSwitch}
+                                />
+                                <img
+                                    className="dg-filter-block__img-prod"
+                                    src="/images/logo-shnaider__min.png"
                                     alt="KEAZ"
                                 />
                             </div>

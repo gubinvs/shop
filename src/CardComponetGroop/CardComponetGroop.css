@@ -219,12 +219,15 @@
 
 
 
-
+.switch-block {
+    display: flex;
+}
 
 .directory-groups__filter-block {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .dg-filter-block__img-icon {
@@ -233,7 +236,6 @@
 
 .dg-filter-block__img-prod {
     height: 30px;
-    
 }
 
 
