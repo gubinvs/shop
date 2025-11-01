@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
 
-const CardComponetGroopLocalData = ({ h2, item }) => {
+const CardComponetGroopLocalData = ({ h2, item, chapter }) => {
     const location = useLocation();
-
-    console.log(item);
-    
     // Основные состояния
     const [items, setItems] = useState([]);
     const [filterItems, setFilterItems] = useState([]);
@@ -46,7 +43,20 @@ const CardComponetGroopLocalData = ({ h2, item }) => {
         }
     }, [items]);
 
-    // Фильтрация по KEAZ
+
+    
+    
+    // Фильтрация по Разделам магазина
+    useEffect(() => {
+        if (chapter === null) {
+            setFilterItems(items);
+        } else {
+            setFilterItems(items.filter(item => item.id === chapter));
+        }
+        setCurrentPage(1); // сброс страницы при фильтре
+    }, [items, chapter]);
+
+   // Фильтрация по KEAZ
     useEffect(() => {
         if (stateSwitchKeaz) {
             setFilterItems(items);
@@ -54,7 +64,7 @@ const CardComponetGroopLocalData = ({ h2, item }) => {
             setFilterItems(items.filter(item => item.manufacturer !== "KEAZ"));
         }
         setCurrentPage(1); // сброс страницы при фильтре
-    }, [stateSwitchKeaz, items]);
+    }, [stateSwitchKeaz, items]); 
 
     // Сохраняем корзину
     useEffect(() => {

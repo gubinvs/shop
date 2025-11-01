@@ -16,7 +16,7 @@ const CatalogSection = ({nomenclature}) => {
       <Header />
       <DirectoryGroups />
       {/* <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} /> */}
-      <CardComponetGroopLocalData h2={newChapter} item={nomenclature} />
+      <CardComponetGroopLocalData h2={newChapter} item={nomenclature} chapter={chapter} />
       <Footer />
     </>
   );
