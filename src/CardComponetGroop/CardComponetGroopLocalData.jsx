@@ -137,19 +137,38 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                 <h2 className="directory-groups__title">{h2}</h2>
 
                 {location.pathname !== '/' && (
-                    <div className="directory-groups__filter-block">
-                        <img
-                            className="dg-filter-block__img-icon"
-                            src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
-                            alt="Переключатель"
-                            onClick={toggleSwitch}
-                        />
-                        <img
-                            className="dg-filter-block__img-prod"
-                            src="/images/logo-keaz__min.png"
-                            alt="KEAZ"
-                        />
-                    </div>
+                    <>
+                        <div className="switch-block">
+                            {/* // Переключатель КЭАЗ */}
+                            <div className="directory-groups__filter-block">
+                                <img
+                                    className="dg-filter-block__img-icon"
+                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    alt="Переключатель"
+                                    onClick={toggleSwitch}
+                                />
+                                <img
+                                    className="dg-filter-block__img-prod"
+                                    src="/images/logo-keaz__min.png"
+                                    alt="KEAZ"
+                                />
+                            </div>
+                            {/* // Переключатель CHINT */}
+                            <div className="directory-groups__filter-block">
+                                <img
+                                    className="dg-filter-block__img-icon"
+                                    src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    alt="Переключатель"
+                                    onClick={toggleSwitch}
+                                />
+                                <img
+                                    className="dg-filter-block__img-prod"
+                                    src="/images/logo-keaz__min.png"
+                                    alt="KEAZ"
+                                />
+                            </div>
+                        </div>
+                    </>
                 )}
             </div>
 
