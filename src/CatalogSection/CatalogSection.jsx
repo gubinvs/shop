@@ -22,4 +22,5 @@ const CatalogSection = ({nomenclature}) => {
   );
 };
 
+
 export default CatalogSection;
