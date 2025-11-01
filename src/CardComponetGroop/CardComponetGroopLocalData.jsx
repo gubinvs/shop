@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
 
-const CardComponetGroopLocalData = ({ h2, item, chapter }) => {
+const CardComponetGroopLocalData = ({ h2, item}) => {
     const location = useLocation();
+    const chapter = new URLSearchParams(location.search).get("chapter");
+
     // Основные состояния
     const [items, setItems] = useState([]);
     const [filterItems, setFilterItems] = useState([]);
@@ -43,28 +45,24 @@ const CardComponetGroopLocalData = ({ h2, item, chapter }) => {
         }
     }, [items]);
 
-
-    
-    
-    // Фильтрация по Разделам магазина
     useEffect(() => {
-        if (chapter === null) {
-            setFilterItems(items);
-        } else {
-            setFilterItems(items.filter(item => item.id === chapter));
-        }
-        setCurrentPage(1); // сброс страницы при фильтре
-    }, [items, chapter]);
+        const normalizedChapter = chapter?.trim();
 
-   // Фильтрация по KEAZ
-    useEffect(() => {
-        if (stateSwitchKeaz) {
-            setFilterItems(items);
-        } else {
-            setFilterItems(items.filter(item => item.manufacturer !== "KEAZ"));
+        let filtered = items;
+
+        // фильтр по разделу (chapter)
+        if (normalizedChapter) {
+            filtered = filtered.filter(i => i.chapter === normalizedChapter);
         }
-        setCurrentPage(1); // сброс страницы при фильтре
-    }, [stateSwitchKeaz, items]); 
+
+        // фильтр по KEAZ
+        if (!stateSwitchKeaz) {
+            filtered = filtered.filter(i => i.manufacturer !== "KEAZ");
+        }
+
+        setFilterItems(filtered);
+        setCurrentPage(1);
+    }, [items, chapter, stateSwitchKeaz]);
 
     // Сохраняем корзину
     useEffect(() => {

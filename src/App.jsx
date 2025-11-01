@@ -120,6 +120,7 @@ const App = () => {
             quantity: item.quantity,
             linkPage: item.linkPage,
             price: item.price,
+            chapter: item.chapter,
             basketImgPath: item.basketImgPath,
             guidId: item.guid,
             manufacturer: item.manufacturer,
