@@ -93,45 +93,45 @@ function AdminRoute({ children }) {
 
 // ===== Основное приложение =====
 const App = () => {
-  const [nomenclature, setNomenclature] = useState([]);
+  // const [nomenclature, setNomenclature] = useState([]);
 
-  useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(ApiUrl + "/api/ReturnAllItem", {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          });
+  // useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const response = await fetch(ApiUrl + "/api/ReturnAllItem", {
+  //           method: "GET",
+  //           headers: { "Content-Type": "application/json" },
+  //         });
 
-          if (!response.ok) {
-            throw new Error("Ошибка запроса: " + response.status);
-          }
+  //         if (!response.ok) {
+  //           throw new Error("Ошибка запроса: " + response.status);
+  //         }
 
-          const data = await response.json();
+  //         const data = await response.json();
           
-          console.log("Ответ API:", data); // ← смотри, что реально приходит
+  //         console.log("Ответ API:", data); // ← смотри, что реально приходит
 
-          const formattedData = data.map(item => ({
-            id: item.id,
-            imgLinkIconCard: item.imgLinkIconCard,
-            vendorCode: item.vendorCode,
-            nameComponent: item.nameComponent,
-            quantity: item.quantity,
-            linkPage: item.linkPage,
-            price: item.price,
-            basketImgPath: item.basketImgPath,
-            guidId: item.guid,
-            manufacturer: item.manufacturer,
-          }));
-          console.log("Сформировали formattedData :", data); // ← смотри, что реально приходит
-          setNomenclature(formattedData);
-        } catch (err) {
-          console.error("Ошибка загрузки номенклатуры:", err);
-        }
-      };
+  //         const formattedData = data.map(item => ({
+  //           id: item.id,
+  //           imgLinkIconCard: item.imgLinkIconCard,
+  //           vendorCode: item.vendorCode,
+  //           nameComponent: item.nameComponent,
+  //           quantity: item.quantity,
+  //           linkPage: item.linkPage,
+  //           price: item.price,
+  //           basketImgPath: item.basketImgPath,
+  //           guidId: item.guid,
+  //           manufacturer: item.manufacturer,
+  //         }));
+  //         console.log("Сформировали formattedData :", data); // ← смотри, что реально приходит
+  //         setNomenclature(formattedData);
+  //       } catch (err) {
+  //         console.error("Ошибка загрузки номенклатуры:", err);
+  //       }
+  //     };
 
-      fetchData();
-    }, []);
+  //     fetchData();
+  //   }, []);
 
     
 
@@ -155,7 +155,7 @@ const App = () => {
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
-        <Route path="/CatalogSection" element={<CatalogSection nomenclature={nomenclature}/>} />
+        <Route path="/CatalogSection" element={<CatalogSection />} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
 
         {/* Только для авторизованных */}
