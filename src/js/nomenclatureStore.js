@@ -4,7 +4,7 @@ import ApiUrl from "./ApiUrl";
 
 
 // nomenclatureStore.js
-let nomenclature = [];
+export let nomenclature = [];
 let loaded = false;
 
 export async function loadNomenclature() {
@@ -31,7 +31,7 @@ export async function loadNomenclature() {
             guidId: item.guid,
             manufacturer: item.manufacturer
         }));
-console.log(nomenclature);
+
         loaded = true;
         return nomenclature;
 

@@ -9,7 +9,7 @@ import CardComponetGroopLocalData from "../CardComponetGroop/CardComponetGroop.j
 import Footer from '../Footer/Footer.jsx';
 
 
-const CatalogSection = () => {
+const CatalogSection = ({nomenclature}) => {
     // Получаем группу товара из строки запроса
     const chapter = new URLSearchParams(window.location.search).get("chapter");
 
@@ -17,15 +17,17 @@ const CatalogSection = () => {
 
     // Простейший стейт для проверки авторизации
     // const isAuthenticated = localStorage.getItem('token') !== null;
-
-
+    if (!nomenclature || nomenclature.length === 0) {
+        return <div>Загрузка товаров...</div>;
+    }
+console.log("CatalogSection"+nomenclature)
     return (
         <>
             {/* {isAuthenticated ? <Header /> : <HeaderGuest />}  */}
             <Header />
             <DirectoryGroups />
             {/* <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} /> */}
-            <CardComponetGroopLocalData h2={newChapter} />
+            <CardComponetGroopLocalData h2={newChapter} nomenclature={nomenclature}/>
             <Footer />
         </>
     )

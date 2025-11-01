@@ -15,7 +15,6 @@ import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
 import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./Header/SearchResults.jsx";
-import { loadNomenclature} from "./js/nomenclatureStore";
 
 
 // ===== Проверка токена =====
@@ -94,23 +93,48 @@ function AdminRoute({ children }) {
 
 // ===== Основное приложение =====
 const App = () => {
+  const [nomenclature, setNomenclature] = useState([]);
 
-
-  // 1️⃣ Объявляем состояние
-  const [ready, setReady] = useState(false);
-
-  // 2️⃣ useEffect для загрузки номенклатуры
   useEffect(() => {
-    loadNomenclature().then(() => {
-      setReady(true); // теперь setReady определён
-    });
-  }, []);
+      const fetchData = async () => {
+        try {
+          const response = await fetch(ApiUrl + "/api/ReturnAllItem", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          });
 
-  // 3️⃣ Пока данные не загружены — показываем экран загрузки
-  if (!ready) {
-    return <div>Загрузка данных...</div>;
-  }
+          if (!response.ok) {
+            throw new Error("Ошибка запроса: " + response.status);
+          }
 
+          const data = await response.json();
+          console.log("Ответ API:", data); // ← смотри, что реально приходит
+
+          const formattedData = data.map(item => ({
+            id: item.id,
+            imgLinkIconCard: item.imgLinkIconCard,
+            vendorCode: item.vendorCode,
+            nameComponent: item.nameComponent,
+            quantity: item.quantity,
+            linkPage: item.linkPage,
+            price: item.price,
+            basketImgPath: item.basketImgPath,
+            guidId: item.guid,
+            manufacturer: item.manufacturer,
+          }));
+
+          setNomenclature(formattedData);
+        } catch (err) {
+          console.error("Ошибка загрузки номенклатуры:", err);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+  console.log(nomenclature);
+
+    
 
   return (
     <Router>
@@ -132,7 +156,7 @@ const App = () => {
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
-        <Route path="/CatalogSection" element={<CatalogSection />} />
+        <Route path="/CatalogSection" element={<CatalogSection nomenclature={nomenclature}/>} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
 
         {/* Только для авторизованных */}
