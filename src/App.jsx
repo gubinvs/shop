@@ -108,6 +108,7 @@ const App = () => {
           }
 
           const data = await response.json();
+          
           console.log("Ответ API:", data); // ← смотри, что реально приходит
 
           const formattedData = data.map(item => ({
@@ -122,7 +123,7 @@ const App = () => {
             guidId: item.guid,
             manufacturer: item.manufacturer,
           }));
-
+          console.log("Сформировали formattedData :", data); // ← смотри, что реально приходит
           setNomenclature(formattedData);
         } catch (err) {
           console.error("Ошибка загрузки номенклатуры:", err);
@@ -131,8 +132,6 @@ const App = () => {
 
       fetchData();
     }, []);
-
-  console.log(nomenclature);
 
     
 
