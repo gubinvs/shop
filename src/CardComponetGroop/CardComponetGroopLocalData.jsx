@@ -27,20 +27,24 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     const toggleSwitchKeaz = () => setStateSwitchKeaz(prev => !prev);
     
     // Состояние переключателя EKF
-    const [stateSwitchEkf, setStateSwitchEkf] = useState(false);
-    const toggleSwitchEkf = () => setStateSwitchEkf(prev => !prev);
+    // const [stateSwitchEkf, setStateSwitchEkf] = useState(false);
+    // const toggleSwitchEkf = () => setStateSwitchEkf(prev => !prev);
 
     // Состояние переключателя IEK
-    const [stateSwitchIek, setStateSwitchIek] = useState(false);
-    const toggleSwitchIek = () => setStateSwitchIek(prev => !prev);
+    // const [stateSwitchIek, setStateSwitchIek] = useState(false);
+    // const toggleSwitchIek = () => setStateSwitchIek(prev => !prev);
 
     // Состояние переключателя CHINT
-    const [stateSwitchChint, setStateSwitchChint] = useState(false);
-    const toggleSwitchChint = () => setStateSwitchChint(prev => !prev);
+    // const [stateSwitchChint, setStateSwitchChint] = useState(false);
+    // const toggleSwitchChint = () => setStateSwitchChint(prev => !prev);
 
     // Состояние переключателя SCHNAIDER
-    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(false);
+    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(true);
     const toggleSwitchShnaider = () => setStateSwitchShnaider(prev => !prev);
+
+     // Состояние переключателя PHOENIX
+    const [stateSwitchPhoenix, setStateSwitchPhoenix] = useState(true);
+    const toggleSwitchPhoenix = () => setStateSwitchPhoenix(prev => !prev);
 
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
@@ -67,19 +71,29 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
 
         let filtered = items;
 
-        // фильтр по разделу (chapter)
+        // фильтр по наменованию раздела каталога (chapter)
         if (normalizedChapter) {
             filtered = filtered.filter(i => i.chapter === normalizedChapter);
         }
 
-        // фильтр по KEAZ
+        // фильтр по производителю KEAZ
         if (!stateSwitchKeaz) {
             filtered = filtered.filter(i => i.manufacturer !== "KEAZ");
         }
 
+        // фильтр по производителю SCHAIDER
+        if (!stateSwitchShnaider) {
+            filtered = filtered.filter(i => i.manufacturer !== "Schneider Electric");
+        }
+
+        // фильтр по производителю PHOENIX
+        if (!stateSwitchPhoenix) {
+            filtered = filtered.filter(i => i.manufacturer !== "PHOENIX CONTACT");
+        }
+
         setFilterItems(filtered);
         setCurrentPage(1);
-    }, [items, chapter, stateSwitchKeaz]);
+    }, [items, chapter, stateSwitchKeaz, stateSwitchShnaider, stateSwitchPhoenix]);
 
     // Сохраняем корзину
     useEffect(() => {
@@ -170,7 +184,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                 />
                             </div>
                             {/* // Переключатель EKF */}
-                            <div className="directory-groups__filter-block">
+                            {/* <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchEkf ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
@@ -182,9 +196,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     src="/images/logo-ekf__min.png"
                                     alt="KEAZ"
                                 />
-                            </div>
+                            </div> */}
                             {/* // Переключатель IEK */}
-                            <div className="directory-groups__filter-block">
+                            {/* <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchIek ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
@@ -196,9 +210,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     src="/images/logo-iek__min.png"
                                     alt="KEAZ"
                                 />
-                            </div>
+                            </div> */}
                             {/* // Переключатель CHINT */}
-                            <div className="directory-groups__filter-block">
+                            {/* <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchChint ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
@@ -210,8 +224,8 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     src="/images/logo-chint__min.png"
                                     alt="KEAZ"
                                 />
-                            </div>
-                               {/* // Переключатель SHNAIDER */}
+                            </div> */}
+                            {/* // Переключатель SHNAIDER */}
                             <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
@@ -222,7 +236,21 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                 <img
                                     className="dg-filter-block__img-prod"
                                     src="/images/logo-shnaider__min.png"
-                                    alt="KEAZ"
+                                    alt="SHNAIDER"
+                                />
+                            </div>
+                            {/* // Переключатель PHOENIX */}
+                            <div className="directory-groups__filter-block">
+                                <img
+                                    className="dg-filter-block__img-icon"
+                                    src={stateSwitchPhoenix ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                                    alt="Переключатель"
+                                    onClick={toggleSwitchPhoenix}
+                                />
+                                <img
+                                    className="dg-filter-block__img-prod"
+                                    src="/images/logo-phoenix__min.jpg"
+                                    alt="phoenix"
                                 />
                             </div>
                         </div>
