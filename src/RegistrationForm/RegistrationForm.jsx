@@ -75,7 +75,7 @@ const RegistrationForm = () => {
             <button type="submit" className="button button__regitration">
               Зарегистрироваться
             </button>
-                 {/* Политика ОПД */}
+            {/* Политика ОПД */}
             <div className="check-box">
                 <input className="check-box__input" type="checkbox" name="chekBox" required />
                 <div className="check-box__discr">
