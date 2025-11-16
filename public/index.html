@@ -1,23 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="ru">
+
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="https://encomponent.ru/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="https://encomponent.ru/favicon.svg" type="image/svg+xml">
+
+    <!-- Preload fonts and main styles  -->
+    <link rel="preconnect" href="https://shop.encomponent.ru" />
+    <link rel="preload" href="https://encomponent.ru/css/hover.css" as="style" />
+    <link rel="stylesheet" href="https://encomponent.ru/css/hover.css" media="all" />
+
     <meta name="theme-color" content="#000000" />
-    <link rel='stylesheet' href='https://encomponent.ru/css/hover.css' media="all">
-    <meta name="description" content="Интернет-магазин заказа комплектующих для сборки НКУ и готовых изделий по типовым решениям ведущих компаний индустрии"/>
-    <title>Компоненты энергии - интернет-магазин заказа комплектующих</title>
+    <meta name="color-scheme" content="light dark">
+
+    <!-- SEO -->
+    <title>Компоненты Энергии — комплектующие НКУ, кабель, электрооборудование</title>
+
+    <meta name="description"
+      content="Интернет-магазин Компоненты Энергии — заказ комплектующих для сборки НКУ, кабеля, электрооборудования, автоматики и готовых изделий по типовым решениям ведущих производителей. Доставка по России.">
+
+    <meta name="keywords"
+      content="НКУ, комплектующие, электрооборудование, кабель, провода, сборка щитов, автоматизация, промышленная электроника">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Компоненты Энергии — комплектующие НКУ и электрооборудование" />
+    <meta property="og:description"
+      content="Профессиональный магазин комплектующих для сборки НКУ, кабеля и промышленной автоматики. Доставка по всей России." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Компоненты Энергии" />
+    <meta property="og:url" content="https://shop.encomponent.ru/" />
+    <meta property="og:image" content="https://encomponent.ru/img/og-preview.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Компоненты Энергии — комплектующие НКУ и электрооборудование">
+    <meta name="twitter:description"
+      content="Интернет-магазин заказ комплектующих НКУ, кабеля, проводов, автоматизации и готовых решений.">
+    <meta name="twitter:image" content="https://encomponent.ru/img/og-preview.jpg">
+
     <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
+    <script>
       (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
         m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=104835842', 'ym');
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
+        k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+        k.async = 1; k.src = r;
+        a.parentNode.insertBefore(k, a);
+      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=104835842", "ym");
 
-      ym(104835842, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+      ym(104835842, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        ecommerce: "dataLayer",
+      });
     </script>
     <noscript>
       <div><img src="https://mc.yandex.ru/watch/104835842" style="position:absolute; left:-9999px;" alt="" /></div>
@@ -27,6 +70,5 @@
   <body>
     <noscript>Интернет-магазин по продаже электронных компонентов, готовых НКУ, установочных проводов и ... </noscript>
     <div id="root"></div>
-    
   </body>
 </html>
