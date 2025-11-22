@@ -14,6 +14,16 @@ const AdminPanel =()=> {
             method: "POST",
             headers: { "Content-Type": "application/json" }
         })
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+
+            console.log(JSON.stringify(data));
+        });
+
+        
     }
 
 
@@ -23,7 +33,7 @@ const AdminPanel =()=> {
             <h4>Обновление данных о цене и количестве на складах KEAZ:</h4>
             <button
                 className="button-update"
-                onClick={()=>updateKeazQuantityItem
+                onClick={()=>updateKeazQuantityItem()
             }>Обновить данные</button>
         </div>
             
