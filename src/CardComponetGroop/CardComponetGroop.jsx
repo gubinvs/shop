@@ -161,7 +161,7 @@ const CardComponetGroop = (param) => {
                     return (
                         <div className="card-component" key={element.vendorCode}>
                             <div className="card-component__top">
-                                <img src={element.imgLinkIconCard} className="card-component__img" alt={element.nameComponent || "Фото компонента"} />
+                                <img src={element.imgLinkIconCard || "https://encomponent.ru/img/free-icon-no-photo-4054617.png"} className="card-component__img" alt={element.nameComponent || "Фото компонента"} />
                                 <div className="card-component__vendor">{element.vendorCode}</div>
                                 <div className="card-component__name" onClick={() => window.open(element.linkPage, "_blank")}>
                                     {element.nameComponent}

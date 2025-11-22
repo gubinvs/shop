@@ -4,9 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+/keaz_etim.xml
 
 # testing
 /coverage
+
 
 # production
 /build
