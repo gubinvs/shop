@@ -33,7 +33,7 @@ const AdminPanel =()=> {
             <h4>Обновление данных о цене и количестве на складах KEAZ:</h4>
             <button
                 className="button-update"
-                onClick={()=>updateKeazQuantityItem()
+                onClick={()=>{updateKeazQuantityItem()}
             }>Обновить данные</button>
         </div>
             
