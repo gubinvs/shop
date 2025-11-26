@@ -1,29 +1,18 @@
-# === Stage 1: Build React App ===
-FROM node:20-slim AS build
-WORKDIR /app
+# Используем официальный образ Node.js
+FROM node:16
 
-# Обновляем системные пакеты
-RUN apt-get update && apt-get upgrade -y && apt-get clean
+# Устанавливаем рабочую директорию в контейнере
+WORKDIR /src
 
-# Установка зависимостей
+# Копируем package.json и yarn.lock в рабочую директорию
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
 
-# Копируем проект и делаем сборку
+
+# Копируем остальные файлы проекта в контейнер
 COPY . .
-RUN yarn build
 
-# === Stage 2: Serve with Nginx ===
-FROM nginx:stable-slim
+# Открываем порт 3000 для работы приложения
+EXPOSE 3000
 
-# Удаляем дефолтный конфиг
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Копируем наш конфиг
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Копируем React build
-COPY --from=build /app/build /usr/share/nginx/html
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Запускаем приложение с помощью yarn start
+CMD ["yarn", "start"]
