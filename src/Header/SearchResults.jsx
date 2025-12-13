@@ -160,7 +160,10 @@ const SearchResults = () => {
                                 </div>
                                 <div className="sccb-discription__discription">
                                     {component.productDescription}
+                                    <br/><br/>
+                                    <b><a href={component.linkPage}>Подробнее на странице товара ...</a></b>
                                 </div>
+                                
                             </div>
                             <div className="cc-basket-block__delivry-block">
                                 <div
