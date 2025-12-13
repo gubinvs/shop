@@ -44,6 +44,7 @@
 .sccb-discription__link-manufacturer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     min-width: 340px;
     max-width: 520px;
     height: 150px;
@@ -65,9 +66,17 @@
 }
 
 .sccb-discription-lm__title {
-    padding-top: 40px;
     width: 50%;
     text-align: center;
     font-size: 22px;
     font-weight: 500;
+}
+
+.sccb-discription__logo {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sccb-discription-lm__img {
+    border-radius: 10px;
 }

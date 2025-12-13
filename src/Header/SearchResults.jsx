@@ -100,6 +100,27 @@ const SearchResults = () => {
     const handleDecrement = () => setQuantity(prev => (prev > 0 ? prev - 1 : 0));
 
     const isInBasket = () => component && basket.some(item => item.vendorCode === component.vendorCode);
+    
+    const normalizeManufacturer = (name = "") => {
+        const upper = name.toUpperCase();
+
+        if (upper.includes("KEAZ")) return "KEAZ";
+        if (upper.includes("SCHNEIDER ELECTRIC")) return "SCHNEIDER";
+        if (upper.includes("PHOENIX CONTACT")) return "PHOENIX";
+        if (upper.includes("КОМПОНЕНТ ЭНЕРГИИ")) return "ENERGY";
+
+        return null;
+    };
+
+    const logos = {
+        KEAZ: "../images/logo-keaz.png",
+        SCHNEIDER: "../images/logo-shnaider__min.png",
+        PHOENIX: "../images/logo-phoenix__min.jpg",
+        ENERGY: "../images/header_logo_1280.svg",
+    };
+
+    const key = component ? normalizeManufacturer(component.manufacturer) : null;
+    const logo = key ? logos[key] : null;
 
     return (
         <>
@@ -124,14 +145,15 @@ const SearchResults = () => {
                         </div>
 
                         <div className="card-component__bottom">
-                            <div className="sr-card-component-bottom__discription">
-                                <div className="sccb-discription__link-manufacturer" onClick={() => window.open(component.linkPage, "_blank")}>
-                                    <div className="sccb-discription-lm__title">Подробнее на сайте производителя</div>
-                                    <img 
-                                        src={component.manufacturer === "KEAZ"? "../images/logo-keaz.png":""} 
-                                        alt="Логотип" 
-                                        className='sccb-discription-lm__img' 
-                                    />
+                            <div className="sr-card-component-bottom__discription">  
+                                <div className="sccb-discription__logo">
+                                    {logo && (
+                                        <img
+                                            src={logo}
+                                            alt={`Логотип ${component.manufacturer}`}
+                                            className="sccb-discription-lm__img"
+                                        />
+                                    )}
                                 </div>
                                 <div className="sccb-discription__title">
                                     Описание товара:
@@ -139,7 +161,6 @@ const SearchResults = () => {
                                 <div className="sccb-discription__discription">
                                     {component.productDescription}
                                 </div>
-                               
                             </div>
                             <div className="cc-basket-block__delivry-block">
                                 <div
