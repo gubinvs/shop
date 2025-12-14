@@ -20,8 +20,8 @@ const Cart = (props) => {
 
   const calculateTotal = () => {
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const shipping = 5.00;
-    const tax = subtotal * 0.20;
+    const shipping = 5.00; // доставка
+    const tax = subtotal * 0.22;
     return { subtotal, shipping, tax, total: subtotal + shipping + tax };
   };
 
@@ -76,7 +76,7 @@ const Cart = (props) => {
               <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
             </div>
             <div className="total">
-              <span>В том числе, НДС 20%</span><span>{formatPrice(tax)}</span>
+              <span>В том числе, НДС 22%</span><span>{formatPrice(tax)}</span>
             </div>
             <button 
               className="checkout-button" 
