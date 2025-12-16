@@ -153,7 +153,7 @@ const Header = () => {
             <header>
                 <div className="container contact-header-block">
                     <div className="contact-header-block__nav">
-                        <div className="contact-header-block__phone">8 (812) 921-59-71</div>
+                        <div className="contact-header-block__phone"> (812) 921-59-71</div>
                         <div className="contact-header-block__adress">Санкт-Петербург</div>
                         <div className="contact-header-block__email">office@encomponent.ru</div>
                     </div>
