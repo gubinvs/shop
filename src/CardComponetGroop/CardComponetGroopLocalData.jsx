@@ -25,6 +25,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     // Состояние переключателя KEAZ
     const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
     const toggleSwitchKeaz = () => setStateSwitchKeaz(prev => !prev);
+
     
     // Состояние переключателя EKF
     // const [stateSwitchEkf, setStateSwitchEkf] = useState(false);

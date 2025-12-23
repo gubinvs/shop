@@ -3,7 +3,7 @@ import React from 'react';
 import { formatCurrency } from '../Function/formatCurrency'; // Функция для форматирования валюты
 
 const OrderDetails = ({ order }) => {
-  console.log(order);
+  // console.log(order);
   return (
     <div className="filling-block">
       <div className="filling-order-table__title"><strong>Наполнение заказа:</strong></div>

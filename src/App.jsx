@@ -104,7 +104,7 @@ const App = () => {
           const cachedData = await getAllItems();
           if (cachedData.length > 0) {
             setNomenclature(cachedData);
-            console.log("Данные загружены из IndexedDB");
+            // console.log("Данные загружены из IndexedDB");
           }
 
           // 2. Делаем запрос к API

@@ -9,8 +9,6 @@ const CatalogSection = ({nomenclature}) => {
   const chapter = new URLSearchParams(window.location.search).get("chapter");
   const newChapter = chapter === "Модульные автоматы" ? "Модульное оборудование" : chapter;
 
-  console.log();
-
   return (
     <>
       <Header />

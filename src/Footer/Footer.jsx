@@ -72,7 +72,7 @@ const Footer = () => {
     };
 
     const loadAnalytics = () => {
-      console.log("✅ Cookies приняты — можно подключать аналитику");
+      // console.log("✅ Cookies приняты — можно подключать аналитику");
       const s = document.createElement("script");
       s.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX";
       s.async = true;

@@ -44,7 +44,7 @@ const SearchResults = () => {
         })
         .then(data => {
 
-            console.log(JSON.stringify(data));
+            // console.log(JSON.stringify(data));
             
             if (data.length > 0) {
                 const item = data[0];
@@ -91,7 +91,7 @@ const SearchResults = () => {
             });
         }
 
-        console.log(JSON.stringify(component.quantity));
+        // console.log(JSON.stringify(component.quantity));
 
         setBasket(newBasket);
     };
