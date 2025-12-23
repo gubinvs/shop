@@ -214,11 +214,6 @@
     color: white;
 }
 
-
-
-
-
-
 .switch-block {
     display: flex;
 }
@@ -237,15 +232,6 @@
 .dg-filter-block__img-prod {
     height: 30px;
 }
-
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 1280px) {
     .container {
@@ -361,7 +347,7 @@
         display: none;
     }
 
-        .basket-block__quantity-item {
+    .basket-block__quantity-item {
         margin-right: 20px;
     }
 
@@ -401,5 +387,47 @@
     .basket-block__button {
         width: 110px;
         font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 380px;
+    }
+
+    .directory-groups__title {
+        font-size: 26px;
+    }
+
+    .switch-block {
+        flex-wrap: wrap;
+    }
+
+    .card-component {
+        width: 186px;
+        height: 386px;
+    }
+
+    .quantity-item__minus, 
+    .quantity-item__plus {
+        width: 13px;
+        height: 22px;
+        font-size: 10px;
+    }
+
+    .quantity-item__input {
+        width: 40px;
+        height: 22px;
+        font-size: 12px;
+    }
+
+    .basket-block__quantity-item {
+        margin-right: 4px;
+    }
+
+    .basket-block__button {
+        width: 89px;
+        height: 22px;
+        font-size: 12px;
     }
 }

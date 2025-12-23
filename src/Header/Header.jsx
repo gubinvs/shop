@@ -157,8 +157,10 @@ const Header = () => {
                         <div className="contact-header-block__adress">Санкт-Петербург</div>
                         <div className="contact-header-block__email">office@encomponent.ru</div>
                     </div>
-                    <button className="contact-header-block__button-out" onClick={() => ClearToken()}>Выйти</button>
-                    <button className="contact-header-block__button-out button-registrasion" onClick={()=> window.location.href = "/Authorization"}>Авторизация</button>
+                    <div>
+                        <button className="contact-header-block__button-out" onClick={() => ClearToken()}>Выйти</button>
+                        <button className="contact-header-block__button-out button-registrasion" onClick={()=> window.location.href = "/Authorization"}>Авторизация</button>
+                    </div>
                     <div className="header-basket-block_mobile">
                         <ul className="header-basket-block__list" onClick={companyDashboard}>
                             <li className="header-basket-block-icon__item">
@@ -216,10 +218,7 @@ const Header = () => {
                                         <li className="catalog__item" onClick={() => OpenSection(chapterRele)}>Реле и аксессуары к ним</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterConverters)}>Преобразователи частоты</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterInstrument)}>Инструмент электромонтажный</li>
-                                        <li className="catalog__item" onClick={() => OpenSection(chapterKorpus)}>Корпуса, боксы, НКУ</li>
-
-                                        
-                                        
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterKorpus)}>Корпуса, боксы, НКУ</li>         
                                     </ul>
                                 )}
 

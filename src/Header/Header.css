@@ -535,6 +535,8 @@
     margin-bottom: 0px;
   }
 
+
+  .contact-header-block__nav,
   .contact-header-block__adress,
   .header-logo-block {
     display: none;
@@ -594,4 +596,12 @@
     margin-right: 8px;
   }
 
+}
+
+@media only screen and (max-width: 480px) {
+
+   .search-input-block {
+    width: 380px;
+
+  }
 }

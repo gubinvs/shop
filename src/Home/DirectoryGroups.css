@@ -276,10 +276,10 @@
 }
 
 @media only screen and (max-width: 640px) {
-    .container {
-        width: 480px;
-    }
 
+    .directory-groups__container {
+        display: none;
+    }
     .dg-card4 {
         width: 168px;
     }
