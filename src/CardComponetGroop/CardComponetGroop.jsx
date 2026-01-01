@@ -18,10 +18,12 @@ const CardComponetGroop = (param) => {
         localStorage.setItem('cart', JSON.stringify(unique));
         return unique;
     });
+
     const [loading, setLoading] = useState(true);
 
     // Состояния кнопок переключателей загрузки предложений производителей
     const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
+
     const editStateSwitch = () => {
         if (stateSwitchKeaz === true) {
             setStateSwitchKeaz(false);
@@ -29,11 +31,6 @@ const CardComponetGroop = (param) => {
             setStateSwitchKeaz(true);
         }
     };
-
-
-    // Пагинация
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(8); // по умолчанию 8 на странице
 
     useEffect(() => {
         fetch(ApiUrl + param.api, {
@@ -117,6 +114,8 @@ const CardComponetGroop = (param) => {
     const isInBasket = (index) => basket.some(item => item.vendorCode === items[index].vendorCode);
 
     // Пагинация
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(8); // по умолчанию 8 на странице
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filterItems.slice(indexOfFirstItem, indexOfLastItem);
@@ -141,15 +140,15 @@ const CardComponetGroop = (param) => {
                 {location.pathname !== '/' && (
                     <div className="directory-groups__filter-block">
                         <img
-                        className="dg-filter-block__img-icon"
-                        src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
-                        alt="Переключатель"
-                        onClick={editStateSwitch}
+                            className="dg-filter-block__img-icon"
+                            src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
+                            alt="Переключатель"
+                            onClick={editStateSwitch}
                         />
                         <img
-                        className="dg-filter-block__img-prod"
-                        src="/images/logo-keaz__min.png"
-                        alt="KEAZ"
+                            className="dg-filter-block__img-prod"
+                            src="/images/logo-keaz__min.png"
+                            alt="KEAZ"
                         />
                     </div>
                     )}

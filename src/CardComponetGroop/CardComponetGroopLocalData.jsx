@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
 
@@ -8,7 +8,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
 
     // Основные состояния
     const [items, setItems] = useState([]);
-    const [filterItems, setFilterItems] = useState([]);
+    
     const [quantities, setQuantities] = useState([]);
     const [basket, setBasket] = useState(() => {
         const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -26,6 +26,21 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     const [stateSwitchKeaz, setStateSwitchKeaz] = useState(true);
     const toggleSwitchKeaz = () => setStateSwitchKeaz(prev => !prev);
 
+    // Если открываем ниже перечисленные разделы, то кеаз не показываем, показываем там где нет своей номенклатуры
+    useEffect(() => {
+        if (
+            chapter === "Модульное оборудование" || 
+            chapter === "Средства монтажа" ||
+            chapter === "Блоки питания" ||
+            chapter === "Силовые автоматические выключатели" ||
+            chapter === "Программируемые контроллеры" ||
+            chapter === "Модули расширения"
+
+        ) {
+            setStateSwitchKeaz(false);
+        }
+    }, [chapter]);
+
     
     // Состояние переключателя EKF
     // const [stateSwitchEkf, setStateSwitchEkf] = useState(false);
@@ -40,12 +55,24 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     // const toggleSwitchChint = () => setStateSwitchChint(prev => !prev);
 
     // Состояние переключателя SCHNAIDER
-    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(true);
+    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(false);
     const toggleSwitchShnaider = () => setStateSwitchShnaider(prev => !prev);
+    // Если открываем ниже перечисленные разделы, то кеаз не показываем, показываем там где нет своей номенклатуры
+    useEffect(() => {
+        if (chapter === "Модульное оборудование" || chapter === "Силовые автоматические выключатели" || chapter === "Программируемые контроллеры" || chapter === "Модули расширения") {
+            setStateSwitchShnaider(true);
+        }
+    }, [chapter]);
 
-     // Состояние переключателя PHOENIX
-    const [stateSwitchPhoenix, setStateSwitchPhoenix] = useState(true);
+    // Состояние переключателя PHOENIX
+    const [stateSwitchPhoenix, setStateSwitchPhoenix] = useState(false);
     const toggleSwitchPhoenix = () => setStateSwitchPhoenix(prev => !prev);
+    // Если открываем ниже перечисленные разделы, то кеаз не показываем, показываем там где нет своей номенклатуры
+    useEffect(() => {
+        if (chapter === "Блоки питания" || chapter === "Средства монтажа") {
+            setStateSwitchPhoenix(true);
+        }
+    }, [chapter]);
 
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
@@ -67,34 +94,43 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
         }
     }, [items]);
 
-    useEffect(() => {
+    const filterItems = useMemo(() => {
         const normalizedChapter = chapter?.trim();
 
-        let filtered = items;
+        // список запрещённых производителей
+        const excludedManufacturers = new Set();
 
-        // фильтр по наменованию раздела каталога (chapter)
-        if (normalizedChapter) {
-            filtered = filtered.filter(i => i.chapter === normalizedChapter);
-        }
-
-        // фильтр по производителю KEAZ
         if (!stateSwitchKeaz) {
-            filtered = filtered.filter(i => i.manufacturer !== "KEAZ");
+            excludedManufacturers.add("KEAZ");
         }
-
-        // фильтр по производителю SCHAIDER
         if (!stateSwitchShnaider) {
-            filtered = filtered.filter(i => i.manufacturer !== "Schneider Electric");
+            excludedManufacturers.add("Schneider Electric");
         }
-
-        // фильтр по производителю PHOENIX
         if (!stateSwitchPhoenix) {
-            filtered = filtered.filter(i => i.manufacturer !== "PHOENIX CONTACT");
+            excludedManufacturers.add("PHOENIX CONTACT");
         }
 
-        setFilterItems(filtered);
-        setCurrentPage(1);
-    }, [items, chapter, stateSwitchKeaz, stateSwitchShnaider, stateSwitchPhoenix]);
+        return items.filter(item => {
+            // фильтр по разделу
+            if (normalizedChapter && item.chapter !== normalizedChapter) {
+                return false;
+            }
+
+            // фильтр по производителю
+            if (excludedManufacturers.has(item.manufacturer)) {
+                return false;
+            }
+
+            return true;
+        });
+    }, [
+        items,
+        chapter,
+        stateSwitchKeaz,
+        stateSwitchShnaider,
+        stateSwitchPhoenix
+    ]);
+
 
     // Сохраняем корзину
     useEffect(() => {
@@ -102,7 +138,6 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     }, [basket]);
 
 
-    // -----------------------
     // Работа с корзиной
     const handleIncrement = (index) => {
         const newQuantities = [...quantities];
@@ -160,7 +195,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
         );
     }
 
-    // -----------------------
+
     // Рендер
     return (
         <div className="card-componet-groop-section">
