@@ -247,13 +247,13 @@
     .card-component__img {
         height: 140px;
     }
-
+ 
     .card-component__name {
         font-size: 14px;
     }
 
     .delivry-block__quantity {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .card-component__price {
@@ -388,6 +388,15 @@
         width: 110px;
         font-size: 14px;
     }
+
+    .dg-filter-block__img-icon {
+        height: 20px;
+    }
+
+    .dg-filter-block__img-prod {
+       height: 20px;
+    }
+
 }
 
 @media only screen and (max-width: 480px) {
@@ -396,7 +405,17 @@
     }
 
     .directory-groups__title {
-        font-size: 26px;
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .directory-groups__filter-block {
+        margin-bottom: 20px;
+        margin-right: 4px;
+    }
+
+    .dg-filter-block__img-icon {
+        margin-right: 4px;
     }
 
     .switch-block {
