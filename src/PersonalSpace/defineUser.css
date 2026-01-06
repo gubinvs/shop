@@ -31,3 +31,55 @@
     width: 180px;
     border: 1px solid #F5EA29;
 }
+
+
+@media only screen and (max-width: 1280px) {
+    .container,
+    .cart-component-container__main-block {
+        width: 1000px;
+    }
+
+    .define-user-page__title {
+        margin-bottom: 10px;
+    }
+
+    .admin-block__button, .admin-block__select {
+        width: 260px;
+    }
+
+    .user-info__define-user {
+        width: 70%;
+    }
+
+} 
+
+@media only screen and (max-width: 1024px) {
+    .container,
+    .cart-component-container__main-block {
+        width: 960px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+      width: 800px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+      width: 640px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        width: 480px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 380px;
+    }
+}

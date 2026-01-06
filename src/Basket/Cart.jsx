@@ -44,8 +44,8 @@ const Cart = (props) => {
 
   return (
     <>
-      <div className="cart-component-container">
-        <h1>Комплектация заказа:</h1>
+      <div className="container cart-component-container">
+        <h1 className="cart-component__title">Комплектация заказа:</h1>
         <div className="cart-items">
           {cartItems.map(item => (
             <div key={item.id} className="cart-item">

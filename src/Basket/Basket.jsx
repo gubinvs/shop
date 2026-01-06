@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Header from "../Header/Header.jsx";
-import "./Basket.css";
 import Cart from "./Cart.jsx";
 import ApiUrl from "../js/ApiUrl.js";
 

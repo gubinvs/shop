@@ -143,11 +143,11 @@ const DefineUser = () => {
         </div>
 
         <div className="container">
-          <h1>Заказы компании:</h1>
+          <h1 className="define-user-page__title">Заказы компании:</h1>
         </div>
 
         <div className="container user-info-container">
-          <div className="user-info">
+          <div className="user-info user-info__define-user">
             {Array.isArray(userInfo) ? (
               userInfo.map((com) => (
                 <p key={com.id || com.nameCompany}>
@@ -227,7 +227,7 @@ const DefineUser = () => {
                         ) : null)}
                       </div>
 
-                      <div className="admin-block" style={admin ? {display: "flex"} : {display: "none"}}>
+                      <div className="admin-block admin-block__block" style={admin ? {display: "flex"} : {display: "none"}}>
                         <button className="admin-block__button" onClick={() => FullOrderInformation(order.numberOrder)}>Полная информация о заказе</button>
                         <form className="admin-block__select-block" onSubmit={handleSubmit}>
                           <select className="admin-block__select" value={selectedOption} onChange={handleChange}>

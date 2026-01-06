@@ -312,7 +312,10 @@
 
     .basket-block__button {
         width: 78px;
-        font-size: 16px;
+        font-size: 12px;
+    }
+    .card-component__bottom {
+        padding-left: 0px;
     }
 }
 
