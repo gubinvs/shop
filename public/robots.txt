@@ -1,2 +1,32 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Закрываем служебные разделы
+Disallow: /src/AdminPanel/
+Disallow: /src/RegistrationForm/
+
+# Закрываем технические и вспомогательные пути (если есть)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /auth/
+Disallow: /login/
+Disallow: /register/
+
+# Закрываем параметры и мусор
+Disallow: /*?
+Disallow: /*&
+
+# Разрешаем статику
+Allow: /assets/
+Allow: /static/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Карта сайта
+Sitemap: https://shop.encomponent.ru/sitemap.xml
