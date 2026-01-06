@@ -16,8 +16,7 @@ const MainSectionAdminPanel = () => {
             return res.json();
         })
         .then(data => {
-
-            console.log(JSON.stringify(data));
+            console.log(data.massage);
         });
     }
 
