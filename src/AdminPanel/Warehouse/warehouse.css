@@ -1,0 +1,52 @@
+.warehouse-main-section__title {
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+.warehouse-main-section__result-table_header,
+.warehouse-main-section__result-table_item {
+    display: flex;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(1),
+.warehouse-main-section__result-table_item div:nth-child(1) {
+    width: 200px;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(2),
+.warehouse-main-section__result-table_item div:nth-child(2) {
+    width: 1100px;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(3),
+.warehouse-main-section__result-table_item div:nth-child(3) {
+    width: 100px;
+    text-align: center;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(4),
+.warehouse-main-section__result-table_item div:nth-child(4) {
+    width: 50px;
+    text-align: center;
+}
+
+.wms-result-table__cell {
+    padding: 2px 10px 2px 10px;
+    border: 1px solid #D5DAE0;
+    border-radius: 2px;
+    margin-right: 4px;    
+}
+
+.wms-result-table__header {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    background-color:  #F7FAFB;
+    margin-bottom: 4px;
+}
+
+.wms-result-table__item {
+    margin-bottom: 2px;
+}

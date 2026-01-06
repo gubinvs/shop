@@ -1,7 +1,6 @@
 .navigation-bar-max {
-    width: 300px;
+    width: 150px;
     padding: 50px 10px 10px 10px;
-    min-width: 300px;
     height: 100vh;
     background-color: #F5F6FA;
     border-right: 1px solid #D5DAE0;
@@ -74,8 +73,8 @@
 }
 
 .nbm-navigation-item__icon {
-    width: 20px;
-    margin-right: 10px;
+    width: 14px;
+    margin-right: 4px;
 }
 
 .nbm-navigation-item__name {

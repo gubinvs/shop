@@ -1,5 +1,6 @@
 import "./mainSectionAdminPanel.css";
 import ApiUrl from "../js/ApiUrl";
+import Warehouse from "./Warehouse/Warehouse.jsx";
 
 
 const MainSectionAdminPanel = () => {
@@ -28,6 +29,8 @@ const MainSectionAdminPanel = () => {
                     className="button-update"
                     onClick={()=>{updateKeazQuantityItem()}
                 }>Обновить данные</button>
+                <br/><br/>
+                <Warehouse />
             </div>
         </>
     );
