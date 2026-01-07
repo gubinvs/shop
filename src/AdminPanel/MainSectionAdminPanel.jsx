@@ -2,6 +2,7 @@ import "./mainSectionAdminPanel.css";
 import ApiUrl from "../js/ApiUrl";
 import Warehouse from "./Warehouse/Warehouse.jsx";
 import Coming from "./Warehouse/Coming.jsx";
+import ComingResult from "./Warehouse/ComingResult.jsx";
 
 
 const MainSectionAdminPanel = () => {
@@ -38,6 +39,22 @@ const MainSectionAdminPanel = () => {
             nameComponent: "Модуль расширения ТМ3 - 8 аналоговых входов",
             quantity: 1,
             unitOfMeasurement: "шт"
+        },
+        {
+            id: 18,
+            guid: "e8f67326-cc8a-4b23-b7b0-e5d9d56d6681",
+            vendorCode: "LC1D18M7",
+            nameComponent: "Cиловой электромеханический контактор серии TeSys D",
+            quantity: 1,
+            unitOfMeasurement: "шт"
+        },
+        {
+            id: 28,
+            guid: "61b3c0ba-4a87-4e16-a173-960721965f15",
+            vendorCode: "TM241CE24T",
+            nameComponent: "Контроллер M241-24IO транзисторный источник ETHERNET",
+            quantity: 1,
+            unitOfMeasurement: "шт"
         }
     ];
 
@@ -53,6 +70,9 @@ const MainSectionAdminPanel = () => {
                 <Warehouse itemComponent={item} />
                 <br/><br/><br/>
                 <Coming itemComponent={item} />
+                <br/><br/><br/>
+                <ComingResult itemComponent={item}/>
+
             </div>
         </>
     );

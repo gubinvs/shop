@@ -18,10 +18,10 @@ const Warehouse = ({itemComponent}) => {
                         return(
                             <>
                                 <div className="warehouse-main-section__result-table_item" id={x.id}>
-                                    <div className="wms-result-table__cell wms-result-table__item" id={"a" + x.id}>{x.vendorCode}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"a" + x.id}>{x.nameComponent}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"a" + x.id}>{x.quantity}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"a" + x.id}>{x.unitOfMeasurement}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" id={"wms1" + x.id}>{x.vendorCode}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms2" + x.id}>{x.nameComponent}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms3" + x.id}>{x.quantity}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms4" + x.id}>{x.unitOfMeasurement}</div>
                                 </div>
                             </>
                         );

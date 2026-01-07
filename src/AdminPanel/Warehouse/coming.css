@@ -51,9 +51,14 @@
     margin-right: 4px;
 }
 
+.coming-section__price {
+    padding-left: 20px;
+    width: 150px;
+}
+
 .coming-section__discription {
     padding-left: 10px;
-    width: 500px;
+    width: 400px;
     margin-right: 4px;
 }
 
