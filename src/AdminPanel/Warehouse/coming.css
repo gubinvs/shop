@@ -1,8 +1,14 @@
+
 .coming-section__title {
     font-size: 24px;
     font-weight: 400;
     font-style: normal;
     margin-bottom: 20px;
+}
+
+.coming-section__search-block {
+    position: relative;
+    margin-bottom: 50px;
 }
 
 .coming-section__search {
@@ -13,7 +19,44 @@
 }   
 
 .cs-search-result {
+    position: absolute;
+    top: 32px;
+    left: 0px;
     width: 380px;
     padding: 10px;
     border: 1px solid #D5DAE0;
+    background-color: blue;
+}
+
+.coming-section__add-component-form {
+    display: flex;
+}
+
+.coming-section__article {
+    width: 200px;
+    padding: 2px 2px 2px 10px;
+    margin-right: 4px;
+}
+
+.coming-section__name {
+    /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
+    width: 500px;
+    padding-left: 10px;
+    margin-right: 4px;
+}
+
+.coming-section__number {
+    padding-left: 10px;
+    width: 70px;
+    margin-right: 4px;
+}
+
+.coming-section__discription {
+    padding-left: 10px;
+    width: 500px;
+    margin-right: 4px;
+}
+
+.coming-section__button {
+    padding: 2px 10px 2px 10px;
 }
