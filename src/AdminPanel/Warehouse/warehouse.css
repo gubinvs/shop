@@ -17,7 +17,8 @@
 
 .warehouse-main-section__result-table_header div:nth-child(2),
 .warehouse-main-section__result-table_item div:nth-child(2) {
-    width: 1100px;
+    /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
+    width: calc(100vw - 150px - 200px - 150px - 50px) ;
 }
 
 .warehouse-main-section__result-table_header div:nth-child(3),
@@ -40,7 +41,7 @@
 }
 
 .wms-result-table__header {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     font-style: normal;
     background-color:  #F7FAFB;

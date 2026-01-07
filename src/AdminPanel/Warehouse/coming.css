@@ -1,0 +1,19 @@
+.coming-section__title {
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+.coming-section__search {
+    /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
+    width: 380px ;
+    padding: 2px 2px 2px 20px;
+    border: 1px solid #D5DAE0;
+}   
+
+.cs-search-result {
+    width: 380px;
+    padding: 10px;
+    border: 1px solid #D5DAE0;
+}
