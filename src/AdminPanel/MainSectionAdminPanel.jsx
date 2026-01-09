@@ -4,6 +4,7 @@ import Warehouse from "./Warehouse/Warehouse.jsx";
 import Coming from "./Warehouse/Coming.jsx";
 import ComingResult from "./Warehouse/ComingResult.jsx";
 import Implementation from "./Warehouse/Implementation.jsx";
+import ImplementationResult from "./Warehouse/ImplementationResult.jsx";
 
 
 const MainSectionAdminPanel = () => {
@@ -73,8 +74,10 @@ const MainSectionAdminPanel = () => {
                 <Coming itemComponent={item} />
                 <br/><br/><br/>
                 <ComingResult itemComponent={item}/>
-                 <br/><br/><br/>
+                <br/><br/><br/>
                 <Implementation itemComponent={item}/>
+                <br/><br/><br/>
+                <ImplementationResult itemComponent={item}/>
             </div>
         </>
     );

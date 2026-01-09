@@ -51,6 +51,12 @@
     margin-right: 4px;
 }
 
+.implementation-section__price {
+    padding-left: 20px;
+    width: 150px;
+    margin-right: 4px;
+}
+
 .implementation-section__discription {
     padding-left: 10px;
     width: 400px;
