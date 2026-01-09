@@ -13,19 +13,33 @@
 
 .coming-section__search {
     /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
-    width: 380px ;
+    width: 100% ;
     padding: 2px 2px 2px 20px;
     border: 1px solid #D5DAE0;
-}   
+}  
+
+.cs-search-result_none {
+    display: none;
+}
 
 .cs-search-result {
+    display: block;
     position: absolute;
     top: 32px;
     left: 0px;
-    width: 380px;
+    width: 100%;
     padding: 10px;
     border: 1px solid #D5DAE0;
-    background-color: blue;
+    background-color: #FFFFFF;
+}
+
+.cs-search-result__result {
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.cs-search-result__result:hover {
+    border-bottom: 1px solid #F3DE09;
 }
 
 .coming-section__add-component-form {
