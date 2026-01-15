@@ -78,7 +78,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8);
 
-    // -----------------------
+    
     // Синхронизация пропса nomenclature
     useEffect(() => {
         if (item && item.length > 0) {
