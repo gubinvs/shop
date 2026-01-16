@@ -8,10 +8,18 @@ const NavigationBar = () => {
         <div className="navigation-bar-max">
             <ul className="navigation-bar-max__navigation-list">
                 <li className="nbm-navigation-list__item">
-                    <img src="../images/dachbord_icon.svg" className="nbm-navigation-item__icon" alt="#"/>
+                    <img 
+                        src="../images/dachbord_icon.svg" 
+                        className="nbm-navigation-item__icon" 
+                        alt="#"
+                        onClick={()=>{window.location.href = "/AdminPanel"}} />
                 </li> 
                 <li className="nbm-navigation-list__item">
-                    <img src="../images/dachbord_icon.svg" className="nbm-navigation-item__icon" alt="#"/>
+                    <img 
+                        src="../images/dachbord_icon.svg" 
+                        className="nbm-navigation-item__icon" 
+                        alt="#"
+                        onClick={()=>{window.location.href = "/ComingPage"}} />
                 </li>
             </ul>
         </div>

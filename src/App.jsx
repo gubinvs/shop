@@ -16,6 +16,7 @@ import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
 import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./Header/SearchResults.jsx";
+import ComingPage from "./AdminPanel/ComingPage.jsx";
 
 
 
@@ -151,13 +152,17 @@ const App = () => {
         <Route path="/" element={<Home />} />
 
         {/* Только для администратора */}
-        <Route
-          path="/AdminPanel"
-          element={
-            <AdminRoute>
-              <AdminPanel />
-            </AdminRoute>
-          }
+        <Route path="/AdminPanel" element={
+              <AdminRoute>
+                <AdminPanel />
+              </AdminRoute>
+            }
+        />
+        <Route path="/ComingPage" element={
+              <AdminRoute>
+                <ComingPage />
+              </AdminRoute>
+            }
         />
 
         <Route path="/SearchResults" element={<SearchResults />} />
