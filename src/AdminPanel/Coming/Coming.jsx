@@ -14,6 +14,8 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
     const [selected, setSelected] = useState(null);
     // Показываем поле результат или нет
     const [searchResult, setSearchResult] = useState(false);
+    // Количество товара
+    const [quantityGoods, setQuantityGoods] = useState(0);
 
 
     // Получаем номенклатуру
@@ -103,13 +105,24 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
                     readOnly
                 />
 
-                <input type="number" className="coming-section__number" placeholder="0" min="0" />
+                <input 
+                    type="number" 
+                    className="coming-section__number" 
+                    placeholder="0" 
+                    min="0" 
+                    onChange={(e)=>{setQuantityGoods(e.target.value)}}
+                />
                 <input type="text" className="coming-section__price" placeholder="$, без налогов"/>
                 <input type="text" className="coming-section__discription" placeholder="Примечание"/>
 
                 <button 
                     className="coming-section__button"
-                    onClick={()=> addDataFunction(selected.vendorCode, selected?.nameComponent )}
+                    onClick={
+                        ()=> addDataFunction(
+                                selected.vendorCode, 
+                                selected.nameComponent,
+                                quantityGoods
+                            )}
                 >Записать</button>
             </div>
         </div>

@@ -4,7 +4,8 @@ import ApiUrl from './ApiUrl.js';
 // Запись информации о оприходовании в базу данных
 export const addComingComponent =(
         vendorCode,
-        nameComponent
+        nameComponent,
+        quantityGoods
 
     )=> {
 
@@ -14,7 +15,8 @@ export const addComingComponent =(
     // Формируем тело запроса
     const item = {
         VendorCode: vendorCode,
-        NameComponent: nameComponent
+        NameComponent: nameComponent,
+        QuantityGoods: quantityGoods
 
     };
 
