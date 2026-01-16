@@ -17,7 +17,7 @@ import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./Header/SearchResults.jsx";
 import ComingPage from "./AdminPanel/ComingPage.jsx";
-
+import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
 
 
 // ===== Проверка токена =====
@@ -161,6 +161,12 @@ const App = () => {
         <Route path="/ComingPage" element={
               <AdminRoute>
                 <ComingPage />
+              </AdminRoute>
+            }
+        />
+        <Route path="/ConsumptionPage" element={
+              <AdminRoute>
+                <ConsumptionPage />
               </AdminRoute>
             }
         />

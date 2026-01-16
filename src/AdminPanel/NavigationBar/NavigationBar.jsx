@@ -21,6 +21,13 @@ const NavigationBar = () => {
                         alt="#"
                         onClick={()=>{window.location.href = "/ComingPage"}} />
                 </li>
+                <li className="nbm-navigation-list__item">
+                    <img 
+                        src="../images/add-component-icon.svg" 
+                        className="nbm-navigation-item__icon" 
+                        alt="#"
+                        onClick={()=>{window.location.href = "/ConsumptionPage"}} />
+                </li>
             </ul>
         </div>
     );
