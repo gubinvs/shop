@@ -6,15 +6,12 @@ const NavigationBar = () => {
 
     return (
         <div className="navigation-bar-max">
-            <div className="top-block__line navigation-bar-max__top-block__line"></div>
             <ul className="navigation-bar-max__navigation-list">
                 <li className="nbm-navigation-list__item">
                     <img src="../images/dachbord_icon.svg" className="nbm-navigation-item__icon" alt="#"/>
-                    <div className="nbm-navigation-item__name">Инфо-панель</div>
                 </li> 
                 <li className="nbm-navigation-list__item">
                     <img src="../images/dachbord_icon.svg" className="nbm-navigation-item__icon" alt="#"/>
-                    <div className="nbm-navigation-item__name">Склад</div>
                 </li>
             </ul>
         </div>
