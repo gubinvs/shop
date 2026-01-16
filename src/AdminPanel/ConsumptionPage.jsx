@@ -3,6 +3,7 @@ import "./mainSectionAdminPanel.css";
 import NavigationBar from "../AdminPanel/NavigationBar/NavigationBar.jsx";
 import Coming from "./Coming/Coming.jsx";
 import ComingResult from "./Coming/ComingResult.jsx";
+import { clearComingComponent } from "../js/clearComingComponent.js";
 import {item} from "./item.js";
 
 /// Страница данных о реализации товаров со склада
@@ -12,7 +13,7 @@ const ConsumptionPage =()=> {
            <div className="admin-panel__container">
                 <NavigationBar />
                 <div className="main-section-admin-panel">
-                    <Coming itemComponent={item} title={"Реализация товара"} />
+                    <Coming itemComponent={item} title={"Реализация товара"} addDataFunction={clearComingComponent} />
                     <br/><br/><br/>
                     <ComingResult title={"Перечень операций реализации:"}/>
                 </div>

@@ -1,8 +1,8 @@
 import ApiUrl from './ApiUrl.js';
 
 
-// Запись информации о оприходовании в базу данных
-export const addComingComponent =(
+// Запись информации о реализации товара в базу данных
+export const clearComingComponent =(
         vendorCode,
         nameComponent
 
@@ -38,7 +38,7 @@ export const addComingComponent =(
  
 
         // Отправляем одним запросом
-        const response = fetch(`${ApiUrl}/api/AddComingComponent`, {
+        const response = fetch(`${ApiUrl}/api/СlearComingComponent`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(item),
@@ -46,11 +46,11 @@ export const addComingComponent =(
 
         if (!response.ok) throw new Error(`Ошибка при сохранении данных: ${response.status}`);
 
-        alert("✅ Информация оприходования внесена в базу данных!");
+        alert("✅ Информация о реализации внесена в базу данных!");
 
         } catch (error) {
             console.error("Ошибка при добавлении данных о оприходовании товара:", error);
-            alert("❌ Не удалось оприходовать товар.");
+            alert("❌ Не удалось реализовать товар.");
         }
     
 };

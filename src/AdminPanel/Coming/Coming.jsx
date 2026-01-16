@@ -1,8 +1,8 @@
 import "./coming.css";
 import { useState, useEffect } from "react";
-import  {addComingComponent} from "../../js/addComingComponent";
 
-const Coming = ({ itemComponent, title }) => {
+
+const Coming = ({ itemComponent, title, addDataFunction }) => {
 
     // Все товары
     const [items, setItems] = useState([]);
@@ -109,7 +109,7 @@ const Coming = ({ itemComponent, title }) => {
 
                 <button 
                     className="coming-section__button"
-                    onClick={()=> addComingComponent(selected.vendorCode, selected?.nameComponent )}
+                    onClick={()=> addDataFunction(selected.vendorCode, selected?.nameComponent )}
                 >Записать</button>
             </div>
         </div>
