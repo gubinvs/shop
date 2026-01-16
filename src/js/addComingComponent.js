@@ -3,11 +3,10 @@ import ApiUrl from './ApiUrl.js';
 
 // Запись информации о оприходовании в базу данных
 export const addComingComponent =(
-    {
         vendorCode,
         nameComponent
 
-    })=> {
+    )=> {
 
     const token = localStorage.getItem("token");
     if (!token) return;  
