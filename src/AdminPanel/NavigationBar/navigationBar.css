@@ -1,5 +1,6 @@
 .navigation-bar-max {
     min-width: 60px;
+    height: 100vh;
     padding: 50px 10px 10px 10px;
     background-color: #F5F6FA;
     border-right: 1px solid #D5DAE0;
