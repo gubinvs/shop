@@ -3,8 +3,6 @@ import ApiUrl from "../js/ApiUrl";
 import Warehouse from "./Warehouse/Warehouse.jsx";
 import Coming from "./Warehouse/Coming.jsx";
 import ComingResult from "./Warehouse/ComingResult.jsx";
-import Implementation from "./Warehouse/Implementation.jsx";
-import ImplementationResult from "./Warehouse/ImplementationResult.jsx";
 
 
 const MainSectionAdminPanel = () => {
@@ -71,13 +69,13 @@ const MainSectionAdminPanel = () => {
                 <br/><br/>
                 <Warehouse itemComponent={item} />
                 <br/><br/><br/>
-                <Coming itemComponent={item} />
+                <Coming itemComponent={item} title={"Оприходование товара"} />
                 <br/><br/><br/>
-                <ComingResult itemComponent={item}/>
+                <ComingResult itemComponent={item} title={"Перечень операций оприходования:"}/>
                 <br/><br/><br/>
-                <Implementation itemComponent={item}/>
+                <Coming itemComponent={item} title={"Реализация товара"} />
                 <br/><br/><br/>
-                <ImplementationResult itemComponent={item}/>
+                <ComingResult itemComponent={item} title={"Перечень операций реализации:"}/>
             </div>
         </>
     );

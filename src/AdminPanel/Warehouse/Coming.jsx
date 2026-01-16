@@ -1,7 +1,7 @@
 import "./coming.css";
 import { useState, useEffect } from "react";
 
-const Coming = ({ itemComponent }) => {
+const Coming = ({ itemComponent, title }) => {
 
     // Все товары
     const [items, setItems] = useState([]);
@@ -51,7 +51,7 @@ const Coming = ({ itemComponent }) => {
 
     return (
         <div className="coming-section__container">
-            <h2 className="coming-section__title">Оприходование товара:</h2>
+            <h2 className="coming-section__title">{title}</h2>
 
             {/* ПОИСК */}
             <div className="coming-section__search-block">

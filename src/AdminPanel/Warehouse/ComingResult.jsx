@@ -1,7 +1,7 @@
 import "./comingResult.css"
 
 
-const ComingResult = () => {
+const ComingResult = ({itemComponent, title}) => {
 
     const docList = [
         {
@@ -49,7 +49,7 @@ const ComingResult = () => {
     return(
         <>
             <div className="coming-result-section__container">
-                <h2 className="coming-result-section__title">Перечень операций оприходования:</h2>
+                <h2 className="coming-result-section__title">{title}</h2>
                 <div className="coming-result-section__result-table_header">
                     <div className="crs-result-table__cell crs-result-table__header">Артикул</div>
                     <div className="crs-result-table__cell crs-result-table__header">Наименование</div>
