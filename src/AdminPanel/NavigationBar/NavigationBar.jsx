@@ -16,7 +16,7 @@ const NavigationBar = () => {
                 </li> 
                 <li className="nbm-navigation-list__item">
                     <img 
-                        src="../images/dachbord_icon.svg" 
+                        src="../images/add-component-icon.svg" 
                         className="nbm-navigation-item__icon" 
                         alt="#"
                         onClick={()=>{window.location.href = "/ComingPage"}} />
