@@ -1,8 +1,6 @@
 import "./mainSectionAdminPanel.css";
 import ApiUrl from "../js/ApiUrl";
 import Warehouse from "./Warehouse/Warehouse.jsx";
-import Coming from "./Coming/Coming.jsx";
-import ComingResult from "./Coming/ComingResult.jsx";
 import {item} from "./item.js";
 
 
@@ -20,7 +18,7 @@ const MainSectionAdminPanel = () => {
             return res.json();
         })
         .then(data => {
-            console.log(data.massage);
+            console.log(data);
         });
     }
 
@@ -35,10 +33,6 @@ const MainSectionAdminPanel = () => {
                 }>Обновить данные</button>
                 <br/><br/>
                 <Warehouse itemComponent={item} />
-                
-                <Coming itemComponent={item} title={"Реализация товара"} />
-                <br/><br/><br/>
-                <ComingResult itemComponent={item} title={"Перечень операций реализации:"}/>
             </div>
         </>
     );
