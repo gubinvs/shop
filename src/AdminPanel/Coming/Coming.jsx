@@ -6,7 +6,7 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
 
     // Все товары
     const [items, setItems] = useState([]);
-    // Поиск
+    // Поиск по номенклатуре товара
     const [search, setSearch] = useState("");
     // Результаты поиска
     const [filtered, setFiltered] = useState([]);
