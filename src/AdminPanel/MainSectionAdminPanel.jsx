@@ -30,7 +30,10 @@ const MainSectionAdminPanel = () => {
             vendorCode: "A9F79206",
             nameComponent: "Выключатель автоматический двухполюсный 6А С iC60N 6кА",
             quantity: 1,
-            unitOfMeasurement: "шт"
+            unitOfMeasurement: "шт",
+            averagePurchasePrice: 12000,
+            averageSellingPrice: 20000
+
         },
         {
             id: 7,
@@ -38,7 +41,9 @@ const MainSectionAdminPanel = () => {
             vendorCode: "TM3AI8",
             nameComponent: "Модуль расширения ТМ3 - 8 аналоговых входов",
             quantity: 1,
-            unitOfMeasurement: "шт"
+            unitOfMeasurement: "шт",
+            averagePurchasePrice: 8000,
+            averageSellingPrice: 30000
         },
         {
             id: 18,
@@ -46,7 +51,9 @@ const MainSectionAdminPanel = () => {
             vendorCode: "LC1D18M7",
             nameComponent: "Cиловой электромеханический контактор серии TeSys D",
             quantity: 1,
-            unitOfMeasurement: "шт"
+            unitOfMeasurement: "шт",
+            averagePurchasePrice: 10000,
+            averageSellingPrice: 20000
         },
         {
             id: 28,
@@ -54,7 +61,9 @@ const MainSectionAdminPanel = () => {
             vendorCode: "TM241CE24T",
             nameComponent: "Контроллер M241-24IO транзисторный источник ETHERNET",
             quantity: 1,
-            unitOfMeasurement: "шт"
+            unitOfMeasurement: "шт",
+            averagePurchasePrice: 15000,
+            averageSellingPrice: 19000
         }
     ];
 

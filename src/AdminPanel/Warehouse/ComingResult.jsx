@@ -66,7 +66,7 @@ const ComingResult = ({itemComponent, title}) => {
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs2" + x.id}>{x.nameComponent}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs3" + x.id}>{x.quantity}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs4" + x.id}>{x.unitOfMeasurement}</div>
-                                    <div className="crs-result-table__cell crs-result-table__item" d={"crs5" + x.id}>{x.price}</div>
+                                    <div className="crs-result-table__cell crs-result-table__item" d={"crs5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.price)}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs6" + x.id}>{x.dateSave}</div>
                                 </div>
                             </>          

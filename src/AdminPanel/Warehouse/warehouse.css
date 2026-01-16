@@ -18,7 +18,7 @@
 .warehouse-main-section__result-table_header div:nth-child(2),
 .warehouse-main-section__result-table_item div:nth-child(2) {
     /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
-    width: calc(100vw - 150px - 200px - 150px - 50px) ;
+    width: calc(100vw - 150px - 200px - 150px - 50px - 700px - 20px) ;
 }
 
 .warehouse-main-section__result-table_header div:nth-child(3),
@@ -30,6 +30,36 @@
 .warehouse-main-section__result-table_header div:nth-child(4),
 .warehouse-main-section__result-table_item div:nth-child(4) {
     width: 50px;
+    text-align: center;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(5),
+.warehouse-main-section__result-table_item div:nth-child(5) {
+    width: 140px;
+    text-align: center;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(6),
+.warehouse-main-section__result-table_item div:nth-child(6) {
+    width: 140px;
+    text-align: center;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(7),
+.warehouse-main-section__result-table_item div:nth-child(7) {
+    width: 140px;
+    text-align: center;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(8),
+.warehouse-main-section__result-table_item div:nth-child(8) {
+    width: 170px;
+    text-align: center;
+}
+
+.warehouse-main-section__result-table_header div:nth-child(9),
+.warehouse-main-section__result-table_item div:nth-child(9) {
+    width: 170px;
     text-align: center;
 }
 
