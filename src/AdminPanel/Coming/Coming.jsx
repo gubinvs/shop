@@ -1,5 +1,6 @@
 import "./coming.css";
 import { useState, useEffect } from "react";
+import  {addComingComponent} from "../../js/addComingComponent";
 
 const Coming = ({ itemComponent, title }) => {
 
@@ -103,10 +104,13 @@ const Coming = ({ itemComponent, title }) => {
                 />
 
                 <input type="number" className="coming-section__number" placeholder="0" min="0" />
-                <input type="text" className="coming-section__price" placeholder="$, без налогов" />
-                <input type="text" className="coming-section__discription" placeholder="Примечание" />
+                <input type="text" className="coming-section__price" placeholder="$, без налогов"/>
+                <input type="text" className="coming-section__discription" placeholder="Примечание"/>
 
-                <button className="coming-section__button">Записать</button>
+                <button 
+                    className="coming-section__button"
+                    onClick={()=> addComingComponent(selected.vendorCode, selected?.nameComponent )}
+                >Записать</button>
             </div>
         </div>
     );

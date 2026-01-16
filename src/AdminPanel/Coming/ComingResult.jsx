@@ -1,8 +1,9 @@
 import "./comingResult.css"
 
 
-const ComingResult = ({itemComponent, title}) => {
+const ComingResult = ({title}) => {
 
+    
     const docList = [
         {
             id: 1,
@@ -10,7 +11,6 @@ const ComingResult = ({itemComponent, title}) => {
             vendorCode: "A9F79206",
             nameComponent: "Выключатель автоматический двухполюсный 6А С iC60N 6кА",
             quantity: 1,
-            unitOfMeasurement: "шт",
             price: 24000,
             dateSave: "2026-01-04"
         },
@@ -20,7 +20,6 @@ const ComingResult = ({itemComponent, title}) => {
             vendorCode: "TM3AI8",
             nameComponent: "Модуль расширения ТМ3 - 8 аналоговых входов",
             quantity: 1,
-            unitOfMeasurement: "шт",
             price: 24000,
             dateSave: "2026-01-04"
         },
@@ -30,7 +29,6 @@ const ComingResult = ({itemComponent, title}) => {
             vendorCode: "LC1D18M7",
             nameComponent: "Cиловой электромеханический контактор серии TeSys D",
             quantity: 1,
-            unitOfMeasurement: "шт",
             price: 24000,
             dateSave: "2026-01-04"
         },
@@ -40,7 +38,6 @@ const ComingResult = ({itemComponent, title}) => {
             vendorCode: "TM241CE24T",
             nameComponent: "Контроллер M241-24IO транзисторный источник ETHERNET",
             quantity: 1,
-            unitOfMeasurement: "шт",
             price: 24000,
             dateSave: "2026-01-04"
         }
@@ -54,7 +51,6 @@ const ComingResult = ({itemComponent, title}) => {
                     <div className="crs-result-table__cell crs-result-table__header">Артикул</div>
                     <div className="crs-result-table__cell crs-result-table__header">Наименование</div>
                     <div className="crs-result-table__cell crs-result-table__header">Кол-во</div>
-                    <div className="crs-result-table__cell crs-result-table__header">Ед.</div>
                     <div className="crs-result-table__cell crs-result-table__header">$, без налогов</div>
                     <div className="crs-result-table__cell crs-result-table__header">Дата оформл.</div>
                 </div>
@@ -65,7 +61,6 @@ const ComingResult = ({itemComponent, title}) => {
                                     <div className="crs-result-table__cell crs-result-table__item" id={"crs1" + x.id}>{x.vendorCode}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs2" + x.id}>{x.nameComponent}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs3" + x.id}>{x.quantity}</div>
-                                    <div className="crs-result-table__cell crs-result-table__item" d={"crs4" + x.id}>{x.unitOfMeasurement}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.price)}</div>
                                     <div className="crs-result-table__cell crs-result-table__item" d={"crs6" + x.id}>{x.dateSave}</div>
                                 </div>

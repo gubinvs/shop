@@ -5,7 +5,7 @@ import Coming from "./Coming/Coming.jsx";
 import ComingResult from "./Coming/ComingResult.jsx";
 import {item} from "./item.js";
 
-
+/// Страница данных о реализации товаров со склада
 const ConsumptionPage =()=> {
     return (
         <>
@@ -14,7 +14,7 @@ const ConsumptionPage =()=> {
                 <div className="main-section-admin-panel">
                     <Coming itemComponent={item} title={"Реализация товара"} />
                     <br/><br/><br/>
-                    <ComingResult itemComponent={item} title={"Перечень операций реализации:"}/>
+                    <ComingResult title={"Перечень операций реализации:"}/>
                 </div>
             </div>
         </>
