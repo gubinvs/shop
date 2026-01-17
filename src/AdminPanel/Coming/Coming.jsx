@@ -142,8 +142,8 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
                     // Функцию получаем через пропс, в зависимости от задачи
                     onClick={
                         ()=> addDataFunction(
-                                selected.vendorCode, 
-                                selected.nameComponent,
+                                selected?.vendorCode, 
+                                selected?.nameComponent,
                                 quantityGoods,
                                 itemPrice,
                                 noteDiscription
