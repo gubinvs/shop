@@ -16,6 +16,10 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
     const [searchResult, setSearchResult] = useState(false);
     // Количество товара
     const [quantityGoods, setQuantityGoods] = useState(0);
+    // Стоимость товара
+    const [itemPrice, setItemPrice] = useState("");
+    // Примечание и описание товара или условий поставки
+    const [noteDiscription, setNoteDiscription] = useState("");
 
 
     // Получаем номенклатуру
@@ -91,6 +95,14 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
 
             {/* ФОРМА */}
             <div className="coming-section__add-component-form">
+                <div className="coming-section__article">Артикул</div>
+                <div className="coming-section__name">Наименование</div>
+                <div className="coming-section__number">Кол-во</div>
+                <div className="coming-section__price">$, Общая</div>
+                <div className="coming-section__discription">Описание поставки, важные моменты</div>
+            </div>
+
+            <div className="coming-section__add-component-form">
                 <input
                     type="text"
                     className="coming-section__article"
@@ -112,16 +124,29 @@ const Coming = ({ itemComponent, title, addDataFunction }) => {
                     min="0" 
                     onChange={(e)=>{setQuantityGoods(e.target.value)}}
                 />
-                <input type="text" className="coming-section__price" placeholder="$, без налогов"/>
-                <input type="text" className="coming-section__discription" placeholder="Примечание"/>
+                <input 
+                    type="text" 
+                    className="coming-section__price" 
+                    placeholder="$, без налогов"
+                    onChange={(e)=>{setItemPrice(e.target.value)}}
+                />
+                <input 
+                    type="text" 
+                    className="coming-section__discription" 
+                    placeholder="Примечание"
+                    onChange={(e)=>{setNoteDiscription(e.target.value)}}
+                />
 
                 <button 
                     className="coming-section__button"
+                    // Функцию получаем через пропс, в зависимости от задачи
                     onClick={
                         ()=> addDataFunction(
                                 selected.vendorCode, 
                                 selected.nameComponent,
-                                quantityGoods
+                                quantityGoods,
+                                itemPrice,
+                                noteDiscription
                             )}
                 >Записать</button>
             </div>

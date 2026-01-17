@@ -5,7 +5,9 @@ import ApiUrl from './ApiUrl.js';
 export const addComingComponent =(
         vendorCode,
         nameComponent,
-        quantityGoods
+        quantityGoods,
+        itemPrice,
+        noteDiscription
 
     )=> {
 
@@ -16,7 +18,9 @@ export const addComingComponent =(
     const item = {
         VendorCode: vendorCode,
         NameComponent: nameComponent,
-        QuantityGoods: quantityGoods
+        QuantityGoods: quantityGoods,
+        ItemPrice: itemPrice,
+        NoteDiscription: noteDiscription
 
     };
 
