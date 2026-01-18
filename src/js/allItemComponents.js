@@ -7,7 +7,7 @@ export const item = [
             guid: "8847d67a-a9ac-42ac-8c12-44138ac47328",
             vendorCode: "A9F79206",
             nameComponent: "Выключатель автоматический двухполюсный 6А С iC60N 6кА",
-            quantity: 1,
+            quantity: 1, // фактическое наличие, путем разницы между приходом и расходом
             unitOfMeasurement: "шт",
             averagePurchasePrice: 12000, // средняя цена покупки
             averageSellingPrice: 20000 // средняя цена продажи
