@@ -39,7 +39,7 @@ export const clearComingComponent = async (
         }
 
         // 2️⃣ Отправляем реализацию
-        const response = await fetch(`${ApiUrl}/api/ClearComingComponent`, {
+        const response = await fetch(`${ApiUrl}/api/ConsumptionComponent`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
