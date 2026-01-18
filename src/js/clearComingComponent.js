@@ -1,56 +1,61 @@
 import ApiUrl from './ApiUrl.js';
 
-
-// Запись информации о реализации товара в базу данных
-export const clearComingComponent =(
-        vendorCode,
-        nameComponent
-
-    )=> {
+export const clearComingComponent = async (
+    vendorCode,
+    nameComponent,
+    quantityGoods,
+    itemPrice,
+    noteDiscription
+) => {
 
     const token = localStorage.getItem("token");
-    if (!token) return;  
+    if (!token) return;
 
-    // Формируем тело запроса
     const item = {
         VendorCode: vendorCode,
-        NameComponent: nameComponent
-
+        NameComponent: nameComponent,
+        QuantityGoods: quantityGoods,
+        ItemPrice: itemPrice,
+        NoteDiscription: noteDiscription
     };
 
-    console.log(item);
-
     try {
-
-        // Получаем GUID пользователя
-        const userResponse = fetch(`${ApiUrl}/api/DefineUserGuidId`, {
+        // 1️⃣ Получаем GUID пользователя
+        const userResponse = await fetch(`${ApiUrl}/api/DefineUserGuidId`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ token }),
         });
 
-        if (!userResponse.ok) throw new Error(`Ошибка HTTP: ${userResponse.status}`);
-        const userData = userResponse.json();
+        if (!userResponse.ok) {
+            throw new Error(`Ошибка HTTP (DefineUserGuidId): ${userResponse.status}`);
+        }
+
+        const userData = await userResponse.json();
         const guidId = userData.message;
 
-        if (!guidId) throw new Error("GUID пользователя не найден");
+        if (!guidId) {
+            throw new Error("GUID пользователя не найден");
+        }
 
- 
-
-        // Отправляем одним запросом
-        const response = fetch(`${ApiUrl}/api/СlearComingComponent`, {
+        // 2️⃣ Отправляем реализацию
+        const response = await fetch(`${ApiUrl}/api/ClearComingComponent`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(item),
+            body: JSON.stringify({
+                ...item,
+                Guid: guidId
+            }),
         });
 
-        if (!response.ok) throw new Error(`Ошибка при сохранении данных: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`Ошибка при сохранении данных: ${response.status}`);
+        }
 
         alert("✅ Информация о реализации внесена в базу данных!");
 
-        } catch (error) {
-            console.error("Ошибка при добавлении данных о оприходовании товара:", error);
-            alert("❌ Не удалось реализовать товар.");
-        }
-    
+    } catch (error) {
+        console.error("Ошибка при добавлении данных о реализации товара:", error);
+        alert("❌ Не удалось реализовать товар.");
+    }
 };

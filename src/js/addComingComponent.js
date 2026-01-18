@@ -20,8 +20,6 @@ export const addComingComponent = async (
         NoteDiscription: noteDiscription
     };
 
-    console.log("Отправляемый объект:", item);
-
     try {
         // Получаем GUID пользователя
         const userResponse = await fetch(`${ApiUrl}/api/DefineUserGuidId`, {
