@@ -160,13 +160,13 @@ const App = () => {
         />
         <Route path="/ComingPage" element={
               <AdminRoute>
-                <ComingPage />
+                <ComingPage nomenclature={nomenclature} />
               </AdminRoute>
             }
         />
         <Route path="/ConsumptionPage" element={
               <AdminRoute>
-                <ConsumptionPage />
+                <ConsumptionPage nomenclature={nomenclature} />
               </AdminRoute>
             }
         />

@@ -21,6 +21,10 @@
     width: calc(100vw - 1200px) ;
 }
 
+.warehouse-main-section__result-table_item div:nth-child(2) {
+    font-size: 10px;
+}
+
 .warehouse-main-section__result-table_header div:nth-child(3),
 .warehouse-main-section__result-table_item div:nth-child(3) {
     width: 100px;

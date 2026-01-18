@@ -1,6 +1,6 @@
 
 
-/// Демо данные
+/// Данные о товарах в магазине
 export const item = [
         {
             id: 1,
@@ -9,9 +9,8 @@ export const item = [
             nameComponent: "Выключатель автоматический двухполюсный 6А С iC60N 6кА",
             quantity: 1,
             unitOfMeasurement: "шт",
-            averagePurchasePrice: 12000,
-            averageSellingPrice: 20000
-
+            averagePurchasePrice: 12000, // средняя цена покупки
+            averageSellingPrice: 20000 // средняя цена продажи
         },
         {
             id: 7,

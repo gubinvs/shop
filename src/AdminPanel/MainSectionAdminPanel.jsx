@@ -1,7 +1,7 @@
 import "./mainSectionAdminPanel.css";
 import ApiUrl from "../js/ApiUrl";
 import Warehouse from "./Warehouse/Warehouse.jsx";
-import {item} from "./item.js";
+import {item} from "../js/allItemComponents.js";
 
 
 const MainSectionAdminPanel = () => {

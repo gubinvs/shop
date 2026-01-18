@@ -5,11 +5,10 @@ import "./mainSectionAdminPanel.css";
 import NavigationBar from "../AdminPanel/NavigationBar/NavigationBar.jsx";
 import Coming from "./Coming/Coming.jsx";
 import ComingResult from "./Coming/ComingResult.jsx";
-import {item} from "./item.js";
 import  { addComingComponent } from "../js/addComingComponent.js";
 
 /// Страница данных о приходовании товаров на склад
-const ComingPage =()=> {
+const ComingPage =({nomenclature})=> {
 
     const [docList, setDocList] = useState([]);
     // Форматирует строковую дату в читабельный вид
@@ -56,7 +55,7 @@ const ComingPage =()=> {
            <div className="admin-panel__container">
                 <NavigationBar />
                 <div className="main-section-admin-panel">
-                    <Coming itemComponent={item} title={"Оприходование товара"} addDataFunction={addComingComponent}/>
+                    <Coming itemComponent={nomenclature} title={"Оприходование товара"} addDataFunction={addComingComponent}/>
                     <br/><br/><br/>
                     <ComingResult title={"Перечень операций оприходования:"} list={docList}/>
                 </div>
