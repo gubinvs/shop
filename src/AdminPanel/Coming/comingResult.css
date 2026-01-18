@@ -18,7 +18,7 @@
 .coming-result-section__result-table_header div:nth-child(2),
 .coming-result-section__result-table_item div:nth-child(2) {
     /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
-    width: calc(100vw - 150px - 200px - 150px - 50px - 150px - 150px) ;
+    width: calc(100vw - 150px - 200px - 150px - 50px - 150px - 150px - 210px) ;
 }
 
 .coming-result-section__result-table_header div:nth-child(3),
@@ -41,8 +41,13 @@
 
 .coming-result-section__result-table_header div:nth-child(6),
 .coming-result-section__result-table_item div:nth-child(6) {
-    width: 150px;
+    width: 350px;
     text-align: center;
+}
+
+.coming-result-section__result-table_item div:nth-child(6) {
+    text-align: left;
+    font-size: 10px;
 }
 
 .crs-result-table__cell {
@@ -62,4 +67,8 @@
 
 .crs-result-table__item {
     margin-bottom: 2px;
+}
+
+.crs-result-table__button {
+    cursor: pointer;
 }
