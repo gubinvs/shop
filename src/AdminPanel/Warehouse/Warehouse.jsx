@@ -1,4 +1,6 @@
 import "./warehouse.css";
+import { useState, useEffect } from "react";
+import ApiUrl from "../../js/ApiUrl.js";
 
 
 
@@ -9,10 +11,47 @@ const Warehouse = ({itemComponent}) => {
     const totalTaxes = 1.37; 
 
     // Наценка Интернет-магазина коэффициент
-    const markupShopEncomponent = 2;
+    const markupShopEncomponent = 1.5;
 
     // Наценка Озон коэффициент
     const markupOzon = 1.6;
+
+     const [docList, setDocList] = useState([]);
+    // Форматирует строковую дату в читабельный вид
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const response = await fetch(
+                    `${ApiUrl}/api/ReturnWarehouseAllItem/MySuperToken123`
+                );
+
+                if (!response.ok) {
+                    throw new Error("Ошибка запроса: " + response.status);
+                }
+
+                const data = await response.json();
+
+                const formattedData = data.map(item => ({
+                    id: item.id,
+                    guid: item.guid,
+                    vendorCode: item.vendorCode,
+                    nameComponent: item.nameComponent,
+                    quantity: item.quantity,
+                    averagePurchasePrice: item.averagePurchasePrice,
+                    averageSellingPrice: item.averageSellingPrice
+                }));
+
+                setDocList(formattedData);
+
+            } catch (err) {
+                console.error("Ошибка загрузки склада:", err);
+            }
+        };
+
+        loadData();
+    }, []);
+
 
 
 
@@ -26,11 +65,10 @@ const Warehouse = ({itemComponent}) => {
                     <div className="wms-result-table__cell wms-result-table__header">Наличие, шт</div>
                     <div className="wms-result-table__cell wms-result-table__header">Cред. цена покупки, без налогов</div>
                     <div className="wms-result-table__cell wms-result-table__header">Cред. цена продажи, без налогов</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Фин. результат</div>
                     <div className="wms-result-table__cell wms-result-table__header">Рекоменд. цена продажи, на сайте</div>
                     <div className="wms-result-table__cell wms-result-table__header">Рекоменд. цена продажи, в Озон</div>
                 </div>
-                {itemComponent.map((x)=>{
+                {docList.map((x)=>{
                         return(
                             <>
                                 <div className="warehouse-main-section__result-table_item" id={x.id}>
@@ -39,7 +77,6 @@ const Warehouse = ({itemComponent}) => {
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms3" + x.id}>{x.quantity}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice)}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averageSellingPrice)}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averageSellingPrice - x.averagePurchasePrice)}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes * markupOzon)}</div>
                                 </div>
