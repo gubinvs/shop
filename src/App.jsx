@@ -18,6 +18,7 @@ import { jwtDecode } from "jwt-decode";
 import SearchResults from "./Header/SearchResults.jsx";
 import ComingPage from "./AdminPanel/ComingPage.jsx";
 import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
+import WarehousePage from "./AdminPanel/WarehousePage.jsx";
 
 
 // ===== Проверка токена =====
@@ -170,7 +171,15 @@ const App = () => {
               </AdminRoute>
             }
         />
+        <Route path="/WarehousePage" element={
+              <AdminRoute>
+                <WarehousePage />
+              </AdminRoute>
+            }
+        />
 
+
+        {/* Для всех */}
         <Route path="/SearchResults" element={<SearchResults />} />
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />

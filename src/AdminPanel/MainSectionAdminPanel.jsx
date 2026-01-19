@@ -1,7 +1,7 @@
 import "./mainSectionAdminPanel.css";
 import ApiUrl from "../js/ApiUrl";
-import Warehouse from "./Warehouse/Warehouse.jsx";
-import {item} from "../js/allItemComponents.js";
+import AdminMailer from "./AdminMailer/AdminMailer";
+
 
 
 const MainSectionAdminPanel = () => {
@@ -31,8 +31,12 @@ const MainSectionAdminPanel = () => {
                     className="button-update"
                     onClick={()=>{updateKeazQuantityItem()}
                 }>Обновить данные</button>
-                <br/><br/>
-                <Warehouse itemComponent={item} />
+            
+                <div className="admin-mailer__container">
+                    <AdminMailer title={"Рассылка по проверенной базе:"} urlRegust={"http://31.129.97.48:1100/api/Upload/upload-excel"}/>
+                    <br/><br/>
+                    <AdminMailer title={"Рассылка по базе на отсев:"} urlRegust={"http://31.129.97.48:1110/api/Upload/upload-excel"}/>
+                </div>
             </div>
         </>
     );

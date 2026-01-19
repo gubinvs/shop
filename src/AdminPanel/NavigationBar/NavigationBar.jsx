@@ -16,6 +16,13 @@ const NavigationBar = () => {
                 </li> 
                 <li className="nbm-navigation-list__item">
                     <img 
+                        src="../images/full_14962594.png" 
+                        className="nbm-navigation-item__icon" 
+                        alt="#"
+                        onClick={()=>{window.location.href = "/WarehousePage"}} />
+                </li>
+                <li className="nbm-navigation-list__item">
+                    <img 
                         src="../images/add-component-icon.svg" 
                         className="nbm-navigation-item__icon" 
                         alt="#"
@@ -28,6 +35,7 @@ const NavigationBar = () => {
                         alt="#"
                         onClick={()=>{window.location.href = "/ConsumptionPage"}} />
                 </li>
+                
             </ul>
         </div>
     );
