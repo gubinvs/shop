@@ -97,58 +97,99 @@ function AdminRoute({ children }) {
 // ===== Основное приложение =====
 const App = () => {
 
-    const [nomenclature, setNomenclature] = useState([]);
+  const [nomenclature, setNomenclature] = useState([]);
+  // Загрузка данных о собственной номенклатуре магазина,
+  // по которой ведется учет оприходования и расхода, она 
+  // ПОМЕЧЕНА Bestseller
+  const [nomenclatureAdmin, setNomenclatureAdmin] = useState([]);
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          // 1. Загружаем данные из IndexedDB сразу
-          const cachedData = await getAllItems();
-          if (cachedData.length > 0) {
-            setNomenclature(cachedData);
-            // console.log("Данные загружены из IndexedDB");
-          }
-
-          // 2. Делаем запрос к API
-          const response = await fetch(ApiUrl + "/api/ReturnAllItem");
-          if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
-
-          const data = await response.json();
-          const formattedData = data
-          // .filter(item => Number(item.quantity) > 0)
-          .map(item => {
-            // console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
-            return {
-              id: Number(item.id),
-              imgLinkIconCard: item.imgLinkIconCard,
-              vendorCode: item.vendorCode,
-              nameComponent: item.nameComponent,
-              quantity: Number(item.quantity),
-              linkPage: item.linkPage,
-              price: item.price,
-              chapter: item.chapter,
-              basketImgPath: item.basketImgPath,
-              guidId: item.guid,
-              manufacturer: item.manufacturer,
-            };
-          });
-
-          // 3. Сохраняем новые или обновленные элементы в IndexedDB
-          await saveOrUpdateItems(formattedData);
-
-          // 4. Обновляем стейт — загружаем всё заново из IndexedDB, чтобы быть уверенным
-          const updatedData = await getAllItems();
-          setNomenclature(updatedData);
-
-          //console.log("Данные обновлены с API и сохранены в IndexedDB");
-
-        } catch (err) {
-          console.error("Ошибка загрузки номенклатуры:", err);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+            // 1. Загружаем данные из IndexedDB сразу
+        const cachedData = await getAllItems();
+        if (cachedData.length > 0) {
+          setNomenclature(cachedData);
+          // console.log("Данные загружены из IndexedDB");
         }
-      };
+        
+        // 2. Делаем запрос к API
+        const response = await fetch(ApiUrl + "/api/ReturnAllItem");
+        if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
 
-      fetchData();
-    }, []);
+        const data = await response.json();
+        const formattedData = data
+        // .filter(item => Number(item.quantity) > 0)
+        .map(item => {
+          // console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
+          return {
+            id: Number(item.id),
+            imgLinkIconCard: item.imgLinkIconCard,
+            vendorCode: item.vendorCode,
+            nameComponent: item.nameComponent,
+            quantity: Number(item.quantity),
+            linkPage: item.linkPage,
+            price: item.price,
+            chapter: item.chapter,
+            basketImgPath: item.basketImgPath,
+            guidId: item.guid,
+            manufacturer: item.manufacturer,
+          };
+        });
+
+        // 3. Сохраняем новые или обновленные элементы в IndexedDB
+        await saveOrUpdateItems(formattedData);
+
+        // 4. Обновляем стейт — загружаем всё заново из IndexedDB, чтобы быть уверенным
+        const updatedData = await getAllItems();
+        setNomenclature(updatedData);
+
+        //console.log("Данные обновлены с API и сохранены в IndexedDB");
+
+      } catch (err) {
+        console.error("Ошибка загрузки номенклатуры:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Загружаем номенклатуру для СВОЕГО СКЛАДА (ПОМЕЧЕНЫ БЕСЦЕЛЛЕР 1)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // 2. Делаем запрос к API
+        const response = await fetch(ApiUrl + "/api/BestsellersAdmin");
+        if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
+
+        const data = await response.json();
+        const formattedData = data
+        .map(item => {  
+          return {
+            id: Number(item.id),
+            imgLinkIconCard: item.imgLinkIconCard,
+            vendorCode: item.vendorCode,
+            nameComponent: item.nameComponent,
+            quantity: Number(item.quantity),
+            linkPage: item.linkPage,
+            price: item.price,
+            chapter: item.chapter,
+            basketImgPath: item.basketImgPath,
+            guidId: item.guid,
+            manufacturer: item.manufacturer,
+          };
+        });
+
+        // 3. Сохраняем новые или обновленные элементы в IndexedDB
+        await setNomenclatureAdmin(formattedData);
+
+      } catch (err) {
+        console.error("Ошибка загрузки номенклатуры:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
     
 
@@ -166,13 +207,13 @@ const App = () => {
         />
         <Route path="/ComingPage" element={
               <AdminRoute>
-                <ComingPage nomenclature={nomenclature} />
+                <ComingPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
         />
         <Route path="/ConsumptionPage" element={
               <AdminRoute>
-                <ConsumptionPage nomenclature={nomenclature} />
+                <ConsumptionPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
         />
