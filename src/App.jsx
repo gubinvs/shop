@@ -115,20 +115,23 @@ const App = () => {
 
           const data = await response.json();
           const formattedData = data
-            .filter(item => item.quantity > 0) /// Если нет в наличии, то не выводим!!!!!!!!!!!!!!!!!
-            .map(item => ({
-                id: item.id,
-                imgLinkIconCard: item.imgLinkIconCard,
-                vendorCode: item.vendorCode,
-                nameComponent: item.nameComponent,
-                quantity: item.quantity,
-                linkPage: item.linkPage,
-                price: item.price,
-                chapter: item.chapter,
-                basketImgPath: item.basketImgPath,
-                guidId: item.guid,
-                manufacturer: item.manufacturer,
-          }));
+          .filter(item => Number(item.quantity) > 0)
+          .map(item => {
+            console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
+            return {
+              id: Number(item.id),
+              imgLinkIconCard: item.imgLinkIconCard,
+              vendorCode: item.vendorCode,
+              nameComponent: item.nameComponent,
+              quantity: Number(item.quantity),
+              linkPage: item.linkPage,
+              price: item.price,
+              chapter: item.chapter,
+              basketImgPath: item.basketImgPath,
+              guidId: item.guid,
+              manufacturer: item.manufacturer,
+            };
+          });
 
           // 3. Сохраняем новые или обновленные элементы в IndexedDB
           await saveOrUpdateItems(formattedData);

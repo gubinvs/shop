@@ -25,24 +25,33 @@ export async function getDB() {
   });
 }
 
-// Добавление или обновление элементов
-export async function saveOrUpdateItems(items) {
-  const db = await getDB();
-  const tx = db.transaction(STORE_NAME, "readwrite");
-  for (const item of items) {
-    const existing = await tx.store.get(item.id);
-    if (!existing) {
-      // Новый элемент
-      tx.store.put(item);
-    } else {
-      // Существующий элемент — обновляем все поля
-      tx.store.put({ ...existing, ...item });
-    }
-  }
-  await tx.done;
-}
-
+// Получение всех элементов
 export async function getAllItems() {
   const db = await getDB();
   return db.getAll(STORE_NAME);
+}
+
+// Добавление, обновление и удаление элементов
+export async function saveOrUpdateItems(items) {
+  const db = await getDB();
+  const tx = db.transaction(STORE_NAME, "readwrite");
+  const store = tx.store;
+
+  // Берём все ключи из хранилища
+  const allExistingKeys = await store.getAllKeys();
+  const existingIdsSet = new Set(allExistingKeys);
+
+  for (const item of items) {
+    // Приводим id к числу, чтобы совпадал с ключом
+    const id = Number(item.id);
+    await store.put({ ...item, id });
+    existingIdsSet.delete(id); // этот элемент оставляем
+  }
+
+  // Удаляем все, которых нет в новом списке
+  for (const idToDelete of existingIdsSet) {
+    await store.delete(idToDelete);
+  }
+
+  await tx.done;
 }
