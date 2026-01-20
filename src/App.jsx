@@ -114,18 +114,20 @@ const App = () => {
           if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
 
           const data = await response.json();
-          const formattedData = data.map(item => ({
-            id: item.id,
-            imgLinkIconCard: item.imgLinkIconCard,
-            vendorCode: item.vendorCode,
-            nameComponent: item.nameComponent,
-            quantity: item.quantity,
-            linkPage: item.linkPage,
-            price: item.price,
-            chapter: item.chapter,
-            basketImgPath: item.basketImgPath,
-            guidId: item.guid,
-            manufacturer: item.manufacturer,
+          const formattedData = data
+            .filter(item => item.quantity > 0) /// Если нет в наличии, то не выводим!!!!!!!!!!!!!!!!!
+            .map(item => ({
+                id: item.id,
+                imgLinkIconCard: item.imgLinkIconCard,
+                vendorCode: item.vendorCode,
+                nameComponent: item.nameComponent,
+                quantity: item.quantity,
+                linkPage: item.linkPage,
+                price: item.price,
+                chapter: item.chapter,
+                basketImgPath: item.basketImgPath,
+                guidId: item.guid,
+                manufacturer: item.manufacturer,
           }));
 
           // 3. Сохраняем новые или обновленные элементы в IndexedDB
