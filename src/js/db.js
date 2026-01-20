@@ -10,7 +10,6 @@
 // Можно легко расширять: например, через setInterval делать периодическое обновление с API.
 
 // db.js
-// db.js
 import { openDB } from "idb";
 
 const DB_NAME = "NomenclatureDB";
