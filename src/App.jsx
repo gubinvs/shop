@@ -115,9 +115,9 @@ const App = () => {
 
           const data = await response.json();
           const formattedData = data
-          .filter(item => Number(item.quantity) > 0)
+          // .filter(item => Number(item.quantity) > 0)
           .map(item => {
-            console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
+            // console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
             return {
               id: Number(item.id),
               imgLinkIconCard: item.imgLinkIconCard,

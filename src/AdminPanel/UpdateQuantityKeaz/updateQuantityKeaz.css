@@ -1,0 +1,19 @@
+.keaz-update {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.keaz-update__button {
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
