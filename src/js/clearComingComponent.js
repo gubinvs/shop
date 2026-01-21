@@ -54,6 +54,8 @@ export const clearComingComponent = async (
 
         alert("✅ Информация о реализации внесена в базу данных!");
 
+        window.location.href = "/ConsumptionPage";
+
     } catch (error) {
         console.error("Ошибка при добавлении данных о реализации товара:", error);
         alert("❌ Не удалось реализовать товар.");

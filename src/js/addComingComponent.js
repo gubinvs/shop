@@ -49,6 +49,8 @@ export const addComingComponent = async (
 
         alert("✅ Информация оприходования внесена в базу данных!");
 
+        window.location.href = "/ComingPage";
+
     } catch (error) {
         console.error("Ошибка при добавлении данных о оприходовании товара:", error);
         alert("❌ Не удалось оприходовать товар.");
