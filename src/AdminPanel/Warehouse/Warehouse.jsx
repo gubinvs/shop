@@ -77,8 +77,14 @@ const Warehouse = ({itemComponent}) => {
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms3" + x.id}>{x.quantity}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice)}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averageSellingPrice)}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes * markupOzon)}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>
+                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                                        <img src="../images/update__icon2.png" alt="@" className="wms-result-table__item_icon" />
+                                    </div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>
+                                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes * markupOzon)}
+                                        <img src="../images/update__icon2.png" alt="@" className="wms-result-table__item_icon" />
+                                    </div>
                                 </div>
                             </>
                         );
