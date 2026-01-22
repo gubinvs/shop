@@ -61,7 +61,6 @@ const Warehouse = () => {
 
     return (
         <>
-
             <div className="warehouse-main-section__container">
                 <h2 className="warehouse-main-section__title">Наличие товара на складе:</h2>
                 <div className="warehouse-main-section__result-table_header">
