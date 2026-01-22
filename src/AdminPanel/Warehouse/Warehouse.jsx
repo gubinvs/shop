@@ -57,16 +57,21 @@ const Warehouse = ({itemComponent}) => {
 
     return (
         <>
+
             <div className="warehouse-main-section__container">
                 <h2 className="warehouse-main-section__title">Наличие товара на складе:</h2>
                 <div className="warehouse-main-section__result-table_header">
                     <div className="wms-result-table__cell wms-result-table__header">Артикул</div>
                     <div className="wms-result-table__cell wms-result-table__header">Наименование</div>
                     <div className="wms-result-table__cell wms-result-table__header">Наличие, шт</div>
+                    <div className="wms-result-table__cell wms-result-table__header">В пути, шт</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Закупить, шт</div>
                     <div className="wms-result-table__cell wms-result-table__header">Cред. цена покупки, без налогов</div>
                     <div className="wms-result-table__cell wms-result-table__header">Cред. цена продажи, без налогов</div>
                     <div className="wms-result-table__cell wms-result-table__header">Рекоменд. цена продажи, на сайте</div>
+                    <div className="wms-result-table__cell wms-result-table__header"></div>
                     <div className="wms-result-table__cell wms-result-table__header">Рекоменд. цена продажи, в Озон</div>
+                    <div className="wms-result-table__cell wms-result-table__header"></div>
                 </div>
                 {docList.map((x)=>{
                         return(
@@ -75,14 +80,20 @@ const Warehouse = ({itemComponent}) => {
                                     <div className="wms-result-table__cell wms-result-table__item" id={"wms1" + x.id}>{x.vendorCode}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms2" + x.id}>{x.nameComponent}</div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms3" + x.id}>{x.quantity}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice)}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averageSellingPrice)}</div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms4" + x.id}></div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}></div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms6" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice)}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms7" + x.id}>{new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averageSellingPrice)}</div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms8" + x.id}>
                                         {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                                    </div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms9" + x.id}>
                                         <img src="../images/update__icon2.png" alt="@" className="wms-result-table__item_icon" />
                                     </div>
-                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms5" + x.id}>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms10" + x.id}>
                                         {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes * markupOzon)}
+                                    </div>
+                                    <div className="wms-result-table__cell wms-result-table__item" d={"wms11" + x.id}>
                                         <img src="../images/update__icon2.png" alt="@" className="wms-result-table__item_icon" />
                                     </div>
                                 </div>
