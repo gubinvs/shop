@@ -6,7 +6,6 @@ import ApiUrl from "../../js/ApiUrl.js";
 
 const Warehouse = () => {
     
-    
     // Всего налогов коэффициент НДС 22% + НДФЛ 15%
     const totalTaxes = 1.37; 
 
@@ -16,8 +15,8 @@ const Warehouse = () => {
     // Наценка Озон коэффициент
     const markupOzon = 1.6;
 
-     const [docList, setDocList] = useState([]);
-    // Форматирует строковую дату в читабельный вид
+    const [docList, setDocList] = useState([]);
+
 
     useEffect(() => {
         const loadData = async () => {
