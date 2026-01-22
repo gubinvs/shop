@@ -4,7 +4,7 @@ import ApiUrl from "../../js/ApiUrl.js";
 
 
 
-const Warehouse = ({itemComponent}) => {
+const Warehouse = () => {
     
     
     // Всего налогов коэффициент НДС 22% + НДФЛ 15%
