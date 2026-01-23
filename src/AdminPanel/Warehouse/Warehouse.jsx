@@ -1,6 +1,7 @@
 import "./warehouse.css";
 import { useState, useEffect } from "react";
 import ApiUrl from "../../js/ApiUrl.js";
+import {priceUpdateWebsite} from "../../js/priceUpdateWebsite.js";
 
 
 
@@ -91,7 +92,13 @@ const Warehouse = () => {
                                         {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
                                     </div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms9" + x.id}>
-                                        <img src="../images/update__icon2.png" alt="@" className="wms-result-table__item_icon" />
+                                        <img 
+                                            src="../images/update__icon2.png" 
+                                            alt="@" 
+                                            className="wms-result-table__item_icon" 
+                                            // Обновление стоимости на сайте
+                                            onClick={()=>priceUpdateWebsite(x.guid, x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                                        />
                                     </div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms10" + x.id}>
                                         {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes * markupOzon)}
