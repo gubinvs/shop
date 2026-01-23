@@ -11,7 +11,7 @@ const Warehouse = () => {
     const totalTaxes = 1.37; 
 
     // Наценка Интернет-магазина коэффициент
-    const markupShopEncomponent = 2;
+    const markupShopEncomponent = 1.5;
 
     // Наценка Озон коэффициент
     const markupOzon = 1.6;
@@ -96,8 +96,8 @@ const Warehouse = () => {
                                             src="../images/update__icon2.png" 
                                             alt="@" 
                                             className="wms-result-table__item_icon" 
-                                            // Обновление цены на сайте
-                                            onClick={()=>priceUpdateWebsite(x.guid, x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                                            // Обновление стоимости на сайте
+                                            onClick={()=>priceUpdateWebsite(x.id, x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
                                         />
                                     </div>
                                     <div className="wms-result-table__cell wms-result-table__item" d={"wms10" + x.id}>
