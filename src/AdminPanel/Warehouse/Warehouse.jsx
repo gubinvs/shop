@@ -96,7 +96,7 @@ const Warehouse = () => {
                                             src="../images/update__icon2.png" 
                                             alt="@" 
                                             className="wms-result-table__item_icon" 
-                                            // Обновление стоимости на сайте
+                                            // Обновление цены на сайте
                                             onClick={()=>priceUpdateWebsite(x.guid, x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
                                         />
                                     </div>

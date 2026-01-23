@@ -33,5 +33,4 @@ export const priceUpdateWebsite = async (guidItme, priceItem)=> {
     } catch (error) {
         alert("❌ Не удалось обновить цену.");
     }
-
 };
