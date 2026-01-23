@@ -11,7 +11,7 @@ const Warehouse = () => {
     const totalTaxes = 1.37; 
 
     // Наценка Интернет-магазина коэффициент
-    const markupShopEncomponent = 1.5;
+    const markupShopEncomponent = 2;
 
     // Наценка Озон коэффициент
     const markupOzon = 1.6;
