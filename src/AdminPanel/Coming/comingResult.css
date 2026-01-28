@@ -10,6 +10,7 @@
     display: flex;
 }
 
+
 .coming-result-section__result-table_header div:nth-child(1),
 .coming-result-section__result-table_item div:nth-child(1) {
     width: 200px;
@@ -71,4 +72,14 @@
 
 .crs-result-table__button {
     cursor: pointer;
+}
+
+.coming-result-section__pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.coming-result-section__pagination button:not(:last-of-type) {
+    margin-right: 8px;
 }
