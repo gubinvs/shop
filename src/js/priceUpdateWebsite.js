@@ -2,17 +2,18 @@ import ApiUrl from "./ApiUrl";
 
 
 // Обновление цены на сайте магазина
-export const priceUpdateWebsite = async (guidItme, priceItem)=> {
+export const priceUpdateWebsite = async (guidItem, priceItem)=> {
 
     // Преобразуем price по правилам математики в целое число
     const intValue = Math.round(priceItem); // 325
 
     // Подготовим данные к отправке
     const regust = {
-        guid: guidItme,
+        guid: guidItem,
         price: intValue
     };
 
+    console.log(regust);
     // Отправляем данные на сервер
     try {
 

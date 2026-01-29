@@ -107,7 +107,7 @@ const Warehouse = () => {
                             className="wms-result-table__item_icon"
                             onClick={() =>
                                 priceUpdateWebsite(
-                                    x.id,
+                                    x.guid,
                                     x.averagePurchasePrice * markupShopEncomponent * totalTaxes
                                 )
                             }
