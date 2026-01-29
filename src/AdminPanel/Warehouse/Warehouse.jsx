@@ -5,7 +5,7 @@ import { priceUpdateWebsite } from "../../js/priceUpdateWebsite.js";
 
 const Warehouse = () => {
     const totalTaxes = 1.37;
-    const markupShopEncomponent = 1.5;
+    const markupShopEncomponent = 2;
     const markupOzon = 1.6;
 
     const [docList, setDocList] = useState([]);
