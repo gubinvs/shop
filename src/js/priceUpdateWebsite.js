@@ -27,6 +27,7 @@ export const priceUpdateWebsite = async (guidItme, priceItem)=> {
             const text = await response.text();
             throw new Error(`Ошибка при обновлении цены: ${response.status}, ${text}`);
         }
+        
 
         alert("✅ Информация о новой цене внесена в базу данных!");
 
