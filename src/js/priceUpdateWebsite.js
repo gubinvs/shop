@@ -10,7 +10,7 @@ export const priceUpdateWebsite = async (guidItem, priceItem)=> {
     // Подготовим данные к отправке
     const regust = {
         guid: guidItem,
-        price: intValue
+        itemPrice: intValue
     };
 
     console.log(regust);
