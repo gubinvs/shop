@@ -32,6 +32,7 @@ const Warehouse = () => {
                     vendorCode: item.vendorCode,
                     nameComponent: item.nameComponent,
                     quantity: item.quantity,
+                    price: item.price,
                     averagePurchasePrice: item.averagePurchasePrice,
                     averageSellingPrice: item.averageSellingPrice
                 }));
@@ -64,9 +65,10 @@ const Warehouse = () => {
                 <div className="wms-result-table__cell wms-result-table__header">Сред. цена покупки</div>
                 <div className="wms-result-table__cell wms-result-table__header">Сред. цена продажи</div>
                 <div className="wms-result-table__cell wms-result-table__header">Цена на сайте</div>
-                <div className="wms-result-table__cell wms-result-table__header"></div>
-                <div className="wms-result-table__cell wms-result-table__header">Цена в Озон</div>
-                <div className="wms-result-table__cell wms-result-table__header"></div>
+                <div className="wms-result-table__cell wms-result-table__header">Цена для сайта</div>
+                <div className="wms-result-table__cell wms-result-table__header "><p className="wms-result-table__header_transform">Обновить</p></div>
+                <div className="wms-result-table__cell wms-result-table__header">Цена для Озон</div>
+                <div className="wms-result-table__cell wms-result-table__header"><p className="wms-result-table__header_transform">Обновить</p></div>
             </div>
 
             {currentList.map(x => (
@@ -98,11 +100,19 @@ const Warehouse = () => {
                             style: "currency",
                             currency: "RUB",
                             minimumFractionDigits: 0
+                        }).format(x.price)}
+                        
+                    </div>
+                         <div className="wms-result-table__cell wms-result-table__item">
+                        {new Intl.NumberFormat("ru-RU", {
+                            style: "currency",
+                            currency: "RUB",
+                            minimumFractionDigits: 0
                         }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
                     </div>
                     <div className="wms-result-table__cell wms-result-table__item">
                         <img
-                            src="../images/update__icon2.png"
+                            src="../images/changes.png"
                             alt="@"
                             className="wms-result-table__item_icon"
                             onClick={() =>
@@ -127,7 +137,7 @@ const Warehouse = () => {
                     </div>
                     <div className="wms-result-table__cell wms-result-table__item">
                         <img
-                            src="../images/update__icon2.png"
+                            src="../images/changes.png"
                             alt="@"
                             className="wms-result-table__item_icon"
                         />

@@ -19,6 +19,7 @@ import SearchResults from "./Header/SearchResults.jsx";
 import ComingPage from "./AdminPanel/ComingPage.jsx";
 import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
 import WarehousePage from "./AdminPanel/WarehousePage.jsx";
+import PurchasePage from './AdminPanel/PurchasePage.jsx';
 
 
 // ===== Проверка токена =====
@@ -220,6 +221,12 @@ const App = () => {
         <Route path="/WarehousePage" element={
               <AdminRoute>
                 <WarehousePage />
+              </AdminRoute>
+            }
+        />
+        <Route path="/PurchasePage" element={
+              <AdminRoute>
+                <PurchasePage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
         />

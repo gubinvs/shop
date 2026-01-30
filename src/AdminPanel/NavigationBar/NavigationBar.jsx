@@ -35,6 +35,13 @@ const NavigationBar = () => {
                         alt="#"
                         onClick={()=>{window.location.href = "/ConsumptionPage"}} />
                 </li>
+                  <li className="nbm-navigation-list__item">
+                    <img 
+                        src="../images/purchase-icon.svg" 
+                        className="nbm-navigation-item__icon" 
+                        alt="#"
+                        onClick={()=>{window.location.href = "/PurchasePage"}} />
+                </li>
                 
             </ul>
         </div>
