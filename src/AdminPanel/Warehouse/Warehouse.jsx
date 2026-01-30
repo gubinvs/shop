@@ -103,7 +103,7 @@ const Warehouse = () => {
                         }).format(x.price)}
                         
                     </div>
-                         <div className="wms-result-table__cell wms-result-table__item">
+                        <div className="wms-result-table__cell wms-result-table__item">
                         {new Intl.NumberFormat("ru-RU", {
                             style: "currency",
                             currency: "RUB",
