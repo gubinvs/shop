@@ -33,7 +33,7 @@
 .warehouse-main-section__result-table_header div:nth-child(2),
 .warehouse-main-section__result-table_item div:nth-child(2) {
     /* ширина экрана - панель навигации - первая ячейка - последние две ячейки - падинги и маржины */
-    width: calc(100vw - 1150px) ;
+    width: calc(100vw - 1000px) ;
 }
 
 .warehouse-main-section__result-table_item div:nth-child(2) {
@@ -78,24 +78,18 @@
 
 .warehouse-main-section__result-table_header div:nth-child(9),
 .warehouse-main-section__result-table_item div:nth-child(9) {
-    width: 100px;
+    width: 40px;
     text-align: center;
 }
 
 .warehouse-main-section__result-table_header div:nth-child(10),
 .warehouse-main-section__result-table_item div:nth-child(10) {
-    width: 40px;
+    width: 100px;
     text-align: center;
 }
 
 .warehouse-main-section__result-table_header div:nth-child(11),
 .warehouse-main-section__result-table_item div:nth-child(11) {
-    width: 100px;
-    text-align: center;
-}
-
-.warehouse-main-section__result-table_header div:nth-child(12),
-.warehouse-main-section__result-table_item div:nth-child(12) {
     width: 40px;
     text-align: center;
 }
@@ -128,6 +122,11 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2px;
+}
+
+.wms-result-table__item_null {
+    background-color: #e66d17;
+
 }
 
 .wms-result-table__item_icon {

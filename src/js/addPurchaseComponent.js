@@ -2,7 +2,7 @@ import ApiUrl from './ApiUrl.js';
 
 
 // Запись информации о оприходовании в базу данных
-export const addComingComponent = async (
+export const addPurchaseComponent = async (
     vendorCode,
     nameComponent,
     quantityGoods,
@@ -15,8 +15,8 @@ export const addComingComponent = async (
     const item = {
         VendorCode: vendorCode,
         NameComponent: nameComponent,
-        QuantityGoods: quantityGoods,
-        ItemPrice: itemPrice,
+        QuantityComponent: quantityGoods,
+        PriceComponent: itemPrice,
         NoteDiscription: noteDiscription
     };
 
@@ -36,7 +36,7 @@ export const addComingComponent = async (
         if (!guidId) throw new Error("GUID пользователя не найден");
 
         // Отправляем запись о приходе
-        const response = await fetch(`${ApiUrl}/api/AddComingComponent`, {
+        const response = await fetch(`${ApiUrl}/api/AddPurchaseComponent`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(item),
@@ -49,7 +49,7 @@ export const addComingComponent = async (
 
         alert("✅ Информация оприходования внесена в базу данных!");
 
-        window.location.href = "/ComingPage";
+        window.location.href = "/PurchasePage";
 
     } catch (error) {
         console.error("Ошибка при добавлении данных о оприходовании товара:", error);

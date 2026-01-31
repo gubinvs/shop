@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./adminPanel.css";
 import "./mainSectionAdminPanel.css";
 import ApiUrl from "../js/ApiUrl";
-import { clearComingComponent } from "../js/clearComingComponent";
+import { addPurchaseComponent } from "../js/addPurchaseComponent.js";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import Coming from "./Coming/Coming";
 import ComingResult from "./Coming/ComingResult";
@@ -20,7 +20,7 @@ const PurchasePage =({nomenclature})=> {
         const loadData = async () => {
             try {
                 const response = await fetch(
-                    `${ApiUrl}/api/ReturnConsumptionComponent/MySuperToken123`
+                    `${ApiUrl}/api/ReturnPurchaseComponent/MySuperToken123`
                 );
 
                 if (!response.ok) {
@@ -29,13 +29,15 @@ const PurchasePage =({nomenclature})=> {
 
                 const data = await response.json();
 
+                console.log(data);
+
                 const formattedData = data.map(item => ({
                     id: item.id,
                     guid: item.guidIdComponent,
                     vendorCode: item.vendorCode,
                     nameComponent: item.nameComponent,
-                    quantity: item.quantityGoods,
-                    price: item.itemPrice,
+                    quantity: item.quantityComponent,
+                    price: item.priceComponent,
                     noteDiscription: item.noteDiscription,
                     dateSave: item.dataRecord
                 }))
@@ -56,7 +58,7 @@ const PurchasePage =({nomenclature})=> {
            <div className="admin-panel__container">
                 <NavigationBar />
                 <div className="main-section-admin-panel">
-                    <Coming itemComponent={nomenclature} title={"Закуп товара"} addDataFunction={clearComingComponent} />
+                    <Coming itemComponent={nomenclature} title={"Закуп товара"} addDataFunction={addPurchaseComponent} />
                     <br/><br/><br/>
                     <ComingResult title={"Перечень закупленного товара"} list={docList}/>
                 </div>

@@ -5,7 +5,7 @@ import { priceUpdateWebsite } from "../../js/priceUpdateWebsite.js";
 
 const Warehouse = () => {
     const totalTaxes = 1.37;
-    const markupShopEncomponent = 2;
+    const markupShopEncomponent = 1.6;
     const markupOzon = 1.6;
 
     const [docList, setDocList] = useState([]);
@@ -33,6 +33,7 @@ const Warehouse = () => {
                     nameComponent: item.nameComponent,
                     quantity: item.quantity,
                     price: item.price,
+                    purchaseQuantity: item.purchaseQuantity,
                     averagePurchasePrice: item.averagePurchasePrice,
                     averageSellingPrice: item.averageSellingPrice
                 }));
@@ -61,7 +62,6 @@ const Warehouse = () => {
                 <div className="wms-result-table__cell wms-result-table__header">Наименование</div>
                 <div className="wms-result-table__cell wms-result-table__header">Наличие, шт</div>
                 <div className="wms-result-table__cell wms-result-table__header">В пути, шт</div>
-                <div className="wms-result-table__cell wms-result-table__header">Закупить, шт</div>
                 <div className="wms-result-table__cell wms-result-table__header">Сред. цена покупки</div>
                 <div className="wms-result-table__cell wms-result-table__header">Сред. цена продажи</div>
                 <div className="wms-result-table__cell wms-result-table__header">Цена на сайте</div>
@@ -78,9 +78,11 @@ const Warehouse = () => {
                 >
                     <div className="wms-result-table__cell wms-result-table__item">{x.vendorCode}</div>
                     <div className="wms-result-table__cell wms-result-table__item">{x.nameComponent}</div>
-                    <div className="wms-result-table__cell wms-result-table__item">{x.quantity}</div>
-                    <div className="wms-result-table__cell wms-result-table__item"></div>
-                    <div className="wms-result-table__cell wms-result-table__item"></div>
+                    <div 
+                        className={x.quantity===0? "wms-result-table__cell wms-result-table__item wms-result-table__item_null":"wms-result-table__cell wms-result-table__item"}>
+                        {x.quantity}
+                    </div>
+                    <div className="wms-result-table__cell wms-result-table__item">{x.purchaseQuantity}</div>
                     <div className="wms-result-table__cell wms-result-table__item">
                         {new Intl.NumberFormat("ru-RU", {
                             style: "currency",
