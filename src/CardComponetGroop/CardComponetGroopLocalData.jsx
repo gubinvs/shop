@@ -27,19 +27,19 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     const toggleSwitchKeaz = () => setStateSwitchKeaz(prev => !prev);
 
     // Если открываем ниже перечисленные разделы, то кеаз не показываем, показываем там где нет своей номенклатуры
-    useEffect(() => {
-        if (
-            // chapter === "Модульное оборудование" || 
-            chapter === "Средства монтажа" ||
-            chapter === "Блоки питания" ||
-            chapter === "Силовые автоматические выключатели" ||
-            // chapter === "Программируемые контроллеры" ||
-            chapter === "Модули расширения"
+    // useEffect(() => {
+    //     if (
+    //         // chapter === "Модульное оборудование" || 
+    //         chapter === "Средства монтажа" ||
+    //         chapter === "Блоки питания" ||
+    //         chapter === "Силовые автоматические выключатели" ||
+    //         // chapter === "Программируемые контроллеры" ||
+    //         chapter === "Модули расширения"
 
-        ) {
-            setStateSwitchKeaz(false);
-        }
-    }, [chapter]);
+    //     ) {
+    //         setStateSwitchKeaz(false);
+    //     }
+    // }, [chapter]);
 
     
     // Состояние переключателя EKF
@@ -55,24 +55,24 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     // const toggleSwitchChint = () => setStateSwitchChint(prev => !prev);
 
     // Состояние переключателя SCHNAIDER
-    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(false);
+    const [stateSwitchShnaider, setStateSwitchShnaider] = useState(true);
     const toggleSwitchShnaider = () => setStateSwitchShnaider(prev => !prev);
     // Если открываем ниже перечисленные разделы, то кеаз не показываем, показываем там где нет своей номенклатуры
-    useEffect(() => {
-        if (chapter === "Модульное оборудование" || chapter === "Силовые автоматические выключатели" || chapter === "Программируемые контроллеры" || chapter === "Модули расширения") {
-            setStateSwitchShnaider(true);
-        }
-    }, [chapter]);
+    // useEffect(() => {
+    //     if (chapter === "Модульное оборудование" || chapter === "Силовые автоматические выключатели" || chapter === "Программируемые контроллеры" || chapter === "Модули расширения") {
+    //         setStateSwitchShnaider(true);
+    //     }
+    // }, [chapter]);
 
     // Состояние переключателя PHOENIX
-    const [stateSwitchPhoenix, setStateSwitchPhoenix] = useState(false);
+    const [stateSwitchPhoenix, setStateSwitchPhoenix] = useState(true);
     const toggleSwitchPhoenix = () => setStateSwitchPhoenix(prev => !prev);
     // Если открываем ниже перечисленные разделы, то кеаз не показываем, показываем там где нет своей номенклатуры
-    useEffect(() => {
-        if (chapter === "Блоки питания" || chapter === "Средства монтажа") {
-            setStateSwitchPhoenix(true);
-        }
-    }, [chapter]);
+    // useEffect(() => {
+    //     if (chapter === "Блоки питания" || chapter === "Средства монтажа") {
+    //         setStateSwitchPhoenix(true);
+    //     }
+    // }, [chapter]);
 
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
