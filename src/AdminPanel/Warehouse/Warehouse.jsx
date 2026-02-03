@@ -176,56 +176,6 @@ const Warehouse = () => {
                     </button>
                 </div>
             </div>
-        
-            <div className="warehouse-main-section__container economics-section__container">
-                <h2 className="warehouse-main-section__title">
-                    Экономика магазина:
-                </h2>
-
-                <div className="warehouse-main-section__result-table_header wms-result-table__header_economics">
-                    <div className="wms-result-table__cell wms-result-table__header">Артикул</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Наименование</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Всего куплено, шт</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Стоимость закупки, руб</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Всего продано, шт</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Стоимость продажи, руб</div>
-                    <div className="wms-result-table__cell wms-result-table__header">Балансовая сумма</div>
-                </div>
-                {currentList.map(x => (
-                    <div
-                        className="warehouse-main-section__result-table_item warehouse-main-section__result-table_item_economics"
-                        key={x.id}
-                    >
-                        <div className="wms-result-table__cell wms-result-table__item">{x.vendorCode}</div>
-                        <div className="wms-result-table__cell wms-result-table__item">{x.nameComponent}</div>
-                        <div className="wms-result-table__cell wms-result-table__item"></div>
-                        <div className="wms-result-table__cell wms-result-table__item">
-                            {new Intl.NumberFormat("ru-RU", {
-                                style: "currency",
-                                currency: "RUB",
-                                minimumFractionDigits: 0
-                            }).format(x.averagePurchasePrice)}
-                        </div>
-                        <div className="wms-result-table__cell wms-result-table__item"></div>
-                        <div className="wms-result-table__cell wms-result-table__item">
-                            {new Intl.NumberFormat("ru-RU", {
-                                style: "currency",
-                                currency: "RUB",
-                                minimumFractionDigits: 0
-                            }).format(x.price)}
-                            
-                        </div>
-                        <div className="wms-result-table__cell wms-result-table__item">
-                            {new Intl.NumberFormat("ru-RU", {
-                                style: "currency",
-                                currency: "RUB",
-                                minimumFractionDigits: 0
-                            }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
-                        </div>
-                    </div>
-                ))}
-
-            </div>
         </>
     );
 };
