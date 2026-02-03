@@ -4,14 +4,23 @@ import ApiUrl from "../../js/ApiUrl.js";
 import { priceUpdateWebsite } from "../../js/priceUpdateWebsite.js";
 
 const Warehouse = () => {
-    const totalTaxes = 1.37;
-    const markupShopEncomponent = 1.6;
-    const markupOzon = 1.6;
 
+    // Налоговая нагрузка
+    // Налоги 15% на прибыль и 22% НДС, с таким учетом, что после вычета их осталась маржа в 30%
+    const totalTaxes = 2.063; 
+
+    // Накрутка своего магазина. без накрутки
+    const markupShopEncomponent = 1;
+
+    // Процент ОЗОН
+    const markupOzon = 1.5;
+
+    // Список номенклатуры
     const [docList, setDocList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const itemsPerPage = 20;
+    // Строк в таблице выдачи результата
+    const itemsPerPage = 15;
 
     useEffect(() => {
         const loadData = async () => {
@@ -34,8 +43,8 @@ const Warehouse = () => {
                     quantity: item.quantity,
                     price: item.price,
                     purchaseQuantity: item.purchaseQuantity,
-                    averagePurchasePrice: item.averagePurchasePrice,
-                    averageSellingPrice: item.averageSellingPrice
+                    averagePurchasePrice: item.averagePurchasePrice, // cредняя цена закупки
+                    averageSellingPrice: item.averageSellingPrice // средняя цена продажи
                 }));
 
                 setDocList(formattedData);
