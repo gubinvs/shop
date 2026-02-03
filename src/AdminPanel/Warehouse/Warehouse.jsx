@@ -19,7 +19,7 @@ const Warehouse = () => {
     const totalTaxes = 2.064; 
 
     // Процент ОЗОН
-    const markupOzon = 1.5;
+    const markupOzon = 1.6;
 
     // Список номенклатуры
     const [docList, setDocList] = useState([]);
