@@ -26,7 +26,7 @@ const Warehouse = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     // Строк в таблице выдачи результата
-    const itemsPerPage = 15;
+    const itemsPerPage = 20;
 
     useEffect(() => {
         const loadData = async () => {
@@ -127,7 +127,7 @@ const Warehouse = () => {
                                 style: "currency",
                                 currency: "RUB",
                                 minimumFractionDigits: 0
-                            }).format(x.averagePurchasePrice * totalTaxes)}
+                            }).format(Math.round(x.averagePurchasePrice * totalTaxes))}
                         </div>
                         <div className="wms-result-table__cell wms-result-table__item">
                             <img
@@ -147,10 +147,10 @@ const Warehouse = () => {
                                 style: "currency",
                                 currency: "RUB",
                                 minimumFractionDigits: 0
-                            }).format(
+                            }).format(Math.round(
                                 x.averagePurchasePrice *
                                     totalTaxes *
-                                    markupOzon
+                                    markupOzon)
                             )}
                         </div>
                         <div className="wms-result-table__cell wms-result-table__item">
