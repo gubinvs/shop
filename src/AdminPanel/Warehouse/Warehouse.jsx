@@ -52,128 +52,181 @@ const Warehouse = () => {
     const currentList = docList.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div className="warehouse-main-section__container">
-            <h2 className="warehouse-main-section__title">
-                Наличие товара на складе:
-            </h2>
+    
+        <>
+                <div className="warehouse-main-section__container">
+                <h2 className="warehouse-main-section__title">
+                    Наличие товара на складе:
+                </h2>
 
-            <div className="warehouse-main-section__result-table_header">
-                <div className="wms-result-table__cell wms-result-table__header">Артикул</div>
-                <div className="wms-result-table__cell wms-result-table__header">Наименование</div>
-                <div className="wms-result-table__cell wms-result-table__header">Наличие, шт</div>
-                <div className="wms-result-table__cell wms-result-table__header">В пути, шт</div>
-                <div className="wms-result-table__cell wms-result-table__header">Сред. цена покупки</div>
-                <div className="wms-result-table__cell wms-result-table__header">Сред. цена продажи</div>
-                <div className="wms-result-table__cell wms-result-table__header">Цена на сайте</div>
-                <div className="wms-result-table__cell wms-result-table__header">Цена для сайта</div>
-                <div className="wms-result-table__cell wms-result-table__header "><p className="wms-result-table__header_transform">Обновить</p></div>
-                <div className="wms-result-table__cell wms-result-table__header">Цена для Озон</div>
-                <div className="wms-result-table__cell wms-result-table__header"><p className="wms-result-table__header_transform">Обновить</p></div>
-            </div>
-
-            {currentList.map(x => (
-                <div
-                    className="warehouse-main-section__result-table_item"
-                    key={x.id}
-                >
-                    <div className="wms-result-table__cell wms-result-table__item">{x.vendorCode}</div>
-                    <div className="wms-result-table__cell wms-result-table__item">{x.nameComponent}</div>
-                    <div 
-                        className={x.quantity===0? "wms-result-table__cell wms-result-table__item wms-result-table__item_null":"wms-result-table__cell wms-result-table__item"}>
-                        {x.quantity}
-                    </div>
-                    <div className="wms-result-table__cell wms-result-table__item">{x.purchaseQuantity}</div>
-                    <div className="wms-result-table__cell wms-result-table__item">
-                        {new Intl.NumberFormat("ru-RU", {
-                            style: "currency",
-                            currency: "RUB",
-                            minimumFractionDigits: 0
-                        }).format(x.averagePurchasePrice)}
-                    </div>
-                    <div className="wms-result-table__cell wms-result-table__item">
-                        {new Intl.NumberFormat("ru-RU", {
-                            style: "currency",
-                            currency: "RUB",
-                            minimumFractionDigits: 0
-                        }).format(x.averageSellingPrice)}
-                    </div>
-                    <div className="wms-result-table__cell wms-result-table__item">
-                        {new Intl.NumberFormat("ru-RU", {
-                            style: "currency",
-                            currency: "RUB",
-                            minimumFractionDigits: 0
-                        }).format(x.price)}
-                        
-                    </div>
-                        <div className="wms-result-table__cell wms-result-table__item">
-                        {new Intl.NumberFormat("ru-RU", {
-                            style: "currency",
-                            currency: "RUB",
-                            minimumFractionDigits: 0
-                        }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
-                    </div>
-                    <div className="wms-result-table__cell wms-result-table__item">
-                        <img
-                            src="../images/changes.png"
-                            alt="@"
-                            className="wms-result-table__item_icon"
-                            onClick={() =>
-                                priceUpdateWebsite(
-                                    x.guid,
-                                    x.averagePurchasePrice * markupShopEncomponent * totalTaxes
-                                )
-                            }
-                        />
-                    </div>
-                    <div className="wms-result-table__cell wms-result-table__item">
-                        {new Intl.NumberFormat("ru-RU", {
-                            style: "currency",
-                            currency: "RUB",
-                            minimumFractionDigits: 0
-                        }).format(
-                            x.averagePurchasePrice *
-                                markupShopEncomponent *
-                                totalTaxes *
-                                markupOzon
-                        )}
-                    </div>
-                    <div className="wms-result-table__cell wms-result-table__item">
-                        <img
-                            src="../images/changes.png"
-                            alt="@"
-                            className="wms-result-table__item_icon"
-                        />
-                    </div>
+                <div className="warehouse-main-section__result-table_header">
+                    <div className="wms-result-table__cell wms-result-table__header">Артикул</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Наименование</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Наличие, шт</div>
+                    <div className="wms-result-table__cell wms-result-table__header">В пути, шт</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Сред. цена покупки</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Сред. цена продажи</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Цена на сайте</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Цена для сайта</div>
+                    <div className="wms-result-table__cell wms-result-table__header "><p className="wms-result-table__header_transform">Обновить</p></div>
+                    <div className="wms-result-table__cell wms-result-table__header">Цена для Озон</div>
+                    <div className="wms-result-table__cell wms-result-table__header"><p className="wms-result-table__header_transform">Обновить</p></div>
                 </div>
-            ))}
 
-            {/* Пагинация */}
-            <div className="warehouse-main-section__pagination">
-                <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage(p => p - 1)}
-                >
-                    ←
-                </button>
-
-                {Array.from({ length: totalPages }).map((_, i) => (
-                    <button
-                        key={i}
-                        className={currentPage === i + 1 ? "active" : ""}
-                        onClick={() => setCurrentPage(i + 1)}
+                {currentList.map(x => (
+                    <div
+                        className="warehouse-main-section__result-table_item"
+                        key={x.id}
                     >
-                        {i + 1}
-                    </button>
+                        <div className="wms-result-table__cell wms-result-table__item">{x.vendorCode}</div>
+                        <div className="wms-result-table__cell wms-result-table__item">{x.nameComponent}</div>
+                        <div 
+                            className={x.quantity===0? "wms-result-table__cell wms-result-table__item wms-result-table__item_null":"wms-result-table__cell wms-result-table__item"}>
+                            {x.quantity}
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">{x.purchaseQuantity}</div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.averagePurchasePrice)}
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.averageSellingPrice)}
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.price)}
+                            
+                        </div>
+                            <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            <img
+                                src="../images/changes.png"
+                                alt="@"
+                                className="wms-result-table__item_icon"
+                                onClick={() =>
+                                    priceUpdateWebsite(
+                                        x.guid,
+                                        x.averagePurchasePrice * markupShopEncomponent * totalTaxes
+                                    )
+                                }
+                            />
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(
+                                x.averagePurchasePrice *
+                                    markupShopEncomponent *
+                                    totalTaxes *
+                                    markupOzon
+                            )}
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            <img
+                                src="../images/changes.png"
+                                alt="@"
+                                className="wms-result-table__item_icon"
+                            />
+                        </div>
+                    </div>
                 ))}
 
-                <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage(p => p + 1)}
-                >
-                    →
-                </button>
+                {/* Пагинация */}
+                <div className="warehouse-main-section__pagination">
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage(p => p - 1)}
+                    >
+                        ←
+                    </button>
+
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                        <button
+                            key={i}
+                            className={currentPage === i + 1 ? "active" : ""}
+                            onClick={() => setCurrentPage(i + 1)}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage(p => p + 1)}
+                    >
+                        →
+                    </button>
+                </div>
             </div>
-        </div>
+        
+            <div className="warehouse-main-section__container economics-section__container">
+                <h2 className="warehouse-main-section__title">
+                    Экономика магазина:
+                </h2>
+
+                <div className="warehouse-main-section__result-table_header wms-result-table__header_economics">
+                    <div className="wms-result-table__cell wms-result-table__header">Артикул</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Наименование</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Всего куплено, шт</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Стоимость закупки, руб</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Всего продано, шт</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Стоимость продажи, руб</div>
+                    <div className="wms-result-table__cell wms-result-table__header">Балансовая сумма</div>
+                </div>
+                {currentList.map(x => (
+                    <div
+                        className="warehouse-main-section__result-table_item warehouse-main-section__result-table_item_economics"
+                        key={x.id}
+                    >
+                        <div className="wms-result-table__cell wms-result-table__item">{x.vendorCode}</div>
+                        <div className="wms-result-table__cell wms-result-table__item">{x.nameComponent}</div>
+                        <div className="wms-result-table__cell wms-result-table__item"></div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.averagePurchasePrice)}
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item"></div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.price)}
+                            
+                        </div>
+                        <div className="wms-result-table__cell wms-result-table__item">
+                            {new Intl.NumberFormat("ru-RU", {
+                                style: "currency",
+                                currency: "RUB",
+                                minimumFractionDigits: 0
+                            }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+        </>
     );
 };
 
