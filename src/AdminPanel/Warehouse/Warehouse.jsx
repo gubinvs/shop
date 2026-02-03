@@ -5,12 +5,18 @@ import { priceUpdateWebsite } from "../../js/priceUpdateWebsite.js";
 
 const Warehouse = () => {
 
+    // С — себестоимость товара
+    // P — цена продажи
+    // Налог = 37% с дохода
+    // Чистая прибыль = 30% от себестоимости (важно: именно от себестоимости, а не от выручки — если я понял правильно)
+    // После уплаты налогов оставется 0,63 выручки
+    // P × 0,63 = C + 0,3C
+    // P × 0,63 = 1,3C
+    // P = 1,3C / 0,63 ≈ 2,063C - Цена продажи
+
     // Налоговая нагрузка
     // Налоги 15% на прибыль и 22% НДС, с таким учетом, что после вычета их осталась маржа в 30%
-    const totalTaxes = 2.063; 
-
-    // Накрутка своего магазина. без накрутки
-    const markupShopEncomponent = 1;
+    const totalTaxes = 2.064; 
 
     // Процент ОЗОН
     const markupOzon = 1.5;
@@ -121,7 +127,7 @@ const Warehouse = () => {
                                 style: "currency",
                                 currency: "RUB",
                                 minimumFractionDigits: 0
-                            }).format(x.averagePurchasePrice * markupShopEncomponent * totalTaxes)}
+                            }).format(x.averagePurchasePrice * totalTaxes)}
                         </div>
                         <div className="wms-result-table__cell wms-result-table__item">
                             <img
@@ -131,7 +137,7 @@ const Warehouse = () => {
                                 onClick={() =>
                                     priceUpdateWebsite(
                                         x.guid,
-                                        x.averagePurchasePrice * markupShopEncomponent * totalTaxes
+                                        x.averagePurchasePrice * totalTaxes
                                     )
                                 }
                             />
@@ -143,7 +149,6 @@ const Warehouse = () => {
                                 minimumFractionDigits: 0
                             }).format(
                                 x.averagePurchasePrice *
-                                    markupShopEncomponent *
                                     totalTaxes *
                                     markupOzon
                             )}
