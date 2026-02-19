@@ -119,6 +119,7 @@
 
 
 .wms-result-table__item {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-bottom: 2px;
@@ -132,6 +133,40 @@
 .wms-result-table__item_icon {
     width: 20px;
     cursor: pointer;
+}
+
+.wms-result-table__item_form-price {
+    position: absolute;
+    top: 0px;
+    right: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 300px !important;
+    border-radius: 10px;
+    background-color: #e66d17;
+    z-index: 1;
+}
+
+.wms-result-table__item_form-price_none {
+    display: none;
+}
+
+.wrt-item-form-price__title {
+    width: 100% !important;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.wrt-item-form-price__price {
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.wrt-item-form-price__button {
+    height: 40px;
 }
 
 .warehouse-main-section__pagination {

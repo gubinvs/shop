@@ -130,7 +130,7 @@ const Warehouse = () => {
                             }).format(Math.round(x.averagePurchasePrice * totalTaxes))}
                         </div>
                         <div className="wms-result-table__cell wms-result-table__item">
-                            <img
+                            {/* <img
                                 src="../images/changes.png"
                                 alt="@"
                                 className="wms-result-table__item_icon"
@@ -140,7 +140,37 @@ const Warehouse = () => {
                                         x.averagePurchasePrice * totalTaxes
                                     )
                                 }
+                            /> */}
+                             <img
+                                src="../images/changes.png"
+                                alt="@"
+                                className="wms-result-table__item_icon"
                             />
+                            <div action="" 
+                                className={x.vendorCode === "TM3DQ16T"?"wms-result-table__item_form-price":"wms-result-table__item_form-price_none"}
+                            >
+                                <div className="wrt-item-form-price__title">Установить цену для {x.vendorCode}:</div>
+                                <input 
+                                    type="number" 
+                                    className="wrt-item-form-price__price" 
+                                    min={0} 
+                                    onChange={(e) => {
+                                        // setSearch(e.target.value); 
+                                        // setSearchResult(true);
+                                    }}
+                                    />
+                                <button 
+                                    className="wrt-item-form-price__button"
+                                    onClick={() =>
+                                    priceUpdateWebsite(
+                                            x.guid,
+                                            "новая цена из формы"
+                                        )
+                                    }
+                                >
+                                    Записать
+                                </button>
+                            </div>
                         </div>
                         <div className="wms-result-table__cell wms-result-table__item">
                             {new Intl.NumberFormat("ru-RU", {
