@@ -137,7 +137,7 @@
 
 .wms-result-table__item_form-price {
     position: absolute;
-    top: 4d0px;
+    top: 40px;
     right: 100px;
     display: flex;
     flex-direction: column;
