@@ -23,7 +23,7 @@
 }
 
 .dg-card__title {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -58,7 +58,7 @@
     width: 176px;
     height: 150px;
     background-image: url(../../public/images/img-groop/section_card3_img_1920.png);
-    background-position: right -20px top -24px;
+    background-position: right 6px top 7px;
 }
 
 .dg-card4 {
