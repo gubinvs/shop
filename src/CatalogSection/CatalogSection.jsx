@@ -12,7 +12,7 @@ const CatalogSection = ({nomenclature}) => {
   return (
     <>
       <Header />
-      <DirectoryGroups />
+      {/* <DirectoryGroups /> */}
       {/* <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} /> */}
       <CardComponetGroopLocalData h2={newChapter} item={nomenclature} chapter={chapter} />
       <Footer />

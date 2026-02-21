@@ -1,3 +1,13 @@
+.new-directory-groups-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #F0F0F0;
+}
+
+.new-directory-groups-section div:not(:last-of-type) {
+    margin-bottom: 10px;
+}
+
 .new-directory-groups__container {
     display: flex;
     flex-direction: column;
@@ -20,6 +30,10 @@
     padding-left: 30px;
     background-color: rgba(243, 222, 9, 0.8);
     background-repeat: no-repeat;
+}
+
+.ndg-card_gray {
+    background-color: #F7FAFB;
 }
 
 .ndg-card_contactor-groop {
@@ -87,4 +101,41 @@
 
 .ndg-card__discr_plc {
     width: 280px;
+}
+
+.ndg-card_ip-groop {
+    background-image: url(../../public/images/new-img-catalog-groop/mask-ip-groop.png);
+    background-position: right 30px top 160px;
+}
+
+.ndg-card_avtom-groop {
+    background-image: url(../../public/images/new-img-catalog-groop/mask-avtom-groop.png);
+    background-position: right 30px top 210px;
+}
+
+.ndg-card_klem-groop {
+    background-image: url(../../public/images/new-img-catalog-groop/mask-klem-groop.png);
+    background-position: right 10px top 90px;
+}
+
+.ndg-card-button_arrow {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    width: 150px;
+    height: 40px;
+    padding-left: 20px;
+    text-align: left;
+    border-radius: 10px;
+    border: 1px solid #F3DE09;
+    background-color: rgba(247, 250, 251, 0.5);
+    color: #1D252C;
+    background-image: url(../../public/images/new-img-catalog-groop/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: right 16px top 12px;
+    cursor: pointer;
+}
+
+.ndg-card-button_arrow:hover {
+background-color: #F3DE09;
 }
