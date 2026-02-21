@@ -24,6 +24,16 @@ const Warehouse = () => {
     // Список номенклатуры
     const [docList, setDocList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [price, setPrice] = useState(0);
+    const [formPrice, setFormPrice] = useState([]);
+
+   useEffect(() => {
+        const initialState = {};
+        docList.forEach(item => {
+            initialState[item.id] = false;
+        });
+        setFormPrice(initialState);
+    }, [docList]);
 
     // Строк в таблице выдачи результата
     const itemsPerPage = 20;
@@ -130,24 +140,25 @@ const Warehouse = () => {
                             }).format(Math.round(x.averagePurchasePrice * totalTaxes))}
                         </div>
                         <div className="wms-result-table__cell wms-result-table__item">
-                            {/* <img
-                                src="../images/changes.png"
-                                alt="@"
-                                className="wms-result-table__item_icon"
-                                onClick={() =>
-                                    priceUpdateWebsite(
-                                        x.guid,
-                                        x.averagePurchasePrice * totalTaxes
-                                    )
-                                }
-                            /> */}
                              <img
                                 src="../images/changes.png"
                                 alt="@"
                                 className="wms-result-table__item_icon"
+                                onClick={() => {
+                                        setFormPrice(prev => {
+                                            const newState = {};
+                                            Object.keys(prev).forEach(key => {
+                                                newState[key] = false; // всем false
+                                            });
+                                            newState[x.id] = true; // только текущему true
+                                            return newState;
+                                        });
+                                    }}
                             />
-                            <div action="" 
-                                className={x.vendorCode === "TM3DQ16T"?"wms-result-table__item_form-price":"wms-result-table__item_form-price_none"}
+                            <div
+                                className={formPrice[x.id]
+                                    ? "wms-result-table__item_form-price"
+                                    : "wms-result-table__item_form-price_none"}
                             >
                                 <div className="wrt-item-form-price__title">Установить цену для {x.vendorCode}:</div>
                                 <input 
@@ -155,18 +166,21 @@ const Warehouse = () => {
                                     className="wrt-item-form-price__price" 
                                     min={0} 
                                     onChange={(e) => {
-                                        // setSearch(e.target.value); 
-                                        // setSearchResult(true);
+                                        setPrice(e.target.value); 
                                     }}
                                     />
                                 <button 
                                     className="wrt-item-form-price__button"
-                                    onClick={() =>
-                                    priceUpdateWebsite(
+                                    onClick={() =>{
+                                        priceUpdateWebsite(
                                             x.guid,
-                                            "новая цена из формы"
+                                            price
                                         )
-                                    }
+                                        setFormPrice(prev => ({
+                                            ...prev,
+                                            [x.id]: false
+                                        }));
+                                    }}
                                 >
                                     Записать
                                 </button>

@@ -31,6 +31,7 @@ export const priceUpdateWebsite = async (guidItem, priceItem)=> {
         
 
         alert("✅ Информация о новой цене внесена в базу данных!");
+        window.location.reload();
 
     } catch (error) {
         alert("❌ Не удалось обновить цену.");

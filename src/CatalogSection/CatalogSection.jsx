@@ -1,5 +1,5 @@
 import React from 'react';
-import DirectoryGroups from "../Home/DirectoryGroups.jsx";
+// import DirectoryGroups from "../Home/DirectoryGroups.jsx";
 import Header from '../Header/Header';
 // import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
 import CardComponetGroopLocalData from "../CardComponetGroop/CardComponetGroopLocalData.jsx";
