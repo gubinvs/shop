@@ -200,7 +200,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
     return (
         <div className="card-componet-groop-section">
             <div className="container">
-                <h2 className="directory-groups__title">{h2}</h2>
+                {/* <h2 className="directory-groups__title">{h2}</h2> */}
 
                 {location.pathname !== '/' && (
                     <>

@@ -1,0 +1,28 @@
+.title-catalog-section {
+    padding-top: 40px;
+    background-color: rgba(243, 222, 9, 0.8);
+    margin-bottom: 40px;
+    width: 100%;
+    height: 150px;
+    background: rgba(243, 222, 9, 0.8);
+    background: linear-gradient(
+        to right,
+        rgba(243, 222, 9, 0.8) 0%,
+        rgba(243, 222, 9, 0) 100%
+    );
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.title-catalog-section__title {
+    font-size: 28px;
+    color: #1D252C;
+}
+
+.title-catalog-section__name {
+    font-size: 16px;
+    font-weight: 100;
+    color: #1D252C;
+    line-height: 16px;
+}
+
