@@ -15,6 +15,7 @@ export const chapterHighVoltage = "Оборудование высоковоль
 export const chapterConverters = "Преобразователи частоты";
 export const chapterInstrument = "Инструмент электромонтажный";
 export const chapterKorpus = "Корпуса";
+export const chapterContactor = "Силовые контакторы";
 
 
 

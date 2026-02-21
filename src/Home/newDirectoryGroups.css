@@ -1,0 +1,90 @@
+.new-directory-groups__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ndg-card-section {
+    display: flex;
+}
+
+.ndg-card-section div:not(:last-of-type) {
+    margin-right: 20px;
+}
+
+.ndg-card {
+    position: relative;
+    width: 413px;
+    height: 410px;
+    border-radius: 8px;
+    padding-top: 30px;
+    padding-left: 30px;
+    background-color: rgba(243, 222, 9, 0.8);
+    background-repeat: no-repeat;
+}
+
+.ndg-card_contactor-groop {
+    background-image: url(../../public/images/new-img-catalog-groop/mask-contactor-group2.png);
+    background-position: left 160px top 170px;
+}
+
+.ndg-card__title {
+    font-size: 32px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 40px;
+    color: #1D252C;
+} 
+
+.ndg-card__title_contactor {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.ndg-card__discr {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1D252C;
+} 
+
+.ndg-card__discr_contactor {
+    width: 300px;
+}
+
+.ndg-card-images_arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.ndg-card-images_arrow:hover {
+    transform: rotate(90deg);
+}
+
+.ndg-card_module-plc {
+    background-image: url(../../public/images/new-img-catalog-groop/mask-module-plc.png);
+    background-position: right 30px top 130px;
+}
+
+.ndg-card__title_module-plc {
+    width: 280px;
+    margin-bottom: 10px;
+}
+
+.ndg-card__discr__module-plc {
+    width: 280px;
+}
+
+.ndg-card_plc {
+    background-image: url(../../public/images/new-img-catalog-groop/mask-plc-groop.png);
+    background-position: right 0px top 90px;
+}
+
+.ndg-card__title_plc {
+    width: 246px;
+    margin-bottom: 10px;
+}
+
+.ndg-card__discr_plc {
+    width: 280px;
+}
