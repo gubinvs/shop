@@ -100,11 +100,7 @@ body {
 
 @media only screen and (max-width: 800px) {
     .home-delivery-section {
-        height: 400px;
-    }
-
-    .home-delivery-section__container {
-      margin-right: 0px;
+      height: 400px;
     }
     
     .delivry-man__picture,
@@ -119,9 +115,27 @@ body {
 }
 
 @media only screen and (max-width: 640px) {
+    .home-delivery-section__title {
+      font-size: 48px;
+    }
 
+    .home-delivery-section {
+        height: 340px;
+    }
 }
 
 @media only screen and (max-width: 480px) {
+
+  .home-delivery-section {
+      height: 300px;
+  }
   
+  .home-delivery-section__title {
+    font-size: 38px;
+  }
+
+  .home-delivery-section__discr {
+      width: 376px;
+      font-size: 14px;
+  }
 }

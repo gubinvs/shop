@@ -401,10 +401,6 @@
 }
 
 @media only screen and (max-width: 960px) {
-  .container {
-    width: 800px;
-  }
-
   .search-input-block {
     width: 488px;
     margin-right: 10px;
@@ -462,10 +458,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .container {
-    width: 640px;
-  }
-
   .header-logo-block,
   .header-logo-block_guest {
     margin-right: 8px;
@@ -527,10 +519,6 @@
 }
 
 @media only screen and (max-width: 640px) {
-  .container {
-    width: 480px;
-  }
-
   .header__container {
     margin-bottom: 0px;
   }
@@ -599,9 +587,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-
    .search-input-block {
     width: 380px;
-
   }
 }

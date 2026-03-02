@@ -290,10 +290,6 @@
 }
 
 @media only screen and (max-width: 960px) {
-    .container {
-        width: 800px;
-    }
-
     .card-component {
         width: 192px;
     }
@@ -320,10 +316,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .container {
-        width: 640px;
-    }
-
     .card-component {
         width: 208px;
         margin-right: 8px;
@@ -361,10 +353,6 @@
 }
 
 @media only screen and (max-width: 640px) {
-    .container {
-        width: 480px;
-    }
-
     .card-component {
         width: 236px;
         margin-right: 8px;
@@ -403,10 +391,6 @@
 }
 
 @media only screen and (max-width: 480px) {
-    .container {
-        width: 380px;
-    }
-
     .directory-groups__title {
         font-size: 20px;
         margin-bottom: 4px;
