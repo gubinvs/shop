@@ -40,7 +40,7 @@ body {
   margin-bottom: 40px;
 }
 
-.home-delivery-section__icon-block img:not(:last-of-type) {
+.home-delivery-section__icon-block picture:not(:last-of-type) {
   margin-right: 20px;
 }
 
