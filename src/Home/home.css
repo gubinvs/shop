@@ -50,3 +50,78 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+
+@media only screen and (max-width: 1280px) {
+    .home-delivery-section {
+        height: 467px;
+    }
+    
+    .home-delivery-section__discr {
+        width: 499px;
+        font-size: 20px;
+    }
+    
+    .home-delivery-section__discr {
+        width: 499px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .home-delivery-section__discr {
+        width: 498px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .home-delivery-section {
+        height: 378px;
+    }
+
+    .home-delivery-section__title {
+        font-size: 64px;
+        margin-bottom: 4px;
+    }
+
+    .home-delivery-section__icon-block {
+      margin-bottom: 10px;
+    }
+
+    .home-delivery-section__discr {
+        width: 417px;
+        font-size: 16px;
+    }
+
+    .home-delivery-section__icon-block picture:not(:last-of-type) {
+      margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .home-delivery-section {
+        height: 400px;
+    }
+
+    .home-delivery-section__container {
+      margin-right: 0px;
+    }
+    
+    .delivry-man__picture,
+    .home-delivery-section__images_man {
+      display: none;
+    }
+    
+    .home-delivery-section__icon-block picture:not(:last-of-type) {
+      margin-right: 8px;
+    }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+}
+
+@media only screen and (max-width: 480px) {
+  
+}
