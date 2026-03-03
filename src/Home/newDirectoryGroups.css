@@ -140,3 +140,59 @@
 .ndg-card-button_arrow:hover {
     background-color: #F3DE09;
 }
+
+
+
+
+@media only screen and (max-width: 1280px) {
+    .ndg-card_contactor-groop {
+        background-image: url();
+        background-position: left 160px top 170px;
+    }
+
+    .ndg-card_module-plc {
+        background-image: url();
+        background-position: right 30px top 130px;
+    }
+
+    .ndg-card_plc {
+        background-image: url();
+        background-position: right 0px top 90px;
+    }
+
+    .ndg-card_ip-groop {
+        background-image: url();
+        background-position: right 30px top 160px;
+    }
+
+    .ndg-card_avtom-groop {
+        background-image: url();
+        background-position: right 30px top 210px;
+    }
+
+    .ndg-card_klem-groop {
+        background-image: url();
+        background-position: right 10px top 90px;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 960px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+
+}
+
+@media only screen and (max-width: 640px) {
+
+}
+
+@media only screen and (max-width: 480px) {
+
+}
