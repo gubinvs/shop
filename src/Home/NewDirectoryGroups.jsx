@@ -11,8 +11,8 @@ const NewDirectoryGroups = () => {
         <div className="new-directory-groups-section">
             <div className="container new-directory-groups__container">
                 <h2 className="directory-groups__title">Категории каталога</h2>
-                <div className="ndg-card-section">
-                    <div className="ndg-card ndg-card_contactor-groop">
+                <div className="ndg-card-section ">
+                    <div className="ndg-card ndg-card_contactor-groop hvr-grow-shadow">
                         <div className="ndg-card__title ndg-card__title_contactor">Силовые контакторы</div>
                         <div className="ndg-card__discr ndg-card__discr_contactor">для управления электродвигателями и промышленными нагрузками средней мощности.</div>
                         <img 
@@ -22,7 +22,7 @@ const NewDirectoryGroups = () => {
                             onClick={() => OpenSection(chapterContactor)}
                         />
                     </div>
-                    <div className="ndg-card ndg-card_plc">
+                    <div className="ndg-card ndg-card_plc hvr-grow-shadow">
                         <div className="ndg-card__title ndg-card__title_plc">Блоки базовые - PLC</div>
                         <div className="ndg-card__discr ndg-card__discr_plc">предназначены для гибкого управления промышленными процессами, что обеспечивает удобную интеграцию с другими устройствами</div>  
                         <img 
@@ -32,7 +32,7 @@ const NewDirectoryGroups = () => {
                             onClick={() => OpenSection(chapterPlk)}
                         />
                     </div>
-                    <div className="ndg-card ndg-card_module-plc">
+                    <div className="ndg-card ndg-card_module-plc hvr-grow-shadow">
                         <div className="ndg-card__title ndg-card__title_module-plc">Модули расширения PLC</div>
                         <div className="ndg-card__discr ndg-card__discr__module-plc">предназначен для увеличения количества входов и выходов на базе логических контроллеров</div>
                         <img 
@@ -46,7 +46,7 @@ const NewDirectoryGroups = () => {
             </div>
             <div className="container new-directory-groups__container">
                 <div className="ndg-card-section">
-                    <div className="ndg-card ndg-card_gray ndg-card_ip-groop">
+                    <div className="ndg-card ndg-card_gray ndg-card_ip-groop hvr-grow-shadow">
                         <div className="ndg-card__title ndg-card__title_contactor">Источники питания</div>
                         <div className="ndg-card__discr ndg-card__discr_contactor">обладают широким набором функций обеспечивая высокую эффективность и надежность и позволяет эффективно защищать установки.</div>
                         <button 
@@ -54,7 +54,7 @@ const NewDirectoryGroups = () => {
                             onClick={() => OpenSection(chapterBp)}
                         >Подробнее</button>
                     </div>
-                    <div className="ndg-card ndg-card_gray ndg-card_avtom-groop">
+                    <div className="ndg-card ndg-card_gray ndg-card_avtom-groop hvr-grow-shadow">
                         <div className="ndg-card__title ndg-card__title_plc">Выключатели автоматические</div>
                         <div className="ndg-card__discr ndg-card__discr_plc">для защиты электрических цепей от перегрузок и коротких замыканий в распределительных сетях</div>  
                         <button 
@@ -62,7 +62,7 @@ const NewDirectoryGroups = () => {
                             onClick={() => OpenSection(chapterSch)}
                         >Подробнее</button>
                     </div>
-                    <div className="ndg-card ndg-card_gray ndg-card_klem-groop">
+                    <div className="ndg-card ndg-card_gray ndg-card_klem-groop hvr-grow-shadow">
                         <div className="ndg-card__title ndg-card__title_module-plc">Средства монтажа</div>
                         <div className="ndg-card__discr ndg-card__discr__module-plc">аксессуары и монтажные элементы для безопасной и удобной установки электрического оборудования</div>
                         <button 

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import "./Header.css";
 import ApiUrl from '../js/ApiUrl';
 import { chapterMa, chapterBp, chapterK, chapterSch, chapterPlk, chapterMplk, chapterSl, OpenSection, chapterRecord,
-    chapterHighVoltage, chapterRele, chapterConverters, chapterInstrument, chapterKorpus
+    chapterHighVoltage, chapterRele, chapterConverters, chapterInstrument, chapterKorpus, chapterContactor
  } from "../js/LinkSectionGroup.js";
 import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
@@ -209,6 +209,7 @@ const Header = () => {
                                         <li className="catalog__item" onClick={() => OpenSection(chapterMa)}>Модульное оборудование</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Блоки питания</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Средства монтажа</li>
+                                        <li className="catalog__item" onClick={() => OpenSection(chapterContactor)}>Силовые контакторы</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Силовые автоматы</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Логические контроллеры</li>
                                         <li className="catalog__item" onClick={() => OpenSection(chapterSl)}>Индикация</li>
