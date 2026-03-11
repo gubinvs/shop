@@ -13,9 +13,9 @@ const MainSectionAdminPanel = () => {
             <div className="main-section-admin-panel">            
                 <div className="admin-mailer__container">
                     <div className="general-purchase-section">
-                        <GeneralPurchaseSection title="Закуплено на сумму:" />
-                        <GeneralPurchaseSection title="Продано на сумму:" />
-                        <GeneralPurchaseSection title="Сумма в товаре:" />
+                        <GeneralPurchaseSection title="Закуплено на сумму:" controllerName="TotalPurchaseAmount" />
+                        <GeneralPurchaseSection title="Продано на сумму:" controllerName="TotalSales" />
+                        <GeneralPurchaseSection title="Сумма в товаре:" controllerName="TotalPurchaseAmount" />
                     </div>
                     <br/><br/>
                     <AdminMailer title={"Рассылка от gmail.com:"} urlRegust={"http://31.129.97.48:1100/api/Upload/upload-excel"}/>

@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Days One';
+  src: url("../../../public/fonts/DaysOne-Regular.eot");
+  src: local("Days One"), local("DaysOne-Regular"), url("../../../public/fonts/DaysOne-Regular.eot?#iefix") format("embedded-opentype"), url("../../../public/fonts/DaysOne-Regular.woff2") format("woff2"), url("../../../public/fonts/DaysOne-Regular.woff") format("woff"), url("../../../public/fonts/DaysOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .general-purchase-section {
     display: flex;
 }
@@ -25,8 +34,9 @@
 }
 
 .gps-total-card__number {
+    font-family: 'Days One';
     font-size: 60px;
-    font-weight: bold;
+    font-weight: 600;
     font-style: normal;
     color: #fff;
 }
