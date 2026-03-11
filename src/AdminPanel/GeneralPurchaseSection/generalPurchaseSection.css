@@ -3,12 +3,17 @@
 }
 
 .general-purchase-section__total-card {
-    width: 300px;
+    width: 386px;
     height: 200px;
     padding-top: 20px;
     padding-left: 20px;
     border-radius: 20px;
     background-color: #11125F;
+
+}
+
+.general-purchase-section__total-card:not(:last-of-type) {
+    margin-right: 20px;
 }
 
 .gps-total-card__title {
