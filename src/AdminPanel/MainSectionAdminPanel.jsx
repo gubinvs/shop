@@ -16,6 +16,7 @@ const MainSectionAdminPanel = () => {
                         <GeneralPurchaseSection title="Закуплено на сумму:" controllerName="TotalPurchaseAmount" />
                         <GeneralPurchaseSection title="Продано на сумму:" controllerName="TotalSales" />
                         <GeneralPurchaseSection title="Сумма в товаре:" controllerName="ReturnCostPriceOfGoods" />
+                        <GeneralPurchaseSection title="Продается на сумму:" controllerName="TotalSellingPrice" />
                     </div>
                     <br/><br/>
                     <AdminMailer title={"Рассылка от gmail.com:"} urlRegust={"http://31.129.97.48:1100/api/Upload/upload-excel"}/>

@@ -22,7 +22,7 @@
 }
 
 .general-purchase-section__total-card:not(:last-of-type) {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .gps-total-card__title {
