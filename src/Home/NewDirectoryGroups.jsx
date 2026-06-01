@@ -55,8 +55,8 @@ const NewDirectoryGroups = () => {
                         >Подробнее</button>
                     </div>
                     <div className="ndg-card ndg-card_gray ndg-card_avtom-groop hvr-grow-shadow" onClick={() => OpenSection(chapterSch)}>
-                        <div className="ndg-card__title ndg-card__title_plc">Выключатели автоматические</div>
-                        <div className="ndg-card__discr ndg-card__discr_plc">для защиты электрических цепей от перегрузок и коротких замыканий в распределительных сетях</div>  
+                        <div className="ndg-card__title ndg-card__title_plc">Типовые решения НКУ</div>
+                        <div className="ndg-card__discr ndg-card__discr_plc">Проверенные решения для распределения электроэнергии и автоматизации объектов</div>  
                         <button 
                             className='ndg-card-button_arrow'
                             onClick={() => OpenSection(chapterSch)}

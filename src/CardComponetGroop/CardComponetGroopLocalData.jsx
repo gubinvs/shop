@@ -206,7 +206,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                     <>
                         <div className="switch-block">
                             {/* // Переключатель КЭАЗ */}
-                            <div className="directory-groups__filter-block">
+                            {/* <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchKeaz ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
@@ -218,7 +218,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     src="/images/logo-keaz__min.png"
                                     alt="KEAZ"
                                 />
-                            </div>
+                            </div> */}
                             {/* // Переключатель EKF */}
                             {/* <div className="directory-groups__filter-block">
                                 <img
@@ -262,7 +262,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                 />
                             </div> */}
                             {/* // Переключатель SHNAIDER */}
-                            <div className="directory-groups__filter-block">
+                            {/* <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchShnaider ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
@@ -274,9 +274,9 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     src="/images/logo-shnaider__min.png"
                                     alt="SHNAIDER"
                                 />
-                            </div>
+                            </div> */}
                             {/* // Переключатель PHOENIX */}
-                            <div className="directory-groups__filter-block">
+                            {/* <div className="directory-groups__filter-block">
                                 <img
                                     className="dg-filter-block__img-icon"
                                     src={stateSwitchPhoenix ? '/images/icon-switch__on.svg' : '/images/icon-switch__of.svg'}
@@ -288,7 +288,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     src="/images/logo-phoenix__min.jpg"
                                     alt="phoenix"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </>
                 )}
