@@ -1,18 +1,15 @@
 import React from 'react';
 import './newDirectoryGroups.css';
-import {  
-    chapterPlk, chapterMplk,
-    OpenSection, chapterContactor,
-    chapterSch, chapterK, chapterBp
+import {  chapterPlk, chapterMplk, OpenSection, chapterContactor, chapterSch, chapterK, chapterBp, chapterNKU
 } from "../js/LinkSectionGroup.js";
 
 const NewDirectoryGroups = () => {
     return (
         <div className="new-directory-groups-section">
-            <div className="container new-directory-groups__container" onClick={() => OpenSection(chapterContactor)}>
+            <div className="container new-directory-groups__container">
                 <h2 className="directory-groups__title">Категории каталога</h2>
                 <div className="ndg-card-section ">
-                    <div className="ndg-card ndg-card_contactor-groop hvr-grow-shadow">
+                    <div className="ndg-card ndg-card_contactor-groop hvr-grow-shadow" onClick={() => OpenSection(chapterContactor)}>
                         <div className="ndg-card__title ndg-card__title_contactor">Силовые контакторы</div>
                         <div className="ndg-card__discr ndg-card__discr_contactor">для управления электродвигателями и промышленными нагрузками средней мощности.</div>
                         <img 
@@ -54,12 +51,12 @@ const NewDirectoryGroups = () => {
                             onClick={() => OpenSection(chapterBp)}
                         >Подробнее</button>
                     </div>
-                    <div className="ndg-card ndg-card_gray ndg-card_avtom-groop hvr-grow-shadow" onClick={() => OpenSection(chapterSch)}>
+                    <div className="ndg-card ndg-card_gray ndg-card_avtom-groop hvr-grow-shadow" onClick={() => OpenSection(chapterNKU)}>
                         <div className="ndg-card__title ndg-card__title_plc">Типовые решения НКУ</div>
                         <div className="ndg-card__discr ndg-card__discr_plc">Проверенные решения для распределения электроэнергии и автоматизации объектов</div>  
                         <button 
                             className='ndg-card-button_arrow'
-                            onClick={() => OpenSection(chapterSch)}
+                            onClick={() => OpenSection(chapterNKU)}
                         >Подробнее</button>
                     </div>
                     <div className="ndg-card ndg-card_gray ndg-card_klem-groop hvr-grow-shadow" onClick={() => OpenSection(chapterK)}>
