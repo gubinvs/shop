@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ApiUrl from '../js/ApiUrl.js';
 import Header from './Header.jsx';
 import './searchResults.css';
-import DirectoryGroups from "../Home/DirectoryGroups.jsx"
+import NewDirectoryGroupsMin from "../Home/NewDirectoryGroupsMin.jsx"
 import Footer from "../Footer/Footer.jsx";
 
 const SearchResults = () => {
@@ -125,7 +125,7 @@ const SearchResults = () => {
     return (
         <>
             <Header />
-            <DirectoryGroups />
+            <NewDirectoryGroupsMin />
             <div className="container search-results__container">
                 {component && (
                     <div className="search-results__card-component" key={component.id}>
