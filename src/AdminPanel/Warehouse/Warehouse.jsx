@@ -1,5 +1,5 @@
 import "./warehouse.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import ApiUrl from "../../js/ApiUrl.js";
 import { priceUpdateWebsite } from "../../js/priceUpdateWebsite.js";
 
@@ -76,6 +76,55 @@ const Warehouse = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentList = docList.slice(startIndex, startIndex + itemsPerPage);
 
+    // 1. Задаем желаемый порядок приоритетных артикулов
+    const priorityOrder = [
+        "LC1D09M7", 
+        "LC1D12M7", 
+        "LC1D18M7", 
+        "LC1D25M7", 
+        "LC1D32M7", 
+        "LC1D09M7С",
+        "LC1D32M7C",
+        "TM241CE24T",
+        "TM241CE40T",
+        "TM3AI8",
+        "TM3DI8",
+        "TM3DI16",
+        "TM3DQ8T",
+        "TM3DQ16T",
+        "2866763",
+        "2903148",
+        "3044102",
+        "3044115",
+        "3044128"
+    ];
+
+    // Превращаем в Map для моментального поиска: {'C40F31M320' => 0, 'C40F32D250' => 1, ...}
+    const priorityMap = new Map(priorityOrder.map((code, index) => [code, index]));
+
+    // 2. Создаем отсортированную копию массива
+    const sortedList = useMemo(() => {
+        return [...currentList].sort((a, b) => {
+            // Получаем индекс из Map (если элемента нет, вернет undefined)
+            const indexA = priorityMap.get(a.vendorCode);
+            const indexB = priorityMap.get(b.vendorCode);
+
+            const hasA = indexA !== undefined;
+            const hasB = indexB !== undefined;
+
+            // Оба в приоритете -> сравниваем их порядковые номера
+            if (hasA && hasB) return indexA - indexB;
+            
+            // Только один в приоритете -> поднимаем его наверх
+            if (hasA) return -1;
+            if (hasB) return 1;
+
+            // Остальные 100+ товаров сортируем по алфавиту
+            return a.vendorCode.localeCompare(b.vendorCode);
+        });
+    }, [currentList]); // Пересчитывается только если изменился исходный список);
+
+
     return (
     
         <>
@@ -98,7 +147,8 @@ const Warehouse = () => {
                     <div className="wms-result-table__cell wms-result-table__header"><p className="wms-result-table__header_transform">Обновить</p></div>
                 </div>
 
-                {currentList.map(x => (
+                {/*{currentList.map(x => (*/}
+                {sortedList.map(x => (
                     <div
                         className="warehouse-main-section__result-table_item"
                         key={x.id}
