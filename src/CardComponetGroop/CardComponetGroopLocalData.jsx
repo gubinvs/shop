@@ -318,7 +318,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
                                     <div className="card-component__price">
                                         {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(element.price)}
                                     </div>
-                                    <div className="card-component__price-nalog">в т.ч. НДС</div>
+                                    <div className="card-component__price-nalog">НДС не возмещается</div>
                                 </div>
 
                                 <div className="card-component__basket-block">
