@@ -22,7 +22,6 @@ const MainSectionAdminPanel = () => {
             </div>
         </>
     );
-
 }
 
 export default MainSectionAdminPanel;

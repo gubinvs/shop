@@ -14,7 +14,7 @@ const Home = () => {
         <>
             <Header />
             <NewDirectoryGroups />
-            <CardComponetGroop h2="Популярные товары" api={"/api/Bestsellers"} />
+            <CardComponetGroop h2="" api={"/api/Bestsellers"} />
             <div className="home-delivery-section">
                 <div className="container home-delivery-section__container">
                     <h2 className='home-delivery-section__title'>Способы доставки</h2>
