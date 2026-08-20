@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header.jsx';
+import HeaderGuest from '../Header/HeaderGuest.jsx'
 import './home.css';
 import NewDirectoryGroups from "./NewDirectoryGroups.jsx";
 import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
@@ -8,12 +9,14 @@ import Footer from "../Footer/Footer.jsx";
 
 const Home = () => {
     // Простейший стейт для проверки авторизации
-    // const isAuthenticated = localStorage.getItem('token') !== null;
+    const isAuthenticated = localStorage.getItem('token') !== null;
 
     return (
         <>
-            <Header />
-            <NewDirectoryGroups />
+            {!isAuthenticated ? <HeaderGuest /> : <Header />}
+            
+            
+            {/*<NewDirectoryGroups />
             <CardComponetGroop h2="" api={"/api/Bestsellers"} />
             <div className="home-delivery-section">
                 <div className="container home-delivery-section__container">
@@ -83,7 +86,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer />*/}
         </> 
     );
 };

@@ -1,11 +1,23 @@
+header {
+  background-color: #F5F6FA;
+}
+
 .header__container {
-  position: relative;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background-color: #ffffff;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.search-header-block {
+  position: relative;
   display: flex;
   flex-direction: row;
-  margin-bottom: 40px;
 }
 
 .header-validation-block__guest_mobile,
