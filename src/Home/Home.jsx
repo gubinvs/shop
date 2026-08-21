@@ -5,16 +5,33 @@ import './home.css';
 import NewDirectoryGroups from "./NewDirectoryGroups.jsx";
 import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
 import Footer from "../Footer/Footer.jsx";
+import CardComponent from '../CardComponent/CardComponent.jsx';
 
 
 const Home = () => {
     // Простейший стейт для проверки авторизации
     const isAuthenticated = localStorage.getItem('token') !== null;
 
+    // Временная константа пока налаживаю
+    const urlImgCard = "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg";
+    const priceGoods = 2500;
+    const discr = "";
+
     return (
         <>
             {!isAuthenticated ? <HeaderGuest /> : <Header />}
+            <>
+            <div class="multi-line">Этот текст может занимать несколько строк, но всё, что идет после установленного лимита, будет скрыто, и пользователь увидит аккуратное троеточие.</div>
+
+            <div className="container container-1" >
+                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods}/>
+            </div>
+
             
+        </>
             
             {/*<NewDirectoryGroups />
             <CardComponetGroop h2="" api={"/api/Bestsellers"} />

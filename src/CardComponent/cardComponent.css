@@ -1,0 +1,19 @@
+.card-goods {
+    width: 313px;
+    height: 460px;
+    padding: 4px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.card-goods__img {
+    margin-bottom: 4px;
+}
+
+.card-goods__price {
+    padding-left: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    color: red;
+    margin-bottom: 10px;
+}

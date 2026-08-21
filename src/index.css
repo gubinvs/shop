@@ -163,6 +163,24 @@ a:hover {
 }
 
 
+/*    Обрезка по количеству строк */
+.multi-line {
+    display: -webkit-box;
+    width: 300px;
+    -webkit-line-clamp: 2;           /* Количество видимых строк */
+    line-clamp: 2;                  /* Добавьте эту строку для совместимости */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;                /* Прячет остальной текст */
+}
+
+/*    Обрезка по ширине в одну строку */
+.single-line {
+    white-space: nowrap;     /* Запрещает перенос строки */
+    overflow: hidden;        /* Прячет текст, который вышел за границы */
+    text-overflow: ellipsis; /* Добавляет троеточие в конце */
+    max-width: 200px;        /* Ограничение по ширине блока */
+}
+
 
 @media only screen and (max-width: 1280px) {
   .container {
