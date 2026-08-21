@@ -148,7 +148,7 @@ header {
     display: flex;
     padding-left: 4px;
     align-items: center;
-    width: 740px;
+    width: 808px;
     height: 50px;
     border-radius: 10px;
     background-color: #F3DE09;    
@@ -159,7 +159,7 @@ header {
 
 .search-input {
     padding-left: 20px;
-    width: 680px;
+    width: 740px;
     height: 44px;
     border-radius: 10px;
     font-size: 20px;
@@ -269,9 +269,11 @@ header {
 }
 
 .header-basket-block__icon {
-  display: flex;
-  align-items: center;
-  width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 60px;
+    cursor: pointer;
 }
 
 /* .nav-active {

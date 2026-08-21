@@ -236,13 +236,13 @@ const HeaderGuest = () => {
                         </div>
                         <div className="header-basket-block">
                             <div className="header-basket-block__icon" onClick={companyDashboard}>
-                                <img src="../../images/input-icon.svg" className="" alt="#"/>
+                                <img src="../../images/input-icon.svg" alt="#"/>
                             </div>
                             <div className="header-basket-block__icon" onClick={orderPage}>
-                                <img src="../../images/shop-icon.svg" className="" alt="#"/>
+                                <img src="../../images/shop-icon.svg" alt="#"/>
                             </div>
                             <div className="header-basket-block__icon" onClick={basketPage}>
-                               <img src="../../images/basket-icon.svg" className="" alt="#" />
+                               <img src="../../images/basket-icon.svg" alt="#" />
                             </div>
                         </div>
                     </div>                    
