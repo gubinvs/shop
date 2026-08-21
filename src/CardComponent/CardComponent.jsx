@@ -4,7 +4,17 @@ import { useState, useRef } from "react";
 
 
 // Карточка товара
-const CardComponent = ({urlImg, price, dicription, imgArray, linkPage}) => {
+const CardComponent = (
+    {
+        urlImg, 
+        price, 
+        dicription, 
+        imgArray, 
+        linkPage,
+        grade,
+        reviews
+    }
+) => {
 
     // Добавление новой ссылки в начало массива
     const images = [
@@ -78,7 +88,15 @@ const CardComponent = ({urlImg, price, dicription, imgArray, linkPage}) => {
                 >
                     {dicription}
                 </div>
+
+                <div className="card-goods__reviews">
+                    <img src="images/gold-star.png" className="reviews__img" alt="t" />
+                    <div className="reviews__discr reviews__discr_count">{grade}</div>    
+                    <img src="images/icon-message.svg" className="reviews__img reviews__img_message" alt="t" />
+                    <div className="reviews__discr reviews__discr_message">{reviews}</div> 
+                    <div className="reviews__discr reviews__discr_reviews">отзывов</div>  
                 </div>
+            </div>
         </>
     )
     
