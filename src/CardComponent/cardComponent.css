@@ -13,7 +13,6 @@
     font-size: 26px;
     font-weight: 800;
     color: red;
-    margin-bottom: 10px;
 }
 
 .card-goods__discription {
@@ -24,6 +23,7 @@
     line-clamp: 2;                  /* Добавьте эту строку для совместимости */
     -webkit-box-orient: vertical;  
     overflow: hidden;                /* Прячет остальной текст */
+    cursor: pointer;
 }
 
 

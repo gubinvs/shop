@@ -4,11 +4,12 @@ import { useState, useRef } from "react";
 
 
 // Карточка товара
-const CardComponent = ({urlImg, price, dicription}) => {
+const CardComponent = ({urlImg, price, dicription, imgArray, linkPage}) => {
+
+    // Добавление новой ссылки в начало массива
     const images = [
-        "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
-        "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
-        "https://encomponent.ru/img/img-product/LC1D25M7/contactor-LC1D25M7.jpg"
+        urlImg,
+        ...imgArray
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -28,9 +29,9 @@ const CardComponent = ({urlImg, price, dicription}) => {
 
     // Функция для клика по точке (чтобы слайд переключался)
     const scrollToSlide = (index) => {
-    if (!sliderRef.current) return;
-    const slider = sliderRef.current;
-    slider.scrollLeft = index * slider.offsetWidth;
+        if (!sliderRef.current) return;
+        const slider = sliderRef.current;
+        slider.scrollLeft = index * slider.offsetWidth;
     };
 
     return(
@@ -43,12 +44,12 @@ const CardComponent = ({urlImg, price, dicription}) => {
                     className="card-goods__slider-native"
                 >
                     {images.map((url, index) => (
-                    <img 
-                        key={index} 
-                        src={url} 
-                        className="card-goods__img card-goods__img-slide" 
-                        alt={`Product ${index}`} 
-                    />
+                        <img 
+                            key={index} 
+                            src={url} 
+                            className="card-goods__img card-goods__img-slide" 
+                            alt={`Product ${index}`} 
+                        />
                     ))}
                 </div>
 
@@ -57,11 +58,11 @@ const CardComponent = ({urlImg, price, dicription}) => {
                     <div className="card-goods__dots">
                     {images.map((_, index) => (
                         <button
-                        key={index}
-                        type="button"
-                        className={`card-goods__dot ${index === activeIndex ? "card-goods__dot--active" : ""}`}
-                        onClick={() => scrollToSlide(index)}
-                        aria-label={`Перейти к слайду ${index + 1}`}
+                            key={index}
+                            type="button"
+                            className={`card-goods__dot ${index === activeIndex ? "card-goods__dot--active" : ""}`}
+                            onClick={() => scrollToSlide(index)}
+                            aria-label={`Перейти к слайду ${index + 1}`}
                         />
                     ))}
                     </div>
@@ -71,7 +72,10 @@ const CardComponent = ({urlImg, price, dicription}) => {
                     {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(price)}
                 </div>
                 
-                <div className="card-goods__discription">
+                <div 
+                    className="card-goods__discription"
+                    onClick={() => window.location.href = linkPage}
+                >
                     {dicription}
                 </div>
                 </div>
