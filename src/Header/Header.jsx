@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
-import "./Header.css";
+import "./header.css";
 import ApiUrl from '../js/ApiUrl';
 import { chapterMa, chapterBp, chapterK, chapterSch, chapterPlk, chapterMplk, chapterSl, OpenSection, chapterRecord,
     chapterHighVoltage, chapterRele, chapterConverters, chapterInstrument, chapterKorpus, chapterContactor, chapterNKU
