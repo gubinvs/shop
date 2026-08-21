@@ -3,7 +3,7 @@ import React from "react";
 
 
 // Карточка товара
-const CardComponent = ({urlImg, price}) => {
+const CardComponent = ({urlImg, price, dicription}) => {
     return(
         <>
             <div className="card-goods">
@@ -12,7 +12,7 @@ const CardComponent = ({urlImg, price}) => {
                     {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(price)}
                 </div>
                 <div className="card-goods__discription">
-
+                    {dicription}
                 </div>
             </div>
         </>

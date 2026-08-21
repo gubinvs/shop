@@ -15,7 +15,7 @@ const Home = () => {
     // Временная константа пока налаживаю
     const urlImgCard = "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg";
     const priceGoods = 2500;
-    const discr = "";
+    const discr = "LC1D25M7, Электромеханический контактор - Schneider Electric kdfj kdjfgh kdsjgk sdkjg kajsdg kasjdgkjsdhgjh kasdjgkas";
 
     return (
         <>
@@ -25,9 +25,9 @@ const Home = () => {
 
             <div className="container container-1" >
                 <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
             </div>
 
             
