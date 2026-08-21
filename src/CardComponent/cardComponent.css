@@ -1,13 +1,11 @@
-.card-goods {
-    width: 313px;
-    height: 460px;
+.card-goods {  
+    display: flex;
+    flex-direction: column;
+    width: 314px;
+    height: 540px;
     padding: 4px;
     border-radius: 10px;
     background-color: #FFFFFF;
-}
-
-.card-goods__img {
-    margin-bottom: 4px;
 }
 
 .card-goods__price {
@@ -26,6 +24,54 @@
     line-clamp: 2;                  /* Добавьте эту строку для совместимости */
     -webkit-box-orient: vertical;  
     overflow: hidden;                /* Прячет остальной текст */
-    
-    
+}
+
+
+/* Слайдер остается без изменений */
+.card-goods__slider-native {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.card-goods__slider-native::-webkit-scrollbar {
+  display: none;
+}
+
+.card-goods__img-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+/* Новые центрированные стили для точек под картинкой */
+.card-goods__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px; /* Небольшой отступ от нижнего края картинки */
+}
+
+.card-goods__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  /* Так как фон теперь светлый (под картинкой), делаем точки серыми */
+  background-color: #cccccc; 
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Активная точка становится темнее и немного шире (эффект пилюли) */
+.card-goods__dot--active {
+  background-color: #333333;
+  width: 12px;
+  border-radius: 4px;
 }

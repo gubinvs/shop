@@ -21,8 +21,6 @@ const Home = () => {
         <>
             {!isAuthenticated ? <HeaderGuest /> : <Header />}
             <>
-            <div class="multi-line">Этот текст может занимать несколько строк, но всё, что идет после установленного лимита, будет скрыто, и пользователь увидит аккуратное троеточие.</div>
-
             <div className="container container-1" >
                 <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
                 <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr}/>
