@@ -119,12 +119,13 @@ header {
 }
 
 .catalog__list {
-  position: absolute;
-  top: 30px;
-  left: 108px; 
-  width: 240px;
-  background-color: #F3DE09;
-  z-index: 2;
+    position: absolute;
+    top: 65px;
+    left: 121px;
+    width: 240px;
+    border-radius: 10px;
+    background-color: #F3DE09;
+    z-index: 2;
 }
 
 .catalog__item {
@@ -179,6 +180,7 @@ header {
   padding-right: 10px;
   padding-bottom: 20px;
   padding-left: 10px;
+  border-radius: 10px;
   width: 100%;
   border: 2px solid #F3DE09;
   border-radius: 4px;
@@ -273,9 +275,35 @@ header {
     align-items: center;
     justify-content: space-evenly;
     width: 60px;
+    height: 56px;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
 }
 
+.header-basket-block__lk {
+  background-image: url(../../public/images/input-icon.svg);
+}
+
+.header-basket-block__lk:hover {
+  background-image: url(../../public/images/lk-icon_hover.svg);
+}
+
+.header-basket-block__orders {
+  background-image: url(../../public/images/shop-icon.svg);
+}
+
+.header-basket-block__orders:hover {
+  background-image: url(../../public/images/shop-icon_hover.svg);
+}
+
+.header-basket-block__basket {
+  background-image: url(../../public/images/basket-icon.svg);
+}
+
+.header-basket-block__basket:hover {
+  background-image: url(../../public/images/basket-icon_hover.svg);
+}
 /* .nav-active {
   color: #218838;
 } */
