@@ -150,6 +150,14 @@ const HeaderGuest = () => {
     return (
         <>
             <header>
+                <div className="header__mobile">
+                    <div className="header-basket-block header-basket-block_mobile">
+                        <div className="header-basket-block__icon header-basket-block__lk" onClick={companyDashboard}></div>
+                        <div className="header-basket-block__icon header-basket-block__orders" onClick={orderPage}></div>
+                        <div className="header-basket-block__icon header-basket-block__basket header-basket-block__basket_mobile" onClick={basketPage}><div className={itemBasketIcon}>{itemBasket}</div></div>
+                        
+                    </div>
+                </div>
                 <div className="header__container">
                     <div className="container search-header-block">
                         <div className="header-logo-block" onClick={indexPage}>
@@ -160,6 +168,8 @@ const HeaderGuest = () => {
                                 <div className="search-input-block">
                                     <button className="button-catalog" ref={catalogButtonRef} onClick={toggleCatalog}>
                                         {isCatalogVisible ? 'X' : 'Каталог'}
+                                    </button>
+                                    <button className="button-catalog button-catalog__mobile" ref={catalogButtonRef} onClick={toggleCatalog}>
                                     </button>
 
                                     {isCatalogVisible && (

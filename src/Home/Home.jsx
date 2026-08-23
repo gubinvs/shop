@@ -36,6 +36,7 @@ const Home = () => {
                 <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
                 <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
                 <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
+                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
             </div>
 
             
