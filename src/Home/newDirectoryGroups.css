@@ -144,8 +144,8 @@
 .ndg-card-button_arrow {
     position: absolute;
     bottom: 40px;
-    left: 30px;
-    width: 150px;
+    left: 340px;
+    width: 50px;
     height: 40px;
     padding-left: 20px;
     text-align: left;
@@ -160,15 +160,13 @@
 }
 
 .ndg-card-button-arrow_min {
-    bottom: 10px;
-    left: 240px;
+    bottom: 20px;
+    left: 340px;
 }
 
 .ndg-card-button_arrow:hover {
     background-color: #F3DE09;
 }
-
-
 
 
 @media only screen and (max-width: 1280px) {
@@ -202,6 +200,19 @@
         background-position: right 10px top 90px;
     }
 
+    .ndg-card_min {
+        width: 320px;
+    }
+
+    .ndg-card-images-arrow_min {
+        bottom: 12px;
+        left: 240px;
+    }
+
+    .ndg-card-button-arrow_min {
+        bottom: 10px;
+        left: 240px;
+    }
 }
 
 @media only screen and (max-width: 1024px) {

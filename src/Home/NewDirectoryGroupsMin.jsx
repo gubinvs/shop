@@ -21,7 +21,7 @@ const NewDirectoryGroupsMin = () => {
                     </div>
                     <div className="ndg-card ndg-card_min  ndg-card_plc hvr-grow-shadow" onClick={() => OpenSection(chapterPlk)}>
                         <div className="ndg-card__title ndg-card__title_plc">Блоки базовые - PLC</div>
-                        <div className="ndg-card__discr ndg-card__discr_plc">предназначены для гибкого управления промышленными процессами, что обеспечивает удобную интеграцию с другими устройствами</div>  
+                        <div className="ndg-card__discr ndg-card__discr_plc">для управления промышленными процессами и интеграции с другими устройствами</div>  
                         <img 
                             className='ndg-card-images_arrow ndg-card-images-arrow_min' 
                             src="/images/new-img-catalog-groop/arrow-right.png" 
@@ -31,7 +31,7 @@ const NewDirectoryGroupsMin = () => {
                     </div>
                     <div className="ndg-card ndg-card_min  ndg-card_module-plc hvr-grow-shadow" onClick={() => OpenSection(chapterMplk)}>
                         <div className="ndg-card__title ndg-card__title_module-plc">Модули расширения PLC</div>
-                        <div className="ndg-card__discr ndg-card__discr__module-plc">предназначен для увеличения количества входов и выходов на базе логических контроллеров</div>
+                        <div className="ndg-card__discr ndg-card__discr__module-plc">для увеличения количества входов и выходов на базе логических контроллеров</div>
                         <img 
                             className='ndg-card-images_arrow ndg-card-images-arrow_min' 
                             src="/images/new-img-catalog-groop/arrow-right.png" 
@@ -45,11 +45,11 @@ const NewDirectoryGroupsMin = () => {
                 <div className="ndg-card-section">
                     <div className="ndg-card ndg-card_min ndg-card_gray ndg-card_ip-groop ndg-card_ip-groop_min  hvr-grow-shadow" onClick={() => OpenSection(chapterBp)}>
                         <div className="ndg-card__title ndg-card__title_contactor">Источники питания</div>
-                        <div className="ndg-card__discr ndg-card__discr_contactor">обладают широким набором функций обеспечивая высокую эффективность и надежность.</div>
+                        <div className="ndg-card__discr ndg-card__discr_contactor">для преобразования электрической энергии в качественный постоянный или переменный ток.</div>
                         <button 
                             className='ndg-card-button_arrow ndg-card-button-arrow_min'
                             onClick={() => OpenSection(chapterBp)}
-                        >Подробнее</button>
+                        ></button>
                     </div>
                     <div className="ndg-card ndg-card_min ndg-card_gray ndg-card_avtom-groop ndg-card_avtom-groop_min hvr-grow-shadow" onClick={() => OpenSection(chapterSch)}>
                         <div className="ndg-card__title ndg-card__title_plc">Выключатели автоматические</div>
@@ -57,15 +57,15 @@ const NewDirectoryGroupsMin = () => {
                         <button 
                             className='ndg-card-button_arrow ndg-card-button-arrow_min'
                             onClick={() => OpenSection(chapterSch)}
-                        >Подробнее</button>
+                        ></button>
                     </div>
                     <div className="ndg-card ndg-card_min ndg-card_gray ndg-card_klem-groop ndg-card_klem-groop_min hvr-grow-shadow" onClick={() => OpenSection(chapterK)}>
                         <div className="ndg-card__title ndg-card__title_module-plc">Средства монтажа</div>
-                        <div className="ndg-card__discr ndg-card__discr__module-plc">аксессуары и монтажные элементы для безопасной и удобной установки электрического оборудования</div>
+                        <div className="ndg-card__discr ndg-card__discr__module-plc">аксессуары и монтажные элементы для удобной установки электрического оборудования</div>
                         <button 
                             className='ndg-card-button_arrow ndg-card-button-arrow_min'
                             onClick={() => OpenSection(chapterK)}
-                        >Подробнее</button>
+                        ></button>
                     </div>
                 </div>
             </div>
