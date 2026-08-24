@@ -289,6 +289,10 @@ header {
   background-image: url(../../public/images/input-icon.svg);
 }
 
+.header-basket-block__lk-autoriz {
+  background-image: url(../../public/images/lk-icon_autorization.svg);
+}
+
 .header-basket-block__lk:hover {
   background-image: url(../../public/images/lk-icon_hover.svg);
 }
@@ -523,6 +527,10 @@ header {
 
   .header-basket-block__lk {
     background-image: url(../../public/images/input-icon_wite.svg);
+  }
+
+  .header-basket-block__lk-autoriz {
+    background-image: url(../../public/images/lk-icon_autorization.svg);
   }
 
   .header-basket-block__orders {

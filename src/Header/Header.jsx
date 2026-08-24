@@ -9,7 +9,7 @@ import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
 
 const Header = () => {
-    
+   
     const [itemBasket, setItemBasket] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [isFocused, setIsFocused] = useState(false);
@@ -151,58 +151,27 @@ const Header = () => {
     return (
         <>
             <header>
-                <div className="header__container">
-                    <div className="container contact-header-block">
-                        <div className="contact-header-block__nav">
-                            <div className="contact-header-block__phone"> (812) 921-59-71</div>
-                            <div className="contact-header-block__adress">Санкт-Петербург</div>
-                            <div className="contact-header-block__email">office@encomponent.ru</div>
-                        </div>
-                        <div>
-                            <button className="contact-header-block__button-out" onClick={() => ClearToken()}>Выйти</button>
-                            <button className="contact-header-block__button-out button-registrasion" onClick={()=> window.location.href = "/Authorization"}>Авторизация</button>
-                        </div>
-                        <div className="header-basket-block_mobile">
-                            <ul className="header-basket-block__list" onClick={companyDashboard}>
-                                <li className="header-basket-block-icon__item">
-                                    <img src={location.pathname === '/CompanyDashboard' ? '../../images/iconCompanyBlue.svg' : '../../images/iconCompanyBlack.svg'} className="header-basket-block-icon__img header-basket-block-icon__img_comp" alt="#" />
-                                </li>
-                                <li className={location.pathname === '/CompanyDashboard' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
-                                    Компания
-                                </li>
-                            </ul>
-                            <ul className="header-basket-block__list" onClick={orderPage}>
-                                <li className="header-basket-block-icon__item">
-                                    <img src={location.pathname === '/DefineUser' ? '../../images/orderBlue.svg' : '../../images/orderBlack.svg'} className="header-basket-block-icon__img" alt="#"/>
-                                </li>
-                                <li className={location.pathname === '/DefineUser' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item hbbi-item header-basket-block-icon__item_mobile'}>
-                                    Заказы
-                                </li>
-                            </ul>
-                            <ul className="header-basket-block__list header-basket-block__list_basket" onClick={basketPage}>
-                                <li className="header-basket-block-icon__item">
-                                    <img
-                                        src={location.pathname === '/Basket' ? '../../images/basketBlue.svg' : '../../images/basketBlack.svg'}
-                                        className="header-basket-block-icon__img header-basket-block-icon__img_basket" alt="#"/>
-                                </li>
-                                <li className={location.pathname === '/Basket' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
-                                    Корзина
-                                </li>
-                                <li className={itemBasketIcon}>{itemBasket}</li>
-                            </ul>
+                <div className="header__mobile">
+                    <div className="header-basket-block header-basket-block_mobile">
+                        <div className="header-basket-block__icon header-basket-block__lk-autoriz" onClick={companyDashboard}></div>
+                        <div className="header-basket-block__icon header-basket-block__orders" onClick={orderPage}></div>
+                        <div className="header-basket-block__icon header-basket-block__basket header-basket-block__basket_mobile" onClick={basketPage}>
+                            <div className={itemBasketIcon}>{itemBasket}</div>
                         </div>
                     </div>
-
+                </div>
+                <div className="header__container">
                     <div className="container search-header-block">
                         <div className="header-logo-block" onClick={indexPage}>
                             <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
                         </div>
-
                         <div className="header-navigation-block">
                             <div className="header-navigation-block__top header-navigation-block__top_guest">
                                 <div className="search-input-block">
                                     <button className="button-catalog" ref={catalogButtonRef} onClick={toggleCatalog}>
-                                        {isCatalogVisible ? 'X' : 'Каталог'}
+                                        <span className="button-catalog__text">
+                                            {isCatalogVisible ? 'X' : 'Каталог'}
+                                        </span>
                                     </button>
 
                                     {isCatalogVisible && (
@@ -223,15 +192,17 @@ const Header = () => {
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterKorpus)}>Корпуса, боксы, НКУ</li>          */}
                                         </ul>
                                     )}
-
-                                    <input
-                                        className="search-input"
-                                        placeholder="Поиск по артикулу"
-                                        value={searchTerm}
-                                        onChange={handleInputChange}
-                                        onFocus={() => setIsFocused(true)}
-                                        onBlur={() => setTimeout(() => setIsFocused(false), 150)}
-                                    />
+                                    <div className="search-input__fon">
+                                        <input
+                                            className="search-input"
+                                            placeholder="Искать по артикулу"
+                                            value={searchTerm}
+                                            onChange={handleInputChange}
+                                            onFocus={() => setIsFocused(true)}
+                                            onBlur={() => setTimeout(() => setIsFocused(false), 150)}
+                                        /> 
+                                    </div>
+                                  
 
                                     {(isFocused || isHoveringResults) && searchResults.length > 0 && (
                                         <div
@@ -274,44 +245,12 @@ const Header = () => {
                                     )}
                                 </div>
                             </div>
-
-                            <div className="header-navigation-block__botttom">
-                                <ul className="header-navigation__list">
-                                    <li className="header-navigation__item">
-                                        <a href="/DeliveryAndPayment" className={location.pathname === '/DeliveryAndPayment' ? 'nav-active' : ''}>Доставка и оплата</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
-
                         <div className="header-basket-block">
-                            <ul className="header-basket-block__list" onClick={companyDashboard}>
-                                <li className="header-basket-block-icon__item">
-                                    <img src={location.pathname === '/CompanyDashboard' ? '../../images/iconCompanyBlue.svg' : '../../images/iconCompanyBlack.svg'} className="header-basket-block-icon__img header-basket-block-icon__img_comp" alt="#"/>
-                                </li>
-                                <li className={location.pathname === '/CompanyDashboard' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
-                                    Компания
-                                </li>
-                            </ul>
-                            <ul className="header-basket-block__list" onClick={orderPage}>
-                                <li className="header-basket-block-icon__item">
-                                    <img src={location.pathname === '/DefineUser' ? '../../images/orderBlue.svg' : '../../images/orderBlack.svg'} className="header-basket-block-icon__img" alt="#"/>
-                                </li>
-                                <li className={location.pathname === '/DefineUser' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item hbbi-item header-basket-block-icon__item_mobile'}>
-                                    Заказы
-                                </li>
-                            </ul>
-                            <ul className="header-basket-block__list header-basket-block__list_basket" onClick={basketPage}>
-                                <li className="header-basket-block-icon__item">
-                                    <img
-                                        src={location.pathname === '/Basket' ? '../../images/basketBlue.svg' : '../../images/basketBlack.svg'}
-                                        className="header-basket-block-icon__img header-basket-block-icon__img_basket" alt="#" />
-                                </li>
-                                <li className={location.pathname === '/Basket' ? 'header-basket-block-icon__item header-basket-block-icon__item_active header-basket-block-icon__item_mobile' : 'header-basket-block-icon__item header-basket-block-icon__item_mobile'}>
-                                    Корзина
-                                </li>
-                                <li className={itemBasketIcon}>{itemBasket}</li>
-                            </ul>
+                            <div className="header-basket-block__icon header-basket-block__lk-autoriz" onClick={companyDashboard}></div>
+                            <div className="header-basket-block__icon header-basket-block__orders" onClick={orderPage}></div>
+                            <div className="header-basket-block__icon header-basket-block__basket" onClick={basketPage}></div>
+                            <div className={itemBasketIcon}>{itemBasket}</div>
                         </div>
                     </div>                    
                 </div>
