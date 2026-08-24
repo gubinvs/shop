@@ -59,6 +59,7 @@ const CardComponent = (
                             src={url} 
                             className="card-goods__img card-goods__img-slide" 
                             alt={`Product ${index}`} 
+                            onClick={() => window.location.href = linkPage} 
                         />
                     ))}
                 </div>

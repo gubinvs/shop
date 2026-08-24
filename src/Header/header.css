@@ -8,7 +8,6 @@ header {
 }
 
 .header__container {
-  max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 30px;
@@ -292,6 +291,10 @@ header {
 
 .header-basket-block__lk-autoriz {
   background-image: url(../../public/images/lk-icon_autorization.svg);
+}
+
+.header-basket-block__lk-autoriz_top {
+  background-image: url(../../public/images/lk-icon_autorization_top.svg);
 }
 
 .header-basket-block__lk:hover {

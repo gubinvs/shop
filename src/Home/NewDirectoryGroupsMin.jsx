@@ -20,7 +20,7 @@ const NewDirectoryGroupsMin = () => {
                         />
                     </div>
                     <div className="ndg-card ndg-card_min  ndg-card_plc hvr-grow-shadow" onClick={() => OpenSection(chapterPlk)}>
-                        <div className="ndg-card__title ndg-card__title_plc">Блоки базовые - PLC</div>
+                        <div className="ndg-card__title ndg-card__title_plc">Блоки базовые PLC</div>
                         <div className="ndg-card__discr ndg-card__discr_plc">для управления промышленными процессами и интеграции с другими устройствами</div>  
                         <img 
                             className='ndg-card-images_arrow ndg-card-images-arrow_min' 

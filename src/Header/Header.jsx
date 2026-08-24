@@ -247,7 +247,7 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="header-basket-block">
-                            <div className="header-basket-block__icon header-basket-block__lk-autoriz" onClick={companyDashboard}></div>
+                            <div className="header-basket-block__icon header-basket-block__lk-autoriz_top" onClick={companyDashboard}></div>
                             <div className="header-basket-block__icon header-basket-block__orders" onClick={orderPage}></div>
                             <div className="header-basket-block__icon header-basket-block__basket" onClick={basketPage}></div>
                             <div className={itemBasketIcon}>{itemBasket}</div>
