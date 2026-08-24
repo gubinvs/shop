@@ -1,6 +1,6 @@
 import React from 'react';
 import './newDirectoryGroups.css';
-import {  chapterPlk, chapterMplk, OpenSection, chapterContactor, chapterSch, chapterK, chapterBp, chapterNKU
+import {  chapterPlk, chapterMplk, OpenSection, chapterContactor, chapterSch, chapterK, chapterBp
 } from "../js/LinkSectionGroup.js";
 
 const NewDirectoryGroupsMin = () => {
