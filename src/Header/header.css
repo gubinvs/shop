@@ -2,6 +2,10 @@ header {
   background-color: #F5F6FA;
 }
 
+.header__mobile {
+  display: none;
+}
+
 .header__container {
   max-width: 1920px;
   margin-left: auto;
@@ -391,10 +395,6 @@ header {
   color: #DFE0E1;
 }
 
-.button-catalog__mobile,
-.header__mobile {
-  display: none;
-}
 
 @media only screen and (max-width: 1280px) {
   .search-input__fon {
@@ -448,9 +448,13 @@ header {
     display: none;
   }
 
-  .button-catalog__mobile {
+  .button-catalog {
     display: flex;
     width: 60px;
+  }
+
+  .button-catalog__text {
+    display: none;
   }
 
   .search-input__fon {
