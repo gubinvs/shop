@@ -1,8 +1,9 @@
 .new-directory-groups-section {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #F0F0F0;
-    margin-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+    background-color: #1D252C;
+    margin-bottom: 20px;
 }
 
 .new-directory-groups-section div:not(:last-of-type) {

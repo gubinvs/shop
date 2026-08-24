@@ -1,0 +1,16 @@
+
+
+.group-of-cards-section {
+    border-radius: 30px;
+    background-color: #e3e1e1;
+    margin-bottom: 20px;
+}
+
+.group-of-cards-section__container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+

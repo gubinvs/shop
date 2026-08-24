@@ -6,41 +6,26 @@ import NewDirectoryGroups from "./NewDirectoryGroups.jsx";
 import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
 import Footer from "../Footer/Footer.jsx";
 import CardComponent from '../CardComponent/CardComponent.jsx';
+import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
+import NewDirectoryGroupsMin from './NewDirectoryGroupsMin.jsx';
 
 
 const Home = () => {
     // Простейший стейт для проверки авторизации
     const isAuthenticated = localStorage.getItem('token') !== null;
 
-    // Временная константа пока налаживаю
-    const images = [
-        "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
-        "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
-        "https://encomponent.ru/img/img-product/LC1D25M7/contactor-LC1D25M7.jpg"
-    ];
-    const urlImgCard = "https://encomponent.ru/img/img-product/LC1D32M7/contactor-LC1D32M7.jpg";
-    const priceGoods = 2500;
-    const discr = "LC1D25M7, Электромеханический контактор - Schneider Electric kdfj kdjfgh kdsjgk sdkjg kajsdg kasjdgkjsdhgjh kasdjgkas";
-    const urlPage = "https://encomponent.ru"
-    const gradeGoods = "5.0";
-    const reviewsGoods = "230";
-
-
-
     return (
         <>
+            {/* ----- Хэдер в зависимости от авторизации ----- */}
             {!isAuthenticated ? <HeaderGuest /> : <Header />}
-            <>
-            <div className="container container-1" >
-                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
-                <CardComponent urlImg={urlImgCard} price={priceGoods} dicription={discr} imgArray={images} linkPage={urlPage} grade={gradeGoods} reviews={reviewsGoods}/>
-            </div>
 
+            {/* ---- Маленькие карточки каталога ---- */}
+            <NewDirectoryGroupsMin />
+
+            {/*--- Карточки товара ----*/}
+            <GroupOfCards />
             
-        </>
+
             
             {/*<NewDirectoryGroups />
             <CardComponetGroop h2="" api={"/api/Bestsellers"} />

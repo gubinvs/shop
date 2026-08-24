@@ -7,7 +7,7 @@ const NewDirectoryGroupsMin = () => {
     return (
         <div className="new-directory-groups-section">
             <div className="container new-directory-groups__container">
-                <h2 className="directory-groups__title">Категории каталога</h2>
+                <h2 className="directory-groups__title h1-min">Категории каталога</h2>
                 <div className="ndg-card-section ">
                     <div className="ndg-card ndg-card_min ndg-card_contactor-groop hvr-grow-shadow" onClick={() => OpenSection(chapterContactor)}>
                         <div className="ndg-card__title ndg-card__title_contactor">Силовые контакторы</div>
