@@ -25,8 +25,6 @@ const Home = () => {
             {/*--- Карточки товара ----*/}
             <GroupOfCards />
             
-
-            
             {/*<NewDirectoryGroups />
             <CardComponetGroop h2="" api={"/api/Bestsellers"} />
             <div className="home-delivery-section">

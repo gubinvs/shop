@@ -43,7 +43,7 @@
 }
 
 .ndg-card_contactor-groop {
-    background-image: url(../../public/images/new-img-catalog-groop/mask-contactor-group2.png);
+    /* background-image: url(../../public/images/new-img-catalog-groop/mask-contactor-group2.png); */
     background-position: left 160px top 170px;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .ndg-card_module-plc {
-    background-image: url(../../public/images/new-img-catalog-groop/mask-module-plc.png);
+    /* background-image: url(../../public/images/new-img-catalog-groop/mask-module-plc.png); */
     background-position: right 30px top 130px;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .ndg-card_plc {
-    background-image: url(../../public/images/new-img-catalog-groop/mask-plc-groop.png);
+    /* background-image: url(../../public/images/new-img-catalog-groop/mask-plc-groop.png); */
     background-position: right 0px top 90px;
 }
 
@@ -115,7 +115,7 @@
 }
 
 .ndg-card_ip-groop {
-    background-image: url(../../public/images/new-img-catalog-groop/mask-ip-groop.png);
+    /* background-image: url(../../public/images/new-img-catalog-groop/mask-ip-groop.png); */
     background-position: right 30px top 160px;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .ndg-card_avtom-groop {
-    background-image: url(../../public/images/new-img-catalog-groop/mask-avtom-groop.png);
+    /* background-image: url(../../public/images/new-img-catalog-groop/mask-avtom-groop.png); */
     background-position: right 30px top 210px;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .ndg-card_klem-groop {
-    background-image: url(../../public/images/new-img-catalog-groop/mask-klem-groop.png);
+    /* background-image: url(../../public/images/new-img-catalog-groop/mask-klem-groop.png); */
     background-position: right 10px top 90px;
 }
 
