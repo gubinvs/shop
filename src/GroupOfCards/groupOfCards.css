@@ -1,5 +1,3 @@
-
-
 .group-of-cards-section {
     border-radius: 30px;
     background-color: #e3e1e1;
@@ -12,5 +10,18 @@
     flex-wrap: wrap;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+@media only screen and (max-width: 640px) {
+    .group-of-cards-section {
+        border-radius: 20px;
+        background-color: #e3e1e1;
+        margin-bottom: 50px;
+    }
+
+    .group-of-cards-section__container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }
 
