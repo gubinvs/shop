@@ -237,14 +237,118 @@
 
 @media only screen and (max-width: 960px) {
 
+    .ndg-card {
+        padding-top: 16px;
+        padding-left: 20px;
+    }
+
+    .ndg-card_min {
+        width: 260px;
+        height: 120px;
+    }
+
+    .ndg-card__discr {
+        display: none;
+    }
+
+    .ndg-card__title {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .ndg-card-images-arrow_min {
+        width: 36px;
+        bottom: 8px;
+        left: 210px;
+    }
+
+    .ndg-card-button-arrow_min {
+        width: 40px;
+        height: 30px;
+        border-radius: 6px;
+        bottom: 8px;
+        left: 210px;
+    }
+
+    .ndg-card-button_arrow {
+        background-position: right 10px top 6px;
+    }
+
+    .ndg-card__title_plc {
+        width: 200px;
+    }
+
+    .ndg-card__title_module-plc {
+        width: 222px;
+    }
+
 }
 
 @media only screen and (max-width: 800px) {
+    .ndg-card_min {
+        width: 207px;
+    }
 
+    .ndg-card__title {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .ndg-card-images-arrow_min {
+        width: 36px;
+        bottom: 10px;
+        left: 155px;
+    }
+
+    .ndg-card__title_plc {
+        width: 150px;
+    }
+
+    .ndg-card__title_module-plc {
+        width: 190px;
+    }
+
+    .ndg-card-button-arrow_min {
+        bottom: 10px;
+        left: 150px;
+    }
 }
 
 @media only screen and (max-width: 640px) {
+    .ndg-card {
+        padding-top: 16px;
+        padding-left: 12px;
+    }
 
+    .ndg-card_min {
+        width: 153px;
+        height: 100px;
+    }
+
+    .ndg-card-images-arrow_min {
+        width: 26px;
+        bottom: 8px;
+        left: 116px;
+    }
+
+    .ndg-card__title {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .ndg-card__title_plc {
+        width: 122px;
+    }
+
+    .ndg-card__title_module-plc {
+        width: 136px;
+    }
+
+    .ndg-card-button-arrow_min {
+        border-radius: 50px;
+        width: 30px;
+        left: 100px;
+    }
 }
 
 @media only screen and (max-width: 480px) {
