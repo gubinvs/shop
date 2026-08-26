@@ -1,0 +1,38 @@
+.component-page-section {
+    border-radius: 10px;
+    background-color:  #e3e1e1;
+}
+
+.component-page-section__container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.component-page-section__title {
+    margin-bottom: 40px;
+}
+
+.component-page-section__main-block {
+    display: flex;
+}
+
+.cps-main-block__img {
+    width: 450px;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+
+.cps-main-block__img-dop-block {
+    width: 150px;
+    margin-right: 20px;
+}
+
+.cmb-img-dop-block__img {
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.component-page-section__data {
+    width: 640px;
+    border-radius: 30px;
+    background-color: #ffffff;
+}

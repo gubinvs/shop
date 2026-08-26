@@ -8,7 +8,7 @@ import {jsonCartTest} from "../js/jsonCartTest.js";
 
 
 const Home = () => {
-    // Простейший стейт для проверки авторизации
+    // Проверка авторизации пользователя для выдачи хэдера
     const isAuthenticated = localStorage.getItem('token') !== null;
 
     return (

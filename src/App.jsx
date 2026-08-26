@@ -15,7 +15,7 @@ import CatalogSection from "./CatalogSection/CatalogSection.jsx";
 import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
 import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
-import SearchResults from "./Header/SearchResults.jsx";
+import SearchResults from "./SearchResults/SearchResults.jsx";
 import ComingPage from "./AdminPanel/ComingPage.jsx";
 import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
 import WarehousePage from "./AdminPanel/WarehousePage.jsx";
