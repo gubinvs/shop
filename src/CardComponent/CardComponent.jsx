@@ -91,9 +91,9 @@ const CardComponent = (
                 </div>
 
                 <div className="card-goods__reviews">
-                    <img src="images/gold-star.png" className="reviews__img" alt="t" />
+                    <img src="/images/gold-star.png" className="reviews__img" alt="t" />
                     <div className="reviews__discr reviews__discr_count">{grade}</div>    
-                    <img src="images/icon-message.svg" className="reviews__img reviews__img_message" alt="t" />
+                    <img src="/images/icon-message.svg" className="reviews__img reviews__img_message" alt="t" />
                     <div className="reviews__discr reviews__discr_message">{reviews}</div> 
                     <div className="reviews__discr reviews__discr_reviews">отзывов</div>  
                 </div>

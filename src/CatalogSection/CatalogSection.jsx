@@ -1,28 +1,32 @@
 import React from 'react';
 import "./catalogSection.css";
-// import DirectoryGroups from "../Home/DirectoryGroups.jsx";
 import Header from '../Header/Header';
-// import CardComponetGroop from "../CardComponetGroop/CardComponetGroop.jsx";
+import HeaderGuest from "../Header/HeaderGuest.jsx";
+import {jsonCartTest} from "../js/jsonCartTest.js";
 import CardComponetGroopLocalData from "../CardComponetGroop/CardComponetGroopLocalData.jsx";
 import Footer from '../Footer/Footer.jsx';
+import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 
 const CatalogSection = ({nomenclature}) => {
+  // Определяем название каталога
   const chapter = new URLSearchParams(window.location.search).get("chapter");
   const newChapter = chapter === "Модульные автоматы" ? "Модульное оборудование" : chapter;
 
+  // Проверка авторизации пользователя
+  const isAuthenticated = localStorage.getItem('token') !== null;
+  
+  // Фильтруеммассив по принадлежности товара к каталогу
+  const cardDataSort = jsonCartTest.filter(item => item.chapter === chapter);
+  
+
+  
   return (
     <>
-      <Header />
-      <div className="title-catalog-section">
-        <div className="container">
-          <h4 className='title-catalog-section__name'>Компоненты энергии</h4>
-          <h1 className='title-catalog-section__title'>{chapter}</h1>
-        </div>
-      </div>
-      {/* <DirectoryGroups /> */}
-      {/* <CardComponetGroop h2={newChapter} api={"/api/CatalogSectionSearchItem/" + chapter} /> */}
-      <CardComponetGroopLocalData h2={newChapter} item={nomenclature} chapter={chapter} />
-      <Footer />
+      {/* ----- Хэдер в зависимости от авторизации ----- */}
+      {!isAuthenticated ? <HeaderGuest /> : <Header />}
+
+      {/*--- Карточки товара ----*/}
+      <GroupOfCards cardData={cardDataSort} />
     </>
   );
 };

@@ -1,6 +1,7 @@
     
 export const jsonCartTest = [
     {
+        chapter: "Автоматические выключатели",
         images: [
             "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
             "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
@@ -14,6 +15,7 @@ export const jsonCartTest = [
         reviewsGoods: "230"
     },
     {
+        chapter: "Автоматические выключатели",
         images: [
             "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
             "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
@@ -27,6 +29,7 @@ export const jsonCartTest = [
         reviewsGoods: "230"
     },
     {
+        chapter: "Автоматические выключатели",
         images: [
             "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
             "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
@@ -40,6 +43,7 @@ export const jsonCartTest = [
         reviewsGoods: "230"
     },
     {
+        chapter: "Силовые контакторы",
         images: [
             "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
             "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
@@ -53,6 +57,7 @@ export const jsonCartTest = [
         reviewsGoods: "230"
     },
     {
+        chapter: "Силовые контакторы",
         images: [
             "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
             "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
