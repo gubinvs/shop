@@ -18,6 +18,7 @@ const Header = () => {
     const [isCatalogVisible, setCatalogVisible] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
     const [notificationText, setNotificationText] = useState("");
+    const [menuLk, setMenuLk] = useState(false);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -116,6 +117,7 @@ const Header = () => {
         }
     };
 
+    // Обработка иконки товара в корзине
     const itemBasketIcon = itemBasket === 0 ? "item-basket-icon_none" : "item-basket-icon";
 
     // Навигация
@@ -126,10 +128,20 @@ const Header = () => {
     const companyDashboard = () => navigate('/CompanyDashboard');
     const toggleCatalog = () => setCatalogVisible(prev => !prev);
     
-
+    // Удалем токен для выхода пользователя из системы и перезагружаем страницу
     const ClearToken = () => {
         localStorage.removeItem("token"); // удаляем только токен
         window.location.href="/";
+    };
+
+    // Выводим меню при нажатии на иконку кабинет
+    const addMenuLk = () => {
+        setMenuLk(true);
+    };
+
+    // Скрываем меню при нажатии на иконку кабинет
+    const outMenuLk = () => {
+        setMenuLk(false);
     };
 
     // Переход на страницу товара
@@ -249,10 +261,15 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="header-basket-block">
-                            <div className="header-basket-block__icon header-basket-block__lk-autoriz_top" onClick={companyDashboard}></div>
+                            <div className="header-basket-block__icon header-basket-block__lk-autoriz_top" onClick={addMenuLk}></div>
                             <div className="header-basket-block__icon header-basket-block__orders" onClick={orderPage}></div>
                             <div className="header-basket-block__icon header-basket-block__basket" onClick={basketPage}></div>
                             <div className={itemBasketIcon}>{itemBasket}</div>
+                            <div className={menuLk? "header-basket-block__lk-result-click" : "header-basket-block__lk-result-click_none"}>
+                                <div className="lk-result-click__close-panel" onClick={outMenuLk}>X</div>
+                                <div className="lk-result-click__lk" onClick={companyDashboard}>Личный кабинет</div>
+                                <button className="lk-result-click__out" onClick={ClearToken}>Выход</button>
+                            </div>
                         </div>
                     </div>                    
                 </div>

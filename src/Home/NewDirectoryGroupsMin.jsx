@@ -53,7 +53,7 @@ const NewDirectoryGroupsMin = () => {
                     </div>
                     <div className="ndg-card ndg-card_min ndg-card_gray ndg-card_avtom-groop ndg-card_avtom-groop_min hvr-grow-shadow" onClick={() => OpenSection(chapterSch)}>
                         <div className="ndg-card__title ndg-card__title_plc">Выключатели автоматические</div>
-                        <div className="ndg-card__discr ndg-card__discr_plc">устройства защиты сети при перегрузках и коротких замыканиях</div>  
+                        <div className="ndg-card__discr ndg-card__discr_plc">для защиты электрических сетей, оборудования от повреждений и безопасного управления питанием</div>  
                         <button 
                             className='ndg-card-button_arrow ndg-card-button-arrow_min'
                             onClick={() => OpenSection(chapterSch)}
