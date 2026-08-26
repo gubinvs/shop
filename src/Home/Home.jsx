@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer.jsx";
 import CardComponent from '../CardComponent/CardComponent.jsx';
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from './NewDirectoryGroupsMin.jsx';
+import {jsonCartTest} from "../js/jsonCartTest.js";
 
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
             <NewDirectoryGroupsMin />
 
             {/*--- Карточки товара ----*/}
-            <GroupOfCards />
+            <GroupOfCards cardData={jsonCartTest} />
             
             {/*<NewDirectoryGroups />
             <CardComponetGroop h2="" api={"/api/Bestsellers"} />
