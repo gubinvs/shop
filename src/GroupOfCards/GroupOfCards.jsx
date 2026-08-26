@@ -13,7 +13,7 @@ const GroupOfCards = ({cardData}) => {
                     {cardData.map((element, index)=>{
                         return(
                             <>
-                                <CardComponent id={index} urlImg={element.urlImgCard} price={element.priceGoods} dicription={element.discr} imgArray={element.images} linkPage={element.urlPage} grade={element.gradeGoods} reviews={element.reviewsGoods}/> 
+                                <CardComponent key={index} urlImg={element.urlImgCard} price={element.priceGoods} dicription={element.discr} imgArray={element.images} linkPage={element.urlPage} grade={element.gradeGoods} reviews={element.reviewsGoods}/> 
                             </>
                         );
                     })}
