@@ -177,13 +177,15 @@ const Header = () => {
                                     {isCatalogVisible && (
                                         <ul className="catalog__list" ref={catalogRef}>
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterMa)}>Модульное оборудование</li> */}
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Источники питания</li>
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Средства монтажа</li>
                                             <li className="catalog__item" onClick={() => OpenSection(chapterContactor)}>Силовые контакторы</li>
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterNKU)}>Типовые НКУ</li>
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Логические контроллеры</li>
+                                            <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Блоки базовые PLC</li>
+                                            <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения PLC</li>
+                                            <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Источники питания</li>
+                                            <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Выключатели автоматические</li>
+                                            <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Средства монтажа</li>
+                                            
+                                            {/* <li className="catalog__item" onClick={() => OpenSection(chapterNKU)}>Типовые НКУ</li> */}
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterSl)}>Индикация</li> */}
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения</li>
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterRecord)}>Средства измерения</li> */}
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterHighVoltage)}>Оборудование высоковольтное</li> */}
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterRele)}>Реле и аксессуары к ним</li> */}

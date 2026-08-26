@@ -315,6 +315,10 @@
 }
 
 @media only screen and (max-width: 640px) {
+    /*--- как вариант скрыто*/
+    .new-directory-groups-section {
+        display: none;
+    }
     .new-directory-groups-section {
         border-radius: 20px;
         padding-top: 10px;
