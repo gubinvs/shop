@@ -1,6 +1,6 @@
 .component-page-section {
     border-radius: 10px;
-    background-color:  #e3e1e1;
+    background-color:  #ffffff;
 }
 
 .component-page-section__container {
@@ -34,5 +34,86 @@
 .component-page-section__data {
     width: 640px;
     border-radius: 30px;
-    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+.cps-data__vendor {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.cps-d-vendor__name {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-right: 20px;
+}
+
+.cps-d-vendor__vendor {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 800;
+}
+
+.cps-data__hr {
+    border: 0.5px solid #DFE0E1;
+    margin-bottom: 20px;
+}
+
+.characteristics-block {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.characteristics-block__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.characteristics-block__item {
+  justify-content: space-between;
+}
+
+.characteristics-block__item:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.characteristics-block__button-block {
+  justify-content: space-between;
+}
+
+.characteristics-block__button-block_offer {
+  margin-bottom: 20px;
+}
+
+.cps-data__warehouse-block {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0.5px solid #DFE0E1;
+}
+
+.cpsd-warehouse-block__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.cpsd-warehouse-block__warehouse {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.warehouse-param {
+    display: flex;
+}
+
+.cpsd-wb-warehouse__name {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
 }

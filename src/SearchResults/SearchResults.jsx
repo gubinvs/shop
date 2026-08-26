@@ -18,6 +18,24 @@ const SearchResults = () => {
             price: 2500,
             quantity: 5,
             imageCard:  "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
+            nameCharacteristic: {
+                param1: "Серия:",
+                param2: "Номинальный ток:",
+                param3: "Катушка управления:",
+                param4: "Количество полюсов:",
+                param5: "Вспомогательные контакты:"
+            },
+            characteristic: {
+                param1: "TeSys D",
+                param2: "9 А (AC-3)",
+                param3: "220 В AC 50/60 Гц",
+                param4: "3 NO",
+                param5: "1 NO + 1 NC"
+            },
+            warehouse: [
+                {name: "Санкт-Петербург:", quantity: 4},
+                {name: "ОЗОН:", quantity: 6} 
+            ],
             dopImages: [
                 "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
                 "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
@@ -163,7 +181,7 @@ const SearchResults = () => {
                                 }
                                 return (
                                     <>
-                                        <img src={item} alt="#" className="cmb-img-dop-block__img" />
+                                        <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
                                     </>
                                 );
                             })}
@@ -171,12 +189,60 @@ const SearchResults = () => {
 
                         {/* Информация о товаре */}
                         <div className="component-page-section__data">
-                            
+                            <div className="cps-data__vendor">
+                                <span className="cps-d-vendor__name">Артикул производителя:</span>
+                                <span className="cps-d-vendor__vendor">{components.vendorCode}</span> 
+                            </div>
+                            <hr className='cps-data__hr'/>
+                            <div class='characteristics-block'>
+                                <div class='characteristics-block__title'>Основные характеристики:</div>
+                                <ul class='characteristics-block__list'>
+                                    <li class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>Производитель:</div>
+                                        <div class='characteristics-item__discr'>{components.manufacturer}</div>
+                                    </li>
+                                    <li class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>{components.nameCharacteristic.param1}</div>
+                                        <div class='characteristics-item__discr'>{components.characteristic.param1}</div>
+                                    </li>
+                                    <li class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>{components.nameCharacteristic.param2}</div>
+                                        <div class='characteristics-item__discr'>{components.characteristic.param2}</div>
+                                    </li>
+                                    <li class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>{components.nameCharacteristic.param3}</div>
+                                        <div class='characteristics-item__discr'>{components.characteristic.param3}</div>
+                                    </li>
+                                    <li class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>{components.nameCharacteristic.param4}</div>
+                                        <div class='characteristics-item__discr'>{components.characteristic.param4}</div>
+                                    </li>
+                                    <li class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>{components.nameCharacteristic.param5}</div>
+                                        <div class='characteristics-item__discr'>{components.characteristic.param5}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="cps-data__warehouse-block">
+                                <div className="cpsd-warehouse-block__title">Наличие на складах:</div>
+                                <div className="cpsd-warehouse-block__warehouse">
+                                    {components.warehouse.map((element, index) => {
+                                        return (
+                                            <>
+                                                <div className='warehouse-param'>
+                                                    <div key={index+20} className="cpsd-wb-warehouse__name">{element.name}</div>
+                                                    <div key={index+30} className="cpsd-wb-warehouse__quantity">{element.quantity} шт.</div>
+                                                </div>
+                                            </>
+                                        );
+                                    })}
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-            
         </>
     );
 };
