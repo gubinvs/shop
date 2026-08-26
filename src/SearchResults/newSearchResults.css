@@ -89,10 +89,10 @@
 }
 
 .cps-data__warehouse-block {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     border-radius: 10px;
-    border: 0.5px solid #DFE0E1;
+    border: 1px solid #F3DE09;
 }
 
 .cpsd-warehouse-block__title {
@@ -110,10 +110,14 @@
 
 .warehouse-param {
     display: flex;
+    justify-content: space-between;
 }
 
-.cpsd-wb-warehouse__name {
+.cpsd-wb-warehouse__name,
+.cpsd-wb-warehouse__quantity {
     font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 8px;
+    color: #1D252C;
 }
