@@ -113,11 +113,11 @@
 
 .cpsd-warehouse-block__title_fon {
     position: absolute;
-    top: 26px;
+    top: 35px;
     left: 24px;
     width: 180px;
     border-radius: 4px;
-    height: 8px;
+    height: 3px;
     background-color: #F3DE09;
 }
 
