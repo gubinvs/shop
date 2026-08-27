@@ -2,39 +2,12 @@ import React, { useState, useEffect } from 'react';
 import ApiUrl from '../js/ApiUrl.js';
 import Header from '../Header/Header.jsx';
 import HeaderGuest from '../Header/HeaderGuest.jsx';
-import './newSearchResults.css';
+import PageComponent from '../PageComponent/PageComponent.jsx';
+
+import { components } from '../js/components.js';
 
 const SearchResults = () => {
 
-    // Временно для отладки
-    const components = {
-            id: 1,
-            guidId: "",
-            vendorCode: "LC1D32M7",
-            nameComponent: "Электромеханический контактор - Schneider Electric",
-            productDescription: "dss",
-            manufacturer: "Schneider Electric",
-            linkPage: "",
-            price: 2500,
-            quantity: 5,
-            imageCard:  "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
-            characteristic: [
-                {name: "Серия:", param: "TeSys D"},
-                {name: "Номинальный ток:", param: "9 А (AC-3)"},
-                {name: "Катушка управления:", param: "220 В AC 50/60 Гц"},
-                {name: "Количество полюсов:", param: "3 NO"},
-                {name: "Вспомогательные контакты:", param: "1 NO + 1 NC"}
-            ],
-            warehouse: [
-                {name: "Санкт-Петербург:", quantity: 4},
-                {name: "ОЗОН:", quantity: 6} 
-            ],
-            dopImages: [
-                "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",
-                "https://encomponent.ru/img/img-product/LC1D18M7/contactor-LC1D18M7.jpg",
-                "https://encomponent.ru/img/img-product/LC1D25M7/contactor-LC1D25M7.jpg"
-            ]
-    }
     // Сначала получаем vendorCode из URL, если он есть
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -159,72 +132,10 @@ const SearchResults = () => {
             {/* ----- Хэдер в зависимости от авторизации ----- */}
             {!isAuthenticated ? <HeaderGuest /> : <Header />}
 
-            <section className="component-page-section">
-                <div className="container component-page-section__container">
-                    <h1 className="component-page-section__title">{components.vendorCode + "," + " " + components.nameComponent}</h1>
-                    <div className="component-page-section__main-block">
-                        {/* Основная фотография товара */}
-                        <img src={components.imageCard} alt={"Фото товара с артикулом" + components.vendorCode} className="cps-main-block__img" />
-                        
-                        {/* Дополнительные фото товара */}
-                        <div className="cps-main-block__img-dop-block">
-                            {components.dopImages.map((item, index) => {
-                                if(index === 3) {
-                                    return;
-                                }
-                                return (
-                                    <>
-                                        <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
-                                    </>
-                                );
-                            })}
-                        </div>
 
-                        {/* Информация о товаре */}
-                        <div className="component-page-section__data">
-                            <div className="cps-data__vendor">
-                                <span className="cps-d-vendor__name">Артикул производителя:</span>
-                                <span className="cps-d-vendor__vendor">{components.vendorCode}</span> 
-                            </div>
-                            <hr className='cps-data__hr'/>
-                            <div class='characteristics-block'>
-                                <div class='characteristics-block__title'>Основные характеристики:</div>
-                                <ul class='characteristics-block__list'>
-                                    <li key={1} class='characteristics-block__item flex'>
-                                        <div class='characteristics-item__title'>Производитель:</div>
-                                        <div class='characteristics-item__discr'>{components.manufacturer}</div>
-                                    </li>
-                                    {components.characteristic.map((item, index) => {
-                                        return(
-                                            <>
-                                                 <li key={index+50} class='characteristics-block__item flex'>
-                                                    <div class='characteristics-item__title'>{item.name}</div>
-                                                    <div class='characteristics-item__discr'>{item.param}</div>
-                                                </li>
-                                            </>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                            <div className="cps-data__warehouse-block">
-                                <div className="cpsd-warehouse-block__title">Наличие на складах:</div>
-                                <div className="cpsd-warehouse-block__warehouse">
-                                    {components.warehouse.map((element, index) => {
-                                        return (
-                                            <>
-                                                <div className='warehouse-param'>
-                                                    <div key={index+100} className="cpsd-wb-warehouse__name">{element.name}</div>
-                                                    <div key={index+1000} className="cpsd-wb-warehouse__quantity">{element.quantity} шт.</div>
-                                                </div>
-                                            </>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* -- страница товара */}
+            <PageComponent dataComponent={components} />
+
         </>
     );
 };

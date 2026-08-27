@@ -88,18 +88,37 @@
   margin-bottom: 20px;
 }
 
+.warehouse-end-price-block {
+    display: flex;
+    margin-bottom: 20px;
+}
+
 .cps-data__warehouse-block {
-    width: 50%;
+    position: relative;
+    width: 300px;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #F3DE09;
+    margin-right: 20px;
 }
 
 .cpsd-warehouse-block__title {
+    position: relative;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
     margin-bottom: 20px;
+    z-index: 1;
+}
+
+.cpsd-warehouse-block__title_fon {
+    position: absolute;
+    top: 26px;
+    left: 24px;
+    width: 180px;
+    border-radius: 4px;
+    height: 8px;
+    background-color: #F3DE09;
 }
 
 .cpsd-warehouse-block__warehouse {
@@ -120,4 +139,61 @@
     line-height: 24px;
     margin-bottom: 8px;
     color: #1D252C;
+}
+
+.cps-data__price-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    border-radius: 10px;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 800;
+    background-color: #F3DE09;
+    color: #1D252C;
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+.cps-d-price-block__nalog {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 300;
+    color: #1D252C;
+}
+
+.cps-data__button-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cps-d-button-block__ozon-button {
+    width: 275px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #1a55eb;
+    cursor: pointer;
+
+}
+
+.cps-d-button-block__basket-button {
+    width: 275px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #059134;
+    cursor: pointer;
+}
+
+.cps-d-button-block__basket-button:hover,
+.cps-d-button-block__ozon-button:hover {
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
 }
