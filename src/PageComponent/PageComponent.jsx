@@ -71,13 +71,17 @@ const PageComponent = ({dataComponent})=> {
                                     </div>
                                 </div>
                                 <div className="cps-data__price-block">
-                                    {dataComponent.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
+                                    <div className="cps-d-price-block__price">
+                                        {dataComponent.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
                                     <span className="cps-d-price-block__nalog">в т.ч. НДС 22%</span>
+                                    </div>
+                                    <button className="cps-d-button-block__basket-button">Добавить в корзину</button>
                                 </div>
+                                
                             </div>
                             <div className="cps-data__button-block">
                                 <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.ozonLink}}>Купить на ОЗОН</button>
-                                <button className="cps-d-button-block__basket-button">Добавить в корзину</button>
+                                <button className="cps-d-button-block__ofer-button">Купить в 1 клик</button>
                             </div>
                         </div>
                     </div>

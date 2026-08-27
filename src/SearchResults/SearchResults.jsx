@@ -19,7 +19,9 @@ const SearchResults = () => {
     
     // Теперь можно безопасно читать из localStorage
     const vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
+    
     const [component, setComponent] = useState(null);
+    
     const [basket, setBasket] = useState(() => {
         const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
         const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
@@ -30,9 +32,6 @@ const SearchResults = () => {
         localStorage.setItem('cart', JSON.stringify(unique));
         return unique;
     });
-
-    // По умолчанию установим 1 шт в заказе
-    const [quantity, setQuantity] = useState(1);
 
     // Проверка авторизации пользователя для выдачи хэдера
     const isAuthenticated = localStorage.getItem('token') !== null;
@@ -101,31 +100,8 @@ const SearchResults = () => {
     //     setBasket(newBasket);
     // };
 
-    const handleIncrement = () => setQuantity(prev => prev + 1);
-    const handleDecrement = () => setQuantity(prev => (prev > 0 ? prev - 1 : 0));
-
+    // Проверка на наличие текущего артикула в корзине
     const isInBasket = () => component && basket.some(item => item.vendorCode === component.vendorCode);
-    
-    const normalizeManufacturer = (name = "") => {
-        const upper = name.toUpperCase();
-
-        if (upper.includes("KEAZ")) return "KEAZ";
-        if (upper.includes("SCHNEIDER ELECTRIC")) return "SCHNEIDER";
-        if (upper.includes("PHOENIX CONTACT")) return "PHOENIX";
-        if (upper.includes("КОМПОНЕНТ ЭНЕРГИИ")) return "ENERGY";
-
-        return null;
-    };
-
-    const logos = {
-        KEAZ: "../images/logo-keaz.png",
-        SCHNEIDER: "../images/logo-shnaider__min.png",
-        PHOENIX: "../images/logo-phoenix__min.jpg",
-        ENERGY: "../images/header_logo_1280.svg",
-    };
-
-    const key = component ? normalizeManufacturer(component.manufacturer) : null;
-    const logo = key ? logos[key] : null;
 
     return (
         <>

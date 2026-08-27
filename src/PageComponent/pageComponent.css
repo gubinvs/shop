@@ -144,16 +144,23 @@
 .cps-data__price-block {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.cps-d-price-block__price {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 240px;
+    height: 70px;
     border-radius: 10px;
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 36px;
+    line-height: 36px;
     font-weight: 800;
-    background-color: #F3DE09;
-    color: #1D252C;
-    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid #DFE0E1;
+    color: red;
 }
 
 .cps-d-price-block__nalog {
@@ -182,6 +189,19 @@
 }
 
 .cps-d-button-block__basket-button {
+    width: 240px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1D252C;
+    background-color: #F3DE09;
+    cursor: pointer;
+}
+
+
+.cps-d-button-block__ofer-button {
     width: 275px;
     height: 50px;
     border: 0px;
@@ -194,6 +214,7 @@
 }
 
 .cps-d-button-block__basket-button:hover,
-.cps-d-button-block__ozon-button:hover {
+.cps-d-button-block__ozon-button:hover,
+.cps-d-button-block__ofer-button:hover {
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
 }
