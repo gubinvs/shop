@@ -76,7 +76,7 @@ const PageComponent = ({dataComponent})=> {
                                 </div>
                             </div>
                             <div className="cps-data__button-block">
-                                <button className="cps-d-button-block__ozon-button">Купить на ОЗОН</button>
+                                <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.ozonLink}}>Купить на ОЗОН</button>
                                 <button className="cps-d-button-block__basket-button">Добавить в корзину</button>
                             </div>
                         </div>
