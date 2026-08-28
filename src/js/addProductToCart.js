@@ -1,8 +1,11 @@
 
 
+// Функция добавления товара в корзину со страницы товара
+// item - данные о товаре добавляемом в корзину
+// urlParams - параметры страницы для ее обновления после добавления товара в корзину
 
-// Добавление товара, со страницы товара, в корзину
-export const addProductToCart = (item) => {
+export const addProductToCart = (item, urlParams) => {
+
     
     // Загрузим данные о товарах, которые уже находятся в корзине из хранилища браузера и конвертируем эти данные в массив
     const basketProduct = JSON.parse(localStorage.getItem('cart'));
@@ -26,12 +29,12 @@ export const addProductToCart = (item) => {
         itemProduct
     ];
 
-
     // Записываем данные в хранилище браузера
     localStorage.setItem('cart', JSON.stringify(newItemProduct));
     
-
     //  Выводим посмотреть
     //console.log(newItemProduct);
-};
 
+    // Обновляем страницу товара
+    window.location.href  = "/SearchResults?vendorCode=" + {urlParams};
+};

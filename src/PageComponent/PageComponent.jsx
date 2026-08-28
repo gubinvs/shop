@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 
 const PageComponent = ({dataComponent})=> {
 
+    // Сначала получаем vendorCode из URL, если он есть
+    const urlParams = new URLSearchParams(window.location.search);
+    const vendorCodeFromUrl = urlParams.get("vendorCode");
+
+
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
     const basketProduct = JSON.parse(localStorage.getItem('cart'));
     const [isItemBasket, setIsItemBasket] = useState(false);
@@ -17,7 +22,7 @@ const PageComponent = ({dataComponent})=> {
         if (isExist) {
             setIsItemBasket(true);
         };
-    }, [basketProduct]);
+    }, []);
 
     return(
         <>
@@ -94,7 +99,7 @@ const PageComponent = ({dataComponent})=> {
                                     <>
                                         <button 
                                             className="cps-d-button-block__basket-button"
-                                            onClick={()=> addProductToCart(dataComponent)}
+                                            onClick={()=> addProductToCart(dataComponent, urlParams)}
                                         >Добавить в корзину</button>
                                     </>:
                                     <>
