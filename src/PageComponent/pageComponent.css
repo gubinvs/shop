@@ -200,6 +200,18 @@
     cursor: pointer;
 }
 
+.cps-d-button-block__basket-button_add {
+    width: 240px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #059134;
+    border: 1px solid #059134;
+    background-color: #FFFFFF;
+}
+
 
 .cps-d-button-block__ofer-button {
     width: 275px;
@@ -207,7 +219,7 @@
     border: 0px;
     border-radius: 10px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700;
     color: #ffffff;
     background-color: #059134;
     cursor: pointer;

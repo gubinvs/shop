@@ -1,9 +1,23 @@
 import "./pageComponent.css";
 import {addProductToCart} from "../js/addProductToCart.js";
+import { useEffect, useState } from "react";
 
 
 
 const PageComponent = ({dataComponent})=> {
+
+    // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
+    const basketProduct = JSON.parse(localStorage.getItem('cart'));
+    const [isItemBasket, setIsItemBasket] = useState(false);
+    
+    // Отфильтруем массив и проверим наличие нашего товара
+    useEffect(()=>{
+        const isExist = basketProduct.some(item => item.vendorCode === dataComponent.vendorCode); // метод some не просто фльтрует, он выдает true, если значение есть и наоборот
+
+        if (isExist) {
+            setIsItemBasket(true);
+        };
+    }, [basketProduct]);
 
     return(
         <>
@@ -76,10 +90,20 @@ const PageComponent = ({dataComponent})=> {
                                         {dataComponent.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
                                     <span className="cps-d-price-block__nalog">в т.ч. НДС 22%</span>
                                     </div>
-                                    <button 
-                                        className="cps-d-button-block__basket-button"
-                                        onClick={()=> addProductToCart(dataComponent)}
-                                    >Добавить в корзину</button>
+                                    {!isItemBasket?
+                                    <>
+                                        <button 
+                                            className="cps-d-button-block__basket-button"
+                                            onClick={()=> addProductToCart(dataComponent)}
+                                        >Добавить в корзину</button>
+                                    </>:
+                                    <>
+                                        <button 
+                                            className="cps-d-button-block__basket-button_add"
+                                        >Уже есть корзине</button>
+                                    </>
+                                    }
+  
                                 </div>
                                 
                             </div>

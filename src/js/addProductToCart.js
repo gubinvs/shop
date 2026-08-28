@@ -32,6 +32,6 @@ export const addProductToCart = (item) => {
     
 
     //  Выводим посмотреть
-    console.log(newItemProduct);
+    //console.log(newItemProduct);
 };
 
