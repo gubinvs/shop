@@ -1,4 +1,5 @@
 import "./pageComponent.css";
+import {addProductToCart} from "../js/addProductToCart.js";
 
 
 
@@ -44,7 +45,7 @@ const PageComponent = ({dataComponent})=> {
                                     {dataComponent.characteristic.map((item, index) => {
                                         return(
                                             <>
-                                                    <li key={index+50} class='characteristics-block__item flex'>
+                                                <li key={index+50} class='characteristics-block__item flex'>
                                                     <div class='characteristics-item__title'>{item.name}</div>
                                                     <div class='characteristics-item__discr'>{item.param}</div>
                                                 </li>
@@ -75,13 +76,16 @@ const PageComponent = ({dataComponent})=> {
                                         {dataComponent.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
                                     <span className="cps-d-price-block__nalog">в т.ч. НДС 22%</span>
                                     </div>
-                                    <button className="cps-d-button-block__basket-button">Добавить в корзину</button>
+                                    <button 
+                                        className="cps-d-button-block__basket-button"
+                                        onClick={()=> addProductToCart(dataComponent)}
+                                    >Добавить в корзину</button>
                                 </div>
                                 
                             </div>
                             <div className="cps-data__button-block">
                                 <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.ozonLink}}>Купить на ОЗОН</button>
-                                <button className="cps-d-button-block__ofer-button">Купить в 1 клик</button>
+                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить в 1 клик</button>
                             </div>
                         </div>
                     </div>
@@ -89,8 +93,6 @@ const PageComponent = ({dataComponent})=> {
             </section>
         </>
     );
-
 };
-
 
 export default PageComponent;

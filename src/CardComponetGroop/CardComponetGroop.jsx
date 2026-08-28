@@ -72,7 +72,7 @@ const CardComponetGroop = (param) => {
         }
         }, [stateSwitchKeaz, items]);
 
-        useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
 
