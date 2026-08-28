@@ -42,6 +42,9 @@ const PageComponent = ({dataComponent})=> {
                                 return (
                                     <>
                                         <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
+                                        {/* <div className="cmb-img-dop-block__img-max-block">,
+                                            <img key={index+100} src={item} alt="#" className="cmb-img-dop-block__img_max" /> 
+                                        </div> */}
                                     </>
                                 );
                             })}
@@ -93,7 +96,7 @@ const PageComponent = ({dataComponent})=> {
                                 <div className="cps-data__price-block">
                                     <div className="cps-d-price-block__price">
                                         {dataComponent.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
-                                    <span className="cps-d-price-block__nalog">в т.ч. НДС 22%</span>
+                                    <span className="cps-d-price-block__nalog">в т.ч. НДС</span>
                                     </div>
                                     {!isItemBasket?
                                     <>
