@@ -5,25 +5,24 @@
 
 .component-page-section__max-img-block {
     position: absolute;
-    top: 20px;
+    top: 0px;
     width: 100%;
     display: flex;
-    justify-content: center;
-    height: calc(100vh - 30px);
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
     border-radius: 30px;
-    background-color: #DFE0E1;
+    background-color: #FFFFFF;
     z-index: 999;
 }
 
 .max-img-block {
     display: flex;
-    flex-direction: column;
     justify-content: flex-end;
     width: 90%;
     padding-top: 30px;
     font-size: 50px;
     color: red;
-    
 }
 
 .component-page-section__container {

@@ -29,13 +29,14 @@ const PageComponent = ({dataComponent})=> {
             <section className="component-page-section">
                 <div className="component-page-section__max-img-block">
                     <span className="max-img-block">X</span>
-                    {dataComponent.dopImages.map((item, index) => {
+                    <img src={dataComponent.imageCard} alt={"Фото товара с артикулом" + dataComponent.vendorCode} className="cps-main-block__img" />
+                    {/* {dataComponent.dopImages.map((item, index) => {
                         return (
                             <>
                                 <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
                             </>
                         );
-                    })}
+                    })} */}
                 </div>
                 <div className="container component-page-section__container">
                     <h1 className="component-page-section__title">{dataComponent.vendorCode + "," + " " + dataComponent.nameComponent}</h1>

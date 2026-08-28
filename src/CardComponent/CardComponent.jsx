@@ -26,15 +26,15 @@ const CardComponent = (
     const sliderRef = useRef(null);
 
     const handleScroll = () => {
-    if (!sliderRef.current) return;
-    
-    const slider = sliderRef.current;
-    // Делим текущую прокрутку на ширину одного слайда
-    const index = Math.round(slider.scrollLeft / slider.offsetWidth);
-    
-    if (index !== activeIndex) {
-        setActiveIndex(index);
-    }
+        if (!sliderRef.current) return;
+        
+        const slider = sliderRef.current;
+        // Делим текущую прокрутку на ширину одного слайда
+        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+        
+        if (index !== activeIndex) {
+            setActiveIndex(index);
+        }
     };
 
     // Функция для клика по точке (чтобы слайд переключался)
