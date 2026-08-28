@@ -22,25 +22,6 @@
     margin-right: 20px;
 }
 
-.cmb-img-dop-block__img-max-block {
-    position: absolute;
-    top: 150px;
-    left: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 40px;
-    width: 60%;
-    height: 84vh;
-    background-color: #FFFFFF;
-    z-index: 999;
-}
-
-.cmb-img-dop-block__img_max {
-    border-radius: 30px;
-    height: 70vh;
-}
-
 .cps-main-block__img-dop-block {
     width: 150px;
     margin-right: 20px;

@@ -42,9 +42,6 @@ const PageComponent = ({dataComponent})=> {
                                 return (
                                     <>
                                         <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
-                                        {/* <div className="cmb-img-dop-block__img-max-block">,
-                                            <img key={index+100} src={item} alt="#" className="cmb-img-dop-block__img_max" /> 
-                                        </div> */}
                                     </>
                                 );
                             })}
