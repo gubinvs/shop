@@ -3,6 +3,29 @@
     background-color:  #ffffff;
 }
 
+.component-page-section__max-img-block {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 30px);
+    border-radius: 30px;
+    background-color: #DFE0E1;
+    z-index: 999;
+}
+
+.max-img-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 90%;
+    padding-top: 30px;
+    font-size: 50px;
+    color: red;
+    
+}
+
 .component-page-section__container {
     padding-top: 40px;
     padding-bottom: 40px;
