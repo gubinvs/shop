@@ -3,7 +3,7 @@
     background-color:  #ffffff;
 }
 
-.component-page-section__max-img-block {
+.__max-img-block {
     position: absolute;
     top: 0px;
     width: 100%;
@@ -16,7 +16,7 @@
     z-index: 999;
 }
 
-.max-img-block {
+.__max-img-block__close {
     display: flex;
     justify-content: flex-end;
     width: 90%;

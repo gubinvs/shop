@@ -27,17 +27,6 @@ const PageComponent = ({dataComponent})=> {
     return(
         <>
             <section className="component-page-section">
-                <div className="component-page-section__max-img-block">
-                    <span className="max-img-block">X</span>
-                    <img src={dataComponent.imageCard} alt={"Фото товара с артикулом" + dataComponent.vendorCode} className="cps-main-block__img" />
-                    {/* {dataComponent.dopImages.map((item, index) => {
-                        return (
-                            <>
-                                <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
-                            </>
-                        );
-                    })} */}
-                </div>
                 <div className="container component-page-section__container">
                     <h1 className="component-page-section__title">{dataComponent.vendorCode + "," + " " + dataComponent.nameComponent}</h1>
                     <div className="component-page-section__main-block">
@@ -53,7 +42,11 @@ const PageComponent = ({dataComponent})=> {
                                 }
                                 return (
                                     <>
-                                        <img key={index=100} src={item} alt="#" className="cmb-img-dop-block__img" />
+                                        <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
+                                        <div className="__max-img-block">
+                                            <span className="__max-img-block__close">X</span>
+                                            <img key={index+10} src={item} alt="#" className="__max-img-block__img" />
+                                        </div>
                                     </>
                                 );
                             })}
