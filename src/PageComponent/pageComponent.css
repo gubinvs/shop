@@ -23,6 +23,15 @@
     padding-top: 30px;
     font-size: 50px;
     color: red;
+    cursor: pointer;
+}
+
+.__max-img-block {
+    display: none;
+}
+
+.__max-img-block_active {
+    display: block;
 }
 
 .component-page-section__container {

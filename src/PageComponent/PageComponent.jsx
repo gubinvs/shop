@@ -14,6 +14,38 @@ const PageComponent = ({dataComponent})=> {
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
     const basketProduct = JSON.parse(localStorage.getItem('cart'));
     const [isItemBasket, setIsItemBasket] = useState(false);
+
+    // Состояние блоков вывода на экран большой картинки товара
+    const [maxImgBlock, setMaxImgBlock] = useState([]);
+    // Перебираем массив и присваиваем по умолчанию значения
+    useEffect(() => {
+    
+    // Фильтруем и сразу маппим в массив из false
+    const filteredArray = dataComponent.dopImages
+        .map(() => false); 
+
+        setMaxImgBlock(filteredArray);
+    }, [dataComponent, vendorCodeFromUrl]);
+
+    // Функция для открытия увеличенного изображения товара при клике
+    const openBigImageForClick = (count) => {
+        // .map создает абсолютно новый массив
+        const newArray = maxImgBlock.map((item, index) => {
+            // Если текущий индекс совпадает с переданным кликнутым номером, возвращаем true, иначе false
+            return index === count; 
+        });
+
+        setMaxImgBlock(newArray);
+    };
+
+    // Функция обновляет массив и зарывает все увеличенные картинки
+    const closeAllBigImages = () => {
+        // Проходим по всему массиву и каждый элемент заменяем на false
+        const resetArray = maxImgBlock.map(() => false);
+    
+        setMaxImgBlock(resetArray);
+    };
+    
     
     // Отфильтруем массив и проверим наличие нашего товара
     useEffect(()=>{
@@ -42,9 +74,18 @@ const PageComponent = ({dataComponent})=> {
                                 }
                                 return (
                                     <>
-                                        <img key={index} src={item} alt="#" className="cmb-img-dop-block__img" />
-                                        <div className="__max-img-block">
-                                            <span className="__max-img-block__close">X</span>
+                                        <img 
+                                            key={index} 
+                                            src={item} 
+                                            alt="#" 
+                                            className="cmb-img-dop-block__img"
+                                            onClick={()=> openBigImageForClick(index)}
+                                        />
+                                        <div className={maxImgBlock[index]? "__max-img-block __max-img-block_active" : "__max-img-block"}>
+                                            <span 
+                                                className="__max-img-block__close"
+                                                onClick={()=> closeAllBigImages()}
+                                            >X</span>
                                             <img key={index+10} src={item} alt="#" className="__max-img-block__img" />
                                         </div>
                                     </>
