@@ -11,7 +11,7 @@ export const components = {
             productDescription: "dss",
             manufacturer: "Schneider Electric",
             linkPage: "",
-            price: 2500,
+            price: 999500,
             quantity: 5,
             ozonLink: "https://www.ozon.ru/product/lc1d09m7-kontaktor-schneider-electric-tesys-d-lc1d09m7-9-a-katushka-230-v-ac-3424066591/?oos_search=false&sh=EkL4mR_oYw",
             imageCard:  "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg",

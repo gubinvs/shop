@@ -3,41 +3,6 @@
     background-color:  #ffffff;
 }
 
-.__max-img-block {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 95vh;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.95);
-    z-index: 999;
-}
-
-.__max-img-block__img {
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 30px;
-    height: 80%;
-}
-
-.__max-img-block__close {
-    display: flex;
-    justify-content: flex-end;
-    width: 90%;
-    padding-top: 30px;
-    font-size: 50px;
-    color: red;
-    cursor: pointer;
-}
-
-.__max-img-block {
-    display: none;
-}
-
-.__max-img-block_active {
-    display: block;
-}
 
 .component-page-section__container {
     padding-top: 40px;
@@ -66,6 +31,42 @@
 .cmb-img-dop-block__img {
     border-radius: 10px;
     margin-bottom: 4px;
+}
+
+.__max-img-block {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 999;
+}
+
+.__max-img-block__img {
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 30px;
+    height: 80%;
+}
+
+.__max-img-block__close {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    padding-top: 30px;
+    font-size: 50px;
+    color: red;
+    cursor: pointer;
+}
+
+.__max-img-block {
+    display: none;
+}
+
+.__max-img-block_active {
+    display: block;
 }
 
 .component-page-section__data {
@@ -190,8 +191,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 240px;
-    height: 70px;
+    height: 100%;
+    margin-bottom: 10px;
     border-radius: 10px;
     font-size: 36px;
     line-height: 36px;
@@ -267,4 +268,40 @@
 .cps-d-button-block__ozon-button:hover,
 .cps-d-button-block__ofer-button:hover {
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+@media only screen and (max-width: 1280px) {
+    .cps-main-block__img {
+        width: 320px;
+        height: 458px;
+    }
+
+    .cps-main-block__img-dop-block {
+        width: 100px;
+    }
+
+    .component-page-section__data {
+        width: 540px;
+    }
+
+    .cps-data__warehouse-block {
+        position: relative;
+        width: 250px;
+    }
+
+    .cps-d-button-block__basket-button_add
+    {
+        width: 190px;
+    }
+
+    .cps-d-button-block__ozon-button {
+        width: 224px;
+    }
+
+    .cps-d-button-block__ofer-button {
+        width: 224px;
+    }
 }
