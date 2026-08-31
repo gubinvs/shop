@@ -19,6 +19,8 @@
 
 .cps-main-block__img {
     width: 450px;
+    height: 600px;
+    max-height: 600px;
     border-radius: 30px;
     margin-right: 20px;
 }
@@ -172,10 +174,9 @@
 
 .cpsd-wb-warehouse__name,
 .cpsd-wb-warehouse__quantity {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 24px;
-    margin-bottom: 8px;
+    line-height: 20px;
     color: #1D252C;
 }
 
@@ -276,7 +277,7 @@
 @media only screen and (max-width: 1280px) {
     .cps-main-block__img {
         width: 320px;
-        height: 458px;
+        height: 427px;
     }
 
     .cps-main-block__img-dop-block {
@@ -292,8 +293,7 @@
         width: 250px;
     }
 
-    .cps-d-button-block__basket-button_add
-    {
+    .cps-d-button-block__basket-button_add {
         width: 190px;
     }
 
@@ -303,5 +303,53 @@
 
     .cps-d-button-block__ofer-button {
         width: 224px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .component-page-section__data {
+        width: 550px;
+    }
+
+    .cps-main-block__img-dop-block {
+        width: 50px;
+    }
+
+    .cps-data__warehouse-block {
+        margin-right: 8px;
+    }
+
+    .cps-d-button-block__basket-button_add {
+        width: 212px;
+    }
+
+    .cps-d-button-block__ozon-button {
+        width: 232px;
+    }
+
+    .cps-d-button-block__ofer-button {
+        width: 232px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+
+    .component-page-section__title {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    .cps-main-block__img {
+        width: 210px;
+        height: 280px;
+    }
+
+    .component-page-section__data {
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .component-page-section__main-block {
+        flex-wrap: wrap;
     }
 }

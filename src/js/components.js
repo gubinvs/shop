@@ -10,6 +10,7 @@ export const components = {
             nameComponent: "Электромеханический контактор - Schneider Electric",
             productDescription: "dss",
             manufacturer: "Schneider Electric",
+            origin: "Франция",
             linkPage: "",
             price: 999500,
             quantity: 5,

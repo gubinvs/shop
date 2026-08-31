@@ -107,6 +107,10 @@ const PageComponent = ({dataComponent})=> {
                                         <div class='characteristics-item__title'>Производитель:</div>
                                         <div class='characteristics-item__discr'>{dataComponent.manufacturer}</div>
                                     </li>
+                                     <li key={1} class='characteristics-block__item flex'>
+                                        <div class='characteristics-item__title'>Произведено:</div>
+                                        <div class='characteristics-item__discr'>{dataComponent.origin}</div>
+                                    </li>
                                     {dataComponent.characteristic.map((item, index) => {
                                         return(
                                             <>
