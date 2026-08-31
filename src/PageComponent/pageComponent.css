@@ -345,11 +345,160 @@
 
     .component-page-section__data {
         width: 500px;
+        padding: 20px;
+    }
+
+    .cps-d-button-block__ozon-button {
+        width: 220px;
+    }
+
+    .cps-d-button-block__ofer-button {
+        width: 220px;
     }
 }
 
 @media only screen and (max-width: 800px) {
     .component-page-section__main-block {
         flex-wrap: wrap;
+    }
+
+    .component-page-section__title {
+        font-size: 20px;
+    }
+    
+    .cps-main-block__img {
+        width: 380px;
+        height: 507px;
+        margin-bottom: 20px;
+    }
+
+    .cps-main-block__img-dop-block {
+        width: 100px;
+        margin-right: 0px;
+    }
+
+    .component-page-section__data {
+        width: 640px;
+    }
+
+    .cps-data__warehouse-block {
+        width: 320px;
+    }
+
+    .cps-d-button-block__basket-button_add {
+        width: 270px;
+    }
+
+    .cps-d-button-block__ozon-button {
+        width: 296px;
+    }
+
+    .cps-d-button-block__ofer-button {
+        width: 296px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .cps-main-block__img {
+        width: 360px;
+        height: 480px;
+    }
+
+    .component-page-section__data {
+        width: 480px;
+    }
+
+    .cps-d-button-block__basket-button_add {
+        width: 190px;
+    }
+
+    .cps-d-button-block__ozon-button {
+        width: 214px;
+    }
+
+    .cps-d-button-block__ofer-button {
+        width: 214px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    
+    .cps-main-block__img {
+        width: 300px;
+        height: 400px;
+    }
+
+    .component-page-section__data {
+        width: 380px;
+    }
+
+    .cps-main-block__img-dop-block {
+        width: 60px;
+    }
+
+    .cps-d-vendor__name {
+        font-size: 14px;
+    }
+
+    .cps-d-vendor__vendor {
+        font-size: 14px;
+    }
+
+    .cps-data__vendor {
+        margin-bottom: 10px;
+    }
+
+    .cps-data__hr {
+        margin-bottom: 10px;
+    }
+
+    .characteristics-block {
+        margin-bottom: 20px;
+    }
+
+    .characteristics-block__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .characteristics-block__item div {
+        font-size: 12px;
+    }
+
+    .cps-d-price-block__price {
+        font-size: 24px;
+        line-height: 26px;
+    }
+
+    .cps-d-button-block__basket-button_add {
+        width: 130px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    .cpsd-warehouse-block__title {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+
+    .cpsd-warehouse-block__title_fon {
+        width: 136px;
+    }
+
+    .warehouse-param div{
+        font-size: 12px;
+    }
+
+    .cps-data__warehouse-block {
+        width: 202px;
+    }
+
+    .cps-d-button-block__ozon-button {
+        width: 167px;
+    }
+
+    .cps-d-button-block__ofer-button {
+        width: 167px;
     }
 }
