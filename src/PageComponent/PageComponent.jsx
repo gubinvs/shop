@@ -10,7 +10,7 @@ const PageComponent = ({dataComponent})=> {
     return(
         <>
             {/*Главная секция товара с фото, краткими характеристиками и кнопками для покупок*/}
-            {/* <PageComponentMainSection dataComponent={dataComponent} /> */}
+            <PageComponentMainSection dataComponent={dataComponent} />
 
             {/* Секция с описанием товара */}
             <PageComponentDiscription discription={dataComponent.productDescription}/>
