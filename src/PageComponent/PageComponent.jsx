@@ -3,6 +3,7 @@ import "./pageComponent.css";
 import PageComponentDiscription from "./PageComponentDiscription.jsx";
 import PageComponentMainSection from "./PageComponentMainSection.jsx";
 import PageComponentCharacteristicsSection from "./PageComponentCharacteristicsSection.jsx";
+import PageComponentDocFileSection from "./PageComponentDocFileSection.jsx";
 
 const PageComponent = ({dataComponent})=> {
 
@@ -17,6 +18,9 @@ const PageComponent = ({dataComponent})=> {
 
             {/* -- Секция с динамическими характеристиками товара, принимает пропсом артикул и выводит в заголовке,а также массив с характеристиками */}
             <PageComponentCharacteristicsSection vendor={dataComponent.vendorCode} characteristics={dataComponent.characteristics}/>
+
+            {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
+            <PageComponentDocFileSection file={dataComponent.file} />
         </>
     );
 };

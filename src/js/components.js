@@ -48,5 +48,9 @@ export const components = {
         {name: "Вес (без упаковки)", characteristic: "≈ 330 г"},
         {name: "Степень защиты", characteristic: "IP20"},
         {name: "Диапазон рабочих температур", characteristic: "-5…+60 °C"}
+    ],
+    file: [
+        {name: "Общий каталог контакторов TeSys D (PDF)", link: "https://encomponent.ru/files/LC1D18M7/tesysd_ct.pdf"},
+        {name: "Электрическая схема подключения LC1D18M7", link: "https://encomponent.ru/files/LC1D18M7/schneider_electric_tesys-deca-contactors_LC1D18M7.pdf"},
     ]
 };
