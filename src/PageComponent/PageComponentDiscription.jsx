@@ -9,7 +9,7 @@ const PageComponentDiscription = ({discription}) => {
         <>
             <section className="discription-component-section">
                 <div className="container discription-component-section__container">
-                    <h2 className="discription-component-section__title">Описание товара</h2>
+                    <h2 className="discription-component-section__title">Описание</h2>
                     <div className="discription-component-section__discription">
                         {discription}
                     </div>

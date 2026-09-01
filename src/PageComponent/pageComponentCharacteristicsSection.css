@@ -1,0 +1,64 @@
+.characteristics-section {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+.characteristics-section__container {
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-right   : 2px;
+    border-radius: 10px;
+    background-color: #F3DE09;
+}
+
+.characteristics-section__title {
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.characteristics-section__table-block {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.cs-table-list__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item_grey {
+    background-color: #F5F6FA;
+}
+
+.cs-table-list__item {
+    margin-bottom: 4px;
+}
+
+.cs-table-list-item__name {
+    display: -webkit-box;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    border-radius: 2px;
+    margin-right: 10px;
+    -webkit-line-clamp: 1;           /* Количество видимых строк */
+    line-clamp: 1;                  /* Добавьте эту строку для совместимости */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;                /* Прячет остальной текст */
+}   
+
+.cs-table-list-item__param  {
+    width: 300px;
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    border-radius: 2px;
+}

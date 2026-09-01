@@ -114,7 +114,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                         <div class='characteristics-item__title'>Произведено:</div>
                                         <div class='characteristics-item__discr'>{dataComponent.origin}</div>
                                     </li>
-                                    {dataComponent.characteristic.map((item, index) => {
+                                    {dataComponent.discriptionParam.map((item, index) => {
                                         return(
                                             <>
                                                 <li key={index+50} class='characteristics-block__item flex'>
