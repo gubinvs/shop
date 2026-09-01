@@ -75,31 +75,6 @@ const SearchResults = () => {
         localStorage.setItem('cart', JSON.stringify(basket));
     }, [basket]);
 
-    // const handleAddToBasket = () => {
-    //     if (!component || quantity <= 0) return;
-
-    //     const existingIndex = basket.findIndex(item => item.vendorCode === component.vendorCode);
-    //     const newBasket = [...basket];
-
-    //     if (existingIndex !== -1) {
-    //         newBasket[existingIndex].quantity = quantity;
-    //     } else {
-    //         newBasket.push({
-    //             vendorCode: component.vendorCode,
-    //             nameComponent: component.nameComponent,
-    //             quantity: component.quantity,
-    //             price: component.price,
-    //             basketImgPath: component.imageCard,
-    //             guidId: component.guidId,
-    //             id: component.id
-    //         });
-    //     }
-
-    //     // console.log(JSON.stringify(component.quantity));
-
-    //     setBasket(newBasket);
-    // };
-
     // Проверка на наличие текущего артикула в корзине
     const isInBasket = () => component && basket.some(item => item.vendorCode === component.vendorCode);
 

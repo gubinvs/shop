@@ -7,7 +7,6 @@ import PageComponentDocFileSection from "./PageComponentDocFileSection.jsx";
 
 const PageComponent = ({dataComponent})=> {
 
-
     return(
         <>
             {/*Главная секция товара с фото, краткими характеристиками и кнопками для покупок*/}

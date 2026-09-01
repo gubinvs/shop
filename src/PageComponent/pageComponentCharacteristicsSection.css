@@ -40,7 +40,7 @@
 .cs-table-list-item__name {
     display: -webkit-box;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -55,10 +55,28 @@
 
 .cs-table-list-item__param  {
     width: 300px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 20px;
     border-radius: 2px;
+}
+
+@media only screen and (max-width: 640px) {
+    .characteristics-section__title {
+        font-size: 20px;
+    }
+    
+    .cs-table-list-item__name,
+    .cs-table-list-item__param {
+        font-size: 12px;             /* Прячет остальной текст */
+    }   
+}
+
+@media only screen and (max-width: 480px) {
+    .cs-table-list-item__name,
+    .cs-table-list-item__param {
+        font-size: 10px;             /* Прячет остальной текст */
+    }   
 }

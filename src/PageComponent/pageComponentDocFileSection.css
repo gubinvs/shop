@@ -9,20 +9,17 @@
 }
 
 .doc-file-section__container {
-    padding-top: 10px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-left: 2px;
-    border-radius: 10px;
-    background-color: #1D252C;
-    /* background: linear-gradient(to right, #2d3944 0%, #1D252C 30%); */
+    border-radius: 12px;
+    border: 1px solid #6F7172;
 }
 
 .doc-file-section__title {
-    padding-left: 20px;
+    padding: 20px;
     font-size: 24px;
+    border-radius: 10px;
     color: #F7FAFB;
     margin-bottom: 10px;
+    background-color: #6F7172;
 }
 
 .doc-file-section__list {
@@ -62,4 +59,22 @@
 .dfs-item__link:hover {
     border-bottom: 1px solid #F3DE09;
     margin-bottom: 9px;
+}
+
+@media only screen and (max-width: 800px) {
+    .dfs-item__name,
+    .dfs-item__link {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .doc-file-section__title {
+        font-size: 20px;
+    }
+    
+    .dfs-item__name,
+    .dfs-item__link {
+        font-size: 12px;
+    }
 }
