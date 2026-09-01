@@ -29,3 +29,18 @@
     text-align: justify;
     background-color: #FFFFFF;
 }
+
+
+@media only screen and (max-width: 800px) {
+    .discription-component-section__discription {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+       .discription-component-section__discription {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
