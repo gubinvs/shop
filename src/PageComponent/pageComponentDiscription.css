@@ -1,0 +1,31 @@
+.discription-component-section {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:  #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.discription-component-section__container {
+    padding-top: 20px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    border-radius: 10px;
+    background-color: #DFE0E1;
+}
+
+.discription-component-section__title {
+    padding-left: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.discription-component-section__discription {
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: justify;
+    background-color: #FFFFFF;
+}
