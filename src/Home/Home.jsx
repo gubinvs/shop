@@ -19,7 +19,7 @@ const Home = () => {
             {/* ---- Маленькие карточки каталога ---- */}
             <NewDirectoryGroupsMin />
 
-            {/*--- Карточки товара ----*/}
+            {/*--- Карточки товара, количество выдаваемых карточек ограничивается передаваемым параметром quantityCart  ----*/}
             <GroupOfCards cardData={jsonCartTest} quantityCart={20} />
 
         </> 

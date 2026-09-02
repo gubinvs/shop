@@ -24,14 +24,7 @@ const PageComponent = ({dataComponent})=> {
 
             {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
             <PageComponentDocFileSection file={dataComponent.file} />
-
-            {/* Еще немного карточек товаров, количество выдаваемых карточек ограничивается передаваемым параметром quantityCart */}
-            <GroupOfCards cardData={jsonCartTest} quantityCart={4} />
-            
-            {/*--- Разделы товара ----*/}
-            <NewDirectoryGroupsMin/>
-
-            {/*---  ----*/}
+          
 
         </>
     );
