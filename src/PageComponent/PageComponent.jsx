@@ -1,3 +1,5 @@
+import {jsonCartTest} from "../js/jsonCartTest.js";
+
 
 import "./pageComponent.css";
 import PageComponentDiscription from "./PageComponentDiscription.jsx";
@@ -5,6 +7,7 @@ import PageComponentMainSection from "./PageComponentMainSection.jsx";
 import PageComponentCharacteristicsSection from "./PageComponentCharacteristicsSection.jsx";
 import PageComponentDocFileSection from "./PageComponentDocFileSection.jsx";
 import NewDirectoryGroupsMin from "../Home/NewDirectoryGroupsMin.jsx";
+import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 
 const PageComponent = ({dataComponent})=> {
 
@@ -22,7 +25,13 @@ const PageComponent = ({dataComponent})=> {
             {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
             <PageComponentDocFileSection file={dataComponent.file} />
 
-            {/* Секция с предложениями (карточками товаров) из этого-же раздела, на основе параметра capter */}
+            {/* Секция с предложениями (карточками товаров) из этого-же раздела, на основе параметра chapter */}
+            <GroupOfCards cardData={jsonCartTest} quantityCart={4} />
+            
+            {/*--- Разделы товара ----*/}
+            <NewDirectoryGroupsMin/>
+
+
 
         </>
     );

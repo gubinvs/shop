@@ -12,6 +12,10 @@
     padding-bottom: 50px;
 }
 
+.group-of-cards-section__title {
+    padding-top: 20px;
+}
+
 @media only screen and (max-width: 640px) {
     .group-of-cards-section {
         border-radius: 20px;

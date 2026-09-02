@@ -1,8 +1,11 @@
+import {jsonCartTest} from "../js/jsonCartTest.js";
+
+
+
 import React from 'react';
 import "./catalogSection.css";
 import Header from '../Header/Header';
 import HeaderGuest from "../Header/HeaderGuest.jsx";
-import {jsonCartTest} from "../js/jsonCartTest.js";
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from "../Home/NewDirectoryGroupsMin.jsx";
 
@@ -15,8 +18,6 @@ const CatalogSection = ({nomenclature}) => {
   
   // Фильтруеммассив по принадлежности товара к каталогу
   const cardDataSort = jsonCartTest.filter(item => item.chapter === chapter);
-  
-
   
   return (
     <>

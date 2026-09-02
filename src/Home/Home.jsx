@@ -20,7 +20,7 @@ const Home = () => {
             <NewDirectoryGroupsMin />
 
             {/*--- Карточки товара ----*/}
-            <GroupOfCards cardData={jsonCartTest} />
+            <GroupOfCards cardData={jsonCartTest} quantityCart={20} />
 
         </> 
     );
