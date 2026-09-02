@@ -24,8 +24,6 @@ const PageComponent = ({dataComponent})=> {
 
             {/* Секция с предложениями (карточками товаров) из этого-же раздела, на основе параметра capter */}
 
-
-            <NewDirectoryGroupsMin/>
         </>
     );
 };
