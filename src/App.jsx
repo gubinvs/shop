@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams} from 'react-router-dom';
 import { getAllItems, saveOrUpdateItems } from "./js/db.js";
 import ApiUrl from "./js/ApiUrl.js";
 import Home from './Home/Home.jsx';
@@ -21,6 +21,7 @@ import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
 import WarehousePage from "./AdminPanel/WarehousePage.jsx";
 import PurchasePage from './AdminPanel/PurchasePage.jsx';
 import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDelivery";
+import ProductRoute from "./SearchResults/ProductRoute.jsx";
 
 
 // ===== Проверка токена =====
@@ -193,8 +194,6 @@ const App = () => {
     fetchData();
   }, []);
 
-    
-
   return (
     <Router>
       <Routes>
@@ -235,13 +234,17 @@ const App = () => {
 
         {/* Для всех */}
         <Route path="/SearchResults" element={<SearchResults />} />
+        {/* Перенаправление на страницу с поисковиков и ..тд, подменяет на динамическую страницу с артикулом */}
+        <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
+
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
         <Route path="/CatalogSection" element={<CatalogSection nomenclature={nomenclature} />} />
-        <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />RegistrationAndDelivery
+        <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/RegistrationAndDelivery" element={<RegistrationAndDelivery />} />
+        
 
         {/* Только для авторизованных */}
         <Route

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import ApiUrl from '../js/ApiUrl.js';
 import Header from '../Header/Header.jsx';
 import HeaderGuest from '../Header/HeaderGuest.jsx';
@@ -6,20 +7,33 @@ import PageComponent from '../PageComponent/PageComponent.jsx';
 
 import { components } from '../js/components.js';
 
-const SearchResults = () => {
+const SearchResults = ( 
+    { article } 
+) => {
 
     // Сначала получаем vendorCode из URL, если он есть
+    // Если его нет получаем из пропса, в том случае если переходили с поисковиков по поддельным ссылкам
+    // важно артикул в названии страниц разделить символами ( -- и .html )
+    // .../products/schneider/kontaktor--LC1D18M7.html он может быть и таким /products/schneider/kontaktor--LC1D-18M7.html
+    // и таким /products/schneider/kontaktor--LC1D18.M7.html
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const vendorCodeFromUrl = urlParams.get("vendorCode");
         if (vendorCodeFromUrl) {
             localStorage.setItem("vendorCode_GoToPageComponent", vendorCodeFromUrl);
-        }
+        } 
     }, []);
+
     
-    // Теперь можно безопасно читать из localStorage
-    const vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
+    //   Присваиваем значение vendorCode из url или props в зависимости от источника захода на страницу
+    var vendorCode = "";
+    if (article === undefined || article === null) {
+        vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
+    } else {
+        vendorCode = article;
+    }
     
+    console.log(vendorCode);
     const [component, setComponent] = useState(null);
     
     const [basket, setBasket] = useState(() => {
