@@ -23,8 +23,7 @@ const PageComponent = ({dataComponent})=> {
             <PageComponentCharacteristicsSection vendor={dataComponent.vendorCode} characteristics={dataComponent.characteristics}/>
 
             {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
-            <PageComponentDocFileSection file={dataComponent.file} />
-          
+            <PageComponentDocFileSection file={dataComponent.file} />         
 
         </>
     );
