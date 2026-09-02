@@ -16,24 +16,32 @@ const SearchResults = (
     // важно артикул в названии страниц разделить символами ( -- и .html )
     // .../products/schneider/kontaktor--LC1D18M7.html он может быть и таким /products/schneider/kontaktor--LC1D-18M7.html
     // и таким /products/schneider/kontaktor--LC1D18.M7.html
+    
+    var vendorCode = "";
+
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const vendorCodeFromUrl = urlParams.get("vendorCode");
-        if (vendorCodeFromUrl) {
-            localStorage.setItem("vendorCode_GoToPageComponent", vendorCodeFromUrl);
-        } 
+        // if (vendorCodeFromUrl) {
+        //     localStorage.setItem("vendorCode_GoToPageComponent", vendorCodeFromUrl);
+        // }   
+
+        //   Присваиваем значение vendorCode из url или props в зависимости от источника захода на страницу
+        if (article === undefined || article === null) {
+            //vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
+            vendorCode = vendorCodeFromUrl;
+        } else {
+            vendorCode = article;
+        }
+
+        // Если нет артикула, загружаем стартовую страницу
+        if (!vendorCodeFromUrl) {
+            window.location.href = "/";
+        }   
+
     }, []);
 
-    
-    //   Присваиваем значение vendorCode из url или props в зависимости от источника захода на страницу
-    var vendorCode = "";
-    if (article === undefined || article === null) {
-        vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
-    } else {
-        vendorCode = article;
-    }
-    
-    console.log(vendorCode);
+
     const [component, setComponent] = useState(null);
     
     const [basket, setBasket] = useState(() => {
