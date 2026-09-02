@@ -19,6 +19,10 @@ const SearchResults = (
     
     var vendorCode = "";
 
+    // Проверка авторизации пользователя для выдачи хэдера
+    const isAuthenticated = localStorage.getItem('token') !== null;
+
+    // Достаем артикул из ссылок и запросов
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const vendorCodeFromUrl = urlParams.get("vendorCode");
@@ -40,23 +44,6 @@ const SearchResults = (
         }   
 
     }, []);
-
-
-    const [component, setComponent] = useState(null);
-    
-    const [basket, setBasket] = useState(() => {
-        const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
-        const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
-        const merged = [...fromCart, ...fromSearch];
-        const unique = merged.filter(
-            (v, i, a) => a.findIndex(t => t.vendorCode === v.vendorCode) === i
-        );
-        localStorage.setItem('cart', JSON.stringify(unique));
-        return unique;
-    });
-
-    // Проверка авторизации пользователя для выдачи хэдера
-    const isAuthenticated = localStorage.getItem('token') !== null;
 
     // Загружаем данные товара
     useEffect(() => {
@@ -91,14 +78,30 @@ const SearchResults = (
             }
         })
         .catch(err => console.log("Ошибка получения данных:", err));
-    }, [vendorCode]);
+    }, [vendorCode]);    
+    
+    
+    
+    
+    // const [component, setComponent] = useState(null);
+    
+    // const [basket, setBasket] = useState(() => {
+    //     const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
+    //     const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
+    //     const merged = [...fromCart, ...fromSearch];
+    //     const unique = merged.filter(
+    //         (v, i, a) => a.findIndex(t => t.vendorCode === v.vendorCode) === i
+    //     );
+    //     localStorage.setItem('cart', JSON.stringify(unique));
+    //     return unique;
+    // });
 
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(basket));
-    }, [basket]);
+    // useEffect(() => {
+    //     localStorage.setItem('cart', JSON.stringify(basket));
+    // }, [basket]);
 
-    // Проверка на наличие текущего артикула в корзине
-    const isInBasket = () => component && basket.some(item => item.vendorCode === component.vendorCode);
+    // // Проверка на наличие текущего артикула в корзине
+    // const isInBasket = () => component && basket.some(item => item.vendorCode === component.vendorCode);
 
     return (
         <>
