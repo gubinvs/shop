@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import SearchResults from "./SearchResults.jsx";
 
-
+// Промежуточный компонент для вычленения артикула из ссылки на страницу
 // Если его нет получаем из url, в том случае если переходили с поисковиков по поддельным ссылкам
 // важно артикул в названии страниц разделить символами ( -- и .html )
 // .../products/schneider/kontaktor--LC1D18M7.html он может быть и таким /products/schneider/kontaktor--LC1D-18M7.html
