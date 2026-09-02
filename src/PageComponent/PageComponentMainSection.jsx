@@ -18,12 +18,12 @@ const PageComponentMainSection = ({dataComponent}) => {
 
     // Состояние блоков вывода на экран большой картинки товара
     const [maxImgBlock, setMaxImgBlock] = useState([]);
+
     // Перебираем массив и присваиваем по умолчанию значения
     useEffect(() => {
-    
-    // Фильтруем и сразу маппим в массив из false
-    const filteredArray = dataComponent.dopImages
-        .map(() => false); 
+        // Фильтруем и сразу маппим в массив из false
+        const filteredArray = dataComponent.dopImages
+            .map(() => false); 
 
         setMaxImgBlock(filteredArray);
     }, [dataComponent, vendorCodeFromUrl]);
@@ -67,7 +67,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                     <div className="component-page-section__main-block">
 
                         {/* Основная фотография товара */}
-                        <img src={dataComponent.imageCard} alt={"Фото товара с артикулом" + dataComponent.vendorCode} className="cps-main-block__img" />
+                        <img src={dataComponent.mainImagePage} alt={"Фото товара с артикулом" + dataComponent.vendorCode} className="cps-main-block__img" />
                         
                         {/* Дополнительные фото товара */}
                         <div className="cps-main-block__img-dop-block">
@@ -168,7 +168,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                             </div>
                             <div className="cps-data__button-block">
                                 <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.ozonLink}}>Купить на ОЗОН</button>
-                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить в 1 клик</button>
+                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить на сайте</button>
                             </div>
                         </div>
                     </div>
