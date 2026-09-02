@@ -1,13 +1,8 @@
-import {jsonCartTest} from "../js/jsonCartTest.js";
-
-
 import "./pageComponent.css";
 import PageComponentDiscription from "./PageComponentDiscription.jsx";
 import PageComponentMainSection from "./PageComponentMainSection.jsx";
 import PageComponentCharacteristicsSection from "./PageComponentCharacteristicsSection.jsx";
 import PageComponentDocFileSection from "./PageComponentDocFileSection.jsx";
-import NewDirectoryGroupsMin from "../Home/NewDirectoryGroupsMin.jsx";
-import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 
 const PageComponent = ({dataComponent})=> {
 

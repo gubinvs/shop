@@ -16,7 +16,6 @@ export const components = {
     quantity: 5,
     deliveryТime: 1,
     bestseller: 0,
-    basketImgPath: "ewrrt",
     linkPage: "er ewr wer ewr re",
     namePageHtml: "lkejrlew jwehf kjewtk jrhew",
     ozonLink: "https://www.ozon.ru/product/lc1d09m7-kontaktor-schneider-electric-tesys-d-lc1d09m7-9-a-katushka-230-v-ac-3424066591/?oos_search=false&sh=EkL4mR_oYw",
