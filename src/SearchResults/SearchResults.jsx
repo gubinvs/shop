@@ -44,8 +44,11 @@ const SearchResults = (
         }   
 
     }, []);
-
+    
+    
     // Загружаем данные товара
+    const [component, setComponent] = useState(null);
+    
     useEffect(() => {
         if (!vendorCode) return;
 
@@ -80,11 +83,6 @@ const SearchResults = (
         .catch(err => console.log("Ошибка получения данных:", err));
     }, [vendorCode]);    
     
-    
-    
-    
-    // const [component, setComponent] = useState(null);
-    
     // const [basket, setBasket] = useState(() => {
     //     const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
     //     const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
@@ -107,7 +105,6 @@ const SearchResults = (
         <>
             {/* ----- Хэдер в зависимости от авторизации ----- */}
             {!isAuthenticated ? <HeaderGuest /> : <Header />}
-
 
             {/* -- страница товара */}
             <PageComponent dataComponent={components} />
