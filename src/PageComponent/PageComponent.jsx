@@ -25,13 +25,13 @@ const PageComponent = ({dataComponent})=> {
             {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
             <PageComponentDocFileSection file={dataComponent.file} />
 
-            {/* Секция с предложениями (карточками товаров) из этого-же раздела, на основе параметра chapter */}
+            {/* Еще немного карточек товаров, количество выдаваемых карточек ограничивается передаваемым параметром quantityCart */}
             <GroupOfCards cardData={jsonCartTest} quantityCart={4} />
             
             {/*--- Разделы товара ----*/}
             <NewDirectoryGroupsMin/>
 
-
+            {/*---  ----*/}
 
         </>
     );
