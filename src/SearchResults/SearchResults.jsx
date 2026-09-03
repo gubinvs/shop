@@ -21,7 +21,7 @@ const SearchResults = (
     const isAuthenticated = localStorage.getItem('token') !== null;
 
     // Загружаем данные товара
-    const [component, setComponent] = useState([]);
+    const [component, setComponent] = useState('');
 
 
     // Достаем артикул из ссылок и запросов
