@@ -31,10 +31,12 @@ const SearchResults = (
         // if (vendorCodeFromUrl) {
         //     localStorage.setItem("vendorCode_GoToPageComponent", vendorCodeFromUrl);
         // }   
+        //vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
 
+        
         //   Присваиваем значение vendorCode из url или props в зависимости от источника захода на страницу
         if (article === undefined || article === null) {
-            //vendorCode = localStorage.getItem("vendorCode_GoToPageComponent");
+            
             setVendorCode(vendorCodeFromUrl);
         } else {
             setVendorCode(article);
