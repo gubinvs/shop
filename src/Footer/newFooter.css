@@ -3,8 +3,7 @@
     padding-bottom: 20px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
-    background-color: #192853;
-    /* background-color: #FFE14F; */
+    background-color: #1D252C;
 }
 
 .new-footer__logo-block {
@@ -14,9 +13,3 @@
     /* background-color: #192853; */
     background-repeat: no-repeat;
 }   
-
-.new-footer__title {
-    /* color: #192853; */
-    color: #FFE14F;;
-    font-size: 150px;
-}

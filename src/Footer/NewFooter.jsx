@@ -8,7 +8,7 @@ const NewFooter = () => {
         <>
             <footer className="new-footer">
                 <div className="container new-footer__container">
-                    <h1 className="new-footer__title">en-market.ru</h1>
+                    <img src="/images/footer_logo_1920.svg" alt="s" />
                 </div>
             </footer>
         </>
