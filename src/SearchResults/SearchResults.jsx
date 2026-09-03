@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ApiUrl from '../js/ApiUrl.js';
 import Header from '../Header/Header.jsx';
 import HeaderGuest from '../Header/HeaderGuest.jsx';
@@ -21,7 +21,7 @@ const SearchResults = (
     const isAuthenticated = localStorage.getItem('token') !== null;
 
     // Загружаем данные товара
-    const [component, setComponent] = useState(components);
+    const [component, setComponent] = useState([]);
 
 
     // Достаем артикул из ссылок и запросов
@@ -88,7 +88,7 @@ const SearchResults = (
             {!isAuthenticated ? <HeaderGuest /> : <Header />}
 
             {/* -- страница товара */}
-            <PageComponent dataComponent={component} />
+            <PageComponent dataComponent={components} />
 
         </>
     );
