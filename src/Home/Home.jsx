@@ -1,10 +1,14 @@
+import {jsonCartTest} from "../js/jsonCartTest.js";
+
+
+
 import React from 'react';
 import Header from '../Header/Header.jsx';
 import HeaderGuest from '../Header/HeaderGuest.jsx'
 import './home.css';
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from './NewDirectoryGroupsMin.jsx';
-import {jsonCartTest} from "../js/jsonCartTest.js";
+import DeliverySection from "../DeliveryAndPayment/DeliverySection.jsx";
 
 
 const Home = () => {
@@ -21,6 +25,9 @@ const Home = () => {
 
             {/*--- Карточки товара, количество выдаваемых карточек ограничивается передаваемым параметром quantityCart  ----*/}
             <GroupOfCards cardData={jsonCartTest} quantityCart={20} />
+
+            {/* -- Информация о доставке */}
+            <DeliverySection />
 
         </> 
     );
