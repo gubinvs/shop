@@ -1,6 +1,9 @@
 header {
   background-color: #F5F6FA;
   margin-bottom: 20px;
+  max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .header__mobile {
@@ -45,7 +48,7 @@ header {
 .contact-header-block__phone {
   padding-left: 20px;
   font-size: 12px;
-  color: #1D252C;
+  color: #192853;
   background-image: url(../../public/images/phone_header_icon.svg);
   background-repeat: no-repeat;
   background-position: left;
@@ -55,7 +58,7 @@ header {
 .contact-header-block__adress {
   padding-left: 20px;
   font-size: 12px;
-  color: #1D252C;
+  color: #192853;
   background-image: url(../../public/images/adress_header_icon.svg);
   background-repeat: no-repeat;
   background-position: left;
@@ -65,7 +68,7 @@ header {
 .contact-header-block__email {
   padding-left: 30px;
   font-size: 12px;
-  color: #1D252C;
+  color: #192853;
   background-image: url(../../public/images/email_header_icon.svg);
   background-repeat: no-repeat;
   background-position: left;
@@ -111,7 +114,8 @@ header {
     text-align: right;
     font-size: 20px;
     font-weight: 600;
-    color: #1D252C;
+    /* color: #1D252C; */
+    color: #192853;
     background-color: #F3DE09;
     border-radius: 10px;
     border: 0px;
@@ -253,7 +257,7 @@ header {
   height: 28px;
   text-align: center;
   border: 0px;
-  background-color: #1D252C;
+  background-color: #192853;
   color: #ffffff;
   font-weight: 400;
   padding: 0;
@@ -262,7 +266,7 @@ header {
 .button-registrasion:hover {
   height: 28px;
   background-color: #F3DE09;
-  color: #1D252C;
+  color: #192853;
   cursor: pointer;
 }
 
@@ -333,7 +337,7 @@ header {
   border-radius: 50px;
   background-color: #F3DE09;
   text-align: center;
-  color: #1D252C;
+  color: #192853;
   font-weight: 800;
   font-size: 12px;
 }
@@ -402,13 +406,13 @@ header {
   border: 0px;
   border-radius: 4px;
   color: #ffffff;
-  background-color: #1D252C;
+  background-color: #192853;
   cursor: pointer;
 }
 
 .lk-result-click__out:hover {
   background-color: #F3DE09;
-  color: #1D252C;
+  color: #192853;
 }
 
 .lk-result-click__close-panel {
@@ -423,7 +427,7 @@ header {
   border-radius: 4px;
   font-weight: 800;
   background-color: #F3DE09;
-  color:#1D252C;
+  color:#192853;
   cursor: pointer;
 }
 

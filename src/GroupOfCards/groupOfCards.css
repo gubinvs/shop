@@ -1,8 +1,10 @@
 .group-of-cards-section {
     border-radius: 30px;
-    /* background-color: #e3e1e1; */
-    background-color: #f6f4e6;
+    background-color: #FFFFFF;
     margin-bottom: 20px;
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .group-of-cards-section__container {
@@ -20,7 +22,6 @@
 @media only screen and (max-width: 640px) {
     .group-of-cards-section {
         border-radius: 20px;
-        background-color: #e3e1e1;
         margin-bottom: 10px;
     }
 

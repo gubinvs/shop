@@ -2,8 +2,11 @@
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 30px;
-    background-color: #1D252C;
+    background-color: #192853;
     margin-bottom: 20px;
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .new-directory-groups-section div:not(:last-of-type) {

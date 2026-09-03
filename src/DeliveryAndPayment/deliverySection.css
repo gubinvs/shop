@@ -3,8 +3,11 @@
     padding-top: 40px;
     padding-bottom: 40px;
     margin-bottom: 20px;
-    background-color: #0f3d3a;
+    background-color: #192853;
     width: 100%;
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .home-delivery-section__container {
@@ -20,7 +23,7 @@
 .home-delivery-section__image {
     height: 360px;
     border-radius: 30px;
-    border: 1px solid #6C151E;
+    border: 1px solid #192853;
     box-shadow: 0px 0px 50px 0px rgba(245, 218, 191, 0.5);
 }
 
@@ -29,7 +32,7 @@
   font-weight: bold;
   font-style: normal;
   margin-bottom: 20px;
-  color: #F5DABF;
+  color: #ECF4F7;
 }
 
 .home-delivery-section__icon-block {
@@ -52,7 +55,7 @@
   font-weight: 400;
   font-style: normal;
   margin-bottom: 40px;
-  color: #F5DABF;
+  color: #ECF4F7;
 }
 
 .home-delivery-section__button {
@@ -60,8 +63,9 @@
     height: 50px;
     border-radius: 10px;
     font-size: 20px;
-    background-color: #F5DABF;
-    color: #6C151E;
+    font-weight: 800;
+    background-color: #ECF4F7;
+    color: #192853;
     border: 0px;
     cursor: pointer;
 }

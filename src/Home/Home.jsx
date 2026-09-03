@@ -7,12 +7,12 @@ import Header from '../Header/Header.jsx';
 import HeaderGuest from '../Header/HeaderGuest.jsx'
 import './home.css';
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
-import NewDirectoryGroupsMin from './NewDirectoryGroupsMin.jsx';
+import NewDirectoryGroupsMin from '../DirectoryGroups/NewDirectoryGroupsMin.jsx';
 import DeliverySection from "../DeliveryAndPayment/DeliverySection.jsx";
-import NewFooter from "../Footer/NewFooter.jsx";
+// import NewFooter from "../Footer/NewFooter.jsx";
 
 
-const Home = () => {
+const Home = () => {    
     // Проверка авторизации пользователя для выдачи хэдера
     const isAuthenticated = localStorage.getItem('token') !== null;
 
@@ -31,7 +31,7 @@ const Home = () => {
             <DeliverySection />
 
             {/*---  Footer  ---*/}
-            <NewFooter/>
+            {/* <NewFooter/> */}
 
         </> 
     );

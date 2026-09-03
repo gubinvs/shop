@@ -7,7 +7,7 @@ import "./catalogSection.css";
 import Header from '../Header/Header';
 import HeaderGuest from "../Header/HeaderGuest.jsx";
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
-import NewDirectoryGroupsMin from "../Home/NewDirectoryGroupsMin.jsx";
+import NewDirectoryGroupsMin from "../DirectoryGroups/NewDirectoryGroupsMin.jsx";
 
 const CatalogSection = ({nomenclature}) => {
   // Определяем название каталога

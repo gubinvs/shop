@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./header.css";
 import ApiUrl from '../js/ApiUrl';
-import { chapterMa, chapterBp, chapterK, chapterSch, chapterPlk, chapterMplk, chapterSl, OpenSection, chapterRecord,
-    chapterHighVoltage, chapterRele, chapterConverters, chapterInstrument, chapterKorpus, chapterContactor, chapterNKU
- } from "../js/LinkSectionGroup.js";
+import { chapterBp, chapterK, chapterSch, chapterPlk, chapterMplk, OpenSection, chapterContactor} from "../js/LinkSectionGroup.js";
 import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
 const HeaderGuest = () => {
@@ -126,10 +124,10 @@ const HeaderGuest = () => {
     const toggleCatalog = () => setCatalogVisible(prev => !prev);
     
 
-    const ClearToken = () => {
-        localStorage.removeItem("token"); // удаляем только токен
-        window.location.href="/";
-    };
+    // const ClearToken = () => {
+    //     localStorage.removeItem("token"); // удаляем только токен
+    //     window.location.href="/";
+    // };
 
     // Переход на страницу товара
     // const GoToPageComp = (link) => {
@@ -162,7 +160,7 @@ const HeaderGuest = () => {
                 <div className="header__container">
                     <div className="container search-header-block">
                         <div className="header-logo-block" onClick={indexPage}>
-                            <img src="../../images/header_logo_1920.svg" alt="Логотип компании" />
+                            <img src="../../images/images-logo/logo-img-header.svg" alt="Логотип компании" />
                         </div>
                         <div className="header-navigation-block">
                             <div className="header-navigation-block__top header-navigation-block__top_guest">
