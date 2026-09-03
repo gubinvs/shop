@@ -1,0 +1,22 @@
+.new-footer {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    background-color: #192853;
+    /* background-color: #FFE14F; */
+}
+
+.new-footer__logo-block {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    /* background-color: #192853; */
+    background-repeat: no-repeat;
+}   
+
+.new-footer__title {
+    /* color: #192853; */
+    color: #FFE14F;;
+    font-size: 150px;
+}
