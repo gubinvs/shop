@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useParams} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import { getAllItems, saveOrUpdateItems } from "./js/db.js";
 import ApiUrl from "./js/ApiUrl.js";
 import Home from './Home/Home.jsx';

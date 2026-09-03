@@ -9,6 +9,24 @@ const Basket = () => {
 
     const param = new URLSearchParams(window.location.search).get("vendorCode");
 
+    // const [basket, setBasket] = useState(() => {
+    //     const fromCart = JSON.parse(localStorage.getItem('cart')) || [];
+    //     const fromSearch = JSON.parse(localStorage.getItem('search')) || [];
+    //     const merged = [...fromCart, ...fromSearch];
+    //     const unique = merged.filter(
+    //         (v, i, a) => a.findIndex(t => t.vendorCode === v.vendorCode) === i
+    //     );
+    //     localStorage.setItem('cart', JSON.stringify(unique));
+    //     return unique;
+    // });
+
+    // useEffect(() => {
+    //     localStorage.setItem('cart', JSON.stringify(basket));
+    // }, [basket]);
+
+    // // Проверка на наличие текущего артикула в корзине
+    // const isInBasket = () => component && basket.some(item => item.vendorCode === component.vendorCode);
+
     const getParsedLocalStorage = (key) => {
         try {
             const item = localStorage.getItem(key);
