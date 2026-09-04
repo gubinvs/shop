@@ -9,10 +9,16 @@
     margin-left: auto;
 }
 
-.new-footer__logo-block {
-    width: 200px;
-    height: 150px;
-    border-radius: 10px;
-    /* background-color: #192853; */
-    background-repeat: no-repeat;
-}   
+.new-footer__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-footer__logo-footer {
+    width: 100px;
+}
+
+.nf-link-list__item,
+.nf-contact-list__item {
+    color: #FFFFFF;
+}

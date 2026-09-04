@@ -9,7 +9,7 @@ import './home.css';
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from '../DirectoryGroups/NewDirectoryGroupsMin.jsx';
 import DeliverySection from "../DeliveryAndPayment/DeliverySection.jsx";
-import NewFooter from "../Footer/NewFooter.jsx";
+import Footer from "../Footer/Footer.jsx";
 
 
 const Home = () => {    
@@ -31,7 +31,7 @@ const Home = () => {
             <DeliverySection />
 
             {/*---  Footer  ---*/}
-            <NewFooter />
+            <Footer />
 
         </> 
     );

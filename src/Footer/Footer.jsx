@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "./Footer.css";
+import "./footer.css";
+import NewFooter from "./NewFooter.jsx";
+
+
 
 const Footer = () => {
-  const [html, setHtml] = useState("");
+  // const [html, setHtml] = useState("");
 
-  useEffect(() => {
-    fetch("https://encomponent.ru/php/modules/footer.php")
-      .then((res) => res.text())
-      .then(setHtml);
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://encomponent.ru/php/modules/footer.php")
+  //     .then((res) => res.text())
+  //     .then(setHtml);
+  // }, []);
 
   useEffect(() => {
     // === COOKIE BANNER ===
@@ -96,7 +99,11 @@ const Footer = () => {
     }
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  // return <div dangerouslySetInnerHTML={{ __html: html }} />;
+
+    return (
+      <NewFooter />
+    );
 };
 
 export default Footer;
