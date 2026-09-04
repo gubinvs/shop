@@ -522,7 +522,7 @@ header {
     height: 40px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: #6F7172;
+    background-color: #192853;
     z-index: 9999; /* Чтобы блок был поверх другого контента */
   }
 
