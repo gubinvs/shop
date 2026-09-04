@@ -9,8 +9,10 @@ const NewFooter = () => {
                     <img className="new-footer__logo-footer" src="/images/footer_logo_1920.svg" alt="#" />
                     <ul className="new-footer__link-list">
                         <li className="nf-link-list__item">Страница контактов</li>
-                        <li className="nf-link-list__item">Политика обработки персональных данных</li>
-                        <li className="nf-link-list__item"></li>
+                            <a href="/PersonalData" className="nf-ll-item__link">
+                                <li className="nf-link-list__item">Политика обработки персональных данных</li>
+                            </a>
+                            <li className="nf-link-list__item"></li>
                     </ul>
                     <ul className="new-footer__contact-list">
                         <li className="nf-contact-list__item">Санкт-Петербург</li>

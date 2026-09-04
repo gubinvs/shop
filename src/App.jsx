@@ -22,6 +22,7 @@ import WarehousePage from "./AdminPanel/WarehousePage.jsx";
 import PurchasePage from './AdminPanel/PurchasePage.jsx';
 import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDelivery";
 import ProductRoute from "./SearchResults/ProductRoute.jsx";
+import PersonalData from "./PersonalData/PersonalData.jsx";
 
 
 // ===== Проверка токена =====
@@ -244,6 +245,7 @@ const App = () => {
         <Route path="/CatalogSection" element={<CatalogSection nomenclature={nomenclature} />} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/RegistrationAndDelivery" element={<RegistrationAndDelivery />} />
+        <Route path='/PersonalData' element={<PersonalData />}/>
         
 
         {/* Только для авторизованных */}

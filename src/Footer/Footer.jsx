@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./footer.css";
 import NewFooter from "./NewFooter.jsx";
 
