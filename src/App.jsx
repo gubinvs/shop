@@ -237,6 +237,7 @@ const App = () => {
         <Route path="/SearchResults" element={<SearchResults />} />
         {/* Перенаправление на страницу с поисковиков и ..тд, подменяет на динамическую страницу с артикулом */}
         <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
+        <Route path="/index.html" element={<Home />} />
 
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
