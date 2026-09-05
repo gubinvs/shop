@@ -45,7 +45,7 @@ const DeliverySection = () => {
                                 onClick={()=> window.location.href = "/DeliveryAndPayment"}
                             >Подробнее</button>
                         </div>
-                        <img className="home-delivery-section__image" src="/images/img-delivery-section/5eb22a0dd5bed0f601b8d251c4465e6a.jpg" alt="@#$" />
+                        <img className="home-delivery-section__image" src="/images/img-delivery-section/img-delivery-section.jpg" alt="@#$" />
                     </div>
                 </div>
             </section>

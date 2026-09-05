@@ -20,5 +20,13 @@
 
 .nf-link-list__item,
 .nf-contact-list__item {
-    color: #FFFFFF;
+    color: #ECF4F7;
+}
+
+.nf-ll-item__link {
+    text-decoration: none;
+}
+
+.nf-ll-item__link li:hover {
+    color: #D26801;
 }
