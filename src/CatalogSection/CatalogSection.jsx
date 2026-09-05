@@ -12,6 +12,8 @@ import NewDirectoryGroupsMin from "../DirectoryGroups/NewDirectoryGroupsMin.jsx"
 const CatalogSection = ({nomenclature}) => {
   // Определяем название каталога
   const chapter = new URLSearchParams(window.location.search).get("chapter");
+  // Если заходим по адресу страницы с поисковиков и для ботов, достаем из адреса каталог
+  // if(chapter === undefined || chapter === null) {chapter = };
 
   // Проверка авторизации пользователя
   const isAuthenticated = localStorage.getItem('token') !== null;

@@ -21,6 +21,7 @@ import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
 import WarehousePage from "./AdminPanel/WarehousePage.jsx";
 import PurchasePage from './AdminPanel/PurchasePage.jsx';
 import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDelivery";
+import CatalogRoute from "./SearchResults/CatalogRoute.jsx";
 import ProductRoute from "./SearchResults/ProductRoute.jsx";
 import PersonalData from "./PersonalData/PersonalData.jsx";
 
@@ -236,8 +237,9 @@ const App = () => {
         {/* Для всех */}
         <Route path="/SearchResults" element={<SearchResults />} />
         {/* Перенаправление на страницу с поисковиков и ..тд, подменяет на динамическую страницу с артикулом */}
-        <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
         <Route path="/index.html" element={<Home />} />
+        <Route path="/products/:catalogFile" element={<CatalogRoute />} />
+        <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
 
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
