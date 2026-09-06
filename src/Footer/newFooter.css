@@ -3,7 +3,7 @@
     padding-bottom: 20px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
-    background-color: #192853;
+    background-color: #1D252C;
     max-width: 1920px;
     margin-right: auto;
     margin-left: auto;
@@ -18,9 +18,8 @@
     width: 100px;
 }
 
-.nf-link-list__item,
-.nf-contact-list__item {
-    color: #ECF4F7;
+.nf-link-list__item {
+    color: #F8F6F6;
 }
 
 .nf-ll-item__link {
@@ -29,4 +28,23 @@
 
 .nf-ll-item__link li:hover {
     color: #D26801;
+}
+
+.nf-contact-list__item {
+    display: flex;
+    align-items: center ;
+    padding-left: 30px;
+    padding-bottom: 2px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: #F8F6F6;
+    margin-bottom: 6px;
+}
+
+.nf-contact-list__item_mail {
+    background-image: url(../../public/images/icon/icon_footer_mail.svg);
+}
+
+.nf-contact-list__item_phone {
+    background-image: url(../../public/images/icon/icon_footer_viber.svg)
 }

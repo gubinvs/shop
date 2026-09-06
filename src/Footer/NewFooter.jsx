@@ -8,16 +8,17 @@ const NewFooter = () => {
                 <div className="container new-footer__container">
                     <img className="new-footer__logo-footer" src="/images/footer_logo_1920.svg" alt="#" />
                     <ul className="new-footer__link-list">
-                        <li className="nf-link-list__item">Страница контактов</li>
-                            <a href="/PersonalData" className="nf-ll-item__link">
-                                <li className="nf-link-list__item">Политика обработки персональных данных</li>
-                            </a>
-                            <li className="nf-link-list__item"></li>
+                        <a href="/PersonalData" className="nf-ll-item__link">
+                            <li className="nf-link-list__item">Политика обработки персональных данных</li>
+                        </a>
                     </ul>
                     <ul className="new-footer__contact-list">
-                        <li className="nf-contact-list__item">Санкт-Петербург</li>
-                        <li className="nf-contact-list__item">+7 (812) 921-59-71</li>
-                        <li className="nf-contact-list__item">support@en-market.ru</li>
+                        <a href="mailto:support@en-market.ru">
+                            <li className="nf-contact-list__item nf-contact-list__item_mail">support@en-market.ru</li>
+                        </a>
+                        <a href="phone:+79119215971">
+                            <li className="nf-contact-list__item nf-contact-list__item_phone">+7 (812) 921-59-71</li>
+                        </a>
                     </ul>
                 </div>
             </footer>
