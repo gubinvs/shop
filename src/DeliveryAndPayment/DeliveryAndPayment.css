@@ -1,17 +1,36 @@
-.delivery-payment-container {
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.delivery-section, .payment-section {
+.delivery-section, 
+.payment-section {
   margin-bottom: 40px;
 }
 
-.delivery-option, .payment-option {
+.delivery-payment__container {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
   margin-bottom: 20px;
 }
 
-.delivery-option h3, .payment-option h3 {
+.delivery-payment__main-block {
+  background-color: #FFFFFF;
+}
+
+.dp-main-block__images {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+
+
+
+.delivery-option, 
+.payment-option {
+  margin-bottom: 20px;
+}
+
+.delivery-option h3, 
+.payment-option h3 {
   color: #1D252C;
 }
 
@@ -34,8 +53,6 @@
   line-height: 28px;
   margin-bottom: 10px;
 }
-
-
 
 .delivery-options-wrapper,
 .payment-options-wrapper {
@@ -60,9 +77,16 @@
   transform: translateY(-5px);
 }
 
+.payment-option-card__title-block,
+.delivery-option-card__title-block {
+  display: flex;
+  align-items: center;
+}
+
 .delivery-option-card__icon,
 .payment-option-card__icon {
   font-size: 36px;
+  margin-right: 20px;
   margin-bottom: 15px;
 }
 
@@ -75,6 +99,7 @@
 
 .delivery-option-card__description,
 .payment-option-card__description {
+  text-align: justify;
   margin-bottom: 15px;
   font-size: 16px;
   color: #333;

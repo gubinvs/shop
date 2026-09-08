@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Header from "../Header/Header";
-import "./CompanyDashboard.css";
+import "./companyDashboard.css";
 import ApiUrl from "../js/ApiUrl";
 import Footer from "../Footer/Footer.jsx";
 

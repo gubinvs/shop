@@ -72,9 +72,17 @@
         width: 300px;
     }
 
+    .nf-link-list__item {
+        margin-bottom: 6px;
+    }
+
     .nf-contact-list__item,
     .nf-link-list__item {
         font-size: 14px;
+    }
+
+    .new-footer__contact-list {
+        width: 200px;
     }
 }
 
@@ -89,9 +97,5 @@
     .nf-contact-list__item,
     .nf-link-list__item {
         font-size: 10px;
-    }
-
-    .new-footer__contact-list {
-        width: 200px;
     }
 }

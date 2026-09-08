@@ -1,4 +1,4 @@
-import "./PersonalSpace.css";
+import "./personalSpace.css";
 import Home from "../Home/Home.jsx";
 
 

@@ -64,12 +64,16 @@
 
 .filter-block__item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  
+  width: 190px;
 }
 
 .filter-block__check {
   width: 20px;
   height: 20px;
+  margin-right: 10px;
 }
 
 
@@ -271,6 +275,8 @@
 
   .filter-block__list {
     display: flex;
+    flex-wrap: wrap;
+  
   }
 
   .user-info__define-user {
@@ -280,10 +286,6 @@
 
   .filter-block__item:not(:last-of-type) {
     margin-right: 20px;
-  }
-
-  .filter-block__list {
-    flex-wrap: wrap;
   }
 
   .filter-block__item:not(:last-of-type) {
