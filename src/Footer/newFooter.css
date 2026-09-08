@@ -12,6 +12,7 @@
 .new-footer__container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 .new-footer__logo-footer {
@@ -47,4 +48,53 @@
 
 .nf-contact-list__item_phone {
     background-image: url(../../public/images/icon/icon_footer_viber.svg)
+}
+
+
+
+
+
+@media only screen and (max-width: 800px) { 
+    .new-footer__logo-footer {
+        width: 50px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+
+    .new-footer {
+        padding-top: 18px;
+        margin-bottom: 40px;
+    }
+
+    .new-footer__logo-footer {
+        margin-right: 20px;
+    }
+
+    .new-footer__contact-list {
+        width: 300px;
+    }
+
+    .nf-contact-list__item,
+    .nf-link-list__item {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    .new-footer {
+        border-top-right-radius: 14px;
+        border-top-left-radius: 14px;
+        padding-bottom: 40px;
+    }
+
+    .nf-contact-list__item,
+    .nf-link-list__item {
+        font-size: 10px;
+    }
+
+    .new-footer__contact-list {
+        width: 200px;
+    }
 }

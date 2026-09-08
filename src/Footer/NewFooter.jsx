@@ -13,8 +13,8 @@ const NewFooter = () => {
                         </a>
                     </ul>
                     <ul className="new-footer__contact-list">
-                        <a href="mailto:support@en-market.ru">
-                            <li className="nf-contact-list__item nf-contact-list__item_mail">support@en-market.ru</li>
+                        <a href="mailto:support@ec-market.ru">
+                            <li className="nf-contact-list__item nf-contact-list__item_mail">support@ec-market.ru</li>
                         </a>
                         <a href="phone:+79119215971">
                             <li className="nf-contact-list__item nf-contact-list__item_phone">+7 (812) 921-59-71</li>

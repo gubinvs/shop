@@ -181,8 +181,20 @@
 }
 
 @media only screen and (max-width: 480px) {
+
+    .home-delivery-section {
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+    }
+
+    .home-delivery-section__context {
+        width: 80%;
+    }
+
     .home-delivery-section__discr {
-        width: 324px;
+        width: 300px;
         font-size: 12px;
         line-height: 16px;
         margin-bottom: 24px;
