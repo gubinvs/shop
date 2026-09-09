@@ -1,8 +1,10 @@
 import "./groupOfCards.css";
-import CardComponent from "../CardComponent/CardComponent";
+import CardComponent from "../CardComponent/CardComponent.jsx";
 
 
 
+//  cardData - массив данных о товарах, для отрисовки карточек товара
+// quantityCart - количество карточек товара которые необходимо выводить пользователю
 
 const GroupOfCards = ({
         cardData,
@@ -16,7 +18,16 @@ const GroupOfCards = ({
                     {cardData.slice(0, quantityCart).map((element, index)=>{
                         return(
                             <>
-                                <CardComponent key={index} urlImg={element.urlImgCard} price={element.priceGoods} dicription={element.discr} imgArray={element.images} linkPage={element.urlPage} grade={element.gradeGoods} reviews={element.reviewsGoods}/> 
+                                <CardComponent 
+                                    key={index} 
+                                    urlImg={element.UrlImgCard} 
+                                    price={element.PriceGoods} 
+                                    dicription={element.Discr} 
+                                    imgArray={element.Images} 
+                                    linkPage={element.UrlPage} 
+                                    grade={element.GradeGoods} 
+                                    reviews={element.ReviewsGoods}
+                                /> 
                             </>
                         );
                     })}

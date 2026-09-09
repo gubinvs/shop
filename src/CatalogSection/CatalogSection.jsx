@@ -1,13 +1,11 @@
-import {jsonCartTest} from "../js/jsonCartTest.js";
-
-
-
-import React from 'react';
+import { useState, useEffect } from 'react';
+import {jsonDataCardProduct} from "../js/jsonDataCardProduct.js";
 import "./catalogSection.css";
 import Header from '../Header/Header';
 import HeaderGuest from "../Header/HeaderGuest.jsx";
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from "../DirectoryGroups/NewDirectoryGroupsMin.jsx";
+import NewFooter from '../Footer/NewFooter.jsx';
 
 const CatalogSection = ({nomenclature}) => {
   // Определяем название каталога
@@ -17,9 +15,27 @@ const CatalogSection = ({nomenclature}) => {
 
   // Проверка авторизации пользователя
   const isAuthenticated = localStorage.getItem('token') !== null;
+
+      const [products, setProducts] = useState([]);
+      const [loading, setLoading] = useState(true);
+  
+      useEffect(() => {
+          // 2. Вызываем асинхронную функцию внутри useEffect
+          jsonDataCardProduct()
+              .then(data => {
+                  setProducts(data);
+                  setLoading(false);
+              })
+              .catch(error => {
+                  console.error("Ошибка при загрузке:", error);
+                  setLoading(false);
+              });
+      }, []);
+  
+      if (loading) return <div>Загрузка...</div>;
   
   // Фильтруеммассив по принадлежности товара к каталогу
-  const cardDataSort = jsonCartTest.filter(item => item.chapter === chapter);
+  const cardDataSort = products.filter(item => item.Chapter === chapter);
   
   return (
     <>
@@ -31,6 +47,8 @@ const CatalogSection = ({nomenclature}) => {
 
       {/*--- Карточки товара ----*/}
       <GroupOfCards cardData={cardDataSort} />
+
+      <NewFooter/>
     </>
   );
 };
