@@ -1,7 +1,11 @@
 .delivery-payment-section {  
+  max-width: 1920px;
   border-radius: 30px;
   background-color: #FFFFFF;
+  margin-right: auto;
+  margin-left: auto;
   margin-bottom: 20px;
+ 
 }
 
 .delivery-section, 

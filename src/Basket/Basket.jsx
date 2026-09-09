@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Header from "../Header/Header.jsx";
 import Cart from "./Cart.jsx";
 import ApiUrl from "../js/ApiUrl.js";
+import NewFooter from "../Footer/NewFooter.jsx";
 
 const Basket = () => {
     const [fullBasket, setFullBasket] = useState([]);
@@ -124,6 +125,7 @@ const Basket = () => {
         <>
             <Header />
             <Cart item={combinedItems} />
+            <NewFooter/>
         </>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./Cart.css";
+import "./cart.css";
 import addOrder from '../js/AddOrder.js';
 import { formatPrice } from "../js/formatPrice.js";
 
@@ -44,53 +44,55 @@ const Cart = (props) => {
 
   return (
     <>
-      <div className="container cart-component-container">
-        <h1 className="cart-component__title">Комплектация заказа:</h1>
-        <div className="cart-items">
-          {cartItems.map(item => (
-            <div key={item.id} className="cart-item">
-              <div className="cart-images-container">
-                <img src={item.image} alt={item.name} className="cart-images" />
-              </div>
-              <div className="cart-item-details">
-                <p><strong>{item.vendorCode}</strong></p>
-                <p><strong>{item.name}</strong></p>
-                <p>{formatPrice(item.price)}</p>
-              </div>
-              <div className="cart-item-actions">
-                <button onClick={() => removeItem(item.id)} disabled={isSubmitting}>Удалить</button>
-                <input 
-                  type="number" 
-                  value={item.quantity} 
-                  min="1"
-                  onChange={(e) => updateQuantity(item.id, parseInt(e.target.value, 10))}
-                  disabled={isSubmitting}
-                />
-              </div>
+      <section className="cart-basket-section">
+          <div className="container cart-component-container">
+            <h1 className="cart-component__title">Комплектация заказа:</h1>
+            <div className="cart-items">
+              {cartItems.map(item => (
+                <div key={item.id} className="cart-item">
+                  <div className="cart-images-container">
+                    <img src={item.image} alt={item.name} className="cart-images" />
+                  </div>
+                  <div className="cart-item-details">
+                    <p><strong>{item.vendorCode}</strong></p>
+                    <p><strong>{item.name}</strong></p>
+                    <p>{formatPrice(item.price)}</p>
+                  </div>
+                  <div className="cart-item-actions">
+                    <button onClick={() => removeItem(item.id)} disabled={isSubmitting}>Удалить</button>
+                    <input 
+                      type="number" 
+                      value={item.quantity} 
+                      min="1"
+                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value, 10))}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="summary">
-            <div className="total" style={{ fontWeight: 'bold' }}>
-              <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
+            <div className="summary">
+                <div className="total" style={{ fontWeight: 'bold' }}>
+                  <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
+                </div>
+                <div className="total">
+                  <span>В том числе, НДС 22%</span><span>{formatPrice(tax)}</span>
+                </div>
+                <button 
+                  className="checkout-button" 
+                  onClick={handleOrder} 
+                  disabled={isSubmitting || cartItems.length === 0}
+                >
+                  {isSubmitting ? "Оформление заказа..." : "Оформить заказ"}
+                </button>
+                {isSubmitting && (
+                  <p style={{ marginTop: "10px", color: "#555" }}>Идет оформление заказа, подождите...</p>
+                )}
+                {error && <p className="error">{error}</p>}
             </div>
-            <div className="total">
-              <span>В том числе, НДС 22%</span><span>{formatPrice(tax)}</span>
-            </div>
-            <button 
-              className="checkout-button" 
-              onClick={handleOrder} 
-              disabled={isSubmitting || cartItems.length === 0}
-            >
-              {isSubmitting ? "Оформление заказа..." : "Оформить заказ"}
-            </button>
-            {isSubmitting && (
-              <p style={{ marginTop: "10px", color: "#555" }}>Идет оформление заказа, подождите...</p>
-            )}
-            {error && <p className="error">{error}</p>}
-        </div>
-      </div>
+          </div>
+      </section>
     </>
   );
 };

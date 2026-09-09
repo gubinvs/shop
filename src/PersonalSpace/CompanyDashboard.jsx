@@ -132,11 +132,9 @@ const CompanyDashboard = () => {
   return (
     <>
       <Header />
-      <div className="company-dashboard">
-        <div className="cart-component-container cart-component-container__main-block">
-          <img src="../../images/cabiten-page-image.jpg" className="cart-main-block__images" alt="Company Dashboard" />
-        </div>
+      <section className="company-dashboard">
         <div className="container company-dashboard-section__container">
+          <img src="../../images/cabiten-page-image.jpg" className="company-dashboard__main-images" alt="Company Dashboard" />
           <div className="company-dashboard-section__left-block">
             <h1 className="company-dashboard-section__title">Информация о компании:</h1>
             <div className="company-info">
@@ -222,7 +220,7 @@ const CompanyDashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <Footer />
     </>
   );

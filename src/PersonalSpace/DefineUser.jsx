@@ -137,7 +137,7 @@ const DefineUser = () => {
   return (
     <>
       <Header />
-      <div className="define-user-page define-user-page__container">
+      <section className="define-user-page define-user-page__container">
         <div className="cart-component-container cart-component-container__main-block">
           <img src="../../images/orders-page-images.jpg" className="cart-main-block__images"  alt="#"/>
         </div>
@@ -183,7 +183,7 @@ const DefineUser = () => {
           </ul>
         </div>
 
-        <div className="container orders-list-container">
+        <div className="container">
           <div className="orders-list">
             {currentOrders.length === 0 ? (
               <p>Заказы отсутствуют</p>
@@ -260,7 +260,7 @@ const DefineUser = () => {
             </div>
           )}
         </div>
-      </div>
+      </section>
       <Footer />
     </>
   );

@@ -1,11 +1,12 @@
 .home-delivery-section {
+    width: 100%;
+    max-width: 1920px;
     border-radius: 30px;
     padding-top: 40px;
     padding-bottom: 40px;
     margin-bottom: 20px;
-    background-color: #192853;
-    width: 100%;
-    max-width: 1920px;
+    /* background-color: #192853; */
+    background-color: #D26801;
     margin-right: auto;
     margin-left: auto;
 }
@@ -64,8 +65,8 @@
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
-    background-color: #ECF4F7;
-    color: #D26801;
+    background-color: #1D252C;
+    color: #FFFFFF;
     border: 0px;
     cursor: pointer;
 }
