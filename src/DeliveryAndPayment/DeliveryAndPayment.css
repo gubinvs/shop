@@ -1,3 +1,12 @@
+.delivery-payment-section {  
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+
+
+
 .delivery-section, 
 .payment-section {
   margin-bottom: 40px;
@@ -7,8 +16,7 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: 20px;
-  background-color: #FFFFFF;
-  margin-bottom: 20px;
+
 }
 
 .delivery-payment__main-block {
@@ -20,9 +28,6 @@
   border-radius: 20px;
   margin-bottom: 40px;
 }
-
-
-
 
 .delivery-option, 
 .payment-option {
