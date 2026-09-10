@@ -1,5 +1,4 @@
 import "./cardComponent.css";
-import React from "react";
 import { useState, useRef } from "react";
 
 
@@ -53,29 +52,35 @@ const CardComponent = (
                     onScroll={handleScroll}
                     className="card-goods__slider-native"
                 >
-                    {images.map((url, index) => (
-                        <img 
-                            key={index} 
-                            src={url} 
-                            className="card-goods__img card-goods__img-slide" 
-                            alt={`Product ${index}`} 
-                            onClick={() => window.location.href = linkPage} 
-                        />
-                    ))}
+                    {images.map((url, index) => {
+                        if (url === "Нет данных") return null;
+                        return (
+                            <img 
+                                key={index} 
+                                src={url} 
+                                className="card-goods__img card-goods__img-slide" 
+                                alt={`Product ${index}`} 
+                                onClick={() => window.location.href = linkPage} 
+                            />
+                        )
+                    })}
                 </div>
 
                 {/* Блок с точками пагинации */}
                 {images.length > 1 && (
                     <div className="card-goods__dots">
-                    {images.map((_, index) => (
-                        <button
-                            key={index}
-                            type="button"
-                            className={`card-goods__dot ${index === activeIndex ? "card-goods__dot--active" : ""}`}
-                            onClick={() => scrollToSlide(index)}
-                            aria-label={`Перейти к слайду ${index + 1}`}
-                        />
-                    ))}
+                        {images.map((element, index) => {
+                            if (element === "Нет данных") return null;
+                            return (
+                                <button
+                                    key={index}
+                                    type="button"
+                                    className={`card-goods__dot ${index === activeIndex ? "card-goods__dot--active" : ""}`}
+                                    onClick={() => scrollToSlide(index)}
+                                    aria-label={`Перейти к слайду ${index + 1}`}
+                                />
+                            );
+                        })}
                     </div>
                 )}
 
