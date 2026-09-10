@@ -18,8 +18,8 @@ const PageComponentCharacteristicsSection   = ({vendor, characteristics }) => {
                                 return(
                                     <>
                                         <li className="cs-table-list__item" key={index}>
-                                            <div className={itemGrey? "cs-table-list-item__name item_grey" : "cs-table-list-item__name"}>{item.name}</div>
-                                            <div className={itemGrey? "cs-table-list-item__param item_grey" : "cs-table-list-item__param"}>{item.characteristic}</div>
+                                            <div className={itemGrey? "cs-table-list-item__name item_grey" : "cs-table-list-item__name"}>{item.Name}</div>
+                                            <div className={itemGrey? "cs-table-list-item__param item_grey" : "cs-table-list-item__param"}>{item.Characteristic}</div>
                                         </li>
                                     </>
                                 );

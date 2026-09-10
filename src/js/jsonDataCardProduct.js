@@ -95,7 +95,6 @@ export const jsonDataCardProduct = async () => {
         headers: {
             "accept": "*/*"
         }
-        // body отправлять НЕ нужно, так как сервер принимает пароль из URL
     });
 
     if (!response.ok) {

@@ -12,13 +12,13 @@ const PageComponent = ({dataComponent})=> {
             <PageComponentMainSection dataComponent={dataComponent} />
 
             {/* Секция с описанием товара */}
-            <PageComponentDiscription discription={dataComponent.productDescription}/>
+            <PageComponentDiscription discription={dataComponent.ProductDescription}/>
 
             {/* -- Секция с динамическими характеристиками товара, принимает пропсом артикул и выводит в заголовке,а также массив с характеристиками */}
-            <PageComponentCharacteristicsSection vendor={dataComponent.vendorCode} characteristics={dataComponent.characteristics}/>
+            <PageComponentCharacteristicsSection vendor={dataComponent.VendorCode} characteristics={dataComponent.Characteristics}/>
 
             {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
-            <PageComponentDocFileSection file={dataComponent.file} />         
+            <PageComponentDocFileSection file={dataComponent.File} />         
 
         </>
     );

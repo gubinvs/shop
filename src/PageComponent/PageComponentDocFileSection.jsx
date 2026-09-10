@@ -18,10 +18,10 @@ const PageComponentDocFileSection = ({file}) => {
                                         key={index}
                                         className="doc-file-section__item"
                                     >
-                                        <div className="dfs-item__name">{item.name}</div>
+                                        <div className="dfs-item__name">{item.Name}</div>
                                         <div 
                                             className="dfs-item__link"
-                                            onClick={() => window.location.href = item.link}
+                                            onClick={() => window.location.href = item.Link}
                                         >Открыть</div>
                                     </li>
                                 </>

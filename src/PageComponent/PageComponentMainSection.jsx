@@ -22,7 +22,7 @@ const PageComponentMainSection = ({dataComponent}) => {
     // Перебираем массив и присваиваем по умолчанию значения
     useEffect(() => {
         // Фильтруем и сразу маппим в массив из false
-        const filteredArray = dataComponent.dopImages
+        const filteredArray = dataComponent.DopImages
             .map(() => false); 
 
         setMaxImgBlock(filteredArray);
@@ -50,7 +50,7 @@ const PageComponentMainSection = ({dataComponent}) => {
     
     // Отфильтруем массив и проверим наличие нашего товара
     useEffect(()=>{
-        const isExist = basketProduct.some(item => item.vendorCode === dataComponent.vendorCode); // метод some не просто фльтрует, он выдает true, если значение есть и наоборот
+        const isExist = basketProduct.some(item => item.VendorCode === dataComponent.VendorCode); // метод some не просто фльтрует, он выдает true, если значение есть и наоборот
 
         if (isExist) {
             setIsItemBasket(true);
@@ -63,15 +63,15 @@ const PageComponentMainSection = ({dataComponent}) => {
         <>
             <section className="component-page-section">
                 <div className="container component-page-section__container">
-                    <h1 className="component-page-section__title">{dataComponent.vendorCode + "," + " " + dataComponent.nameComponent}</h1>
+                    <h1 className="component-page-section__title">{dataComponent.VendorCode + "," + " " + dataComponent.NameComponent}</h1>
                     <div className="component-page-section__main-block">
 
                         {/* Основная фотография товара */}
-                        <img src={dataComponent.mainImagePage} alt={"Фото товара с артикулом" + dataComponent.vendorCode} className="cps-main-block__img" />
+                        <img src={dataComponent.MainImagePage} alt={"Фото товара с артикулом" + dataComponent.VendorCode} className="cps-main-block__img" />
                         
                         {/* Дополнительные фото товара */}
                         <div className="cps-main-block__img-dop-block">
-                            {dataComponent.dopImages.map((item, index) => {
+                            {dataComponent.DopImages.map((item, index) => {
                                 if(index === 3) {
                                     return;
                                 }
@@ -100,7 +100,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                         <div className="component-page-section__data">
                             <div className="cps-data__vendor">
                                 <span className="cps-d-vendor__name">Артикул производителя:</span>
-                                <span className="cps-d-vendor__vendor">{dataComponent.vendorCode}</span> 
+                                <span className="cps-d-vendor__vendor">{dataComponent.VendorCode}</span> 
                             </div>
                             <hr className='cps-data__hr'/>
                             <div class='characteristics-block'>
@@ -108,18 +108,18 @@ const PageComponentMainSection = ({dataComponent}) => {
                                 <ul class='characteristics-block__list'>
                                     <li key={1} class='characteristics-block__item flex'>
                                         <div class='characteristics-item__title'>Производитель:</div>
-                                        <div class='characteristics-item__discr'>{dataComponent.manufacturer}</div>
+                                        <div class='characteristics-item__discr'>{dataComponent.Manufacturer}</div>
                                     </li>
                                      <li key={1} class='characteristics-block__item flex'>
                                         <div class='characteristics-item__title'>Произведено:</div>
-                                        <div class='characteristics-item__discr'>{dataComponent.origin}</div>
+                                        <div class='characteristics-item__discr'>{dataComponent.Origin}</div>
                                     </li>
-                                    {dataComponent.discriptionParam.map((item, index) => {
+                                    {dataComponent.DiscriptionParam.map((item, index) => {
                                         return(
                                             <>
                                                 <li key={index+50} class='characteristics-block__item flex'>
-                                                    <div class='characteristics-item__title'>{item.name}</div>
-                                                    <div class='characteristics-item__discr'>{item.param}</div>
+                                                    <div class='characteristics-item__title'>{item.Name}</div>
+                                                    <div class='characteristics-item__discr'>{item.Param}</div>
                                                 </li>
                                             </>
                                         );
@@ -131,12 +131,12 @@ const PageComponentMainSection = ({dataComponent}) => {
                                     <div className="cpsd-warehouse-block__title">Наличие на складах:</div>
                                     <div className="cpsd-warehouse-block__title_fon"></div>
                                     <div className="cpsd-warehouse-block__warehouse">
-                                        {dataComponent.warehouse.map((element, index) => {
+                                        {dataComponent.Warehouse.map((element, index) => {
                                             return (
                                                 <>
                                                     <div className='warehouse-param'>
-                                                        <div key={index+100} className="cpsd-wb-warehouse__name">{element.name}</div>
-                                                        <div key={index+1000} className="cpsd-wb-warehouse__quantity">{element.quantity} шт.</div>
+                                                        <div key={index+100} className="cpsd-wb-warehouse__name">{element.Name}</div>
+                                                        <div key={index+1000} className="cpsd-wb-warehouse__quantity">{element.Quantity} шт.</div>
                                                     </div>
                                                 </>
                                             );
@@ -145,7 +145,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                 </div>
                                 <div className="cps-data__price-block">
                                     <div className="cps-d-price-block__price">
-                                        {dataComponent.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
+                                        {dataComponent.Price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
                                     <span className="cps-d-price-block__nalog">в т.ч. НДС</span>
                                     </div>
                                     {!isItemBasket?
@@ -167,7 +167,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                 
                             </div>
                             <div className="cps-data__button-block">
-                                <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.ozonLink}}>Купить на ОЗОН</button>
+                                <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.OzonLink}}>Купить на ОЗОН</button>
                                 <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить на сайте</button>
                             </div>
                         </div>
