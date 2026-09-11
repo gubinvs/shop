@@ -77,7 +77,9 @@ const PageComponentMainSection = ({dataComponent}) => {
                         {/* Дополнительные фото товара */}
                         <div className="cps-main-block__img-dop-block">
                             {dataComponent.DopImages.map((item, index) => {
-                                if(item === "") return;
+                                if(item === "" || item === undefined || item === null || item === "Нет данных") return;
+
+                                console.log(item)
                                 return (
                                     <>
                                         <img 
