@@ -32,7 +32,7 @@ const CatalogSection = ({nomenclature}) => {
               });
       }, []);
   
-      if (loading) return <div>Загрузка...</div>;
+      if (loading) return <LoadingSpinner />;
   
   // Фильтруеммассив по принадлежности товара к каталогу
   const cardDataSort = products.filter(item => item.Chapter === chapter);

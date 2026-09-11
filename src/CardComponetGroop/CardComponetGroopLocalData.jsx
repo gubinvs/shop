@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const CardComponetGroopLocalData = ({ h2, item}) => {
     const location = useLocation();
@@ -188,10 +189,7 @@ const CardComponetGroopLocalData = ({ h2, item}) => {
 
     if (loading) {
         return (
-            <div className="loading-wrapper">
-                <div className="spinner"></div>
-                <p>Загрузка данных...</p>
-            </div>
+            <LoadingSpinner />
         );
     }
 

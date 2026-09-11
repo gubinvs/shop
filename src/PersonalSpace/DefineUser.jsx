@@ -5,6 +5,7 @@ import "./personalSpace.css";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import FullOrderInformation from "./FullOrderInformation.jsx";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const DefineUser = () => {
   const [userInfo, setUserInfo] = useState([]);
@@ -102,10 +103,7 @@ const DefineUser = () => {
   };
 
   if (loading) return (
-    <div className="loading-wrapper">
-      <div className="spinner"></div>
-      <p>Загрузка данных...</p>
-    </div>
+    <LoadingSpinner />
   );
 
   if (error) return  <div className="container define-user-page__container">Необходима верификация! {window.location.href = "/Authorization"}</div>;

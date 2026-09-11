@@ -7,6 +7,7 @@ import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from '../DirectoryGroups/NewDirectoryGroupsMin.jsx';
 import DeliverySection from "../DeliveryAndPayment/DeliverySection.jsx";
 import Footer from "../Footer/Footer.jsx";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 
 const Home = () => {    
@@ -30,7 +31,7 @@ const Home = () => {
             });
     }, []);
 
-    if (loading) return <div>Загрузка...</div>;
+    if (loading) return <LoadingSpinner />;
 
     return (
         <>

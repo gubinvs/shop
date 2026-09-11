@@ -3,6 +3,7 @@ import { productDataPage } from '../js/productDataPage.js';
 import Header from '../Header/Header.jsx';
 import HeaderGuest from '../Header/HeaderGuest.jsx';
 import PageComponent from '../PageComponent/PageComponent.jsx';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 // import { components } from '../js/components.js'; // Временный массив
 
@@ -74,11 +75,11 @@ const SearchResults = (
            
             {/* -- страница товара */}
             {loading ? (
-                <div>Загрузка данных товаре...</div>
+                <LoadingSpinner />
             ) : component ? (
                 <PageComponent dataComponent={component} />
             ) : (
-                <div>Загрузка данных о товаре...</div>
+                <LoadingSpinner />
             )}
 
         </>

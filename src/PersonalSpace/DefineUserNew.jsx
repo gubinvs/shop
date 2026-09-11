@@ -5,6 +5,7 @@ import Header from "../Header/Header.jsx";
 import UserInfo from "./UserInfo.jsx";
 import OrderFilters from "./OrderFilters.jsx";
 import OrderList from "./OrderList.jsx";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const DefineUser = () => {
   const [userInfo, setUserInfo] = useState([]);
@@ -45,7 +46,7 @@ const DefineUser = () => {
     fetchData();
   }, []);
 
-  if (loading) return <div className="loading-wrapper"><div className="spinner"></div><p>Загрузка данных...</p></div>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <div>Ошибка: {error}</div>;
 
   return (

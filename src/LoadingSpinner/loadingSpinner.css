@@ -1,0 +1,48 @@
+.loading-spinner {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    z-index: 9999;
+}
+
+/* Кольцо */
+.loading-spinner__ring {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    border: 16px solid rgba(52, 47, 44, 0.12);
+    border-top-color: #f5ea29;
+
+    animation: loading-spin 0.9s linear infinite;
+}
+
+/* Логотип */
+.loading-spinner__logo {
+    position: relative;
+
+    width: 103px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+/* Вращение кольца */
+@keyframes loading-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

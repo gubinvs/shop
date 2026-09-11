@@ -24,6 +24,7 @@ import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDe
 import CatalogRoute from "./SearchResults/CatalogRoute.jsx";
 import ProductRoute from "./SearchResults/ProductRoute.jsx";
 import PersonalData from "./PersonalData/PersonalData.jsx";
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner.jsx';
 
 
 // ===== Проверка токена =====
@@ -51,7 +52,7 @@ function ProtectedRoute({ children }) {
     setLoading(false);
   }, []);
 
-  if (loading) return <div>Загрузка...</div>;
+  if (loading) return <LoadingSpinner/>;
 
   return isAuthenticated ? children : <Navigate to="/Authorization" replace />;
 }
@@ -94,7 +95,7 @@ function AdminRoute({ children }) {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div>Проверка прав доступа...</div>;
+  if (loading) return <LoadingSpinner />;
 
   return isAdmin ? children : <Navigate to="/" replace />;
 }

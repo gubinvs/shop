@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import "./companyDashboard.css";
 import ApiUrl from "../js/ApiUrl";
 import Footer from "../Footer/Footer.jsx";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const CompanyDashboard = () => {
   const [companyData, setCompanyData] = useState(null);
@@ -118,10 +119,7 @@ const CompanyDashboard = () => {
 
   if (loading) {
     return (
-      <div className="loading-wrapper">
-        <div className="spinner"></div>
-        <p>Загрузка данных...</p>
-      </div>
+      <LoadingSpinner />
     );
   }
 

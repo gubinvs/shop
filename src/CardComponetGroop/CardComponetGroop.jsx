@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './CardComponetGroop.css';
 import ApiUrl from '../js/ApiUrl.js';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx';
 
 const CardComponetGroop = (param) => {
     const [items, setItems] = useState([]);
@@ -128,7 +129,7 @@ const CardComponetGroop = (param) => {
         return (
             <div className="loading-wrapper">
                 <div className="spinner"></div>
-                <p>Загрузка данных...</p>
+                <LoadingSpinner />
             </div>
         );
     }
