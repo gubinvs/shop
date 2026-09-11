@@ -6,6 +6,7 @@ import HeaderGuest from "../Header/HeaderGuest.jsx";
 import GroupOfCards from '../GroupOfCards/GroupOfCards.jsx';
 import NewDirectoryGroupsMin from "../DirectoryGroups/NewDirectoryGroupsMin.jsx";
 import NewFooter from '../Footer/NewFooter.jsx';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const CatalogSection = ({nomenclature}) => {
   // Определяем название каталога
