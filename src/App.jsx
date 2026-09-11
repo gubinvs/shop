@@ -103,99 +103,99 @@ function AdminRoute({ children }) {
 // ===== Основное приложение =====
 const App = () => {
 
-  const [nomenclature, setNomenclature] = useState([]);
+  // const [nomenclature, setNomenclature] = useState([]);
   // Загрузка данных о собственной номенклатуре магазина,
   // по которой ведется учет оприходования и расхода, она 
   // ПОМЕЧЕНА Bestseller
-  const [nomenclatureAdmin, setNomenclatureAdmin] = useState([]);
+  // const [nomenclatureAdmin, setNomenclatureAdmin] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-            // 1. Загружаем данные из IndexedDB сразу
-        const cachedData = await getAllItems();
-        if (cachedData.length > 0) {
-          setNomenclature(cachedData);
-          // console.log("Данные загружены из IndexedDB");
-        }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //           // 1. Загружаем данные из IndexedDB сразу
+  //       const cachedData = await getAllItems();
+  //       if (cachedData.length > 0) {
+  //         setNomenclature(cachedData);
+  //         // console.log("Данные загружены из IndexedDB");
+  //       }
         
-        // 2. Делаем запрос к API
-        const response = await fetch(ApiUrl + "/api/ReturnAllItem");
-        if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
+  //       // 2. Делаем запрос к API
+  //       const response = await fetch(ApiUrl + "/api/ReturnAllItem");
+  //       if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
 
-        const data = await response.json();
-        const formattedData = data
-        // .filter(item => Number(item.quantity) > 0)
-        .map(item => {
-          // console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
-          return {
-            id: Number(item.id),
-            imgLinkIconCard: item.imgLinkIconCard,
-            vendorCode: item.vendorCode,
-            nameComponent: item.nameComponent,
-            quantity: Number(item.quantity),
-            linkPage: item.linkPage,
-            price: item.price,
-            chapter: item.chapter,
-            basketImgPath: item.basketImgPath,
-            guidId: item.guid,
-            manufacturer: item.manufacturer,
-          };
-        });
+  //       const data = await response.json();
+  //       const formattedData = data
+  //       // .filter(item => Number(item.quantity) > 0)
+  //       .map(item => {
+  //         // console.log(`ID: ${item.id}, Quantity: ${item.quantity}`);
+  //         return {
+  //           id: Number(item.id),
+  //           imgLinkIconCard: item.imgLinkIconCard,
+  //           vendorCode: item.vendorCode,
+  //           nameComponent: item.nameComponent,
+  //           quantity: Number(item.quantity),
+  //           linkPage: item.linkPage,
+  //           price: item.price,
+  //           chapter: item.chapter,
+  //           basketImgPath: item.basketImgPath,
+  //           guidId: item.guid,
+  //           manufacturer: item.manufacturer,
+  //         };
+  //       });
 
-        // 3. Сохраняем новые или обновленные элементы в IndexedDB
-        await saveOrUpdateItems(formattedData);
+  //       // 3. Сохраняем новые или обновленные элементы в IndexedDB
+  //       await saveOrUpdateItems(formattedData);
 
-        // 4. Обновляем стейт — загружаем всё заново из IndexedDB, чтобы быть уверенным
-        const updatedData = await getAllItems();
-        setNomenclature(updatedData);
+  //       // 4. Обновляем стейт — загружаем всё заново из IndexedDB, чтобы быть уверенным
+  //       const updatedData = await getAllItems();
+  //       setNomenclature(updatedData);
 
-        //console.log("Данные обновлены с API и сохранены в IndexedDB");
+  //       //console.log("Данные обновлены с API и сохранены в IndexedDB");
 
-      } catch (err) {
-        console.error("Ошибка загрузки номенклатуры:", err);
-      }
-    };
+  //     } catch (err) {
+  //       console.error("Ошибка загрузки номенклатуры:", err);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // Загружаем номенклатуру для СВОЕГО СКЛАДА (ПОМЕЧЕНЫ БЕСЦЕЛЛЕР 1)
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // 2. Делаем запрос к API
-        const response = await fetch(ApiUrl + "/api/BestsellersAdmin");
-        if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // 2. Делаем запрос к API
+  //       const response = await fetch(ApiUrl + "/api/BestsellersAdmin");
+  //       if (!response.ok) throw new Error("Ошибка запроса: " + response.status);
 
-        const data = await response.json();
-        const formattedData = data
-        .map(item => {  
-          return {
-            id: Number(item.id),
-            imgLinkIconCard: item.imgLinkIconCard,
-            vendorCode: item.vendorCode,
-            nameComponent: item.nameComponent,
-            quantity: Number(item.quantity),
-            linkPage: item.linkPage,
-            price: item.price,
-            chapter: item.chapter,
-            basketImgPath: item.basketImgPath,
-            guidId: item.guid,
-            manufacturer: item.manufacturer,
-          };
-        });
+  //       const data = await response.json();
+  //       const formattedData = data
+  //       .map(item => {  
+  //         return {
+  //           id: Number(item.id),
+  //           imgLinkIconCard: item.imgLinkIconCard,
+  //           vendorCode: item.vendorCode,
+  //           nameComponent: item.nameComponent,
+  //           quantity: Number(item.quantity),
+  //           linkPage: item.linkPage,
+  //           price: item.price,
+  //           chapter: item.chapter,
+  //           basketImgPath: item.basketImgPath,
+  //           guidId: item.guid,
+  //           manufacturer: item.manufacturer,
+  //         };
+  //       });
 
-        // 3. Сохраняем новые или обновленные элементы в IndexedDB
-        await setNomenclatureAdmin(formattedData);
+  //       // 3. Сохраняем новые или обновленные элементы в IndexedDB
+  //       await setNomenclatureAdmin(formattedData);
 
-      } catch (err) {
-        console.error("Ошибка загрузки номенклатуры:", err);
-      }
-    };
+  //     } catch (err) {
+  //       console.error("Ошибка загрузки номенклатуры:", err);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <Router>
@@ -203,36 +203,36 @@ const App = () => {
         <Route path="/" element={<Home />} />
 
         {/* Только для администратора */}
-        <Route path="/AdminPanel" element={
+        {/* <Route path="/AdminPanel" element={
               <AdminRoute>
                 <AdminPanel />
               </AdminRoute>
             }
-        />
-        <Route path="/ComingPage" element={
+        /> */}
+        {/* <Route path="/ComingPage" element={
               <AdminRoute>
                 <ComingPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        />
-        <Route path="/ConsumptionPage" element={
+        /> */}
+        {/* <Route path="/ConsumptionPage" element={
               <AdminRoute>
                 <ConsumptionPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        />
-        <Route path="/WarehousePage" element={
+        /> */}
+        {/* <Route path="/WarehousePage" element={
               <AdminRoute>
                 <WarehousePage />
               </AdminRoute>
             }
-        />
-        <Route path="/PurchasePage" element={
+        /> */}
+        {/* <Route path="/PurchasePage" element={
               <AdminRoute>
                 <PurchasePage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        />
+        /> */}
 
 
         {/* Для всех */}
@@ -246,7 +246,7 @@ const App = () => {
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/UpdatePassword" element={<UpdatePassword />} />
-        <Route path="/CatalogSection" element={<CatalogSection nomenclature={nomenclature} />} />
+        <Route path="/CatalogSection" element={<CatalogSection />} />
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/RegistrationAndDelivery" element={<RegistrationAndDelivery />} />
         <Route path='/PersonalData' element={<PersonalData />}/>

@@ -52,8 +52,6 @@ const SearchResults = (
             try {
                 const data = await productDataPage(vendorCode);
 
-                console.log(data);
-
                 setComponent(data);
             } catch (error) {
                 console.log("Ошибка загрузки товара:", error);

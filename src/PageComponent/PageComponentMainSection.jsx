@@ -1,4 +1,4 @@
-import {addProductToCart} from "../js/addProductToCart.js";
+import {addProductToDasket} from "../js/addProductToDasket.js";
 
 import { useEffect, useState } from "react";
 import "./pageComponentMainSection.css";
@@ -13,7 +13,9 @@ const PageComponentMainSection = ({dataComponent}) => {
 
 
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
-    const basketProduct = JSON.parse(localStorage.getItem('cart'));
+    const [basketProduct, setBasketProduct] = useState(() => {
+        return JSON.parse(localStorage.getItem('cart')) || [];
+    });
     const [isItemBasket, setIsItemBasket] = useState(false);
 
     // Состояние блоков вывода на экран большой картинки товара
@@ -49,14 +51,17 @@ const PageComponentMainSection = ({dataComponent}) => {
     
     
     // Отфильтруем массив и проверим наличие нашего товара
-    useEffect(()=>{
-        const isExist = basketProduct.some(item => item.VendorCode === dataComponent.VendorCode); // метод some не просто фльтрует, он выдает true, если значение есть и наоборот
+    useEffect(() => {
+        const isExist = basketProduct?.some(item => 
+            (item.VendorCode === dataComponent.VendorCode) || (item.vendorCode === dataComponent.VendorCode)
+        );
 
         if (isExist) {
             setIsItemBasket(true);
-        };
-    }, []);
-
+        } else {
+            setIsItemBasket(false);
+        }
+    }, [basketProduct, dataComponent.VendorCode]);
 
 
     return (
@@ -72,15 +77,13 @@ const PageComponentMainSection = ({dataComponent}) => {
                         {/* Дополнительные фото товара */}
                         <div className="cps-main-block__img-dop-block">
                             {dataComponent.DopImages.map((item, index) => {
-                                if(index === 3) {
-                                    return;
-                                }
+                                if(item === "") return;
                                 return (
                                     <>
                                         <img 
                                             key={index} 
                                             src={item} 
-                                            alt="#" 
+                                            alt="." 
                                             className="cmb-img-dop-block__img"
                                             onClick={()=> openBigImageForClick(index)}
                                         />
@@ -152,7 +155,10 @@ const PageComponentMainSection = ({dataComponent}) => {
                                     <>
                                         <button 
                                             className="cps-d-button-block__basket-button"
-                                            onClick={()=> addProductToCart(dataComponent, urlParams)}
+                                            onClick={()=> {
+                                                addProductToDasket(dataComponent);
+                                                setIsItemBasket(true);
+                                            }}
                                         >Добавить в корзину</button>
                                     </>:
                                     <>
@@ -168,7 +174,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                             </div>
                             <div className="cps-data__button-block">
                                 <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.OzonLink}}>Купить на ОЗОН</button>
-                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить на сайте</button>
+                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить</button>
                             </div>
                         </div>
                     </div>

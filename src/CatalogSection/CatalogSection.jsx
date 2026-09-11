@@ -8,7 +8,7 @@ import NewDirectoryGroupsMin from "../DirectoryGroups/NewDirectoryGroupsMin.jsx"
 import NewFooter from '../Footer/NewFooter.jsx';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
-const CatalogSection = ({nomenclature}) => {
+const CatalogSection = () => {
   // Определяем название каталога
   const chapter = new URLSearchParams(window.location.search).get("chapter");
   // Если заходим по адресу страницы с поисковиков и для ботов, достаем из адреса каталог

@@ -21,7 +21,6 @@ const Home = () => {
         // 2. Вызываем асинхронную функцию внутри useEffect
         jsonDataCardProduct()
             .then(data => {
-                console.log(data);
                 setProducts(data);
                 setLoading(false);
             })
