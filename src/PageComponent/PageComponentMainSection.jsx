@@ -151,7 +151,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                 <div className="cps-data__price-block">
                                     <div className="cps-d-price-block__price">
                                         {dataComponent.Price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
-                                    <span className="cps-d-price-block__nalog">в т.ч. НДС</span>
+                                    {/* <span className="cps-d-price-block__nalog">в т.ч. НДС</span> */}
                                     </div>
                                     {!isItemBasket?
                                     <>

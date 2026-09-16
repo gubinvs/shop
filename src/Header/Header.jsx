@@ -190,9 +190,9 @@ const Header = () => {
                                             <li className="catalog__item" onClick={() => OpenSection(chapterContactor)}>Силовые контакторы</li>
                                             <li className="catalog__item" onClick={() => OpenSection(chapterPlk)}>Блоки базовые PLC</li>
                                             <li className="catalog__item" onClick={() => OpenSection(chapterMplk)}>Модули расширения PLC</li>
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Источники питания</li>
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Выключатели автоматические</li>
-                                            <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Средства монтажа</li>
+                                            {/* <li className="catalog__item" onClick={() => OpenSection(chapterBp)}>Источники питания</li> */}
+                                            {/* <li className="catalog__item" onClick={() => OpenSection(chapterSch)}>Выключатели автоматические</li> */}
+                                            {/* <li className="catalog__item" onClick={() => OpenSection(chapterK)}>Средства монтажа</li> */}
                                             
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterNKU)}>Типовые НКУ</li> */}
                                             {/* <li className="catalog__item" onClick={() => OpenSection(chapterSl)}>Индикация</li> */}

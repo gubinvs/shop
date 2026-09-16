@@ -41,7 +41,7 @@ const NewDirectoryGroupsMin = () => {
                     </div>
                 </div>
             </div>
-            <div className="container new-directory-groups__container">
+            {/* <div className="container new-directory-groups__container">
                 <div className="ndg-card-section">
                     <div className="ndg-card ndg-card_min ndg-card_gray ndg-card_ip-groop ndg-card_ip-groop_min  hvr-grow-shadow" onClick={() => OpenSection(chapterBp)}>
                         <div className="ndg-card__title ndg-card__title_contactor">Источники питания</div>
@@ -68,7 +68,7 @@ const NewDirectoryGroupsMin = () => {
                         ></button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

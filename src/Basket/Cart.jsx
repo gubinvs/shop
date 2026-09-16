@@ -77,7 +77,7 @@ const Cart = (props) => {
                   <span>Общая стоимость заказа</span><span>{formatPrice(subtotal)}</span>
                 </div>
                 <div className="total">
-                  <span>В том числе, НДС 22%</span><span>{formatPrice(tax)}</span>
+                  {/* <span>В том числе, НДС 22%</span><span>{formatPrice(tax)}</span> */}
                 </div>
                 <button 
                   className="checkout-button" 
