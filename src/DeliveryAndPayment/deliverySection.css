@@ -161,6 +161,7 @@
     .home-delivery-section__button{
         width: 201px;
         height: 40px;
+        font-size: 14px;
     }
 
     .home-delivery-section__image {
@@ -184,6 +185,7 @@
 @media only screen and (max-width: 480px) {
 
     .home-delivery-section {
+        border-radius: 10px;
         padding-top: 10px;
         padding-left: 20px;
         padding-bottom: 20px;
