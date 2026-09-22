@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import { getAllItems, saveOrUpdateItems } from "./js/db.js";
+// import { getAllItems, saveOrUpdateItems } from "./js/db.js";
 import ApiUrl from "./js/ApiUrl.js";
 import Home from './Home/Home.jsx';
 import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
@@ -13,18 +13,19 @@ import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import CatalogSection from "./CatalogSection/CatalogSection.jsx";
 import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
-import AdminPanel from "./AdminPanel/AdminPanel.jsx";
+// import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./SearchResults/SearchResults.jsx";
-import ComingPage from "./AdminPanel/ComingPage.jsx";
-import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
-import WarehousePage from "./AdminPanel/WarehousePage.jsx";
-import PurchasePage from './AdminPanel/PurchasePage.jsx';
+// import ComingPage from "./AdminPanel/ComingPage.jsx";
+// import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
+// import WarehousePage from "./AdminPanel/WarehousePage.jsx";
+// import PurchasePage from './AdminPanel/PurchasePage.jsx';
 import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDelivery";
 import CatalogRoute from "./SearchResults/CatalogRoute.jsx";
 import ProductRoute from "./SearchResults/ProductRoute.jsx";
 import PersonalData from "./PersonalData/PersonalData.jsx";
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner.jsx';
+import ContactPage from './ContactPage/ContactPage.jsx';
 
 
 // ===== Проверка токена =====
@@ -250,6 +251,7 @@ const App = () => {
         <Route path="/DeliveryAndPayment" element={<DeliveryAndPayment />} />
         <Route path="/RegistrationAndDelivery" element={<RegistrationAndDelivery />} />
         <Route path='/PersonalData' element={<PersonalData />}/>
+        <Route path='/ContactPage' element={<ContactPage />}/>
         
 
         {/* Только для авторизованных */}
