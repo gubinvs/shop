@@ -1,0 +1,25 @@
+.prsonal-data-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.prsonal-data-section__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.content {
+    text-align: justify;
+    font-size: 14px;
+    font-weight: 200;
+    line-height: normal;
+    margin-bottom: 4px;
+}
