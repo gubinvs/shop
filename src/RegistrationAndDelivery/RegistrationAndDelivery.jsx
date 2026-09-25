@@ -1,4 +1,5 @@
 import "./registrationAndDelivery.css";
+import OzonDeliveryMap from "../OzonDeliveryMap/OzonDeliveryMap.jsx";
 
 
 
@@ -12,8 +13,7 @@ const RegistrationAndDelivery =()=> {
 
     return(
         <>
-            Привет мир!
-  
+            <OzonDeliveryMap />
         </>
     );
 };

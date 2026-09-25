@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import ApiOzonService from '../js/ApiOzonService.js';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const OzonDeliveryMap = () => {
   const [points, setPoints] = useState([]);
@@ -9,7 +10,7 @@ const OzonDeliveryMap = () => {
 
   // 1. Загружаем данные из вашего .NET бэкенда
   useEffect(() => {
-    fetch({ApiOzonService}+'/v1/DeliveryPointList', { 
+    fetch(ApiOzonService+'/v1/DeliveryPointList', { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,6 +26,7 @@ const OzonDeliveryMap = () => {
         // Если бэкенд возвращает только ID, то координаты для примера ниже сгенерированы/захардкожены.
         setPoints(data.delivery_points || []);
         setLoading(false);
+        console.log(data);
       })
       .catch(err => {
         console.error("Ошибка загрузки ПВЗ:", err);
@@ -32,7 +34,7 @@ const OzonDeliveryMap = () => {
       });
   }, []);
 
-  if (loading) return <div>Загрузка пунктов выдачи Ozon...</div>;
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div style={{ display: 'flex', width: '100%', height: '500px', fontFamily: 'Arial, sans-serif' }}>
