@@ -161,7 +161,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                                 addProductToDasket(dataComponent);
                                                 setIsItemBasket(true);
                                             }}
-                                        >Добавить в корзину</button>
+                                        >В корзину для юр. лиц</button>
                                     </>:
                                     <>
                                         <button 
@@ -176,7 +176,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                             </div>
                             <div className="cps-data__button-block">
                                 <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.OzonLink}}>Купить на ОЗОН</button>
-                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить</button>
+                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить в 1 клик</button>
                             </div>
                         </div>
                     </div>
