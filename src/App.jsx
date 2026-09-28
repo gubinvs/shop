@@ -26,6 +26,7 @@ import ProductRoute from "./SearchResults/ProductRoute.jsx";
 import PersonalData from "./PersonalData/PersonalData.jsx";
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner.jsx';
 import ContactPage from './ContactPage/ContactPage.jsx';
+import OzonDeliveryMap from "./OzonDeliveryMap/OzonDeliveryMap.jsx";
 
 
 // ===== Проверка токена =====
@@ -242,7 +243,6 @@ const App = () => {
         <Route path="/index.html" element={<Home />} />
         <Route path="/products/:catalogFile" element={<CatalogRoute />} />
         <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
-
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
@@ -252,6 +252,7 @@ const App = () => {
         <Route path="/RegistrationAndDelivery" element={<RegistrationAndDelivery />} />
         <Route path='/PersonalData' element={<PersonalData />}/>
         <Route path='/ContactPage' element={<ContactPage />}/>
+        <Route path='/OzonDeliveryMap' element={<OzonDeliveryMap />}/>
         
 
         {/* Только для авторизованных */}

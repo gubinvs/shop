@@ -1,5 +1,5 @@
 import "./registrationAndDelivery.css";
-import OzonDeliveryMap from "../OzonDeliveryMap/OzonDeliveryMap.jsx";
+
 
 
 
@@ -9,11 +9,13 @@ import OzonDeliveryMap from "../OzonDeliveryMap/OzonDeliveryMap.jsx";
 
 const RegistrationAndDelivery =()=> {
 
-
+    function redirect () {
+        window.location.href= "/OzonDeliveryMap"
+    }
 
     return(
         <>
-            <OzonDeliveryMap />
+            
         </>
     );
 };
