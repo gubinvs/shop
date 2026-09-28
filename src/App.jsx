@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import { getAllItems, saveOrUpdateItems } from "./js/db.js";
+// import { getAllItems, saveOrUpdateItems } from "./js/db.js";
 import ApiUrl from "./js/ApiUrl.js";
 import Home from './Home/Home.jsx';
 import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
@@ -13,13 +13,13 @@ import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import CatalogSection from "./CatalogSection/CatalogSection.jsx";
 import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
-import AdminPanel from "./AdminPanel/AdminPanel.jsx";
+// import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./SearchResults/SearchResults.jsx";
-import ComingPage from "./AdminPanel/ComingPage.jsx";
-import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
-import WarehousePage from "./AdminPanel/WarehousePage.jsx";
-import PurchasePage from './AdminPanel/PurchasePage.jsx';
+// import ComingPage from "./AdminPanel/ComingPage.jsx";
+// import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
+// import WarehousePage from "./AdminPanel/WarehousePage.jsx";
+// import PurchasePage from './AdminPanel/PurchasePage.jsx';
 import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDelivery";
 import CatalogRoute from "./SearchResults/CatalogRoute.jsx";
 import ProductRoute from "./SearchResults/ProductRoute.jsx";
@@ -60,47 +60,47 @@ function ProtectedRoute({ children }) {
 }
 
 // ===== Защищённый маршрут только для администратора =====
-function AdminRoute({ children }) {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+// function AdminRoute({ children }) {
+//   const [isAdmin, setIsAdmin] = useState(false);
+//   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+//   useEffect(() => {
+//     const token = localStorage.getItem("token");
 
-    if (!token || !isTokenValid(token)) {
-      setLoading(false);
-      return;
-    }
+//     if (!token || !isTokenValid(token)) {
+//       setLoading(false);
+//       return;
+//     }
 
-    fetch(ApiUrl + "/api/DefineUserGuidId", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "accept": "*/*",
-      },
-      body: JSON.stringify({ token }), // передаём токен в теле
-    })
-      .then(async (res) => {
-        if (!res.ok) {
-          throw new Error(`Ошибка сервера: ${res.status}`);
-        }
-        return await res.json();
-      })
-      .then((data) => {
-        const userGuid = data.message;
-        const adminGuid = "401694e4-1b16-4b8c-b817-f8a37a4f49dc";
-        if (userGuid === adminGuid) {
-          setIsAdmin(true);
-        }
-      })
-      .catch((err) => console.error("Ошибка получения GUID:", err))
-      .finally(() => setLoading(false));
-  }, []);
+//     fetch(ApiUrl + "/api/DefineUserGuidId", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "accept": "*/*",
+//       },
+//       body: JSON.stringify({ token }), // передаём токен в теле
+//     })
+//       .then(async (res) => {
+//         if (!res.ok) {
+//           throw new Error(`Ошибка сервера: ${res.status}`);
+//         }
+//         return await res.json();
+//       })
+//       .then((data) => {
+//         const userGuid = data.message;
+//         const adminGuid = "401694e4-1b16-4b8c-b817-f8a37a4f49dc";
+//         if (userGuid === adminGuid) {
+//           setIsAdmin(true);
+//         }
+//       })
+//       .catch((err) => console.error("Ошибка получения GUID:", err))
+//       .finally(() => setLoading(false));
+//   }, []);
 
-  if (loading) return <LoadingSpinner />;
+//   if (loading) return <LoadingSpinner />;
 
-  return isAdmin ? children : <Navigate to="/" replace />;
-}
+//   return isAdmin ? children : <Navigate to="/" replace />;
+// }
 
 // ===== Основное приложение =====
 const App = () => {
@@ -205,44 +205,47 @@ const App = () => {
         <Route path="/" element={<Home />} />
 
         {/* Только для администратора */}
-        <Route path="/AdminPanel" element={
+        {/* <Route path="/AdminPanel" element={
               <AdminRoute>
                 <AdminPanel />
               </AdminRoute>
             }
-        />
-        <Route path="/ComingPage" element={
+        /> */}
+        {/* <Route path="/ComingPage" element={
               <AdminRoute>
                 <ComingPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        />
-        <Route path="/ConsumptionPage" element={
+        /> */}
+        {/* <Route path="/ConsumptionPage" element={
               <AdminRoute>
                 <ConsumptionPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        />
-        <Route path="/WarehousePage" element={
+        /> */}
+        {/* <Route path="/WarehousePage" element={
               <AdminRoute>
                 <WarehousePage />
               </AdminRoute>
             }
-        />
-        <Route path="/PurchasePage" element={
+        /> */}
+        {/* <Route path="/PurchasePage" element={
               <AdminRoute>
                 <PurchasePage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        />
+        /> */}
 
 
         {/* Для всех */}
         <Route path="/SearchResults" element={<SearchResults />} />
-        {/* Перенаправление на страницу с поисковиков и ..тд, подменяет на динамическую страницу с артикулом */}
+        
+        {/* Перенаправление в приложение с поисковиков и ..тд, подменяет на динамическую страницу с артикулом */}
         <Route path="/index.html" element={<Home />} />
         <Route path="/products/:catalogFile" element={<CatalogRoute />} />
         <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
+
+        {/*--- Основные маршруты пиложения -- */}
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
         <Route path="/Authorization" element={<AuthorizationForm />} />
         <Route path="/Registration" element={<RegistrationForm />} />
