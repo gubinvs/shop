@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-// import { getAllItems, saveOrUpdateItems } from "./js/db.js";
+import { getAllItems, saveOrUpdateItems } from "./js/db.js";
 import ApiUrl from "./js/ApiUrl.js";
 import Home from './Home/Home.jsx';
 import RegistrationForm from './RegistrationForm/RegistrationForm.jsx';
@@ -13,13 +13,13 @@ import PersonalSpace from "./PersonalSpace/PersonalSpace.jsx";
 import UpdatePassword from "./RegistrationForm/UpdatePassword.jsx";
 import CatalogSection from "./CatalogSection/CatalogSection.jsx";
 import ApiDiscription from "./ApiDiscription/ApiDiscription.jsx";
-// import AdminPanel from "./AdminPanel/AdminPanel.jsx";
+import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 import { jwtDecode } from "jwt-decode";
 import SearchResults from "./SearchResults/SearchResults.jsx";
-// import ComingPage from "./AdminPanel/ComingPage.jsx";
-// import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
-// import WarehousePage from "./AdminPanel/WarehousePage.jsx";
-// import PurchasePage from './AdminPanel/PurchasePage.jsx';
+import ComingPage from "./AdminPanel/ComingPage.jsx";
+import ConsumptionPage from "./AdminPanel/ConsumptionPage.jsx";
+import WarehousePage from "./AdminPanel/WarehousePage.jsx";
+import PurchasePage from './AdminPanel/PurchasePage.jsx';
 import RegistrationAndDelivery from "./RegistrationAndDelivery/RegistrationAndDelivery";
 import CatalogRoute from "./SearchResults/CatalogRoute.jsx";
 import ProductRoute from "./SearchResults/ProductRoute.jsx";
@@ -205,36 +205,36 @@ const App = () => {
         <Route path="/" element={<Home />} />
 
         {/* Только для администратора */}
-        {/* <Route path="/AdminPanel" element={
+        <Route path="/AdminPanel" element={
               <AdminRoute>
                 <AdminPanel />
               </AdminRoute>
             }
-        /> */}
-        {/* <Route path="/ComingPage" element={
+        />
+        <Route path="/ComingPage" element={
               <AdminRoute>
                 <ComingPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        /> */}
-        {/* <Route path="/ConsumptionPage" element={
+        />
+        <Route path="/ConsumptionPage" element={
               <AdminRoute>
                 <ConsumptionPage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        /> */}
-        {/* <Route path="/WarehousePage" element={
+        />
+        <Route path="/WarehousePage" element={
               <AdminRoute>
                 <WarehousePage />
               </AdminRoute>
             }
-        /> */}
-        {/* <Route path="/PurchasePage" element={
+        />
+        <Route path="/PurchasePage" element={
               <AdminRoute>
                 <PurchasePage nomenclature={nomenclatureAdmin} />
               </AdminRoute>
             }
-        /> */}
+        />
 
 
         {/* Для всех */}
