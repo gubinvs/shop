@@ -5,6 +5,7 @@ import ApiUrl from "../js/ApiUrl";
 import Footer from "../Footer/Footer.jsx";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
+
 const CompanyDashboard = () => {
   const [companyData, setCompanyData] = useState(null);
   const [companyUserData, setCompanyUserData] = useState(null);
