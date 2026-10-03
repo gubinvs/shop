@@ -6,12 +6,12 @@ import ApiOzonService from '../js/ApiOzonService.js';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const OzonDeliveryMap = () => {
-  const [points, setPoints] = useState([]); // Текущий рабочий пул ПВЗ
+  const [points, setPoints] = useState([]); // Текущие отображаемые ПВЗ (дефолтные или найденные)
   const [selectedPoint, setSelectedPoint] = useState(null);
   
   const [searchText, setSearchText] = useState("");      // Текст в инпуте
-  const [loading, setLoading] = useState(true);          // Первая загрузка
-  const [searching, setSearching] = useState(false);      // Процесс поиска
+  const [loading, setLoading] = useState(true);          // Первая загрузка приложения
+  const [searching, setSearching] = useState(false);      // Фоновый индикатор поиска
 
   const mapRef = useRef(null);
 
@@ -42,67 +42,85 @@ const OzonDeliveryMap = () => {
     };
   }, [points]);
 
-  // 1. Первичный запрос (Загружаем первые 50 точек напрямую через старый POST)
-  useEffect(() => {
-    const loadDefaultPoints = async () => {
-      try {
-        const response = await fetch(ApiOzonService + '/v1/DeliveryPointList', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            type: ["pickup"],
-            pagination: {
-              offset: 0,
-              limit: 50 // Грузим 50 штук в стейт
-            }
-          })
-        });
+  // Общая функция для выполнения POST-запросов к вашей БД
+  const fetchPointsFromDb = async (searchQuery) => {
+    const response = await fetch(`${ApiOzonService}/v1/DeliveryPointSearch`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({ query: searchQuery })
+    });
 
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        
-        const data = await response.json();
-        const deliveryPoints = data.delivery_points || [];
-        setPoints(deliveryPoints);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  };
 
-        if (deliveryPoints.length > 0) {
-          setSelectedPoint(deliveryPoints[0]); // Строго первый ЭЛЕМЕНТ [0]
-        }
-      } catch (error) {
-        console.error("Ошибка начальной загрузки:", error);
-      } finally {
-        setLoading(false);
+  // 1. ПЕРВИЧНЫЙ ЗАПРОС: Загружаем стартовые точки при пустой строке
+  const loadDefaultPoints = async () => {
+    try {
+      const deliveryPoints = await fetchPointsFromDb("");
+      setPoints(deliveryPoints || []);
+
+      if (deliveryPoints && deliveryPoints.length > 0) {
+        setSelectedPoint(deliveryPoints[0]); 
       }
-    };
+    } catch (error) {
+      console.error("Ошибка начальной загрузки из БД:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadDefaultPoints();
   }, []);
 
-  // 2. Живой поиск по загруженным точкам
-  const query = searchText.toLowerCase().trim();
-  const localFilteredPoints = points.filter((point) => {
-    if (!query) return true;
-    return (
-      (point.name || "").toLowerCase().includes(query) ||
-      (point.address || "").toLowerCase().includes(query) ||
-      (point.delivery_point_number || "").toLowerCase().includes(query)
-    );
-  });
+  // 2. ЖИВОЙ ПОИСК «НА ГОРЯЧУЮ» С DEBOUNCE
+  useEffect(() => {
+    const query = searchText.trim();
 
-  // ЗОЛОТОЕ ПРАВИЛО: Если строка пустая — выводим строго 10 точек. 
-  // Если пользователь что-то пишет — показываем все локальные совпадения.
-  const visiblePoints = query ? localFilteredPoints : localFilteredPoints.slice(0, 10);
+    // Если строку стёрли — плавно возвращаем дефолтный список точек
+    if (query.length === 0) {
+      setSearching(false);
+      loadDefaultPoints();
+      return;
+    }
 
-  // 3. Поиск (пока ищет локально по стейту, чтобы ничего не падало без вашей БД)
+    // Начинаем поиск в БД, только если ввели хотя бы 3 символа
+    if (query.length < 3) return;
+
+    setSearching(true);
+
+    // Включаем таймер задержки на 400 мс (защита от спама базы при быстром наборе)
+    const delayDebounceFn = setTimeout(async () => {
+      try {
+        const data = await fetchPointsFromDb(query);
+        setPoints(data || []);
+
+        // Автоматически фокусируемся на первом результате живого поиска
+        if (data && data.length > 0) {
+          setSelectedPoint(data[0]);
+        }
+      } catch (error) {
+        console.error("Ошибка живого поиска по БД:", error);
+      } finally {
+        setSearching(false);
+      }
+    }, 400);
+
+    // Очистка предыдущего таймера при вводе следующей буквы
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchText]);
+
+  // 3. ОБРАБОТЧИК КНОПКИ «НАЙТИ» И НАЖАТИЯ ENTER
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    if (!query) return;
-
-    if (visiblePoints.length > 0) {
-      selectPoint(visiblePoints[0]); // Центрируем на первом совпадении
+    // Так как поиск уже отработал на горячую, кнопка просто центрирует карту на первом найденном элементе
+    if (points.length > 0) {
+      selectPoint(points[0]);
     } else {
-      alert("В текущем списке ничего не найдено. Нужен бэкенд с БД для поиска по всей стране.");
+      alert("Ничего не найдено по этому адресу.");
     }
   };
 
@@ -125,24 +143,24 @@ const OzonDeliveryMap = () => {
               className="ozon-delivery-search__input"
             />
             <button type="submit" className="ozon-delivery-search__button">
-              Найти
+              {searching ? "..." : "Найти"}
             </button>
           </form>
 
           <div className="ozon-delivery-search__info">
-            {query
-              ? `Найдено совпадений: ${visiblePoints.length}`
-              : `Показаны доступные ПВЗ: ${visiblePoints.length}`
+            {searching 
+              ? "Ищем в базе данных..." 
+              : `Найдено пунктов: ${points.length}`
             }
           </div>
 
           <div className="ozon-delivery-points">
-            {visiblePoints.length === 0 ? (
+            {points.length === 0 ? (
               <div className="ozon-delivery-points__empty">
-                Ничего не найдено.
+                Ничего не найдено. Попробуйте уточнить адрес.
               </div>
             ) : (
-              visiblePoints.map((point) => (
+              points.map((point) => (
                 <div
                   key={point.delivery_point_id}
                   className={
@@ -165,21 +183,21 @@ const OzonDeliveryMap = () => {
 
         {/* Правая часть: Карта */}
         <div className="ozon-delivery-map-section__map">
-          <YMaps query={{ apikey: 'ВАШ_API_КЛЮЧ_ЯНДЕКС_КАРТ' }}>
+          <YMaps query={{ apikey: '34e50958-b7c2-4b13-963d-8e7f3b90843b' }}>
             <Map
               instanceRef={mapRef}
               state={{
                 center: selectedPoint
                   ? [selectedPoint.lat, selectedPoint.lng]
                   : points.length > 0
-                    ? [points[0].lat, points[0].lng] // Исправлено на points[0]
+                    ? [points[0].lat, points[0].lng] 
                     : [55.755814, 37.617635],
                 zoom: selectedPoint ? 15 : 10
               }}
               width="100%"
               height="100vh"
             >
-              {visiblePoints.map((point) => {
+              {points.map((point) => {
                 const isSelected = selectedPoint?.delivery_point_id === point.delivery_point_id;
                 const schedule = point.working_hours || "Не указано";
 
@@ -213,8 +231,6 @@ const OzonDeliveryMap = () => {
                     options={{
                       preset: isSelected ? 'islands#redCircleDotIcon' : 'islands#blueCircleDotIcon',
                       balloonMinWidth: 280,
-                      balloonMaxWidth: 320,
-                      balloonCloseButton: true,
                     }}
                   />
                 );
