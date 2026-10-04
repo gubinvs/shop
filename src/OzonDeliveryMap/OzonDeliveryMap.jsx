@@ -142,9 +142,6 @@ const OzonDeliveryMap = () => {
               placeholder="Введите город или адрес"
               className="ozon-delivery-search__input"
             />
-            <button type="submit" className="ozon-delivery-search__button">
-              {searching ? "..." : "Найти"}
-            </button>
           </form>
 
           <div className="ozon-delivery-search__info">
@@ -161,6 +158,7 @@ const OzonDeliveryMap = () => {
               </div>
             ) : (
               points.map((point) => (
+            
                 <div
                   key={point.delivery_point_id}
                   className={
@@ -172,9 +170,6 @@ const OzonDeliveryMap = () => {
                 >
                   <strong>{point.name}</strong>
                   <div>{point.address}</div>
-                  <div className="ozon-delivery__point-storage">
-                    Хранение: {point.storage_period_days} дней
-                  </div>
                 </div>
               ))
             )}
