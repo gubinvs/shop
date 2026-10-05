@@ -74,7 +74,10 @@ const Warehouse = () => {
 
     const totalPages = Math.ceil(docList.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const currentList = docList.slice(startIndex, startIndex + itemsPerPage);
+    // Исключим элементы НЕ ОТОБРАЖАЕМЫЙ ТОВАР!!!
+    const ignorList =  ["LC1D09M7С", "LC1D32M7C", "TM241CE40T", "3044102", "2903148", "3044115", "3044128", "2866763"]; 
+    const cleanList = docList.filter(x => !ignorList.includes(x.vendorCode));
+    const currentList = cleanList.slice(startIndex, startIndex + itemsPerPage);
 
     // 1. Задаем желаемый порядок приоритетных артикулов
     const priorityOrder = [
@@ -124,7 +127,7 @@ const Warehouse = () => {
         });
     }, [currentList]); // Пересчитывается только если изменился исходный список);
 
-
+    
     return (
     
         <>

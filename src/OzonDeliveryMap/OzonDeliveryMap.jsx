@@ -62,9 +62,9 @@ const OzonDeliveryMap = () => {
       const deliveryPoints = await fetchPointsFromDb("");
       setPoints(deliveryPoints || []);
 
-      if (deliveryPoints && deliveryPoints.length > 0) {
-        setSelectedPoint(deliveryPoints[0]); 
-      }
+      // if (deliveryPoints && deliveryPoints.length > 0) {
+      //   setSelectedPoint(deliveryPoints[0]); 
+      // }
     } catch (error) {
       console.error("Ошибка начальной загрузки из БД:", error);
     } finally {
@@ -99,9 +99,9 @@ const OzonDeliveryMap = () => {
         setPoints(data || []);
 
         // Автоматически фокусируемся на первом результате живого поиска
-        if (data && data.length > 0) {
-          setSelectedPoint(data[0]);
-        }
+        // if (data && data.length > 0) {
+        //   setSelectedPoint(data[0]);
+        // }
       } catch (error) {
         console.error("Ошибка живого поиска по БД:", error);
       } finally {
@@ -125,6 +125,9 @@ const OzonDeliveryMap = () => {
   };
 
   if (loading) return <LoadingSpinner />;
+
+
+  console.log(selectedPoint);
 
   return (
     <section className="ozon-delivery-map-section">
@@ -158,7 +161,6 @@ const OzonDeliveryMap = () => {
               </div>
             ) : (
               points.map((point) => (
-            
                 <div
                   key={point.delivery_point_id}
                   className={
@@ -179,7 +181,21 @@ const OzonDeliveryMap = () => {
         {/* Правая часть: Карта */}
         <div className="ozon-delivery-map-section__map">
           <YMaps query={{ apikey: '34e50958-b7c2-4b13-963d-8e7f3b90843b' }}>
+              {selectedPoint !== null?
+                <>
+                  <div className="ozon-delivery-map-section__info-poind">
+                      <div className="ozon-delivery-map-section__button-next">Продолжить оформление ...</div>
+                      <div className="ozon-delivery-map-section__info-point">
+                        <strong>Выбран пункт выдачи по адресу:</strong>
+                        <div>{selectedPoint.address}</div>
+                      </div>
+                  </div>
+                </>
+                :
+                ""
+            }
             <Map
+              
               instanceRef={mapRef}
               state={{
                 center: selectedPoint
@@ -227,6 +243,7 @@ const OzonDeliveryMap = () => {
                       preset: isSelected ? 'islands#redCircleDotIcon' : 'islands#blueCircleDotIcon',
                       balloonMinWidth: 280,
                     }}
+                    onClick={() => selectPoint(point)}
                   />
                 );
               })}
