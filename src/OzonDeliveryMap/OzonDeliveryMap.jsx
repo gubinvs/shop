@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./ozonDeliveryMap.css";
+import {deliveryCheckout} from "../js/deliveryCheckout.js";
 
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import ApiOzonService from '../js/ApiOzonService.js';
@@ -20,6 +21,7 @@ const OzonDeliveryMap = () => {
   // Инициализируем состояние значением '+7 '
   const [phone, setPhone] = useState('+7 ');
   const [phoneInput, setPhoneInput] = useState(false);
+  const [priceGoods, setPriceGoods] = useState(1500); // Стоимость товара
 
   // Функция для наложения маски: +7 922 354-00-43
   const formatPhone = (value) => {
@@ -202,7 +204,10 @@ const OzonDeliveryMap = () => {
                           onChange={handleChange}
                           placeholder="+79991234567"
                         />
-                      <div className="pans-form__botton">Расчитать стоимость доставки</div>
+                      <div 
+                          className="pans-form__botton"
+                          onClick={() => deliveryCheckout({phone, pointDestination, priceGoods})}
+                      >Расчитать стоимость доставки</div>
                 </div>
             </div>
           </>
