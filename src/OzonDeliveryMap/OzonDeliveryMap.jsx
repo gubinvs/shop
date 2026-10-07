@@ -8,6 +8,8 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 const OzonDeliveryMap = () => {
   const [points, setPoints] = useState([]); // Текущие отображаемые ПВЗ (дефолтные или найденные)
   const [selectedPoint, setSelectedPoint] = useState(null);
+  // Пункт назначения
+  const [pointDestination, setPointDestination] = useState(0)
   
   const [searchText, setSearchText] = useState("");      // Текст в инпуте
   const [loading, setLoading] = useState(true);          // Первая загрузка приложения
@@ -16,7 +18,8 @@ const OzonDeliveryMap = () => {
   const mapRef = useRef(null);
 
   // Инициализируем состояние значением '+7 '
-   const [phone, setPhone] = useState('+7 ');
+  const [phone, setPhone] = useState('+7 ');
+  const [phoneInput, setPhoneInput] = useState(false);
 
   // Функция для наложения маски: +7 922 354-00-43
   const formatPhone = (value) => {
@@ -172,31 +175,44 @@ const OzonDeliveryMap = () => {
     }
   };
 
+  // Переход на ввод телефона и дальнейшую проверку возможности доставки
+  const proceedToCheckout = (pointId) => {
+      // Записали идентификатор ПВЗ
+      setPointDestination(pointId);
+      setSelectedPoint(null);
+      setPhoneInput(true);   
+      console.log(pointId);
+
+  };
+
   if (loading) return <LoadingSpinner />;
-
-
-  console.log(selectedPoint);
 
   return (
     <section className="ozon-delivery-map-section">
-      <div className="container ozon-delivery-map-section__container">
-        <div className="phone-add-number-section">
-            <div className="phone-add-number-section__form">
-                <div className="pans-form__title">Укажите номер телефона получателя:</div>
-                 <input
-                    type="tel"
-                    className="pans-form__phone"
-                    value={phone}
-                    onChange={handleChange}
-                    placeholder="+79991234567"
-                  />
-                <div className="pans-form__botton">Расчитать стоимость доставки</div>
+      <div className="container ozon-delivery-map-section__container">          
+        {phoneInput?
+          <>
+            <div className="phone-add-number-section">
+                <div className="phone-add-number-section__form">
+                      <div className="pans-form__title">Укажите номер телефона получателя:</div>
+                      <input
+                          type="tel"
+                          className="pans-form__phone"
+                          value={phone}
+                          onChange={handleChange}
+                          placeholder="+79991234567"
+                        />
+                      <div className="pans-form__botton">Расчитать стоимость доставки</div>
+                </div>
             </div>
-        </div>
+          </>
+          :""
+        }
+
         {/* Левая панель с ПВЗ */}
         <div className="ozon-delivery-map-section__left-block">
           <h3 className="ozon-delivery-map-section__title">Пункты выдачи Ozon</h3>
-          
+
           <form className="ozon-delivery-search" onSubmit={handleSearchSubmit}>
             <input
               type="text"
@@ -244,7 +260,10 @@ const OzonDeliveryMap = () => {
               {selectedPoint !== null?
                 <>
                   <div className="ozon-delivery-map-section__info-poind">
-                      <div className="ozon-delivery-map-section__button-next">Продолжить оформление ...</div>
+                      <div 
+                          className="ozon-delivery-map-section__button-next"
+                          onClick={() => proceedToCheckout(selectedPoint.delivery_point_id)}
+                      >Продолжить оформление</div>
                       <div className="ozon-delivery-map-section__info-point">
                         <strong>Выбран пункт выдачи по адресу:</strong>
                         <div>{selectedPoint.address}</div>
