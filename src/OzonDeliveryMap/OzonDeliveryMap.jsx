@@ -264,6 +264,10 @@ const OzonDeliveryMap = () => {
                           className="ozon-delivery-map-section__button-next"
                           onClick={() => proceedToCheckout(selectedPoint.delivery_point_id)}
                       >Продолжить оформление</div>
+                      <div 
+                          className="ozon-delivery-map-section__button-close"
+                          onClick={()=>{setSelectedPoint(null)}}
+                      >X</div>
                       <div className="ozon-delivery-map-section__info-point">
                         <strong>Выбран пункт выдачи по адресу:</strong>
                         <div>{selectedPoint.address}</div>
