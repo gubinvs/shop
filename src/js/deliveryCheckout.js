@@ -71,7 +71,7 @@ export const deliveryCheckout = (
                 "currency_code": "RUB"
             },
             "dimensions": {
-                "weight_g": 1110,
+                "weight_g": 1110, 
                 "length_mm": 110,
                 "width_mm": 110,
                 "height_mm": 10
@@ -86,6 +86,6 @@ export const deliveryCheckout = (
 
     var regustJson = JSON.stringify(reguest);
 
-    console.log(regustJson);
+
     return regustJson;
 };
