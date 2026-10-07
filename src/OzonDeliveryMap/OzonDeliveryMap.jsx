@@ -15,6 +15,54 @@ const OzonDeliveryMap = () => {
 
   const mapRef = useRef(null);
 
+  // Инициализируем состояние значением '+7 '
+   const [phone, setPhone] = useState('+7 ');
+
+  // Функция для наложения маски: +7 922 354-00-43
+  const formatPhone = (value) => {
+    // Оставляем только цифры, идущие после +7
+    const digits = value.slice(2).replace(/\D/g, '');
+    
+    let result = '+7';
+
+    if (digits.length > 0) result += ' ' + digits.substring(0, 3);
+    if (digits.length > 3) result += ' ' + digits.substring(3, 6);
+    if (digits.length > 6) result += '-' + digits.substring(6, 8);
+    if (digits.length > 8) result += '-' + digits.substring(8, 10);
+
+    return result;
+  };
+
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Защита от стирания префикса
+    if (!inputValue.startsWith('+7')) {
+      setPhone('+7 ');
+      return;
+    }
+
+    // Форматируем строку
+    const formattedValue = formatPhone(inputValue);
+
+    // Ограничиваем длину (максимум 16 символов для "+7 922 354-00-43")
+    if (formattedValue.length <= 16) {
+      setPhone(formattedValue);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    // Если пользователь нажимает Backspace, а в конце пробел или дефис,
+    // удаляем его вместе с предыдущей цифрой, чтобы ввод не «застревал»
+    if (e.key === 'Backspace') {
+      const lastChar = phone[phone.length - 1];
+      if (lastChar === ' ' || lastChar === '-') {
+        setPhone(phone.slice(0, -2));
+        e.preventDefault();
+      }
+    }
+  };
+
   // Центрирование карты и выбор точки
   const selectPoint = (point) => {
     if (!point) return;
@@ -132,7 +180,19 @@ const OzonDeliveryMap = () => {
   return (
     <section className="ozon-delivery-map-section">
       <div className="container ozon-delivery-map-section__container">
-        
+        <div className="phone-add-number-section">
+            <div className="phone-add-number-section__form">
+                <div className="pans-form__title">Укажите номер телефона получателя:</div>
+                 <input
+                    type="tel"
+                    className="pans-form__phone"
+                    value={phone}
+                    onChange={handleChange}
+                    placeholder="+79991234567"
+                  />
+                <div className="pans-form__botton">Расчитать стоимость доставки</div>
+            </div>
+        </div>
         {/* Левая панель с ПВЗ */}
         <div className="ozon-delivery-map-section__left-block">
           <h3 className="ozon-delivery-map-section__title">Пункты выдачи Ozon</h3>
