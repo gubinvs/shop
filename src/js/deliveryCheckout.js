@@ -1,3 +1,5 @@
+import { data } from "react-router-dom";
+import ApiOzonService  from "./ApiOzonService.js";
 
 
 // Модель запроса
@@ -32,11 +34,12 @@
 
 
 // Cкрипт проверяет возможность доставки до пункта ПВЗ
-export const deliveryCheckout = (
+export const deliveryCheckout =  async (
     {
         phone,
         pointDestination,
-        priceGoods 
+        priceGoods,
+        setDeliveryPrice
         
     }
 ) => {
@@ -71,10 +74,10 @@ export const deliveryCheckout = (
                 "currency_code": "RUB"
             },
             "dimensions": {
-                "weight_g": 1110, 
-                "length_mm": 110,
-                "width_mm": 110,
-                "height_mm": 10
+                "weight_g": 5000, 
+                "length_mm": 300,
+                "width_mm": 300,
+                "height_mm": 300
             }
         }
     ],
@@ -86,6 +89,32 @@ export const deliveryCheckout = (
 
     var regustJson = JSON.stringify(reguest);
 
+    try {
 
-    return regustJson;
+        // Отправляем запись о приходе
+        const response = await fetch(`${ApiOzonService}/v1/DeliveryCheckout`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: regustJson,
+        });
+
+        if (!response.ok) {
+            const text = await response.text();
+            throw new Error(`Ошибка при обновлении цены: ${response.status}, ${text}`);
+        }
+
+        const data = await response.json();
+
+        var ammoutDelivery = parseFloat(data.results[0].posting.estimated_delivery_cost.amount);
+        var ammoutInsurance = parseFloat(data.results[0].posting.estimated_insurance_cost.amount)
+        var summa = ammoutDelivery + ammoutInsurance;
+        
+
+        // Записываем числом
+        setDeliveryPrice(summa);
+
+
+    } catch (error) {
+        alert("❌ Не удалось проверить данные.");
+    }
 };

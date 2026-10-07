@@ -13,7 +13,6 @@ export const priceUpdateWebsite = async (guidItem, priceItem)=> {
         itemPrice: intValue
     };
 
-    console.log(regust);
     // Отправляем данные на сервер
     try {
 

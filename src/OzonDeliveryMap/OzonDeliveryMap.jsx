@@ -20,8 +20,10 @@ const OzonDeliveryMap = () => {
 
   // Инициализируем состояние значением '+7 '
   const [phone, setPhone] = useState('+7 ');
-  const [phoneInput, setPhoneInput] = useState(false);
+  
+  const [phoneInput, setPhoneInput] = useState(false); // Показывать или нет форму ввода телефона
   const [priceGoods, setPriceGoods] = useState(1500); // Стоимость товара
+  const [deliveryPrice, setDeliveryPrice] = useState(0); // Расчетная стоимость доставки
 
   // Функция для наложения маски: +7 922 354-00-43
   const formatPhone = (value) => {
@@ -183,9 +185,8 @@ const OzonDeliveryMap = () => {
       setPointDestination(pointId);
       setSelectedPoint(null);
       setPhoneInput(true);   
-      console.log(pointId);
-
   };
+
 
   if (loading) return <LoadingSpinner />;
 
@@ -206,7 +207,7 @@ const OzonDeliveryMap = () => {
                         />
                       <div 
                           className="pans-form__botton"
-                          onClick={() => deliveryCheckout({phone, pointDestination, priceGoods})}
+                          onClick={() => deliveryCheckout({phone, pointDestination, priceGoods, setDeliveryPrice})}
                       >Расчитать стоимость доставки</div>
                 </div>
             </div>
