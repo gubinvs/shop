@@ -294,8 +294,8 @@ console.log(dataComponent);
 
                         {/* Строка 3: Общая стоимость заказа */}
                         <div className="pans-form__item pans-form__item_delivery">
-                          <div className="pans-col__name">Общая стоимость заказа: </div>
-                          <div className="pans-col__price">{formatToRubles(offer)}</div>
+                          <div className="pans-col__name"><b>Общая стоимость:</b></div>
+                          <div className="pans-col__price"><b>{formatToRubles(offer)}</b></div>
                         </div>
                       </div>
                       <div className="pans-form__botton">Оплатить и оформить</div>
