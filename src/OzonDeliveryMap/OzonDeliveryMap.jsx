@@ -261,7 +261,7 @@ console.log(dataComponent);
                         <div className="pans-form__item">
                           <div className='item__name'>
                               <div className="pans-col__number">1.</div>
-                              <div className="pans-col__name">{dataComponent.NameComponent}</div>
+                              <div className="pans-col__name">{dataComponent.VendorCode}, {dataComponent.NameComponent}</div>
                           </div>
                           <div className='item__info'>
                               <div className="pans-col__quantity">
