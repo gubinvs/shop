@@ -27,6 +27,7 @@ import PersonalData from "./PersonalData/PersonalData.jsx";
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner.jsx';
 import ContactPage from './ContactPage/ContactPage.jsx';
 import OzonDeliveryMap from "./OzonDeliveryMap/OzonDeliveryMap.jsx";
+import SberPaymentPage from "./SberPayment/SberPaymentPage.jsx";
 
 
 // ===== Проверка токена =====
@@ -256,6 +257,7 @@ const App = () => {
         <Route path='/PersonalData' element={<PersonalData />}/>
         <Route path='/ContactPage' element={<ContactPage />}/>
         <Route path='/OzonDeliveryMap' element={<OzonDeliveryMap />}/>
+        <Route path='/SberPaymentPage' element={<SberPaymentPage />}/>
         
 
         {/* Только для авторизованных */}

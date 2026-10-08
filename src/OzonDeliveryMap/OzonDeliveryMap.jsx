@@ -298,7 +298,11 @@ console.log(dataComponent);
                           <div className="pans-col__price"><b>{formatToRubles(offer)}</b></div>
                         </div>
                       </div>
-                      <div className="pans-form__botton">Оплатить и оформить</div>
+                      <div 
+                          className="pans-form__botton"
+                          onClick={()=>{window.location.href="/SberPaymentPage"}}
+                      
+                      >Оплатить и оформить</div>
                 </div>
             </div>
           </>

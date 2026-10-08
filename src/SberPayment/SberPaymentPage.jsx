@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import "./sberPaymentPage.css";
 import axios from 'axios';
+import ApiOzonService from '../js/ApiOzonService';
 
-const SberPaymentPage = ({ totalAmount }) => {
+const SberPaymentPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const totalPrice = 25000;
 
   const handlePayment = async () => {
     setLoading(true);
@@ -12,8 +16,8 @@ const SberPaymentPage = ({ totalAmount }) => {
     try {
       // Отправляем запрос на твой C# бэкенд
       // Снабжаем правильным URL (зависит от портов твоего IIS / Kestrel)
-      const response = await axios.post('/api/payment/register', {
-        amount: totalAmount // Передаем обычную сумму (например, 1450.50)
+      const response = await axios.post(ApiOzonService + '/v1/PaymentSber', {
+          amount: totalPrice // Передаем обычную сумму (например, 1450.50)
       });
 
       const { formUrl } = response.data;
@@ -33,21 +37,13 @@ const SberPaymentPage = ({ totalAmount }) => {
   };
 
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div className='sber-payment-page-section'>
       <button 
         onClick={handlePayment} 
         disabled={loading}
-        style={{
-          backgroundColor: '#21a038',
-          color: '#fff',
-          padding: '12px 24px',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '16px'
-        }}
+        className='sber-payment-page-section__button'
       >
-        {loading ? 'Сессия создается...' : `Оплатить ${totalAmount} ₽ через Сбер`}
+        {loading ? 'Сессия создается...' : `Оплатить ${totalPrice} ₽ через Сбер`}
       </button>
       
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
