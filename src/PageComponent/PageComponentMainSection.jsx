@@ -1,4 +1,5 @@
 import {addProductToDasket} from "../js/addProductToDasket.js";
+import { useNavigate } from 'react-router-dom';
 
 import { useEffect, useState } from "react";
 import "./pageComponentMainSection.css";
@@ -10,7 +11,7 @@ const PageComponentMainSection = ({dataComponent}) => {
     // Сначала получаем vendorCode из URL, если он есть
     const urlParams = new URLSearchParams(window.location.search);
     const vendorCodeFromUrl = urlParams.get("vendorCode");
-
+    const navigate = useNavigate();
 
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
     const [basketProduct, setBasketProduct] = useState(() => {
@@ -176,7 +177,15 @@ const PageComponentMainSection = ({dataComponent}) => {
                             </div>
                             <div className="cps-data__button-block">
                                 <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.OzonLink}}>Купить на ОЗОН</button>
-                                <button className="cps-d-button-block__ofer-button" onClick={() => {window.location.href = "/RegistrationAndDelivery"}}>Купить в 1 клик</button>
+                                <button 
+                                    className="cps-d-button-block__ofer-button" 
+                                    onClick={() => {
+                                        // Переходим на страницу и «подкладываем» объект в историю браузера
+                                        navigate("/RegistrationAndDelivery", { state: { dataComponent } });
+                                    }}
+                                    >
+                                    Купить в 1 клик
+                                </button>
                             </div>
                         </div>
                     </div>

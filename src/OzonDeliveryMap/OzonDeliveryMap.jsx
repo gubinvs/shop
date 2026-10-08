@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./ozonDeliveryMap.css";
 import {deliveryCheckout} from "../js/deliveryCheckout.js";
+import { useLocation } from 'react-router-dom';
 
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import ApiOzonService from '../js/ApiOzonService.js';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
+
 
 const OzonDeliveryMap = () => {
   const [points, setPoints] = useState([]); // Текущие отображаемые ПВЗ (дефолтные или найденные)
@@ -15,15 +17,34 @@ const OzonDeliveryMap = () => {
   const [searchText, setSearchText] = useState("");      // Текст в инпуте
   const [loading, setLoading] = useState(true);          // Первая загрузка приложения
   const [searching, setSearching] = useState(false);      // Фоновый индикатор поиска
+  
+  const location = useLocation();
+  // Достаем переданные данные
+  const dataComponent = location.state?.dataComponent;
 
   const mapRef = useRef(null);
 
   // Инициализируем состояние значением '+7 '
   const [phone, setPhone] = useState('+7 ');
-  
   const [phoneInput, setPhoneInput] = useState(false); // Показывать или нет форму ввода телефона
-  const [priceGoods, setPriceGoods] = useState(1500); // Стоимость товара
+  const [placingAnOrder, setPlacingAnOrder] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+  const [maxQuantity, setMaxQuantity] = useState(0);
+  const priceGoods = dataComponent.Price; // Стоимость товара
   const [deliveryPrice, setDeliveryPrice] = useState(0); // Расчетная стоимость доставки
+  const offer = priceGoods * quantity + deliveryPrice;
+
+  console.log(offer)
+
+  // Функция для форматирования чисел в рубли
+  const formatToRubles = (value) => {
+    return new Intl.NumberFormat('ru-RU', {
+      style: 'currency',
+      currency: 'RUB',
+      minimumFractionDigits: 0, // если копейки не нужны, ставим 0
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
 
   // Функция для наложения маски: +7 922 354-00-43
   const formatPhone = (value) => {
@@ -188,7 +209,23 @@ const OzonDeliveryMap = () => {
   };
 
 
+  // Определяем максимальное количество товара для заказа по информации о наличии
+  useEffect(() => {
+    // Проверяем, что объект dataComponent существует и количество больше 0
+    if (dataComponent && dataComponent.Quantity > 0) {
+      setMaxQuantity(dataComponent.Quantity);
+      setQuantity(1); // Устанавливаем начальное количество в 1 при загрузке товара
+    } else {
+      setMaxQuantity(0);
+      setQuantity(0); // Если товара нет в наличии
+    }
+  }, [dataComponent]);
+
+
+
   if (loading) return <LoadingSpinner />;
+
+console.log(dataComponent);
 
   return (
     <section className="ozon-delivery-map-section">
@@ -207,8 +244,60 @@ const OzonDeliveryMap = () => {
                         />
                       <div 
                           className="pans-form__botton"
-                          onClick={() => deliveryCheckout({phone, pointDestination, priceGoods, setDeliveryPrice})}
+                          onClick={() => deliveryCheckout({dataComponent, phone, pointDestination, priceGoods, setDeliveryPrice, setPhoneInput, setPlacingAnOrder})}
                       >Расчитать стоимость доставки</div>
+                </div>
+            </div>
+          </>
+          :""
+        }
+        {placingAnOrder?
+          <>
+            <div className="phone-add-number-section">
+                <div className="phone-add-number-section__form">
+                      <div className="pans-form__title">Стоимость заказа:</div>
+                      <div className="pans-form__list">
+                        {/* Строка 1: Товар */}
+                        <div className="pans-form__item">
+                          <div className='item__name'>
+                              <div className="pans-col__number">1.</div>
+                              <div className="pans-col__name">{dataComponent.NameComponent}</div>
+                          </div>
+                          <div className='item__info'>
+                              <div className="pans-col__quantity">
+                                  <span>кол-во: </span>
+                                  <input 
+                                    type="number" 
+                                    className="pans-form__quantity" 
+                                    min={1} 
+                                    max={maxQuantity} 
+                                    value={quantity} 
+                                    onChange={(e) => {
+                                      const val = Number(e.target.value);
+                                      if (val >= 1 && val <= maxQuantity) setQuantity(val);
+                                    }}
+                                  />
+                              </div>
+                              <span>цена: </span>
+                              <div className="pans-col__price">{formatToRubles(priceGoods * quantity)}</div>
+                          </div>
+                        </div>
+
+                        {/* Строка 2: Доставка */}
+                        <div className="pans-form__item pans-form__item_delivery">
+                          <div className="pans-col__number">2.</div>
+                          <div className="pans-col__name">Доставка</div>
+                          <div className="pans-col__quantity">1 шт.</div>
+                          <div className="pans-col__price">{formatToRubles(deliveryPrice)}</div>
+                        </div>
+
+                        {/* Строка 3: Общая стоимость заказа */}
+                        <div className="pans-form__item pans-form__item_delivery">
+                          <div className="pans-col__name">Общая стоимость заказа: </div>
+                          <div className="pans-col__price">{formatToRubles(offer)}</div>
+                        </div>
+                      </div>
+                      <div className="pans-form__botton">Оплатить и оформить заказ</div>
                 </div>
             </div>
           </>
@@ -284,7 +373,6 @@ const OzonDeliveryMap = () => {
                 ""
             }
             <Map
-              
               instanceRef={mapRef}
               state={{
                 center: selectedPoint

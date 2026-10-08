@@ -36,17 +36,20 @@ import ApiOzonService  from "./ApiOzonService.js";
 // Cкрипт проверяет возможность доставки до пункта ПВЗ
 export const deliveryCheckout =  async (
     {
+        dataComponent,        
         phone,
         pointDestination,
         priceGoods,
-        setDeliveryPrice
+        setDeliveryPrice,
+        setPhoneInput,
+        setPlacingAnOrder
+        
         
     }
 ) => {
 
     // Очищаем телефон от маски и добавляем плюс в начало
     const cleanPhone = '+' + String(phone || '').replace(/\D/g, '');
-
     // Определим завтрашнюю дату 
     const tomorrow = new Date();
     // 1. Сдвигаем день на завтра
@@ -112,6 +115,8 @@ export const deliveryCheckout =  async (
 
         // Записываем числом
         setDeliveryPrice(summa);
+        setPhoneInput(false);
+        setPlacingAnOrder(true)
 
 
     } catch (error) {

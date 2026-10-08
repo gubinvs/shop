@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import "./registrationAndDelivery.css";
-
-
-
+import { useNavigate, useLocation } from 'react-router-dom'; // Должно быть так
 
 
 // Компонент для регистрации доставки транспортной компанией, пока планируется выбор между ОЗОН и СДЕК.
@@ -10,14 +8,16 @@ import "./registrationAndDelivery.css";
 
 const RegistrationAndDelivery = () => {
 
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // Временно на момент разработки переадресация, далее здесь будет выбор траспортной компании
-    function redirect () {
-        window.location.href= "/OzonDeliveryMap"
-    }
-    useEffect(()=>{
-        redirect();
-    },[]);
+    // Достаем данные, которые пришли с первой страницы
+    const dataComponent = location.state?.dataComponent;
+
+    useEffect(() => {
+        // Делаем редирект и прокидываем эти же данные дальше
+        navigate("/OzonDeliveryMap", { state: { dataComponent } });
+    }, [dataComponent, navigate]);
     
     return(
         <>
