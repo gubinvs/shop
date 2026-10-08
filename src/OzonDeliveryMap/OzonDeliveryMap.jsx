@@ -255,7 +255,7 @@ console.log(dataComponent);
           <>
             <div className="phone-add-number-section">
                 <div className="phone-add-number-section__form">
-                      <div className="pans-form__title">Стоимость заказа:</div>
+                      <div className="pans-form__title">Формирование заказа:</div>
                       <div className="pans-form__list">
                         {/* Строка 1: Товар */}
                         <div className="pans-form__item">
@@ -285,9 +285,10 @@ console.log(dataComponent);
 
                         {/* Строка 2: Доставка */}
                         <div className="pans-form__item pans-form__item_delivery">
-                          <div className="pans-col__number">2.</div>
-                          <div className="pans-col__name">Доставка</div>
-                          <div className="pans-col__quantity">1 шт.</div>
+                          <div className='pans-col__name_delivery'>
+                            <div className="pans-col__number">2.</div>
+                            <div className="pans-col__name">Доставка</div>
+                          </div>
                           <div className="pans-col__price">{formatToRubles(deliveryPrice)}</div>
                         </div>
 
@@ -297,7 +298,7 @@ console.log(dataComponent);
                           <div className="pans-col__price">{formatToRubles(offer)}</div>
                         </div>
                       </div>
-                      <div className="pans-form__botton">Оплатить и оформить заказ</div>
+                      <div className="pans-form__botton">Оплатить и оформить</div>
                 </div>
             </div>
           </>

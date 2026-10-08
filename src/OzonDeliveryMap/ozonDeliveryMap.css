@@ -354,6 +354,10 @@
     align-items: center;
 }
 
+.pans-col__name_delivery {
+    display: flex;
+}
+
 
 
 
