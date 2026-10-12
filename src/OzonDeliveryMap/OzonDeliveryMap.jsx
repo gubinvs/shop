@@ -297,11 +297,16 @@ console.log(dataComponent);
                           <div className="pans-col__price"><b>{formatToRubles(offer)}</b></div>
                         </div>
                       </div>
-                      <div 
-                          className="pans-form__botton"
-                          onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice})}
-                      
-                      >Оплатить и оформить</div>
+                      {quantity === 0?"":
+                      <>
+                        <div 
+                            className="pans-form__botton"
+                            onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice})}
+                        
+                        >Оплатить и оформить</div>
+                      </>
+                      }
+                     
                 </div>
             </div>
           </>

@@ -85,8 +85,6 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
         ]
     };
 
-    console.log(paymentData);
-
     try {
         // Правильно склеиваем базовый URL и эндпоинт
         const response = await fetch(`${ApiOzonService}/v1/OzonPay`, {
