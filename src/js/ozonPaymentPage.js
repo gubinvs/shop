@@ -50,10 +50,10 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
     }
     
 
-        // Сборка валидного paymentData
+    // Сборка валидного paymentData
     var paymentData = {
         amount: {
-            value: String(offer)
+            value: String(offer*100) // так как сервер делит на 100)) 
         },
         extId: extIdString,
         fiscalizationPhone: formatPhone(phone), 
@@ -66,7 +66,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                 name: cleanItemName(dataComponent?.NameComponent),
                 quantity: quantity || 1, 
                 price: {
-                    value: String(priceGoods) 
+                    value: String(priceGoods*100) // так как сервер делит на 100)) 
                 },
                 type: "TYPE_PRODUCT",
                 vat: "VAT_22",
@@ -76,7 +76,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                 name: "Озон доставка до ПВЗ",
                 quantity: 1, 
                 price: {
-                    value: String(deliveryPrice) 
+                    value: String(deliveryPrice*100) // так как сервер делит на 100)) 
                 },
                 type: "TYPE_SERVICE",
                 vat: "VAT_22",
