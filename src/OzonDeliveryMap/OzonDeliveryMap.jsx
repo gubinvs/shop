@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import ApiOzonService from '../js/ApiOzonService.js';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
+import {ozonPaymentPage} from "../js/ozonPaymentPage.js";
 
 
 const OzonDeliveryMap = () => {
@@ -300,7 +301,7 @@ console.log(dataComponent);
                       </div>
                       <div 
                           className="pans-form__botton"
-                          onClick={()=>{window.location.href="/SberPaymentPage"}}
+                          onClick={()=>ozonPaymentPage()}
                       
                       >Оплатить и оформить</div>
                 </div>
