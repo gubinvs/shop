@@ -35,8 +35,6 @@ const OzonDeliveryMap = () => {
   const [deliveryPrice, setDeliveryPrice] = useState(0); // Расчетная стоимость доставки
   const offer = priceGoods * quantity + deliveryPrice;
 
-  console.log(offer)
-
   // Функция для форматирования чисел в рубли
   const formatToRubles = (value) => {
     return new Intl.NumberFormat('ru-RU', {
@@ -301,7 +299,7 @@ console.log(dataComponent);
                       </div>
                       <div 
                           className="pans-form__botton"
-                          onClick={()=>ozonPaymentPage()}
+                          onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice})}
                       
                       >Оплатить и оформить</div>
                 </div>
