@@ -1,5 +1,4 @@
 import ApiOzonService from "./ApiOzonService";
-import ApiUrl from "./ApiUrl.js";
 
 export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice}) => {
     // Функция форматирования телефона: оставляет только плюс и цифры
@@ -37,11 +36,13 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
         const url = `${ApiOzonService}/v1/ReservationOrderNumber?passsw=${encodeURIComponent(myPassword)}`;
         
         const orderNumResponse = await fetch(url);
-        
+        var orderNumber;
         if (orderNumResponse.ok) {
             // Читаем JSON-ответ от сервера (там прилетит { id: 123, message: "..." })
             const data = await orderNumResponse.json(); 
-            
+
+            orderNumber = data.id; // Запомним номер в числовом формате
+
             if (data && data.id) {
                 extIdString = String(data.id); // Принудительно приводим ID к строке (например, "1482")
                 console.log("Успешно получен номер заказа от сервера:", extIdString);
@@ -76,7 +77,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                     value: String(priceGoods*100) // так как сервер ОЗОН делит на 100)) 
                 },
                 type: "TYPE_PRODUCT", // Идентификатор товара
-                vat: "VAT_22",
+                vat: "VAT_0",
                 extId: String(dataComponent?.Id || '0') 
             },
             {
@@ -86,7 +87,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                     value: String(deliveryPrice*100) // так как сервер ОЗОН делит на 100)) 
                 },
                 type: "TYPE_SERVICE", // Идентификатор услуги
-                vat: "VAT_22",
+                vat: "VAT_0", // НДС 
                 extId: "delivery_ozon" 
             }
         ]
@@ -107,15 +108,46 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
         }
 
         const result = await response.json();
+        
 
-        // Запишем телефон покупателя в базу данных
+        // Запишем телефон покупателя в базу данных 
+        var newOrder = { 
+            // Берем ID заказа, который мы получили от сервера (extIdString)
+            id: orderNumber ?? 0, 
+            
+            // Телефон гарантированно берем из отформатированного свойства
+            phone_user: paymentData.fiscalizationPhone || "", 
+            
+            // Напишите стартовый статус string, чтобы апи сервер не обновлял данное поле в базе данных"
+            status_order: "string" 
+        };
 
+        const responseUpdatingOrder = await fetch(`${ApiOzonService}/v1/UpdatingOrderFromIndividuals`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newOrder),
+        });
+
+
+
+        //  Оформим доставку в ОЗОН Доставке
         // .................................
+    
 
 
-        // Запишем заказ оформим доставку в ОЗОН Доставке
 
-        // .................................
+
+
+
+
+
+
+
+
+
+
 
         
         // Вместо return проверяем ссылку и делаем редирект.

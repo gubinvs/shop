@@ -20,10 +20,20 @@ const RegistrationAndDelivery = () => {
     }, [dataComponent, navigate]);
     
     return(
-        <>
-            {/* --- Банеры на выбор транспортной компании --- */}
-            
-        </>
+        <></>
+        // <>
+        //     <div className="registration-and-delivery-section">
+        //         <div className="container registration-and-delivery-section__container">
+        //             {/* --- Банеры на выбор транспортной компании --- */}
+        //             <img 
+        //                 className="registration-and-delivery-section__banner registration-and-delivery-section__banner_ozon" 
+        //                 src="../../images/img-delivery-section/600x600_light_ozon_blue.png" 
+        //                 alt="Доставка ОЗОН" 
+        //                 onClick={()=>{navigate("/OzonDeliveryMap", { state: { dataComponent } })}}
+        //             />
+        //         </div>
+        //     </div>
+        // </>
     );
 };
 

@@ -314,7 +314,12 @@ console.log(dataComponent);
 
         {/* Левая панель с ПВЗ */}
         <div className="ozon-delivery-map-section__left-block">
-          <h3 className="ozon-delivery-map-section__title">Пункты выдачи Ozon</h3>
+           <img 
+              className="odms-left-block__banner-ozon" 
+              src="../../images/img-delivery-section/1416x200_light_ozon.png" 
+              alt="Доставка ОЗОН" 
+          />
+          <h3 className="ozon-delivery-map-section__title">Пункты выдачи Ozon:</h3>
 
           <form className="ozon-delivery-search" onSubmit={handleSearchSubmit}>
             <input
