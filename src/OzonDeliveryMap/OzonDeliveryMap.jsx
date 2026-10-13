@@ -233,7 +233,7 @@ console.log(dataComponent);
           <>
             <div className="phone-add-number-section">
                 <div className="phone-add-number-section__form">
-                      <div className="pans-form__title">Укажите номер телефона получателя:</div>
+                      <div className="pans-form__title">Важно! Укажите действующий и активный номер телефона получателя привязанный к аккаунту Ozon:</div>
                       <input
                           type="tel"
                           className="pans-form__phone"
