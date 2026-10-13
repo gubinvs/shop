@@ -75,7 +75,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                 price: {
                     value: String(priceGoods*100) // так как сервер ОЗОН делит на 100)) 
                 },
-                type: "TYPE_PRODUCT",
+                type: "TYPE_PRODUCT", // Идентификатор товара
                 vat: "VAT_22",
                 extId: String(dataComponent?.Id || '0') 
             },
@@ -85,7 +85,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                 price: {
                     value: String(deliveryPrice*100) // так как сервер ОЗОН делит на 100)) 
                 },
-                type: "TYPE_SERVICE",
+                type: "TYPE_SERVICE", // Идентификатор услуги
                 vat: "VAT_22",
                 extId: "delivery_ozon" 
             }
@@ -107,9 +107,19 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
         }
 
         const result = await response.json();
+
+        // Запишем телефон покупателя в базу данных
+
+        // .................................
+
+
+        // Запишем заказ оформим доставку в ОЗОН Доставке
+
+        // .................................
+
         
         // Вместо return проверяем ссылку и делаем редирект.
-        // Если бэкенд возвращает свойства с большой буквы, замени на result.PayUrl
+        // Если бэкенд возвращает свойства с большой буквы, заменим на result.PayUrl
         if (result && result.payUrl) {
             window.location.href = result.payUrl;
         } else if (result && result.PayUrl) {
