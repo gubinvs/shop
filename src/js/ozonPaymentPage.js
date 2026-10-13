@@ -28,32 +28,39 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
     };
 
 
-  // 1. Получаем номер заказа с вашего сервера
-    let extIdString = `draft_\${Date.now()}`; // Лучше генерировать временный уникальный ID вместо "0"
-    
+    // 1. Получаем номер заказа с вашего сервера
+    let extIdString = `draft_${Date.now()}`; // Временный ID на случай сбоя
+    const myPassword = "7cca3d97-1f11-43ba-b82d-bb6b7ddf8056"; // Укажите актуальный пароль
+
     try {
-        // ДОБАВЛЕН await и правильная шаблонная строка `` с переменной \${ApiUrl}
-        const orderNumResponse = await fetch(`${ApiUrl}/api/NumberOrder`);
+        // Передаем пароль прямо в строке запроса: ?passsw=наш_пароль
+        const url = `${ApiOzonService}/v1/ReservationOrderNumber?passsw=${encodeURIComponent(myPassword)}`;
         
-        // Теперь orderNumResponse — это реальный ответ сервера, у него есть .ok
+        const orderNumResponse = await fetch(url);
+        
         if (orderNumResponse.ok) {
-            // ДОБАВЛЕН await для чтения тела ответа
-            const orderNum = await orderNumResponse.json(); 
+            // Читаем JSON-ответ от сервера (там прилетит { id: 123, message: "..." })
+            const data = await orderNumResponse.json(); 
             
-            extIdString = String(orderNum); // Принудительно приводим к строке "1482"
-            console.log("Успешно получен номер заказа от сервера:", extIdString);
+            if (data && data.id) {
+                extIdString = String(data.id); // Принудительно приводим ID к строке (например, "1482")
+                console.log("Успешно получен номер заказа от сервера:", extIdString);
+            } else {
+                console.warn("Сервер вернул успешный статус, но внутри нет id:", data);
+            }
         } else {
-            console.warn(`Сервер ответил статусом ${orderNumResponse.status}, используем временный ID: ${extIdString}`);
+            // Если пароль не подошел, сработает эта ветка
+            const errorData = await orderNumResponse.json().catch(() => ({}));
+            console.warn(`Сервер ответил ошибкой ${orderNumResponse.status}: ${errorData.message || ''}. Используем временный ID: ${extIdString}`);
         }
     } catch (numError) {
         console.warn('Не удалось получить номер заказа с сервера (ошибка сети/запроса), используем временный ID', numError);
     }
     
-
     // Сборка валидного paymentData
     var paymentData = {
         amount: {
-            value: String(offer*100) // так как сервер делит на 100)) 
+            value: String(offer*100) // так как сервер ОЗОН делит на 100)) 
         },
         extId: extIdString,
         fiscalizationPhone: formatPhone(phone), 
@@ -66,7 +73,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                 name: cleanItemName(dataComponent?.NameComponent),
                 quantity: quantity || 1, 
                 price: {
-                    value: String(priceGoods*100) // так как сервер делит на 100)) 
+                    value: String(priceGoods*100) // так как сервер ОЗОН делит на 100)) 
                 },
                 type: "TYPE_PRODUCT",
                 vat: "VAT_22",
@@ -76,7 +83,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
                 name: "Озон доставка до ПВЗ",
                 quantity: 1, 
                 price: {
-                    value: String(deliveryPrice*100) // так как сервер делит на 100)) 
+                    value: String(deliveryPrice*100) // так как сервер ОЗОН делит на 100)) 
                 },
                 type: "TYPE_SERVICE",
                 vat: "VAT_22",

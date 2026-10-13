@@ -302,7 +302,6 @@ console.log(dataComponent);
                         <div 
                             className="pans-form__botton"
                             onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice})}
-                        
                         >Оплатить и оформить</div>
                       </>
                       }
