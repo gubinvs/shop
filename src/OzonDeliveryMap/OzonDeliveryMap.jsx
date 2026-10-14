@@ -117,6 +117,7 @@ const OzonDeliveryMap = () => {
     };
   }, [points]);
 
+
   // Общая функция для выполнения POST-запросов к вашей БД
   const fetchPointsFromDb = async (searchQuery) => {
     const response = await fetch(`${ApiOzonService}/v1/DeliveryPointSearch`, {
@@ -207,7 +208,6 @@ const OzonDeliveryMap = () => {
       setPhoneInput(true);   
   };
 
-
   // Определяем максимальное количество товара для заказа по информации о наличии
   useEffect(() => {
     // Проверяем, что объект dataComponent существует и количество больше 0
@@ -220,11 +220,9 @@ const OzonDeliveryMap = () => {
     }
   }, [dataComponent]);
 
-
+  console.log(dataComponent)
 
   if (loading) return <LoadingSpinner />;
-
-console.log(dataComponent);
 
   return (
     <section className="ozon-delivery-map-section">
@@ -301,7 +299,7 @@ console.log(dataComponent);
                       <>
                         <div 
                             className="pans-form__botton"
-                            onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice})}
+                            onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice, pointDestination})}
                         >Оплатить и оформить</div>
                       </>
                       }

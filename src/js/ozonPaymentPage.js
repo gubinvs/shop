@@ -1,6 +1,29 @@
 import ApiOzonService from "./ApiOzonService";
 
-export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice}) => {
+export const ozonPaymentPage = async (
+    {
+        dataComponent, 
+        offer, 
+        phone, 
+        priceGoods, 
+        quantity, 
+        deliveryPrice,
+        pointDestination
+    }) => {
+
+
+    // Актуальный метод доставки который использую как точку отгрузки товара (Парашютная 34 СПБ)
+    const shipmentMethodId = 1020005028896210;
+
+    // 1. Создаем объект даты с текущим временем
+    const tomorrow = new Date();
+
+    // 2. Прибавляем ровно 1 день (24 часа)
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    // 3. Переводим в формат ISO 8601 (строка вида 2026-10-15T06:38:10.013Z)
+    const formattedDate = tomorrow.toISOString();
+
     // Функция форматирования телефона: оставляет только плюс и цифры
     const formatPhone = (phoneStr) => {
         if (!phoneStr) return "";
@@ -63,7 +86,7 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
         amount: {
             value: String(offer*100) // так как сервер ОЗОН делит на 100)) 
         },
-        extId: extIdString,
+        extId: extIdString, // Идентификатор заказа в системе продавца.
         fiscalizationPhone: formatPhone(phone), 
         extData: {
             comment: "Оплата на ec-market.ru"
@@ -95,20 +118,22 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
 
     try {
         // Правильно склеиваем базовый URL и эндпоинт
-        const response = await fetch(`${ApiOzonService}/v1/OzonPay`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(paymentData),
-        });
+        // const response = await fetch(`${ApiOzonService}/v1/OzonPay!!!!!!!!!!!!!`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(paymentData),
+        // });
 
-        if (!response.ok) {
-            throw new Error(`Ошибка HTTP: ${response.status}`);
-        }
+        // if (!response.ok) {
+        //     throw new Error(`Ошибка HTTP: ${response.status}`);
+        // }
 
-        const result = await response.json();
+        // const result = await response.json();
         
+        
+        const result = "";
 
         // Запишем телефон покупателя в базу данных 
         var newOrder = { 
@@ -133,37 +158,39 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
 
 
         //  Оформим доставку в ОЗОН Доставке
-        var reguestDelivery = {
-            "order_external_id": "string",
-            "recipient": {
-                "phone_number": "string",
-                "full_name": "string"
+        var reguestDelivery = 
+        {
+            order_external_id:  extIdString, // Идентификатор заказа в системе продавца.
+            recipient: {
+                phone_number: formatPhone(phone)
             },
-            "delivery": {
-                "delivery_point": {
-                "delivery_point_id": 0
+            delivery: {
+                delivery_point: {
+                    delivery_point_id: pointDestination // 	Идентификатор пункта выдачи заказов или постамата.
                 }
             },
-            "postings": [
+            postings: [
                 {
-                "request_id": 0,
-                "posting_external_id": "string",
-                "shipment_method_id": 0,
-                "description": "string",
-                "declared_value": {
-                    "amount": "string",
-                    "currency_code": "string"
-                },
-                "cutoff_at": "2026-10-14T06:38:10.013Z",
-                "dimensions": {
-                    "weight_g": 0,
-                    "length_mm": 0,
-                    "width_mm": 0,
-                    "height_mm": 0
-                }
+                    request_id: orderNumber,
+                    posting_external_id:  extIdString,
+                    shipment_method_id: shipmentMethodId,
+                    description: dataComponent.NameComponent,
+                    declared_value: {
+                        amount: String(offer),
+                        currency_code: "RUB"
+                    },
+                    cutoff_at: formattedDate, // Автоматически подставляем завтрашнюю дату
+                    dimensions: {
+                        weight_g: 5000, // Нужноподставить реальные
+                        length_mm: 300,
+                        width_mm: 300,
+                        height_mm: 300
+                    }
                 }
             ] 
         }
+
+        console.log(reguestDelivery);
     
 
         const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate`, {
