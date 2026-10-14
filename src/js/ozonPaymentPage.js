@@ -118,22 +118,20 @@ export const ozonPaymentPage = async (
 
     try {
         // Правильно склеиваем базовый URL и эндпоинт
-        // const response = await fetch(`${ApiOzonService}/v1/OzonPay!!!!!!!!!!!!!`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(paymentData),
-        // });
+        const response = await fetch(`${ApiOzonService}/v1/OzonPay`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(paymentData),
+        });
 
-        // if (!response.ok) {
-        //     throw new Error(`Ошибка HTTP: ${response.status}`);
-        // }
+        if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
 
-        // const result = await response.json();
+        const result = await response.json();
         
-        
-        const result = "";
 
         // Запишем телефон покупателя в базу данных 
         var newOrder = { 
