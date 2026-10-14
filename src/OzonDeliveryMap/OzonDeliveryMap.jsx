@@ -35,6 +35,26 @@ const OzonDeliveryMap = () => {
   const priceGoods = dataComponent.Price; // Стоимость товара
   const [deliveryPrice, setDeliveryPrice] = useState(0); // Расчетная стоимость доставки
   const offer = priceGoods * quantity + deliveryPrice;
+  // Внутри вашего компонента:
+  const [isAgreed, setIsAgreed] = useState(false); // Состояние чекбокса
+
+  // Функция обработки (добавьте проверку в самое начало)
+  const handleCheckout = () => {
+      if (!isAgreed) {
+          alert("Пожалуйста, согласитесь на обработку персональных данных.");
+          return; // Останавливаем выполнение, функция дальше не пойдет
+      }
+      // Если чекбокс нажат — вызываем вашу функцию
+      deliveryCheckout({
+          dataComponent, 
+          phone, 
+          pointDestination, 
+          priceGoods, 
+          setDeliveryPrice, 
+          setPhoneInput, 
+          setPlacingAnOrder
+      });
+  };
 
   // Функция для форматирования чисел в рубли
   const formatToRubles = (value) => {
@@ -117,7 +137,6 @@ const OzonDeliveryMap = () => {
       delete window.handleSelectOzonPoint;
     };
   }, [points]);
-
 
   // Общая функция для выполнения POST-запросов к вашей БД
   const fetchPointsFromDb = async (searchQuery) => {
@@ -221,8 +240,6 @@ const OzonDeliveryMap = () => {
     }
   }, [dataComponent]);
 
-  console.log(dataComponent)
-
   if (loading) return <LoadingSpinner />;
 
   return (
@@ -243,22 +260,28 @@ const OzonDeliveryMap = () => {
                           onChange={handleChange}
                           placeholder="+79991234567"
                         />
-                      <div 
-                          className="pans-form__botton"
-                          onClick={() => deliveryCheckout({dataComponent, phone, pointDestination, priceGoods, setDeliveryPrice, setPhoneInput, setPlacingAnOrder})}
-                      >Расчитать стоимость доставки</div>
+                      <div className="pans-form__botton" onClick={handleCheckout}>
+                          Продолжить оформление заказа
+                      </div>
                       <div className="pans-form__discr">
                           После подтверждения заказа продавцом, он автоматически привяжется к вашему кабинету Ozon.
                           Выдача в ПВЗ осуществляется по штрихкоду из приложения.
                       </div>
                       {/* Политика ОПД */}
+                      {/* Чекбокс связываем со state */}
                       <div className="check-box">
-                          <input className="check-box__input" type="checkbox" name="chekBox" required />
+                          <input 
+                              className="check-box__input" 
+                              type="checkbox" 
+                              name="chekBox" 
+                              checked={isAgreed}
+                              onChange={(e) => setIsAgreed(e.target.checked)} 
+                              required 
+                          />
                           <div className="check-box__discr">
                               Даю согласие на обработку персональных данных согласно
                               <a href="/PersonalData"> Политике ОПД</a>
                           </div>
-                          <input type="hidden" name="active-form" value="massage" />
                       </div>
                 </div>
             </div>
@@ -269,7 +292,7 @@ const OzonDeliveryMap = () => {
           <>
             <div className="phone-add-number-section">
                 <div className="phone-add-number-section__form">
-                      <div className="pans-form__title">Формирование заказа:</div>
+                      <div className="pans-form__title pans-form__title_exclamation">Формирование заказа:</div>
                       <div className="pans-form__list">
                         {/* Строка 1: Товар */}
                         <div className="pans-form__item">
@@ -317,10 +340,9 @@ const OzonDeliveryMap = () => {
                         <div 
                             className="pans-form__botton"
                             onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice, pointDestination})}
-                        >Оплатить и оформить</div>
+                        >Оплатить</div>
                       </>
                       }
-                     
                 </div>
             </div>
           </>
