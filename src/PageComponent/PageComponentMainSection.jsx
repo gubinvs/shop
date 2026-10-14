@@ -168,7 +168,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                         <button 
                                             className="cps-d-button-block__basket-button_add"
                                             onClick={()=>{window.location.href = "/Basket"}}
-                                        >Уже в корзине</button>
+                                        >В корзине юр.лиц</button>
                                     </>
                                     }
   
