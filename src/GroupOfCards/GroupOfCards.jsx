@@ -16,6 +16,7 @@ const GroupOfCards = ({
             <div className='group-of-cards-section'>
                 <div className="container group-of-cards-section__container">
                     {cardData.slice(0, quantityCart).map((element, index)=>{
+                        
                         return(
                             <>
                                 <CardComponent 

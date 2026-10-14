@@ -162,7 +162,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                                 addProductToDasket(dataComponent);
                                                 setIsItemBasket(true);
                                             }}
-                                        >В корзину</button>
+                                        >Купить как юр.лицо</button>
                                     </>:
                                     <>
                                         <button 
