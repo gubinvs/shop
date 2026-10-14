@@ -63,8 +63,9 @@ export const ozonPaymentPage = async (
         if (orderNumResponse.ok) {
             // Читаем JSON-ответ от сервера (там прилетит { id: 123, message: "..." })
             const data = await orderNumResponse.json(); 
-
-            orderNumber = data.id; // Запомним номер в числовом формате
+            
+            // Запомним номер в числовом формате
+            orderNumber = data.id; 
 
             if (data && data.id) {
                 extIdString = String(data.id); // Принудительно приводим ID к строке (например, "1482")
@@ -110,7 +111,7 @@ export const ozonPaymentPage = async (
                     value: String(deliveryPrice*100) // так как сервер ОЗОН делит на 100)) 
                 },
                 type: "TYPE_SERVICE", // Идентификатор услуги
-                vat: "VAT_0", // НДС 
+                vat: "VAT_0", // НДС 0
                 extId: "delivery_ozon" 
             }
         ]
@@ -132,7 +133,6 @@ export const ozonPaymentPage = async (
 
         const result = await response.json();
         
-
         // Запишем телефон покупателя в базу данных 
         var newOrder = { 
             // Берем ID заказа, который мы получили от сервера (extIdString)
@@ -152,8 +152,6 @@ export const ozonPaymentPage = async (
             },
             body: JSON.stringify(newOrder),
         });
-
-
 
         //  Оформим доставку в ОЗОН Доставке
         var reguestDelivery = 
@@ -179,10 +177,10 @@ export const ozonPaymentPage = async (
                     },
                     cutoff_at: formattedDate, // Автоматически подставляем завтрашнюю дату
                     dimensions: {
-                        weight_g: 5000, // Нужноподставить реальные
-                        length_mm: 300,
-                        width_mm: 300,
-                        height_mm: 300
+                        weight_g: 5000, // Нужноподставить реальные из dataComponent.??????
+                        length_mm: 300, // Нужноподставить реальные из dataComponent.??????
+                        width_mm: 300, // Нужноподставить реальные из dataComponent.??????
+                        height_mm: 300 // Нужноподставить реальные из dataComponent.??????
                     }
                 }
             ] 
@@ -197,7 +195,19 @@ export const ozonPaymentPage = async (
         });
 
         // Ответ записываем в базу данных ??????????????
-
+        // {
+        //     "order_number": "YY-123BE456PY78-90YY",
+        //     "order_external_id": "shop-order-42",
+        //     "postings": [
+        //         {
+        //             "request_id": 101,
+        //             "posting_number": "123BE456PY78-90YY",
+        //             "posting_external_id": "shop-posting-42-1",
+        //             "estimated_delivery_days": 2,
+        //             "cutoff_at": "2026-07-16T12:00:00Z"
+        //         }
+        //     ]
+        // }
 
 
 
@@ -205,8 +215,10 @@ export const ozonPaymentPage = async (
 
         
 
+        
 
-        // Вместо return проверяем ссылку и делаем редирект.
+
+
         // Если бэкенд возвращает свойства с большой буквы, заменим на result.PayUrl
         if (result && result.payUrl) {
             window.location.href = result.payUrl;
