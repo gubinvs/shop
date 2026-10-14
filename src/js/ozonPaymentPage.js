@@ -133,23 +133,48 @@ export const ozonPaymentPage = async ({dataComponent, offer, phone, priceGoods, 
 
 
         //  Оформим доставку в ОЗОН Доставке
-        // .................................
+        var reguestDelivery = {
+            "order_external_id": "string",
+            "recipient": {
+                "phone_number": "string",
+                "full_name": "string"
+            },
+            "delivery": {
+                "delivery_point": {
+                "delivery_point_id": 0
+                }
+            },
+            "postings": [
+                {
+                "request_id": 0,
+                "posting_external_id": "string",
+                "shipment_method_id": 0,
+                "description": "string",
+                "declared_value": {
+                    "amount": "string",
+                    "currency_code": "string"
+                },
+                "cutoff_at": "2026-10-14T06:38:10.013Z",
+                "dimensions": {
+                    "weight_g": 0,
+                    "length_mm": 0,
+                    "width_mm": 0,
+                    "height_mm": 0
+                }
+                }
+            ] 
+        }
     
 
+        const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reguestDelivery),
+        });
 
 
-
-
-
-
-
-
-
-
-
-
-
-        
         // Вместо return проверяем ссылку и делаем редирект.
         // Если бэкенд возвращает свойства с большой буквы, заменим на result.PayUrl
         if (result && result.payUrl) {
