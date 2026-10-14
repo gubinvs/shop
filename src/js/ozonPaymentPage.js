@@ -210,15 +210,6 @@ export const ozonPaymentPage = async (
         // }
 
 
-
-
-
-        
-
-        
-
-
-
         // Если бэкенд возвращает свойства с большой буквы, заменим на result.PayUrl
         if (result && result.payUrl) {
             window.location.href = result.payUrl;
