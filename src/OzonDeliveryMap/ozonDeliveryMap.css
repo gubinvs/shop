@@ -271,9 +271,18 @@
 }
 
 .pans-form__title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pans-form__title_exclamation {
     font-size: 20px;
     font-weight: 800;
-    margin-bottom: 20px;
+}
+
+.pans-form__title_discr {
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .pans-form__phone {
@@ -298,6 +307,7 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 
@@ -358,9 +368,16 @@
     display: flex;
 }
 
-
 .odms-left-block__banner-ozon {
     margin-bottom: 20px;
+}
+
+.pans-form__discr {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: justify;
+    margin-bottom: 20px;
+    color: #e00644;
 }
 
 

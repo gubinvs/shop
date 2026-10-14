@@ -12,6 +12,7 @@ import {ozonPaymentPage} from "../js/ozonPaymentPage.js";
 const OzonDeliveryMap = () => {
   const [points, setPoints] = useState([]); // Текущие отображаемые ПВЗ (дефолтные или найденные)
   const [selectedPoint, setSelectedPoint] = useState(null);
+ 
   // Пункт назначения
   const [pointDestination, setPointDestination] = useState(0)
   
@@ -108,7 +109,7 @@ const OzonDeliveryMap = () => {
         if (mapRef.current) {
           mapRef.current.balloon.close();
         }
-        console.log("ПВЗ выбран для заказа:", point);
+        //console.log("ПВЗ выбран для заказа:", point);
       }
     };
 
@@ -231,7 +232,10 @@ const OzonDeliveryMap = () => {
           <>
             <div className="phone-add-number-section">
                 <div className="phone-add-number-section__form">
-                      <div className="pans-form__title">Важно! Укажите действующий и активный номер телефона получателя привязанный к аккаунту Ozon:</div>
+                      <div className="pans-form__title">
+                        <div className="pans-form__title_exclamation">Важно!</div>
+                        <div className="pans-form__title_discr">Укажите активный номер телефона получателя, привязанный к аккаунту Ozon:</div>
+                      </div>
                       <input
                           type="tel"
                           className="pans-form__phone"
@@ -243,6 +247,19 @@ const OzonDeliveryMap = () => {
                           className="pans-form__botton"
                           onClick={() => deliveryCheckout({dataComponent, phone, pointDestination, priceGoods, setDeliveryPrice, setPhoneInput, setPlacingAnOrder})}
                       >Расчитать стоимость доставки</div>
+                      <div className="pans-form__discr">
+                          После подтверждения заказа продавцом, он автоматически привяжется к вашему кабинету Ozon.
+                          Выдача в ПВЗ осуществляется по штрихкоду из приложения.
+                      </div>
+                      {/* Политика ОПД */}
+                      <div className="check-box">
+                          <input className="check-box__input" type="checkbox" name="chekBox" required />
+                          <div className="check-box__discr">
+                              Даю согласие на обработку персональных данных согласно
+                              <a href="/PersonalData"> Политике ОПД</a>
+                          </div>
+                          <input type="hidden" name="active-form" value="massage" />
+                      </div>
                 </div>
             </div>
           </>
