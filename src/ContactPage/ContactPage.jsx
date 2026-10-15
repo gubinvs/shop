@@ -5,75 +5,81 @@ import "./contactPage.css";
 const ContactPage = () => {
     return(
         <>
-        <section class="egrul-table-section">
-            <div class="container egrul-table-section__container">
-                <div class="egrul-table-section__file">
-                    <a href="https://file.ec-market.ru/files/ipgubincard.pdf">
-                        <img class="icon-file" src="/images/pdf-icon.png" alt="Иконка файла pdf" />
-                    </a>
+            <section className="egrul-table-section">
+                <div className="container egrul-table-section__container">
+                    <div className="egrul-table-section__file">
+                        <img 
+                            className="egrul-table-section__logo" 
+                            src="../../images/images-logo/logo-img-header.svg" 
+                            alt="Логотип" 
+                            onClick={()=>{window.location.href="/"}} 
+                        />
+                        
+                        <a href="https://file.ec-market.ru/files/ipgubincard.pdf">
+                            <img className="icon-file" src="../../images/icon/pdf-icon.png" alt="Скачать.pdf" />
+                        </a>
+                    </div>
+                    <h2 class="egrul-table-section__title">Корпоративная информация</h2>
+                    <div class="egrul-table-section__list">
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Полное наименование</div>
+                            <div className="etst-item__discr">Индивидуальный предприниматель <br/> Губин Владимир Сергеевич</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Сокращенное наименование</div>
+                            <div className="etst-item__discr">ИП Губин Владимир Сергеевич</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Коммерческое обозначение (бренд)</div>
+                            <div className="etst-item__discr">Компоненты энергии</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">ИНН</div>
+                            <div className="etst-item__discr">590302376610</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">ОГРНИП</div>
+                            <div className="etst-item__discr">325784700338340</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Адрес местонахождения</div>
+                            <div className="etst-item__discr">197371, г. Санкт-Петербург, ул. Парашютная, д. 34, стр. 1, кв. 851</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">ОКВЭД</div>
+                            <div className="etst-item__discr">47.91.2, 52.21.1, 62.01, 63.11.1, 70.22, 82.99</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Расчетный счет №</div>
+                            <div className="etst-item__discr">40802 810 3 5571 0027166</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Корреспондентский счет №</div>
+                            <div className="etst-item__discr">30101 810 5 0000 0000653</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Наименование банка</div>
+                            <div className="etst-item__discr">ПАО СБЕРБАНК</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">БИК</div>
+                            <div className="etst-item__discr">044030653</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">Телефон</div>
+                            <div className="etst-item__discr">+7 (812) 921-59-71</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">E-mail</div>
+                            <div className="etst-item__discr">gubinvs@gmail.com</div>
+                        </div>
+                        <div className="ets-table__item">
+                            <div className="etst-item__title">ЭДО ID</div>
+                            <div className="etst-item__discr">2BE5ac19fd465c94c5884077afd69cef7c1</div>
+                        </div>
+                    </div>
                 </div>
-                <h2 class="egrul-table-section__title">Корпоративная информация</h2>
-                <table class="egrul-table-section__table">
-                    <tr>
-                        <td class="egrul-table-section__td">Полное наименование</td>
-                        <td class="egrul-table-section__td">Индивидуальный предприниматель Губин Владимир Сергеевич</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Сокращенное наименование</td>
-                        <td class="egrul-table-section__td">ИП Губин Владимир Сергеевич</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Коммерческое обозначение (бренд)</td>
-                        <td class="egrul-table-section__td">Компоненты энергии</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">ИНН</td>
-                        <td class="egrul-table-section__td">590302376610</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">ОГРНИП</td>
-                        <td class="egrul-table-section__td">325784700338340</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Адрес местонахождения</td>
-                        <td class="egrul-table-section__td">197371, г. Санкт-Петербург, ул. Парашютная, д. 34, стр. 1, кв. 851</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">ОКВЭД</td>
-                        <td class="egrul-table-section__td">47.91.2, 52.21.1, 62.01, 63.11.1, 70.22, 82.99</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Расчетный счет №</td>
-                        <td class="egrul-table-section__td">40802 810 3 5571 0027166</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Корреспондентский счет №</td>
-                        <td class="egrul-table-section__td">30101 810 5 0000 0000653</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Наименование банка</td>
-                        <td class="egrul-table-section__td">ПАО СБЕРБАНК</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">БИК</td>
-                        <td class="egrul-table-section__td">044030653</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">Телефон</td>
-                        <td class="egrul-table-section__td">+7 (812) 921-59-71</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">E-mail</td>
-                        <td class="egrul-table-section__td">gubinvs@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="egrul-table-section__td">ЭДО ID</td>
-                        <td class="egrul-table-section__td">2BE5ac19fd465c94c5884077afd69cef7c1</td>
-                    </tr>
-                </table>
-            </div>
-
-        </section>
+            </section>
         </>
     );
 }

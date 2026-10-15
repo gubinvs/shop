@@ -1,0 +1,31 @@
+.egrul-table-section__container {
+    padding-top: 30px;
+}
+
+.egrul-table-section__logo {
+    cursor: pointer;
+}
+
+.egrul-table-section__file {
+    display: flex;
+    justify-content:space-between;
+    align-items: start;
+    width: 100%;
+}
+
+.egrul-table-section__title {
+    margin-bottom: 20px;
+}
+
+.ets-table__item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.etst-item__title {
+    width: 50%;
+}
+
+.icon-file {
+    width: 80px;
+}
