@@ -177,15 +177,17 @@ export const ozonPaymentPage = async (
                     },
                     cutoff_at: formattedDate, // Автоматически подставляем завтрашнюю дату
                     dimensions: {
-                        weight_g: 5000, // Нужноподставить реальные из dataComponent.??????
-                        length_mm: 300, // Нужноподставить реальные из dataComponent.??????
-                        width_mm: 300, // Нужноподставить реальные из dataComponent.??????
-                        height_mm: 300 // Нужноподставить реальные из dataComponent.??????
+                        weight_g: dataComponent.TransportPackaging.WeightG || 5000, 
+                        length_mm: dataComponent.TransportPackaging.LengthMm || 300, 
+                        width_mm: dataComponent.TransportPackaging.WidthMm || 300, 
+                        height_mm: dataComponent.TransportPackaging.HeightMm || 300 
                     }
                 }
             ] 
         }
 
+            console.log(reguestDelivery);
+        
         const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate`, {
             method: 'POST',
             headers: {
