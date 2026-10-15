@@ -20,6 +20,14 @@
 
 }
 
+.payment-section__container {
+  display: flex;
+}
+
+.payment-options-wrapper_card {
+  margin-right: 20px;
+}
+
 .delivery-payment__main-block {
   background-color: #FFFFFF;
 }
