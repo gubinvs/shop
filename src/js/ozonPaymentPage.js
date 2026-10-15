@@ -186,7 +186,6 @@ export const ozonPaymentPage = async (
             ] 
         }
 
-            console.log(reguestDelivery);
         
         const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate`, {
             method: 'POST',
