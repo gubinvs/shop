@@ -5,7 +5,6 @@
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 20px;
- 
 }
 
 .delivery-section, 
@@ -104,6 +103,11 @@
   margin-bottom: 15px;
 }
 
+.delivery-option-card__icon {
+  width: 60px;
+  border-radius: 10px;
+}
+
 .delivery-option-card__title,
 .payment-option-card__title {
   margin-bottom: 10px;
@@ -121,8 +125,8 @@
 
 .delivery-option-card__link {
   text-decoration: none;
-  color: #fff;
-  background-color: #1a73e8;
+  color: #1a73e8;
+  /* background-color: #1a73e8; */
   padding: 10px 15px;
   border-radius: 8px;
   display: inline-block;

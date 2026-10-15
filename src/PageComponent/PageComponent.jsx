@@ -3,6 +3,7 @@ import PageComponentDiscription from "./PageComponentDiscription.jsx";
 import PageComponentMainSection from "./PageComponentMainSection.jsx";
 import PageComponentCharacteristicsSection from "./PageComponentCharacteristicsSection.jsx";
 import PageComponentDocFileSection from "./PageComponentDocFileSection.jsx";
+import Footer from "../Footer/NewFooter.jsx";
 
 const PageComponent = ({dataComponent})=> {
 
@@ -18,7 +19,9 @@ const PageComponent = ({dataComponent})=> {
             <PageComponentCharacteristicsSection vendor={dataComponent.VendorCode} characteristics={dataComponent.Characteristics}/>
 
             {/* Секция с ссылками на техническую документацию, принимает пропсом массав file */}
-            <PageComponentDocFileSection file={dataComponent.File} />         
+            <PageComponentDocFileSection file={dataComponent.File} />     
+
+            <Footer />    
 
         </>
     );
