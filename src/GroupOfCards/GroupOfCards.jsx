@@ -23,6 +23,7 @@ const GroupOfCards = ({
                                     key={index} 
                                     urlImg={element.UrlImgCard} 
                                     price={element.PriceGoods} 
+                                    quantity={element.Quantity}
                                     dicription={element.Discr} 
                                     imgArray={element.Images} 
                                     linkPage={element.UrlPage} 

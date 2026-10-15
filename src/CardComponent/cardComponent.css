@@ -115,6 +115,42 @@
     color: #a6a4a4;
 }
 
+.card-goods__price-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center ;
+}
+
+.cg-price-block__quantity {
+  display: flex;
+}
+
+.cgpb-quantity__title {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.cgpb-quantity__title_null {
+  font-weight: 400;
+  padding-right: 20px;
+}
+
+.cgpb-quantity__quantity {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.cgpb-quantity__discr {
+  padding-right: 4px;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
 @media only screen and (max-width: 1280px) {
   .card-goods {
     width: 242px;

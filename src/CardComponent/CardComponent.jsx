@@ -7,6 +7,7 @@ const CardComponent = (
     {
         urlImg, 
         price, 
+        quantity,
         dicription, 
         imgArray, 
         linkPage,
@@ -84,10 +85,23 @@ const CardComponent = (
                     </div>
                 )}
 
-                <div className="card-goods__price">
-                    {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(price)}
+                <div className="card-goods__price-block">
+                    <div className="card-goods__price">
+                        {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(price)}
+                    </div>  
+                    {quantity > 0?
+                        <>
+                        <div className="cg-price-block__quantity">
+                            <div className="cgpb-quantity__title">В наличии</div>
+                            <div className="cgpb-quantity__quantity">{quantity}</div>
+                            <div className="cgpb-quantity__discr">шт.</div>  
+                        </div>
+                        </>:
+                        <div className="cgpb-quantity__title_null">На заказ</div>
+                    }
+                    
                 </div>
-                
+              
                 <div 
                     className="card-goods__discription"
                     onClick={() => window.location.href = linkPage}
