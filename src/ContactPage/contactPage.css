@@ -1,16 +1,29 @@
-.egrul-table-section__container {
-    padding-top: 30px;
-}
-
 .egrul-table-section__logo {
     cursor: pointer;
 }
 
-.egrul-table-section__file {
-    display: flex;
-    justify-content:space-between;
-    align-items: start;
+.ets-file-block {
+    padding-top: 30px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
     width: 100%;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.ets-file-block__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom: 20px;
+}
+
+.ets-table-block {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 40px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
 }
 
 .egrul-table-section__title {
