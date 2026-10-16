@@ -223,7 +223,6 @@
     color: #ffffff;
     background-color: #1a55eb;
     cursor: pointer;
-
 }
 
 .cps-d-button-block__basket-button {
@@ -268,6 +267,19 @@
 .cps-d-button-block__ozon-button:hover,
 .cps-d-button-block__ofer-button:hover {
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+.cps-d-button-block__ozon-button_no-quantity,
+.cps-d-button-block__ofer-button_no-quantity {
+    width: 275px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #DFE0E1;
+    background-color: #FFFFFF;
+    border: 1px solid #DFE0E1;
 }
 
 

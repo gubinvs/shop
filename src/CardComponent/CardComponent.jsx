@@ -97,7 +97,7 @@ const CardComponent = (
                             <div className="cgpb-quantity__discr">шт.</div>  
                         </div>
                         </>:
-                        <div className="cgpb-quantity__title_null">На заказ</div>
+                        <div className="cgpb-quantity__title_null">Под заказ</div>
                     }
                     
                 </div>

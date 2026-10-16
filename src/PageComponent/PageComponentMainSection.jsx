@@ -12,6 +12,19 @@ const PageComponentMainSection = ({dataComponent}) => {
     const urlParams = new URLSearchParams(window.location.search);
     const vendorCodeFromUrl = urlParams.get("vendorCode");
     const navigate = useNavigate();
+    const [warehouseSpb, setWarehouseSpb] = useState(0);
+    const [warehouseOzon, setWarehouseOzon] = useState(0);
+
+    useEffect(()=>{
+        dataComponent.Warehouse.forEach((item) => {
+            if (item.Name === "Санкт-Петербург") {
+                setWarehouseSpb(item.Quantity);
+            } else if (item.Name === "Склады ОЗОН") {
+                setWarehouseOzon(item.Quantity);
+            }
+        });
+    },[]);
+  
 
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
     const [basketProduct, setBasketProduct] = useState(() => {
@@ -120,7 +133,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                         <div class='characteristics-item__title'>Произведено:</div>
                                         <div class='characteristics-item__discr'>{dataComponent.Origin}</div>
                                     </li>
-                                    {dataComponent.DiscriptionParam.map((item, index) => {
+                                    {dataComponent.DiscriptionParam.map((item, index) => {                                
                                         return(
                                             <>
                                                 <li key={index+50} class='characteristics-block__item flex'>
@@ -171,21 +184,39 @@ const PageComponentMainSection = ({dataComponent}) => {
                                         >В корзине юр.лиц</button>
                                     </>
                                     }
-  
                                 </div>
-                                
                             </div>
                             <div className="cps-data__button-block">
-                                <button className="cps-d-button-block__ozon-button" onClick={() => {window.location.href = dataComponent.OzonLink}}>Купить на ОЗОН</button>
-                                <button 
-                                    className="cps-d-button-block__ofer-button" 
-                                    onClick={() => {
-                                        // Переходим на страницу и «подкладываем» объект в историю браузера
-                                        navigate("/RegistrationAndDelivery", { state: { dataComponent } });
-                                    }}
-                                    >
-                                    Купить в 1 клик
-                                </button>
+                                {warehouseOzon > 0?
+                                    <>
+                                        <button 
+                                            className="cps-d-button-block__ozon-button" 
+                                            onClick={() => {window.location.href = dataComponent.OzonLink}}
+                                        >Купить на ОЗОН
+                                        </button>
+                                    </>
+                                    :
+                                    <button 
+                                        className="cps-d-button-block__ozon-button_no-quantity" 
+                                    >Купить на ОЗОН
+                                    </button>
+                                }
+                                {warehouseSpb > 0?
+                                    <>
+                                        <button 
+                                            className="cps-d-button-block__ofer-button" 
+                                            onClick={() => {
+                                                // Переходим на страницу и «подкладываем» объект в историю браузера
+                                                navigate("/RegistrationAndDelivery", { state: { dataComponent } });
+                                            }}>Купить в 1 клик
+                                        </button>
+                                    </>
+                                    :
+                                    <button 
+                                        className="cps-d-button-block__ofer-button_no-quantity" 
+                                    >Купить в 1 клик
+                                    </button>
+                                }
                             </div>
                         </div>
                     </div>
