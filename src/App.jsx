@@ -27,7 +27,8 @@ import PersonalData from "./PersonalData/PersonalData.jsx";
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner.jsx';
 import ContactPage from './ContactPage/ContactPage.jsx';
 import OzonDeliveryMap from "./OzonDeliveryMap/OzonDeliveryMap.jsx";
-
+import OrderSuccess from "./OrdersResult/OrderSuccess.jsx";
+import OrderFailed  from "./OrdersResult/OrderFailed.jsx";
 
 // ===== Проверка токена =====
 function isTokenValid(token) {
@@ -256,6 +257,8 @@ const App = () => {
         <Route path='/PersonalData' element={<PersonalData />}/>
         <Route path='/ContactPage' element={<ContactPage />}/>
         <Route path='/OzonDeliveryMap' element={<OzonDeliveryMap />}/>
+        <Route path='/OrderSuccess' element={<OrderSuccess />} />
+        <Route path='/OrderFailed' element={<OrderFailed />} />
         
 
         {/* Только для авторизованных */}
