@@ -29,6 +29,8 @@ import ContactPage from './ContactPage/ContactPage.jsx';
 import OzonDeliveryMap from "./OzonDeliveryMap/OzonDeliveryMap.jsx";
 import OrderSuccess from "./OrdersResult/OrderSuccess.jsx";
 import OrderFailed  from "./OrdersResult/OrderFailed.jsx";
+import OrderStatus  from "./OrdersResult/OrderStatus.jsx";
+
 
 // ===== Проверка токена =====
 function isTokenValid(token) {
@@ -259,6 +261,7 @@ const App = () => {
         <Route path='/OzonDeliveryMap' element={<OzonDeliveryMap />}/>
         <Route path='/OrderSuccess' element={<OrderSuccess />} />
         <Route path='/OrderFailed' element={<OrderFailed />} />
+        <Route path='/OrderStatus' element={<OrderStatus />} />
         
 
         {/* Только для авторизованных */}

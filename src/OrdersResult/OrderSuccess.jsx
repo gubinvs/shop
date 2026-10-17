@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './orderSuccess.css';
+import {serverMarketUrl} from "../js/serverMarketUrl.js";
 
-const OrderSuccess = ({ orderData }) => {
+const OrderSuccess = () => {
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
@@ -10,18 +11,45 @@ const OrderSuccess = ({ orderData }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Данные заказа (в реальности придут из пропсов или API)
-  const order = orderData || {
-    number: 'PA-2026-08742',
-    amount: '148 920 ₽',
-    date: '17 октября 2026',
-    email: 'client@company.ru',
-    items: [
-      'Частотный преобразователь Siemens SINAMICS V20',
-      'Контроллер ОВЕН ПЛК110',
-      'Датчик давления Danfoss MBS 3000',
-    ],
+
+  const dataDay = new Date();
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const formattedDate = dataDay.toLocaleDateString('ru-RU', options);
+  // Данные заказа забираем информацию из localStorage
+  // "localStorage.getItem("PaymentData")
+  const jsonPaymentData = localStorage.getItem("PaymentData")
+  const paymentData = JSON.parse(jsonPaymentData);
+
+  // Делаем запрос на сервер для того чтобы узнать GUID идентификатор заказа
+  //
+  //
+  //
+  const guidIdOrder = "95a93670-a6ed-41ae-836a-bf9f67dade38";
+
+  const order = {
+      number: String(paymentData.extId), 
+      // Форматируем в красивую денежную строку с пробелами между тысячами
+      amount: new Intl.NumberFormat('ru-RU', { 
+          style: 'currency', 
+          currency: 'RUB', 
+          minimumFractionDigits: 0 
+      }).format(paymentData.amount.value / 100),
+      
+      date: formattedDate, // Текущая дата в формате '17 октября 2026'
+      email: 'client@company.ru',
+      items: [
+          paymentData.items[0].name
+      ],
   };
+
+  // Записываем данные даказа на сервер
+  //
+  //
+  //
+  //
+  //
+  //
+  
 
   // Стадии заказа
   const stages = [
@@ -33,23 +61,25 @@ const OrderSuccess = ({ orderData }) => {
     },
     {
       title: 'Собираем заказ',
-      description: 'Комплектуем позиции на складе в Москве',
+      description: 'Комплектуем позиции на складе',
       status: 'active',
       icon: '📦',
     },
     {
-      title: 'Передаём в доставку',
-      description: 'Упакуем и передаём транспортной компании',
+      title: 'Передано в доставку',
+      description: 'Упаковали и передали транспортной компании',
       status: 'pending',
       icon: '🚚',
     },
     {
       title: 'Доставлено',
-      description: 'Заказ у вас на предприятии',
+      description: 'Заказ уже у вас',
       status: 'pending',
       icon: '🏭',
     },
   ];
+
+  // В фоновом режиме записали данные о заказе в базу данных
 
   return (
     <div className="order-success-page">
@@ -74,8 +104,8 @@ const OrderSuccess = ({ orderData }) => {
           </div>
           <h1 className="success-title">Всё прошло успешно!</h1>
           <p className="success-subtitle">
-            Оплата получена. Спасибо за доверие — мы уже готовим ваше
-            оборудование к отгрузке.
+            Оплата получена. Спасибо за доверие — мы уже готовим ваш
+            заказ к отгрузке.
           </p>
         </div>
 
@@ -101,23 +131,20 @@ const OrderSuccess = ({ orderData }) => {
               <span className="order-detail__label">Дата оплаты</span>
               <span className="order-detail__value">{order.date}</span>
             </div>
-            <div className="order-detail">
-              <span className="order-detail__label">Чек отправлен</span>
-              <span className="order-detail__value">{order.email}</span>
-            </div>
+             <div className="order-items">
+                <span>Состав заказа:</span>
+                <ul>
+                  {order.items.map((item, idx) => (
+                    <li key={idx}>
+                      <span className="item-dot">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
           </div>
 
-          <div className="order-items">
-            <h3>В составе заказа ({order.items.length} позиции)</h3>
-            <ul>
-              {order.items.map((item, idx) => (
-                <li key={idx}>
-                  <span className="item-dot">•</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+         
         </div>
 
         {/* Стадии заказа (Timeline) */}
@@ -125,8 +152,8 @@ const OrderSuccess = ({ orderData }) => {
           <h2>Стадии заказа</h2>
           <p className="stages-hint">
             Отслеживайте статус в любое время по ссылке{' '}
-            <a href={`/orders/${order.number}`} className="stages-link">
-              /orders/{order.number}
+            <a href={`${serverMarketUrl}/OrderStatus?guidIdOrder=${guidIdOrder}`} className="stages-link">
+              {serverMarketUrl}/OrderStatus?guidIdOrder={guidIdOrder}
             </a>
           </p>
 
@@ -151,7 +178,7 @@ const OrderSuccess = ({ orderData }) => {
 
         {/* Кнопки действий */}
         <div className="actions-block">
-          <a href={`/orders/${order.number}`} className="btn btn-primary">
+          <a href={`${serverMarketUrl}/OrderStatus?guidIdOrder=${guidIdOrder}`} className="btn btn-primary">
             Отслеживать заказ
           </a>
           <a href="/" className="btn btn-ghost">
@@ -165,12 +192,12 @@ const OrderSuccess = ({ orderData }) => {
           <div className="support-text">
             <h4>Остались вопросы?</h4>
             <p>
-              Наш менеджер на связи с 9:00 до 19:00 по МСК. Поможём с
+              Наш менеджер на связи с 9:00 до 18:00 по МСК. Поможём с
               документацией, подбором аналогов или сроками доставки.
             </p>
             <div className="support-contacts">
-              <a href="tel:+78001234567">📞 8 (800) 123-45-67</a>
-              <a href="mailto:support@yourshop.ru">✉️ support@yourshop.ru</a>
+              <a href="tel:+79215971">📞 +7 (812) 921-59-71</a>
+              <a href="mailto:support@ec-market.ru">✉️ support@ec-market.ru</a>
             </div>
           </div>
         </div>

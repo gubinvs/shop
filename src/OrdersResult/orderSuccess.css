@@ -91,10 +91,17 @@
   border: 1px solid #e2e8f0;
 }
 
+.order-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .order-card__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid #f1f5f9;
@@ -119,6 +126,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  width: 100%;
   margin-bottom: 24px;
 }
 

@@ -117,9 +117,15 @@ export const ozonPaymentPage = async (
         ]
     };
 
+                // При успешной оплате запишем данные заказа в хранилище браузера
+                const jsonPaymentData = JSON.stringify(paymentData);
+                localStorage.setItem("PaymentData", jsonPaymentData)
+        
+                console.log(jsonPaymentData);
+
     try {
         // Правильно склеиваем базовый URL и эндпоинт
-        const response = await fetch(`${ApiOzonService}/v1/OzonPay`, {
+        const response = await fetch(`${ApiOzonService}/v1/OzonPay2`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -131,7 +137,8 @@ export const ozonPaymentPage = async (
             throw new Error(`Ошибка HTTP: ${response.status}`);
         }
 
-        const result = await response.json();
+        //const result = await response.json();
+        const result = await "";
         
         // Запишем телефон покупателя в базу данных 
         var newOrder = { 
@@ -187,7 +194,7 @@ export const ozonPaymentPage = async (
         }
 
         
-        const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate`, {
+        const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate2`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
