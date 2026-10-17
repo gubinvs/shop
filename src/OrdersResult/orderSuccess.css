@@ -160,15 +160,14 @@
   list-style: none;
   padding: 0;
   margin: 0;
-}
+} 
 
 .order-items li {
-  padding: 10px 0;
-  border-bottom: 1px solid #f1f5f9;
-  font-size: 14px;
+  padding: 10px 0 0 10px;
+  border-left: 2px solid #f1f5f9;
+  font-size: 18px;
   color: #1e293b;
   display: flex;
-  gap: 10px;
 }
 
 .order-items li:last-child {

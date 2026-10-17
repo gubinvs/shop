@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './orderSuccess.css';
 import {serverMarketUrl} from "../js/serverMarketUrl.js";
+import ApiOzonService from '../js/ApiOzonService.js';
 
 const OrderSuccess = () => {
   const [animated, setAnimated] = useState(false);
@@ -19,12 +20,44 @@ const OrderSuccess = () => {
   // "localStorage.getItem("PaymentData")
   const jsonPaymentData = localStorage.getItem("PaymentData")
   const paymentData = JSON.parse(jsonPaymentData);
+  const [guidIdOrder, setGuidIdOrder] = useState(null);
 
-  // Делаем запрос на сервер для того чтобы узнать GUID идентификатор заказа
-  //
-  //
-  //
-  const guidIdOrder = "95a93670-a6ed-41ae-836a-bf9f67dade38";
+  useEffect(() => {
+    // Создаем асинхронную функцию внутри useEffect
+    const fetchGuidOrder = async () => {
+      try {
+        // 1. Добавляем idOrder в конец URL, как в вашем curl-примере
+        const response = await fetch(`${ApiOzonService}/v1/ReturnGuidOrderIndividuals?idOrder=${paymentData.extId}`, {
+          method: 'POST',
+          headers: {
+            'accept': '*/*',
+            // 'Content-Type': 'application/json' можно убрать, если тело (-d '') пустое,
+            // но если сервер строго его требует, оставьте.
+          },
+          body: '' // Пустое тело, как в curl -d ''
+        });
+
+        //console.log(response);
+
+        // 2. Проверяем статус ответа
+        if (!response.ok) {
+          throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+
+        const guidResult = await response.text();
+        //console.log('Полученный GUID заказа:', guidResult);
+
+      // Сохраняем строку с GUID напрямую в стейт
+      setGuidIdOrder(guidResult);
+
+      } catch (error) {
+        console.error('Ошибка при получении GUID:', error);
+      }
+    };
+
+    fetchGuidOrder();
+  }, []); // Добавляем idOrder в массив зависимостей, чтобы запрос повторялся при его изменении
+
 
   const order = {
       number: String(paymentData.extId), 
@@ -34,22 +67,20 @@ const OrderSuccess = () => {
           currency: 'RUB', 
           minimumFractionDigits: 0 
       }).format(paymentData.amount.value / 100),
-      
       date: formattedDate, // Текущая дата в формате '17 октября 2026'
-      email: 'client@company.ru',
       items: [
           paymentData.items[0].name
       ],
   };
 
-  // Записываем данные даказа на сервер
+  // Записываем данные даказа на сервер так как оплата прошла успешно
   //
   //
   //
   //
   //
   //
-  
+
 
   // Стадии заказа
   const stages = [
@@ -132,11 +163,9 @@ const OrderSuccess = () => {
               <span className="order-detail__value">{order.date}</span>
             </div>
              <div className="order-items">
-                <span>Состав заказа:</span>
                 <ul>
                   {order.items.map((item, idx) => (
                     <li key={idx}>
-                      <span className="item-dot">•</span>
                       {item}
                     </li>
                   ))}
