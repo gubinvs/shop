@@ -73,13 +73,48 @@ const OrderSuccess = () => {
       ],
   };
 
-  // Записываем данные даказа на сервер так как оплата прошла успешно
-  //
-  //
-  //
-  //
-  //
-  //
+
+  useEffect(() => {
+    // 1. Создаем внутреннюю асинхронную функцию
+    const updateOrder = async () => {
+      try {
+        // Записываем данные заказа для отправки на сервер
+        const requestOrderDb = {
+          id: String(paymentData.extId),
+          status_order: "Оплата получена",
+          amount: String(paymentData.amount.value / 100),
+          date_time: formattedDate,
+          product_name: paymentData.items[0].name
+        };
+        
+        // 2. Делаем асинхронный запрос с await
+        const responseUpdatingOrder = await fetch(`${ApiOzonService}/v1/UpdatingOrderFromIndividuals`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestOrderDb),
+        });
+
+        // 3. Проверяем, успешно ли сервер принял данные
+        if (!responseUpdatingOrder.ok) {
+          const errorText = await responseUpdatingOrder.text();
+          throw new Error(`Ошибка сервера (${responseUpdatingOrder.status}): ${errorText}`);
+        }
+
+        console.log('Данные заказа успешно обновлены на сервере');
+        
+      } catch (error) {
+        console.error('Не удалось обновить заказ:', error);
+      }
+    };
+
+    // 4. Вызываем созданную функцию
+    updateOrder();
+    
+  // В массив зависимостей важно добавить переменные, от которых зависит запрос,
+  // чтобы избежать предупреждений линтера и устаревших замыканий (stale closures)
+  }, [paymentData, formattedDate]); 
 
 
   // Стадии заказа
