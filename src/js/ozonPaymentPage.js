@@ -202,6 +202,8 @@ export const ozonPaymentPage = async (
             // Сохраним ссылку на оплату, чтобы можно было зайти по ней со страницы неыспешной оплаты
             const jsonPaymentPage = JSON.stringify(result.payUrl);
             localStorage.setItem("PaymentPage", jsonPaymentPage)
+            
+            console.log("Приходит result.payUrl с маленькой буквы")
 
             window.location.href = result.payUrl;
 
@@ -212,6 +214,9 @@ export const ozonPaymentPage = async (
               // Сохраним ссылку на оплату, чтобы можно было зайти по ней со страницы неыспешной оплаты
             const jsonPaymentPage = JSON.stringify(result.PayUrl);
             localStorage.setItem("PaymentPage", jsonPaymentPage)
+
+
+            console.log("Приходит result.PayUrl с большой буквы")
 
             window.location.href = result.PayUrl;
         } else {
