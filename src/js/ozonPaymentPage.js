@@ -199,12 +199,20 @@ export const ozonPaymentPage = async (
             // При успешной оплате запишем данные заказа в хранилище браузера
             const jsonPaymentData = JSON.stringify(paymentData);
             localStorage.setItem("PaymentData", jsonPaymentData)
-        
+            // Сохраним ссылку на оплату, чтобы можно было зайти по ней со страницы неыспешной оплаты
+            const jsonPaymentPage = JSON.stringify(result.payUrl);
+            localStorage.setItem("PaymentPage", jsonPaymentPage)
+
             window.location.href = result.payUrl;
+
         } else if (result && result.PayUrl) {
             // При успешной оплате запишем данные заказа в хранилище браузера
             const jsonPaymentData = JSON.stringify(paymentData);
             localStorage.setItem("PaymentData", jsonPaymentData)
+              // Сохраним ссылку на оплату, чтобы можно было зайти по ней со страницы неыспешной оплаты
+            const jsonPaymentPage = JSON.stringify(result.PayUrl);
+            localStorage.setItem("PaymentPage", jsonPaymentPage)
+
             window.location.href = result.PayUrl;
         } else {
             throw new Error('Ссылка для оплаты (PayUrl) не найдена в ответе сервера.');

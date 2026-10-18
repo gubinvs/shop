@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './orderFailed.css';
 
-const OrderFailed = ({ orderData, errorType }) => {
+const OrderFailed = () => {
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
@@ -9,17 +9,30 @@ const OrderFailed = ({ orderData, errorType }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Данные попытки оплаты
-  const order = orderData || {
-    number: 'PA-2026-08742',
-    amount: '148 920 ₽',
-    date: '17 октября 2026',
-    email: 'client@company.ru',
-    paymentMethod: 'Банковская карта',
+  // Данные заказа забираем информацию из localStorage
+  const jsonPaymentData = localStorage.getItem("PaymentData")
+  const paymentData = JSON.parse(jsonPaymentData);
+  const dataDay = new Date();
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const formattedDate = dataDay.toLocaleDateString('ru-RU', options);
+  const paymentPage = localStorage.getItem("PaymentPage");
+
+  const order = {
+      number: String(paymentData.extId), 
+      // Форматируем в красивую денежную строку с пробелами между тысячами
+      amount: new Intl.NumberFormat('ru-RU', { 
+          style: 'currency', 
+          currency: 'RUB', 
+          minimumFractionDigits: 0 
+      }).format(paymentData.amount.value / 100),
+      date: formattedDate, // Текущая дата в формате '17 октября 2026'
+      items: [
+          paymentData.items[0].name
+      ]
   };
 
   // Тип ошибки (может прийти из пропсов)
-  const error = errorType || 'insufficient_funds';
+  const error = 'default';
 
   // Сообщения для разных типов ошибок
   const errorMessages = {
@@ -63,7 +76,7 @@ const OrderFailed = ({ orderData, errorType }) => {
       title: 'Оплата не прошла',
       description: 'К сожалению, не удалось завершить оплату. Пожалуйста, попробуйте другой способ.',
       solutions: [
-        'Проверьте данные карты',
+        'Проверьте баланс карты',
         'Попробуйте другую карту',
         'Выберите оплату по счёту',
       ],
@@ -143,10 +156,10 @@ const OrderFailed = ({ orderData, errorType }) => {
               <span className="order-detail__label">Дата попытки</span>
               <span className="order-detail__value">{order.date}</span>
             </div>
-            <div className="order-detail">
+            {/* <div className="order-detail">
               <span className="order-detail__label">Способ оплаты</span>
               <span className="order-detail__value">{order.paymentMethod}</span>
-            </div>
+            </div> */}
           </div>
 
           <div className="notice-block">
@@ -192,14 +205,11 @@ const OrderFailed = ({ orderData, errorType }) => {
 
         {/* Кнопки действий */}
         <div className="actions-block">
-          <a href={`/checkout/${order.number}`} className="btn btn-primary">
+          <a href={paymentPage} className="btn btn-primary">
             Попробовать оплатить снова
           </a>
-          <a href={`/payment-methods/${order.number}`} className="btn btn-secondary">
-            Выбрать другой способ оплаты
-          </a>
-          <a href="/account/orders" className="btn btn-ghost">
-            Вернуться к заказу
+          <a href="/" className="btn btn-ghost">
+            Вернуться в магазин
           </a>
         </div>
 

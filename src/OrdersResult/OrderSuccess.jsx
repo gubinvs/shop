@@ -12,12 +12,11 @@ const OrderSuccess = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
   const dataDay = new Date();
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const formattedDate = dataDay.toLocaleDateString('ru-RU', options);
+  
   // Данные заказа забираем информацию из localStorage
-  // "localStorage.getItem("PaymentData")
   const jsonPaymentData = localStorage.getItem("PaymentData")
   const paymentData = JSON.parse(jsonPaymentData);
   const [guidIdOrder, setGuidIdOrder] = useState(null);
@@ -102,7 +101,7 @@ const OrderSuccess = () => {
           throw new Error(`Ошибка сервера (${responseUpdatingOrder.status}): ${errorText}`);
         }
 
-        console.log('Данные заказа успешно обновлены на сервере');
+        //console.log('Данные заказа успешно обновлены на сервере');
         
       } catch (error) {
         console.error('Не удалось обновить заказ:', error);
