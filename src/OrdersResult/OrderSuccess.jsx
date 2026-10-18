@@ -4,6 +4,7 @@ import {serverMarketUrl} from "../js/serverMarketUrl.js";
 import ApiOzonService from '../js/ApiOzonService.js';
 
 const OrderSuccess = () => {
+
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
@@ -80,7 +81,7 @@ const OrderSuccess = () => {
         // Записываем данные заказа для отправки на сервер
         const requestOrderDb = {
           id: String(paymentData.extId),
-          status_order: "Оплата получена",
+          status_order: "Собираем заказ",
           amount: String(paymentData.amount.value / 100),
           date_time: formattedDate,
           product_name: paymentData.items[0].name
