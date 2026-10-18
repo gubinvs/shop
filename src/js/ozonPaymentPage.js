@@ -117,15 +117,9 @@ export const ozonPaymentPage = async (
         ]
     };
 
-                // При успешной оплате запишем данные заказа в хранилище браузера
-                const jsonPaymentData = JSON.stringify(paymentData);
-                localStorage.setItem("PaymentData", jsonPaymentData)
-        
-                console.log(jsonPaymentData);
-
     try {
         // Правильно склеиваем базовый URL и эндпоинт
-        const response = await fetch(`${ApiOzonService}/v1/OzonPay2`, {
+        const response = await fetch(`${ApiOzonService}/v1/OzonPay`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -137,8 +131,7 @@ export const ozonPaymentPage = async (
             throw new Error(`Ошибка HTTP: ${response.status}`);
         }
 
-        //const result = await response.json();
-        const result = await "";
+        const result = await response.json();
         
         // Запишем телефон покупателя в базу данных 
         var newOrder = { 
@@ -192,9 +185,8 @@ export const ozonPaymentPage = async (
                 }
             ] 
         }
-
-        
-        const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate2`, {
+   
+        const responseDeliveryOrder = await fetch(`${ApiOzonService}/v1/DeliveryOrderCreate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -202,26 +194,17 @@ export const ozonPaymentPage = async (
             body: JSON.stringify(reguestDelivery),
         });
 
-        // Ответ записываем в базу данных ??????????????
-        // {
-        //     "order_number": "YY-123BE456PY78-90YY",
-        //     "order_external_id": "shop-order-42",
-        //     "postings": [
-        //         {
-        //             "request_id": 101,
-        //             "posting_number": "123BE456PY78-90YY",
-        //             "posting_external_id": "shop-posting-42-1",
-        //             "estimated_delivery_days": 2,
-        //             "cutoff_at": "2026-07-16T12:00:00Z"
-        //         }
-        //     ]
-        // }
-
-
         // Если бэкенд возвращает свойства с большой буквы, заменим на result.PayUrl
         if (result && result.payUrl) {
+            // При успешной оплате запишем данные заказа в хранилище браузера
+            const jsonPaymentData = JSON.stringify(paymentData);
+            localStorage.setItem("PaymentData", jsonPaymentData)
+        
             window.location.href = result.payUrl;
         } else if (result && result.PayUrl) {
+            // При успешной оплате запишем данные заказа в хранилище браузера
+            const jsonPaymentData = JSON.stringify(paymentData);
+            localStorage.setItem("PaymentData", jsonPaymentData)
             window.location.href = result.PayUrl;
         } else {
             throw new Error('Ссылка для оплаты (PayUrl) не найдена в ответе сервера.');
