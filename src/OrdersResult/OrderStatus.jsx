@@ -37,13 +37,13 @@ const OrderStatus = () => {
 
             // 2. ИСПРАВЛЕНО: Извлекаем JSON из ответа сервера через .json()
             const responseDataStatus = await responseStatusOrder.json();
-            
+
             // Записываем весь пришедший объект в стейт
             setDataStatus(responseDataStatus);
-            console.log(responseDataStatus);
+            
             
             } catch (error) {
-            console.error('Не удалось обновить заказ:', error);
+                console.error('Не удалось обновить заказ:', error);
             }
         };
 
@@ -65,8 +65,6 @@ const OrderStatus = () => {
         items: [dataStatus.name],
         status: dataStatus.status
     };
-
-    console.log();
 
     // Базовый массив стадий (без жестко заданного status)
     const stages = [
