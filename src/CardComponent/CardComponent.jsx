@@ -88,7 +88,7 @@ const CardComponent = (
                     <div className="card-goods__price">
                         {new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", minimumFractionDigits: 0 }).format(price)}
                     </div>  
-                    {quantity > 0?
+                    {/* {quantity > 0?
                         <>
                         <div className="cg-price-block__quantity">
                             <div className="cgpb-quantity__title">В наличии</div>
@@ -97,7 +97,7 @@ const CardComponent = (
                         </div>
                         </>:
                         <div className="cgpb-quantity__title_null">Под заказ</div>
-                    }
+                    } */}
                     
                 </div>
               
