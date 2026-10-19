@@ -247,6 +247,8 @@ const App = () => {
         <Route path="/index.html" element={<Home />} />
         <Route path="/products/:catalogFile" element={<CatalogRoute />} />
         <Route path="/products/:category/:productFile" element={<ProductRoute  />} />
+        <Route path="/payment-and-delivery.html" element={<DeliveryAndPayment />} />
+        <Route path='/about.html' element={<ContactPage />}/>
 
         {/*--- Основные маршруты пиложения -- */}
         <Route path='/ApiDiscription' element={<ApiDiscription />} />
