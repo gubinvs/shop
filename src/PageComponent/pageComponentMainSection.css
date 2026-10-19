@@ -201,6 +201,10 @@
     color: rgba(0, 0, 0, 0.6);
 }
 
+.cps-d-price-block__price_no {
+    font-size: 16px;
+}
+
 .cps-d-price-block__nalog {
     font-size: 14px;
     line-height: 18px;

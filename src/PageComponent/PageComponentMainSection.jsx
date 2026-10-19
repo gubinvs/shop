@@ -164,18 +164,32 @@ const PageComponentMainSection = ({dataComponent}) => {
                                 </div>
                                 <div className="cps-data__price-block">
                                     <div className="cps-d-price-block__price">
-                                        {dataComponent.Price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
-                                    {/* <span className="cps-d-price-block__nalog">в т.ч. НДС</span> */}
+                                        {warehouseOzon > 0 || warehouseSpb > 0?
+                                            <>
+                                                {dataComponent.Price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
+                                                {/* <span className="cps-d-price-block__nalog">в т.ч. НДС</span> */}
+                                            </>
+                                            :<div className="cps-d-price-block__price_no">Нет в наличии</div>
+                                        }
                                     </div>
                                     {!isItemBasket?
                                     <>
-                                        <button 
-                                            className="cps-d-button-block__basket-button"
-                                            onClick={()=> {
-                                                addProductToDasket(dataComponent);
-                                                setIsItemBasket(true);
-                                            }}
-                                        >Купить как юр.лицо</button>
+                                        {warehouseOzon > 0 || warehouseSpb > 0?
+                                        <>
+                                            <button 
+                                                className="cps-d-button-block__basket-button"
+                                                onClick={()=> {
+                                                    addProductToDasket(dataComponent);
+                                                    setIsItemBasket(true);
+                                                }}
+                                            >Купить как юр.лицо</button>
+                                        </>
+                                        :
+                                        <>
+                                            <button 
+                                                className="cps-d-button-block__basket-button"
+                                            >Запросить КП</button>
+                                        </>}
                                     </>:
                                     <>
                                         <button 
