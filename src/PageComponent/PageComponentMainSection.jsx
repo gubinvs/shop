@@ -14,7 +14,8 @@ const PageComponentMainSection = ({dataComponent}) => {
     const [warehouseSpb, setWarehouseSpb] = useState(0);
     const [warehouseOzon, setWarehouseOzon] = useState(0);
     const [formEmail, setFormEmail] = useState(false);
-
+    const [email, setEmail] = useState('');
+    const [agree, setAgree] = useState(false);
 
 
     useEffect(()=>{
@@ -27,13 +28,29 @@ const PageComponentMainSection = ({dataComponent}) => {
         });
     },[]);
 
-    // Отправляем данные на почту с запросом КП
-    const requestQuote = () => {
-        // Открываем форму ввода email
-        setFormEmail(true);
 
+    const requestQuote = (email, vendor) => {
+        console.log(email);console.log(vendor);
+
+
+        // Закрываем окно ввода почты
+        setFormEmail(false);
     };
-  
+
+
+    // Отправляем данные на почту с запросом КП
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Предотвращаем перезагрузку страницы
+        
+        // Дополнительная проверка, если HTML5-валидации недостаточно
+        if (!email || !agree) return;
+
+
+        // Вызываем функцию отправки с актуальным email
+        requestQuote(email, dataComponent.VendorCode); 
+    };
+
+
 
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
     const [basketProduct, setBasketProduct] = useState(() => {
@@ -195,7 +212,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                         <>
                                             <button 
                                                 className="cps-d-button-block__basket-button"
-                                                onClick={()=>requestQuote()}
+                                                onClick={()=>{setFormEmail(true)}}
                                             >Запросить КП</button>
                                         </>}
                                     </>:
@@ -246,31 +263,46 @@ const PageComponentMainSection = ({dataComponent}) => {
                 {formEmail?
                     <>
                         <div className="component-page-section__email-form-block">
-                            <form className="email-form-block__email-form">
+                            <form className="email-form-block__email-form" onSubmit={handleSubmit}>
                                 <input
                                     type="email"
                                     className="cps-email-form_input"
                                     placeholder="Введите Ваш email"
-                                    // onChange={(e) => setEmail(e.target.value)}
+                                    value={email} // Делаем компонент контролируемым
+                                    onChange={(e) => setEmail(e.target.value)}
                                     required
                                 />
-
-                                <button className="cps-email-form_button">
+                                
+                                <button type="submit" className="cps-email-form_button">
                                     Отправить запрос
                                 </button>
+
                                 {/* Политика ОПД */}
                                 <div className="check-box">
-                                    <input className="check-box__input" type="checkbox" name="chekBox" required />
+                                    <input
+                                    className="check-box__input"
+                                    type="checkbox"
+                                    name="chekBox"
+                                    id="opd-checkbox"
+                                    checked={agree}
+                                    onChange={(e) => setAgree(e.target.checked)}
+                                    required
+                                    />
                                     <div className="check-box__discr">
-                                        Даю согласие на обработку персональных данных согласно
-                                        <a href="/PersonalData"> Политике ОПД</a>
+                                    {/* Для лучшего UX и доступности связываем текст с чекбоксом через label */}
+                                    <label htmlFor="opd-checkbox">
+                                        Даю согласие на обработку персональных данных согласно{' '}
+                                    </label>
+                                    <a href="/PersonalData" target="_blank" rel="noopener noreferrer">
+                                        Политике ОПД
+                                    </a>
                                     </div>
-                                    <input type="hidden" name="active-form" value="massage" />
+                                    <input type="hidden" name="active-form" value="message" />
                                 </div>
-                                <div 
-                                    className="cps-email-form_X"
-                                    onClick={()=>{setFormEmail(false)}}
-                                >X</div>
+
+                                <div className="cps-email-form_X" onClick={() => setFormEmail(false)}>
+                                    X
+                                </div>
                             </form>
                         </div>
                     </>
