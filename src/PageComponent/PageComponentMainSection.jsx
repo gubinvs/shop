@@ -1,6 +1,7 @@
 import {addProductToDasket} from "../js/addProductToDasket.js";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import ApiUrl from "../js/ApiUrl.js";
 import "./pageComponentMainSection.css";
 
 
@@ -17,7 +18,6 @@ const PageComponentMainSection = ({dataComponent}) => {
     const [email, setEmail] = useState('');
     const [agree, setAgree] = useState(false);
 
-
     useEffect(()=>{
         dataComponent.Warehouse.forEach((item) => {
             if (item.Name === "Санкт-Петербург") {
@@ -28,10 +28,27 @@ const PageComponentMainSection = ({dataComponent}) => {
         });
     },[]);
 
+    const requestQuote = async (email, vendor) => {
+        
+        // Формируем запрос
+        var reguast = {
+            email : email,
+            vendor: vendor
+        };
 
-    const requestQuote = (email, vendor) => {
-        console.log(email);console.log(vendor);
+        // Подставляем пароль прямо в URL (в конец пути), как в Swagger!
+        const response = await fetch(`${ApiUrl}/api/RequestQuote`, {
+            method: "POST",
+            headers: {
+                "accept": "*/*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reguast)
+        });
 
+        if (!response.ok) {
+            throw new Error("Ошибка запроса: " + response.status);
+        }
 
         // Закрываем окно ввода почты
         setFormEmail(false);
@@ -45,12 +62,9 @@ const PageComponentMainSection = ({dataComponent}) => {
         // Дополнительная проверка, если HTML5-валидации недостаточно
         if (!email || !agree) return;
 
-
         // Вызываем функцию отправки с актуальным email
         requestQuote(email, dataComponent.VendorCode); 
     };
-
-
 
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
     const [basketProduct, setBasketProduct] = useState(() => {
@@ -88,8 +102,7 @@ const PageComponentMainSection = ({dataComponent}) => {
     
         setMaxImgBlock(resetArray);
     };
-    
-    
+     
     // Отфильтруем массив и проверим наличие нашего товара
     useEffect(() => {
         const isExist = basketProduct?.some(item => 
