@@ -201,8 +201,9 @@
     color: rgba(0, 0, 0, 0.6);
 }
 
-.cps-d-price-block__price_no {
-    font-size: 16px;
+.cps-d-price-block__price_no { 
+  font-size: 20px; 
+  color: #059134; 
 }
 
 .cps-d-price-block__nalog {
@@ -284,6 +285,83 @@
     color: #DFE0E1;
     background-color: #FFFFFF;
     border: 1px solid #DFE0E1;
+}
+
+.component-page-section__email-form-block {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.70);
+    z-index: 999;
+}
+
+.email-form-block__email-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 30px;
+    width: 360px;
+    background-color: #FFFFFF;
+    border: 1px solid #F3DE09;
+    border-radius: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cps-email-form_input {
+    /* Сброс базовых стилей браузера */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Очистка фона и границ */
+    background: transparent;
+    border: 1px solid #F3DE09;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+/* Очистка синей или черной обводки при нажатии (фокусе) */
+.cps-email-form_input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.cps-email-form_button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #DFE0E1;
+    cursor: pointer;
+}
+
+.cps-email-form_button:hover {
+    background-color: #F3DE09;
+}
+
+.cps-email-form_X {
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 

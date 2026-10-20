@@ -13,6 +13,8 @@ const PageComponentMainSection = ({dataComponent}) => {
     const navigate = useNavigate();
     const [warehouseSpb, setWarehouseSpb] = useState(0);
     const [warehouseOzon, setWarehouseOzon] = useState(0);
+    const [formEmail, setFormEmail] = useState(false);
+
 
 
     useEffect(()=>{
@@ -24,6 +26,13 @@ const PageComponentMainSection = ({dataComponent}) => {
             }
         });
     },[]);
+
+    // Отправляем данные на почту с запросом КП
+    const requestQuote = () => {
+        // Открываем форму ввода email
+        setFormEmail(true);
+
+    };
   
 
     // Проверка на наличие данного товара в корзине, для этого загрузим данные из корзины и преобразуем в массив
@@ -92,8 +101,6 @@ const PageComponentMainSection = ({dataComponent}) => {
                         <div className="cps-main-block__img-dop-block">
                             {dataComponent.DopImages.map((item, index) => {
                                 if(item === "" || item === undefined || item === null || item === "Нет данных") return;
-
-                                console.log(item)
                                 return (
                                     <>
                                         <img 
@@ -169,7 +176,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                                 {dataComponent.Price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })}
                                                 {/* <span className="cps-d-price-block__nalog">в т.ч. НДС</span> */}
                                             </>
-                                            :<div className="cps-d-price-block__price_no">Нет в наличии</div>
+                                            :<div className="cps-d-price-block__price_no">Возим на заказ!</div>
                                         }
                                     </div>
                                     {!isItemBasket?
@@ -188,6 +195,7 @@ const PageComponentMainSection = ({dataComponent}) => {
                                         <>
                                             <button 
                                                 className="cps-d-button-block__basket-button"
+                                                onClick={()=>requestQuote()}
                                             >Запросить КП</button>
                                         </>}
                                     </>:
@@ -235,7 +243,41 @@ const PageComponentMainSection = ({dataComponent}) => {
                         </div>
                     </div>
                 </div>
+                {formEmail?
+                    <>
+                        <div className="component-page-section__email-form-block">
+                            <form className="email-form-block__email-form">
+                                <input
+                                    type="email"
+                                    className="cps-email-form_input"
+                                    placeholder="Введите Ваш email"
+                                    // onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+
+                                <button className="cps-email-form_button">
+                                    Отправить запрос
+                                </button>
+                                {/* Политика ОПД */}
+                                <div className="check-box">
+                                    <input className="check-box__input" type="checkbox" name="chekBox" required />
+                                    <div className="check-box__discr">
+                                        Даю согласие на обработку персональных данных согласно
+                                        <a href="/PersonalData"> Политике ОПД</a>
+                                    </div>
+                                    <input type="hidden" name="active-form" value="massage" />
+                                </div>
+                                <div 
+                                    className="cps-email-form_X"
+                                    onClick={()=>{setFormEmail(false)}}
+                                >X</div>
+                            </form>
+                        </div>
+                    </>
+                :""}
+                
             </section>
+
         
         </>
     );

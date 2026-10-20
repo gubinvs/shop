@@ -33,6 +33,10 @@
     margin-bottom: 8px;
 }
 
+.card-goods__discription:hover {
+  font-weight: 700;
+}
+
 
 /* Слайдер остается без изменений */
 .card-goods__slider-native {
