@@ -1,6 +1,5 @@
 import {addProductToDasket} from "../js/addProductToDasket.js";
 import { useNavigate } from 'react-router-dom';
-
 import { useEffect, useState } from "react";
 import "./pageComponentMainSection.css";
 
@@ -14,6 +13,7 @@ const PageComponentMainSection = ({dataComponent}) => {
     const navigate = useNavigate();
     const [warehouseSpb, setWarehouseSpb] = useState(0);
     const [warehouseOzon, setWarehouseOzon] = useState(0);
+
 
     useEffect(()=>{
         dataComponent.Warehouse.forEach((item) => {

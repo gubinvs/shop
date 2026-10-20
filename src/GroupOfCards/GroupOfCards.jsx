@@ -29,6 +29,7 @@ const GroupOfCards = ({
                                     linkPage={element.UrlPage} 
                                     grade={element.GradeGoods} 
                                     reviews={element.ReviewsGoods}
+                                    availabilityInWarehouses={element.AvailabilityInWarehouses}
                                 /> 
                             </>
                         );

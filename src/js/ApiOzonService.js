@@ -1,7 +1,6 @@
 // Переменная с адресом сервера API
 
-
-//export const ApiOzonService = "............/apiOzon/";
 const ApiOzonService = "http://localhost:5148";
+// const ApiOzonService = "https://ec-market.ru/ozon";
 
 export default ApiOzonService;
