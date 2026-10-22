@@ -8,7 +8,7 @@
     padding-top: 10px;
     padding-left: 2px;
     padding-bottom: 2px;
-    padding-right   : 2px;
+    padding-right: 2px;
     border-radius: 10px;
     background-color: #F3DE09;
 }
@@ -79,4 +79,24 @@
     .cs-table-list-item__param {
         font-size: 10px;             /* Прячет остальной текст */
     }   
+}
+
+@media only screen and (max-width: 360px) {
+    .characteristics-section__title {
+        font-size: 18px;
+    } 
+
+    .characteristics-section {
+        width: 360px;
+        padding: 0px !important;
+         padding-left: 0px !important; 
+        padding-right: 0px !important;
+    }
+
+    .characteristics-section__container {
+        padding: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        width: 360px;
+    }
 }

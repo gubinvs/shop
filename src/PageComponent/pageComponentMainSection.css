@@ -670,36 +670,4 @@
         width: 150px;
         font-size: 14px;
     }
-
-    .characteristics-section__title {
-        font-size: 16px;
-    } 
-
-    .characteristics-section {
-        width: 360px;
-        padding: 0px !important;
-    }
-
-    .characteristics-section__container {
-        width: 360px;
-    }
-
-    .doc-file-section {
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-    }
-
-    .doc-file-section__container {
-        width: 360px;
-    }
-
-    .dfs-item__name {
-        font-size: 14px;
-    }
-
-    .dfs-item__link {
-        padding-left: 4px;
-        font-size: 14px;
-    }
-
 }
