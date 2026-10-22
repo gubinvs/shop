@@ -62,6 +62,7 @@ const CardComponent = (
                                 src={url} 
                                 className="card-goods__img card-goods__img-slide" 
                                 alt={`Product ${index}`} 
+                                onClick={() => window.location.href = linkPage}
                             />
                         )
                     })}
@@ -91,11 +92,11 @@ const CardComponent = (
                     </div>  
                     {availabilityInWarehouses > 0?
                         <>
-                        <div className="cg-price-block__quantity">
-                            <div className="cgpb-quantity__title">В наличии</div>
-                            <div className="cgpb-quantity__quantity">{availabilityInWarehouses}</div>
-                            <div className="cgpb-quantity__discr">шт.</div>  
-                        </div>
+                            <div className="cg-price-block__quantity">
+                                <div className="cgpb-quantity__title">Наличие:</div>
+                                <div className="cgpb-quantity__quantity">{availabilityInWarehouses}</div>
+                                <div className="cgpb-quantity__discr">шт.</div>  
+                            </div>
                         </>:
                         <div className="cgpb-quantity__title_null">Под заказ</div>
                     }
@@ -104,7 +105,6 @@ const CardComponent = (
               
                 <div 
                     className="card-goods__discription"
-                    onClick={() => window.location.href = linkPage}
                 >
                     {dicription}
                 </div>

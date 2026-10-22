@@ -33,10 +33,6 @@
     margin-bottom: 8px;
 }
 
-.card-goods__discription:hover {
-  font-weight: 700;
-}
-
 
 /* Слайдер остается без изменений */
 .card-goods__slider-native {
@@ -130,29 +126,29 @@
 }
 
 .cgpb-quantity__title {
+  width: 56px;
+  font-size: 12px;
   font-weight: 700;
   margin-right: 4px;
 }
 
 .cgpb-quantity__title_null {
   font-weight: 400;
+  font-size: 12px;
   padding-right: 20px;
 }
 
 .cgpb-quantity__quantity {
   font-weight: 700;
+  font-size: 12px;
   margin-right: 4px;
 }
 
 .cgpb-quantity__discr {
   padding-right: 4px;
+  font-size: 12px;
   font-weight: 700;
 }
-
-
-
-
-
 
 
 @media only screen and (max-width: 1280px) {
@@ -204,8 +200,6 @@
     height: 355px;
   }
 
-
-
   .card-goods__price {
     font-size: 20px;
   }
@@ -231,6 +225,23 @@
   .reviews__discr_message {
     font-size: 10px;
   }
+
+  .cgpb-quantity__title {
+    width: 46px;
+    font-size: 10px;
+  }
+
+  .cgpb-quantity__title_null {
+    font-size: 10px;
+  }
+
+  .cgpb-quantity__quantity {
+    font-size: 10px;
+  }
+
+  .cgpb-quantity__discr {
+    font-size: 10px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -245,6 +256,23 @@
 
   .card-goods:not(:nth-child(3n)) {
     margin-right: 8px;
+  }
+
+    .cgpb-quantity__title {
+    width: 46px;
+    font-size: 10px;
+  }
+
+  .cgpb-quantity__title_null {
+    font-size: 10px;
+  }
+
+  .cgpb-quantity__quantity {
+    font-size: 10px;
+  }
+
+  .cgpb-quantity__discr {
+    font-size: 10px;
   }
 }
 
