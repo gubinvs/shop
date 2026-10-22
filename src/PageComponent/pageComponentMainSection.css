@@ -384,15 +384,21 @@
         width: 250px;
     }
 
+    .cps-d-button-block__basket-button {
+        width: 190px;
+    }
+
     .cps-d-button-block__basket-button_add {
         width: 190px;
     }
 
-    .cps-d-button-block__ozon-button {
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
         width: 224px;
     }
 
-    .cps-d-button-block__ofer-button {
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
         width: 224px;
     }
 }
@@ -410,15 +416,19 @@
         margin-right: 8px;
     }
 
+    .cps-d-button-block__basket-button,
     .cps-d-button-block__basket-button_add {
         width: 212px;
     }
 
-    .cps-d-button-block__ozon-button {
+
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
         width: 232px;
     }
 
-    .cps-d-button-block__ofer-button {
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
         width: 232px;
     }
 }
@@ -444,6 +454,16 @@
     }
 
     .cps-d-button-block__ofer-button {
+        width: 220px;
+    }
+
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
+        width: 220px;
+    }
+
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
         width: 220px;
     }
 }
@@ -476,15 +496,19 @@
         width: 320px;
     }
 
+    .cps-d-button-block__basket-button,
     .cps-d-button-block__basket-button_add {
         width: 270px;
     }
 
-    .cps-d-button-block__ozon-button {
+
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
         width: 296px;
     }
 
-    .cps-d-button-block__ofer-button {
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
         width: 296px;
     }
 }
@@ -499,15 +523,19 @@
         width: 480px;
     }
 
+    .cps-d-button-block__basket-button,
     .cps-d-button-block__basket-button_add {
         width: 190px;
     }
 
-    .cps-d-button-block__ozon-button {
+
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
         width: 214px;
     }
 
-    .cps-d-button-block__ofer-button {
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
         width: 214px;
     }
 }
@@ -585,11 +613,93 @@
         width: 202px;
     }
 
-    .cps-d-button-block__ozon-button {
+    .cps-d-price-block__price_no {
+        font-size: 14px;
+    }
+
+    .cps-d-button-block__basket-button,
+    .cps-d-button-block__basket-button_add {
+        width: 130px;
+        font-size: 10px;
+    }
+
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
         width: 167px;
     }
 
-    .cps-d-button-block__ofer-button {
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
         width: 167px;
     }
+}
+
+@media only screen and (max-width: 360px) {
+
+    .component-page-section__title {
+        font-size: 16px;
+    }
+
+    .cps-main-block__img { 
+        width: 260px; 
+        height: 347px; 
+    }
+
+    .component-page-section__data{
+        width: 360px;
+    }
+
+    .discription-component-section__container {
+        width: 360px;
+    }
+
+    .cps-d-button-block__basket-button,
+    .cps-d-button-block__basket-button_add {
+        width: 120px;
+        font-size: 10px;
+    }
+
+    .cps-d-button-block__ozon-button,
+    .cps-d-button-block__ozon-button_no-quantity {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .cps-d-button-block__ofer-button,
+    .cps-d-button-block__ofer-button_no-quantity {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .characteristics-section__title {
+        font-size: 16px;
+    } 
+
+    .characteristics-section {
+        width: 360px;
+        padding: 0px !important;
+    }
+
+    .characteristics-section__container {
+        width: 360px;
+    }
+
+    .doc-file-section {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .doc-file-section__container {
+        width: 360px;
+    }
+
+    .dfs-item__name {
+        font-size: 14px;
+    }
+
+    .dfs-item__link {
+        padding-left: 4px;
+        font-size: 14px;
+    }
+
 }

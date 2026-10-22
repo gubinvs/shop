@@ -609,3 +609,14 @@ header {
     width: 250px;
   }
 }
+
+@media only screen and (max-width: 360px) {
+
+  .search-input__fon {
+    width: 285px;
+  }
+
+  .search-input {
+    width: 230px;
+  }
+}
