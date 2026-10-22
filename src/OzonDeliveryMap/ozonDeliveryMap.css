@@ -261,6 +261,7 @@
 }
 
 .phone-add-number-section__form {
+    position: relative;
     width: 360px;
     border-radius: 20px;
     margin-right: auto;
@@ -367,8 +368,20 @@
     display: flex;
 }
 
-.odms-left-block__banner-ozon {
+.odms-left-block__logo-block {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
+}
+.odms-left-block__banner-ec {
+    height: 50px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.odms-left-block__banner-ozon {
+    width: 330px;
+    height: 50px;
 }
 
 .pans-form__discr {
@@ -379,6 +392,16 @@
     color: #e00644;
 }
 
+
+.phone-add-number-section__close {
+    position: absolute;
+    top: 2px;
+    right: 14px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #e00644;
+    cursor: pointer;
+}
 
 
 /* ==========================================================================
