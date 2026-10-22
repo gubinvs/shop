@@ -632,6 +632,11 @@
     .cps-d-button-block__ofer-button_no-quantity {
         width: 167px;
     }
+
+    .cps-email-form_X {
+        top: -40px;
+        right: 30px;
+    }
 }
 
 @media only screen and (max-width: 360px) {
