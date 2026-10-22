@@ -154,7 +154,7 @@ const Header = () => {
         if (location.pathname === '/SearchResults') {
             window.location.reload(); // 🔹 перезагружает текущую страницу
         } else {
-            navigate('/SearchResults'); // 🔹 переходит на страницу
+            navigate('/SearchResults?vendorCode=' + vendorCode); // 🔹 переходит на страницу
         }
     };
 
