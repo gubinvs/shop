@@ -8,10 +8,12 @@ export const ozonPaymentPage = async (
         priceGoods, 
         quantity, 
         deliveryPrice,
-        pointDestination
+        pointDestination,
+        setLoading
     }) => {
 
-
+    setLoading(true)
+    
     // Актуальный метод доставки который использую как точку отгрузки товара (Парашютная 34 СПБ)
     const shipmentMethodId = 1020005028896210;
 

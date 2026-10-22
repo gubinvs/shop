@@ -42,7 +42,8 @@ export const deliveryCheckout =  async (
         priceGoods,
         setDeliveryPrice,
         setPhoneInput,
-        setPlacingAnOrder
+        setPlacingAnOrder,
+        setLoading
         
         
     }
@@ -116,7 +117,8 @@ export const deliveryCheckout =  async (
         // Записываем числом
         setDeliveryPrice(summa);
         setPhoneInput(false);
-        setPlacingAnOrder(true)
+        setPlacingAnOrder(true);
+        setLoading(false);
 
 
     } catch (error) {

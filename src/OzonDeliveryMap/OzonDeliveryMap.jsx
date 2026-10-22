@@ -44,6 +44,9 @@ const OzonDeliveryMap = () => {
           alert("Пожалуйста, согласитесь на обработку персональных данных.");
           return; // Останавливаем выполнение, функция дальше не пойдет
       }
+      
+      setLoading(true);
+
       // Если чекбокс нажат — вызываем вашу функцию
       deliveryCheckout({
           dataComponent, 
@@ -52,7 +55,8 @@ const OzonDeliveryMap = () => {
           priceGoods, 
           setDeliveryPrice, 
           setPhoneInput, 
-          setPlacingAnOrder
+          setPlacingAnOrder,
+          setLoading
       });
   };
 
@@ -296,6 +300,10 @@ const OzonDeliveryMap = () => {
           <>
             <div className="phone-add-number-section">
                 <div className="phone-add-number-section__form">
+                      <div 
+                        className="phone-add-number-section__close"
+                        onClick={()=>setPlacingAnOrder(false)}
+                      >X</div>
                       <div className="pans-form__title pans-form__title_exclamation">Формирование заказа:</div>
                       <div className="pans-form__list">
                         {/* Строка 1: Товар */}
@@ -343,7 +351,7 @@ const OzonDeliveryMap = () => {
                       <>
                         <div 
                             className="pans-form__botton"
-                            onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice, pointDestination})}
+                            onClick={()=>ozonPaymentPage({dataComponent, offer, phone, priceGoods, quantity, deliveryPrice, pointDestination, setLoading})}
                         >Оплатить</div>
                       </>
                       }
