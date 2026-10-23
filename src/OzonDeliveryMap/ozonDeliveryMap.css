@@ -446,8 +446,12 @@
     }
 
     .ozon-delivery-search-mobile {
+        position: absolute;
+        top: 50px;
+        left: 0px;
         display: block;
         width: 100%;
+        z-index: 12;
     }
 
     .ozon-delivery-search__input {
@@ -472,7 +476,7 @@
     }
 
     .ozon-delivery-map-section__info-poind {
-        top: 80px;
+        top: 180px;
         right: 20px;
     }
 
@@ -484,7 +488,6 @@
 
 @media (max-width: 380px) {
     .ozon-delivery-map-section__info-poind {
-        top: 80px;
         right: 0px;
     }
 }
