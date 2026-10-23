@@ -13,7 +13,7 @@
 
 .ozon-delivery-map-section__left-block {
     position: relative;
-    width: 30%;
+    width: 25%;
     min-width: 320px;
     overflow-y: auto;
     border-right: 1px solid #ccc;
@@ -28,7 +28,7 @@
 }
 
 .ozon-delivery-map-section__map {
-    width: 70%;
+    width: 75%;
     height: 100%;
 }
 
@@ -81,6 +81,7 @@
    3. Карточки ПВЗ в левом списке
    ========================================================================== */
 .ozon-delivery__point {
+    min-height: 100px;
     padding: 12px;
     margin-bottom: 6px;
     /* background-color: #f5f5f5; */
@@ -214,7 +215,6 @@
 .ymaps-2-1-79-balloon__content {
     padding: 12px 16px !important;
 }
-
 
 .ozon-delivery-map-section__info-poind {
     position: absolute;
@@ -406,10 +406,36 @@
     display: none;
 }
 
+.odms-map__home-icon {
+    display: none;
+}
+
 /* ==========================================================================
    5. Адаптивность для мобильных устройств
    ========================================================================== */
-@media (max-width: 640px) {
+   @media (max-width: 800px) {
+        .ozon-delivery-map-section__info-poind {
+            top: 30px;
+            right: 40px;
+        }
+    }
+
+    @media (max-width: 755px) {
+        .ozon-delivery-map-section__info-poind {
+            top: 30px;
+            right: 0px;
+        }
+    } 
+
+    @media (max-width: 670px) {
+        .ozon-delivery-map-section__info-poind {
+            top: 30px;
+            right: -80px;
+        }
+    }
+
+
+   @media (max-width: 640px) {
     .ozon-delivery-map-section__container {
         flex-direction: column;
         height: auto;
@@ -417,11 +443,6 @@
 
     .ozon-delivery-map-section__left-block {
         display: none;
-        width: 100%;
-        min-width: 0;
-        max-height: 400px;
-        border-right: none;
-        border-bottom: 1px solid #ccc;
     }
 
     .ozon-delivery-search-mobile {
@@ -437,6 +458,33 @@
 
     .ozon-delivery-map-section__map {
         width: 100%;
-        height: 500px; /* Фиксированная высота карты на мобилках, чтобы удобно скроллить страницу */
+        /* height: 500px; Фиксированная высота карты на мобилках, чтобы удобно скроллить страницу */
+    }
+
+    .odms-map__home-icon {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: block;
+        width: 50px;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .ozon-delivery-map-section__info-poind {
+        top: 80px;
+        right: 20px;
+    }
+
+    .ozon-delivery-map-section__button-close {
+        top: -30px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .ozon-delivery-map-section__info-poind {
+        top: 80px;
+        right: 0px;
     }
 }

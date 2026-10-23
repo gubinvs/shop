@@ -415,7 +415,9 @@ const OzonDeliveryMap = () => {
         </div>
 
         {/* Правая часть: Карта */}
+        
         <div className="ozon-delivery-map-section__map">
+          {/* Поискоый инпут для мобилок */}
           <form className="ozon-delivery-search-mobile" onSubmit={handleSearchSubmit}>
             <input
               type="text"
@@ -425,6 +427,14 @@ const OzonDeliveryMap = () => {
               className="ozon-delivery-search__input"
             />
           </form>
+          {/* Кнопка иконка домой */}
+          <img 
+            className='odms-map__home-icon'
+            src="../images/icon/home-icon.svg" 
+            alt="sd" 
+            onClick={() => window.location.href="/SearchResults?vendorCode=" + dataComponent.VendorCode}
+          />
+
           <YMaps query={{ apikey: '34e50958-b7c2-4b13-963d-8e7f3b90843b' }}>
               {selectedPoint !== null?
                 <>

@@ -29,7 +29,6 @@
     line-clamp: 2;                  /* Добавьте эту строку для совместимости */
     -webkit-box-orient: vertical;  
     overflow: hidden;                /* Прячет остальной текст */
-    cursor: pointer;
     margin-bottom: 8px;
 }
 
