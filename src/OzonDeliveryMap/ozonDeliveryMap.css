@@ -413,29 +413,29 @@
 /* ==========================================================================
    5. Адаптивность для мобильных устройств
    ========================================================================== */
-   @media (max-width: 800px) {
-        .ozon-delivery-map-section__info-poind {
-            top: 30px;
-            right: 40px;
-        }
+@media (max-width: 800px) {
+    .ozon-delivery-map-section__info-poind {
+        top: 30px;
+        right: 40px;
     }
+}
 
-    @media (max-width: 755px) {
-        .ozon-delivery-map-section__info-poind {
-            top: 30px;
-            right: 0px;
-        }
-    } 
-
-    @media (max-width: 670px) {
-        .ozon-delivery-map-section__info-poind {
-            top: 30px;
-            right: -80px;
-        }
+@media (max-width: 755px) {
+    .ozon-delivery-map-section__info-poind {
+        top: 30px;
+        right: 0px;
     }
+} 
+
+@media (max-width: 670px) {
+    .ozon-delivery-map-section__info-poind {
+        top: 30px;
+        right: -80px;
+    }
+}
 
 
-   @media (max-width: 640px) {
+@media (max-width: 640px) {
     .ozon-delivery-map-section__container {
         flex-direction: column;
         height: auto;
