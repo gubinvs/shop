@@ -406,8 +406,8 @@ const OzonDeliveryMap = () => {
                   }
                   onClick={() => selectPoint(point)}
                 >
-                  <strong>{point.name}</strong>
-                  <div>{point.address}</div>
+                  <div className='ozon-delivery-points__adress'>{point.address}</div>
+                  <strong className='ozon-delivery-points__name'>{point.name}</strong>
                 </div>
               ))
             )}
@@ -416,6 +416,15 @@ const OzonDeliveryMap = () => {
 
         {/* Правая часть: Карта */}
         <div className="ozon-delivery-map-section__map">
+          <form className="ozon-delivery-search-mobile" onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              value={searchText}
+              onChange={(event) => setSearchText(event.target.value)}
+              placeholder="Введите город или адрес"
+              className="ozon-delivery-search__input"
+            />
+          </form>
           <YMaps query={{ apikey: '34e50958-b7c2-4b13-963d-8e7f3b90843b' }}>
               {selectedPoint !== null?
                 <>

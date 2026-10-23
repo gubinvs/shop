@@ -83,11 +83,19 @@
 .ozon-delivery__point {
     padding: 12px;
     margin-bottom: 6px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
+    /* background-color: #f5f5f5; */
+    border-radius: 10px;
     border: 1px solid #ddd;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
+}
+
+.ozon-delivery-points__adress {
+    font-size: 14px;
+}
+
+.ozon-delivery-points__name {
+    font-size: 12px;
 }
 
 .ozon-delivery__point:hover {
@@ -214,6 +222,7 @@
     right: 100px;
     z-index: 100 !important;
 }
+
 .ozon-delivery-map-section__button-next {
     display: flex;
     justify-content: center;
@@ -393,22 +402,37 @@
     cursor: pointer;
 }
 
+.ozon-delivery-search-mobile {
+    display: none;
+}
 
 /* ==========================================================================
    5. Адаптивность для мобильных устройств
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .ozon-delivery-map-section__container {
         flex-direction: column;
         height: auto;
     }
 
     .ozon-delivery-map-section__left-block {
+        display: none;
         width: 100%;
         min-width: 0;
         max-height: 400px;
         border-right: none;
         border-bottom: 1px solid #ccc;
+    }
+
+    .ozon-delivery-search-mobile {
+        display: block;
+        width: 100%;
+    }
+
+    .ozon-delivery-search__input {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #2196f3;
     }
 
     .ozon-delivery-map-section__map {
