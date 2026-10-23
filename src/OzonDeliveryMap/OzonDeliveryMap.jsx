@@ -364,17 +364,11 @@ const OzonDeliveryMap = () => {
         {/* Левая панель с ПВЗ */}
         <div className="ozon-delivery-map-section__left-block">
           <div className="odms-left-block__logo-block">
-                <img 
-                    className='odms-left-block__banner-ec'
-                    src="../../images/images-logo/logo-img-header.svg" 
-                    alt="Логотип компании" 
-                  onClick={()=>{window.location.href="/"}}
-                /> 
-                <img 
-                    className="odms-left-block__banner-ozon" 
-                    src="../../images/img-delivery-section/1416x200_light_ozon.png" 
-                    alt="Доставка ОЗОН" 
-                />
+              <img 
+                  className="odms-left-block__banner-ozon" 
+                  src="../../images/img-delivery-section/1416x200_light_ozon.png" 
+                  alt="Доставка ОЗОН" 
+              />
           </div>
         
           <h3 className="ozon-delivery-map-section__title">Пункты выдачи Ozon:</h3>

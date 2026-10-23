@@ -373,16 +373,6 @@
     align-items: center;
     margin-bottom: 20px;
 }
-.odms-left-block__banner-ec {
-    height: 50px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.odms-left-block__banner-ozon {
-    width: 330px;
-    height: 50px;
-}
 
 .pans-form__discr {
     font-size: 12px;
