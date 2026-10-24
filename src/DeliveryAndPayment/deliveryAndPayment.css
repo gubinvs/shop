@@ -165,3 +165,14 @@
 .company-data-button:hover {
   background-color: #155ab6;
 }
+
+
+@media only screen and (max-width: 640px) {
+  .payment-section__container {
+    flex-direction: column;
+  }
+
+  .payment-options-wrapper_card {
+    width: 100%;
+  }
+}
