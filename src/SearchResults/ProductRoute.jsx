@@ -1,12 +1,12 @@
 
 import { useParams } from "react-router-dom";
-import SearchResults from "./SearchResults.jsx";
 
 // Промежуточный компонент для вычленения артикула из ссылки на страницу
 // Если его нет получаем из url, в том случае если переходили с поисковиков по поддельным ссылкам
 // важно артикул в названии страниц разделить символами ( -- и .html )
 // .../products/schneider/kontaktor--LC1D18M7.html он может быть и таким /products/schneider/kontaktor--LC1D-18M7.html
 // и таким /products/schneider/kontaktor--LC1D18.M7.html
+// и таким kontaktor==catalog.html - это для каталога
 
 const ProductRoute = () => { 
     const { productFile } = useParams(); 
@@ -14,8 +14,9 @@ const ProductRoute = () => {
 
     // Берём всё после "--" и до .html или .php 
     const vendorCode = productFile?.match(/--(.+)\.(html|php)$/i)?.[1] ?? ""; 
+
+    window.location.href = "/SearchResults?vendorCode=" + vendorCode;
     
-    return <SearchResults article={vendorCode} />; 
 };
 
 
