@@ -30,6 +30,7 @@
     -webkit-box-orient: vertical;  
     overflow: hidden;                /* Прячет остальной текст */
     margin-bottom: 8px;
+    cursor: pointer;
 }
 
 
@@ -160,6 +161,7 @@
   .card-goods__discription {
     font-size: 13px;
   }
+
 
   .reviews__img {
     width: 16px;
