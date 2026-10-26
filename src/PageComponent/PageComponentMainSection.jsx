@@ -51,7 +51,7 @@ const PageComponentMainSection = ({dataComponent}) => {
         }
 
         // Закрываем окно ввода почты
-        setFormEmail(false);
+        //setFormEmail(false);
     };
 
 
@@ -61,6 +61,9 @@ const PageComponentMainSection = ({dataComponent}) => {
         
         // Дополнительная проверка, если HTML5-валидации недостаточно
         if (!email || !agree) return;
+
+        // Закрываем окно ввода почты
+        setFormEmail(false);
 
         // Вызываем функцию отправки с актуальным email
         requestQuote(email, dataComponent.VendorCode); 
