@@ -30,6 +30,7 @@ import OzonDeliveryMap from "./OzonDeliveryMap/OzonDeliveryMap.jsx";
 import OrderSuccess from "./OrdersResult/OrderSuccess.jsx";
 import OrderFailed  from "./OrdersResult/OrderFailed.jsx";
 import OrderStatus  from "./OrdersResult/OrderStatus.jsx";
+import AddComponentData from "./AdminPanel/AddComponentData/AddComponentData.jsx"
 
 
 // ===== Проверка токена =====
@@ -166,6 +167,7 @@ const App = () => {
   // }, []);
 
   // Загружаем номенклатуру для СВОЕГО СКЛАДА (ПОМЕЧЕНЫ БЕСЦЕЛЛЕР 1)
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -235,6 +237,13 @@ const App = () => {
         <Route path="/PurchasePage" element={
               <AdminRoute>
                 <PurchasePage nomenclature={nomenclatureAdmin} />
+              </AdminRoute>
+            }
+        />
+        {/* == Страница добавления полной информации о товаре в базу данных */}
+        <Route path="/AddComponentData" element={
+              <AdminRoute>
+                <AddComponentData/>
               </AdminRoute>
             }
         />

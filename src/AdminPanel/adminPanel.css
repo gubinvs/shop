@@ -1,3 +1,8 @@
 .admin-panel__container {
     display: flex;
 }
+
+.admin-panel__main-block {
+    padding-top: 50px;
+    padding-left: 40px;
+}

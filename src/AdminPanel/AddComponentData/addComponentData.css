@@ -1,0 +1,76 @@
+.add-component-data-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #1D252C;
+    cursor: pointer;
+}
+
+.add-component-data-button:hover {
+    border: 1px solid #F3DE09;
+}
+
+.add-component-data__container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    padding-top: 50px;
+}
+
+.add-component-data__title {
+    margin-bottom: 20px;
+}
+
+.add-component-data__data-block {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.acd-data-block__name {
+    font-size: 20px;
+    margin-right: 20px;
+
+}
+
+.acd-data-block__input {
+    width: 500px;
+    padding-left: 20px;
+    height: 40px;
+    border: 1px solid #F3DE09;
+    border-radius: 10px;
+}
+
+.acd-data-block__input_number {
+    width: 100px;
+}
+
+.acd-data-block__input_param {
+    margin-right: 20px;
+}
+
+.acd-data-block__select {
+    width: 300px;
+    height: 40px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: 1px solid #F3DE09;
+    border-radius: 10px;
+}
+
+.acd-data-block__add-data-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 20px;
+    color: #1D252C;
+    border: 1px solid #1D252C;
+    border-radius: 4px;
+    cursor: pointer;
+}
