@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import "./addComponentData.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
 
@@ -22,10 +22,23 @@ const AddComponentData =()=> {
     const [origin, setOrigin] = useState('');
     const [ozonLink, setOzonLink] = useState('');
     const [dopImages, setDopImages] = useState([]);
+    const [dopImagLink, setDopImagLink] = useState('');
     const [discriptionParam, setDiscriptionParam] = useState([]);
     const [warehouse, setWarehouse] = useState([]);
     const [characteristics, setCharacteristics] = useState([]);
     const [file, setFile] = useState([]);
+
+
+    const addDopImagesLink = () => {
+        var newDopImagesArray = [
+            ...dopImages,
+            dopImagLink
+        ]
+
+        setDopImages(newDopImagesArray);
+
+        setDopImagLink('');
+    }
 
     return(
         <>
@@ -73,23 +86,68 @@ const AddComponentData =()=> {
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Количество на складе:</div>
-                    <input type="number" className="acd-data-block__input acd-data-block__input_number" min={0} />
+                    <input 
+                        type="number" 
+                        className="acd-data-block__input acd-data-block__input_number" 
+                        min={0} 
+                        value={quantity}
+                        onChange={(e) => {
+                            setQuantity(e.target.value); 
+                        }} 
+                    />
                     <div className="acd-data-block__name">Бесцеллер?</div>
-                    <input type="number" className="acd-data-block__input acd-data-block__input_number" min={0} max={1} />
+                    <input 
+                        type="number" 
+                        className="acd-data-block__input acd-data-block__input_number" 
+                        min={0} 
+                        max={1} 
+                        value={bestseller}
+                        onChange={(e) => {
+                            setBestseller(e.target.value); 
+                        }} 
+                    />
                     <div className="acd-data-block__name">Дней доставки?</div>
-                    <input type="number" className="acd-data-block__input acd-data-block__input_number" min={0} max={99} />
+                    <input 
+                        type="number" 
+                        className="acd-data-block__input acd-data-block__input_number" 
+                        min={0} 
+                        max={99} 
+                        value={deliveryТime}
+                        onChange={(e) => {
+                            setDeliveryТime(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Цена продажи товара:</div>
-                    <input className="acd-data-block__input" min={0} />
+                    <input 
+                        className="acd-data-block__input" 
+                        min={0} 
+                        value={price}
+                        onChange={(e) => {
+                            setPrice(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Каталог товара:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={chapter}
+                        onChange={(e) => {
+                            setChapter(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на страницу товара:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={linkPage}
+                        onChange={(e) => {
+                            setLinkPage(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на картинку товара:</div>
@@ -104,15 +162,33 @@ const AddComponentData =()=> {
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на картинку для корзины:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={basketImgPath}
+                        onChange={(e) => {
+                            setBasketImgPath(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на картинку для карточки:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={imgLinkIconCard}
+                        onChange={(e) => {
+                            setImgLinkIconCard(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Описание товара:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={productDescription}
+                        onChange={(e) => {
+                            setProductDescription(e.target.value); 
+                        }} 
+                    />
                 </div>
                 
                 <br/><br/>
@@ -121,23 +197,47 @@ const AddComponentData =()=> {
 
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на страницу ОЗОН:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                         value={ozonLink}
+                        onChange={(e) => {
+                            setOzonLink(e.target.value); 
+                        }}
+                    />
                 </div>
-
+                
+                <br/><br/>
+                
                 <h3 className="add-component-data__title">Ссылки на дополнительные картинки товара:</h3>
-                <div className="add-component-data__data-block">
-                    <div className="acd-data-block__name">Дополнительная ссылка №1</div>
-                    <input className="acd-data-block__input" />
-                </div>
-                <div className="add-component-data__data-block">
-                    <div className="acd-data-block__name">Дополнительная ссылка №2</div>
-                    <input className="acd-data-block__input" />
-                </div>
-                <div className="add-component-data__data-block">
-                    <div className="acd-data-block__name">Дополнительная ссылка №3</div>
-                    <input className="acd-data-block__input" />
-                </div>
+                {dopImages.map((item, index)=>{
+                 return(
+                        <>
+                            <div className="add-component-data__data-block">
+                                <div className="acd-data-block__name">Дополнительная ссылка № {index+1}</div>
+                                <div className="acd-data-block__name">{item}</div>
+                            </div>
+                        </>
+                    ); 
+                })}
+                {dopImages.length < 3 ?
+                    <>
+                        <div className="add-component-data__data-block">
+                            <div className="acd-data-block__name">Дополнительная ссылка</div>
+                            <input 
+                                className="acd-data-block__input" 
+                                value={dopImagLink}
+                                onChange={(e)=>{setDopImagLink(e.target.value)}}
+                            />
+                        </div>
+                        <div 
+                            className="acd-data-block__add-data-button"
+                            onClick={addDopImagesLink}
+                        >+</div>
+                    </>
+                :""}
 
+
+                <br/><br/><br/><br/>
                 <h3 className="add-component-data__title">Основные параметры:</h3>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Наименование параметра:</div>
