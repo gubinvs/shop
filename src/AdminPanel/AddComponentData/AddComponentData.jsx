@@ -1,5 +1,6 @@
 import { use, useState } from "react";
 import "./addComponentData.css"
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 
 const AddComponentData =()=> {
@@ -32,7 +33,13 @@ const AddComponentData =()=> {
                 <h1 className="add-component-data__title">Добавление нового товара в базу данных:</h1>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Артикул товара:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={vendorCode}
+                        onChange={(e) => {
+                            setVendorCode(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Наименование товара:</div>
@@ -68,7 +75,14 @@ const AddComponentData =()=> {
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на картинку товара:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={imgLinkPage}
+                        onChange={(e) => {
+                            // 2. Записываем текущее значение из поля ввода
+                            setImgLinkPage(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Ссылка на картинку для корзины:</div>
@@ -160,7 +174,30 @@ const AddComponentData =()=> {
                 <div className="acd-data-block__add-data-button">+</div>
 
                 <br/><br/><br/><br/>
-                
+
+                <h3 className="add-component-data__title">Основная картинка товара:</h3>
+                <img 
+                    src={imgLinkPage} 
+                    className="viewing-and-image"
+                />
+
+                <br/><br/><br/><br/>
+
+                <div className="result-regust-data-block">
+                    <h4>Запрос на сервер:</h4>
+                    <span>{"{"}</span>
+                        <ul className="rrdb-data__list">
+                            <li className="rrdb-data__item">
+                                <div className="rrdb-data-item__name">vendorCode:</div>
+                                <div>"</div>
+                                <div>{vendorCode}</div>
+                                <div>"</div>
+                                <div>,</div>
+                            </li>
+                        </ul>
+                        
+                </div>
+                <div className="reguest-button">Записать данные товара</div>
             </div>
         </>
     );
