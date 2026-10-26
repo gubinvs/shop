@@ -67,8 +67,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 20px;
+    width: 70px;
+    height: 30px;
     color: #1D252C;
     border: 1px solid #1D252C;
     border-radius: 4px;
@@ -105,20 +105,4 @@
 .reguest-button:hover {
     background-color:#F3DE09;
     
-}
-
-
-/*=========== Модуль вывода запроса ===============*/
-
-.rrdb-data__list {
-    display: block;
-}
-
-.rrdb-data__item {
-    display: flex;
-    padding-left: 50px;
-}
-
-.rrdb-data-item__name {
-    margin-right: 10px;
 }

@@ -43,15 +43,33 @@ const AddComponentData =()=> {
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Наименование товара:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={nameComponent}
+                        onChange={(e) => {
+                            setNameComponent(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Фирма производитель:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={manufacturer}
+                        onChange={(e) => {
+                            setManufacturer(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Срана производитель:</div>
-                    <input className="acd-data-block__input" />
+                    <input 
+                        className="acd-data-block__input" 
+                        value={origin}
+                        onChange={(e) => {
+                            setOrigin(e.target.value); 
+                        }} 
+                    />
                 </div>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Количество на складе:</div>
@@ -183,20 +201,6 @@ const AddComponentData =()=> {
 
                 <br/><br/><br/><br/>
 
-                <div className="result-regust-data-block">
-                    <h4>Запрос на сервер:</h4>
-                    <span>{"{"}</span>
-                        <ul className="rrdb-data__list">
-                            <li className="rrdb-data__item">
-                                <div className="rrdb-data-item__name">vendorCode:</div>
-                                <div>"</div>
-                                <div>{vendorCode}</div>
-                                <div>"</div>
-                                <div>,</div>
-                            </li>
-                        </ul>
-                        
-                </div>
                 <div className="reguest-button">Записать данные товара</div>
             </div>
         </>
