@@ -75,9 +75,45 @@
     cursor: pointer;
 }
 
-.viewing-and-image {
-    max-width: 360px;
+
+.add-component-data__img-block {
+    display: flex;
 }
+
+.addcd-img-block__main-img {
+    max-width: 500px;
+    margin-right: 20px;
+}
+
+.addcd-img-block__dop-img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .result-regust-data-block {
     width: 100%;
@@ -102,6 +138,7 @@
     cursor: pointer;
     margin-bottom: 50px;
 }
+
 .reguest-button:hover {
     background-color:#F3DE09;
     

@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from "react";
 import "./addComponentData.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
+import react from "react";
 
 
 const AddComponentData =()=> {
@@ -21,24 +22,49 @@ const AddComponentData =()=> {
     const [productDescription, setProductDescription] = useState('');
     const [origin, setOrigin] = useState('');
     const [ozonLink, setOzonLink] = useState('');
+    // =====================================================
     const [dopImages, setDopImages] = useState([]);
     const [dopImagLink, setDopImagLink] = useState('');
+    // =====================================================
     const [discriptionParam, setDiscriptionParam] = useState([]);
+    const [discrParamName, setDiscrParamName] = useState('');
+    const [discrParamParam, setDiscrParamParam] = useState('');
+    // =====================================================
     const [warehouse, setWarehouse] = useState([]);
     const [characteristics, setCharacteristics] = useState([]);
     const [file, setFile] = useState([]);
 
+    // Добавление формы ввода данных о ссылках на дополнительные картинки, (не более 3 шт.)
+    const addDopImagesLink = (itemLink) => {
+        if(itemLink === '') {return;}
 
-    const addDopImagesLink = () => {
         var newDopImagesArray = [
             ...dopImages,
-            dopImagLink
+            itemLink
         ]
 
         setDopImages(newDopImagesArray);
 
         setDopImagLink('');
     }
+
+    // Добавляем данные в массив основных параметров товара в главной секции страницы товара
+    const addDiscriptionParam = (itemName, itemParam) => {
+        if(itemName === '' || itemParam === ''){return;}
+
+        var newDiscriptionParamArray = [
+            ...discriptionParam,
+            {
+                name: itemName,
+                param: itemParam
+            }
+        ]
+
+        setDiscriptionParam(newDiscriptionParamArray);
+        setDiscrParamName('');
+        setDiscrParamParam('');
+
+    };
 
     return(
         <>
@@ -150,7 +176,7 @@ const AddComponentData =()=> {
                     />
                 </div>
                 <div className="add-component-data__data-block">
-                    <div className="acd-data-block__name">Ссылка на картинку товара:</div>
+                    <div className="acd-data-block__name">Ссылка на основную картинку товара:</div>
                     <input 
                         className="acd-data-block__input" 
                         value={imgLinkPage}
@@ -231,23 +257,50 @@ const AddComponentData =()=> {
                         </div>
                         <div 
                             className="acd-data-block__add-data-button"
-                            onClick={addDopImagesLink}
+                            onClick={()=>{addDopImagesLink(dopImagLink)}}
                         >+</div>
                     </>
                 :""}
-
-
                 <br/><br/><br/><br/>
-                <h3 className="add-component-data__title">Основные параметры:</h3>
+
+                <h3 className="add-component-data__title">Основные параметры товара в главной секции:</h3>
                 <div className="add-component-data__data-block">
                     <div className="acd-data-block__name">Наименование параметра:</div>
                     <div className="acd-data-block__name">Значение параметра:</div>
                 </div>
-                <div className="add-component-data__data-block">
-                    <input className="acd-data-block__input acd-data-block__input_param" />
-                    <input className="acd-data-block__input" />
-                </div>
-                <div className="acd-data-block__add-data-button">+</div>
+                {discriptionParam.map((item, index)=>{
+                    return(
+                        <>
+                            <div className="add-component-data__data-block">
+                                <div className="acd-data-block__name">{item.name}</div>
+                                <div className="acd-data-block__name">{item.param}</div>
+                            </div>
+                        </>
+                    );
+                })}
+                {discriptionParam.length <= 10?
+                    <>
+                        <div className="add-component-data__data-block">
+                            <input 
+                                className="acd-data-block__input 
+                                acd-data-block__input_param" 
+                                value={discrParamName}
+                                onChange={(e)=>setDiscrParamName(e.target.value)}
+                            />
+                            <input 
+                                className="acd-data-block__input" 
+                                value={discrParamParam}
+                                onChange={(e)=>setDiscrParamParam(e.target.value)}
+                            
+                            />
+                        </div>
+                        <div 
+                            className="acd-data-block__add-data-button"
+                            onClick={()=>{addDiscriptionParam(discrParamName, discrParamParam)}}
+                        >+</div>
+                    </>
+                :""}
+                
 
                 <br/><br/>
                 
@@ -293,11 +346,38 @@ const AddComponentData =()=> {
 
                 <br/><br/><br/><br/>
 
-                <h3 className="add-component-data__title">Основная картинка товара:</h3>
-                <img 
-                    src={imgLinkPage} 
-                    className="viewing-and-image"
-                />
+
+
+
+                <h3 className="add-component-data__title">Загружаемые картинки товара</h3>
+                <div className="add-component-data__img-block">
+                    <img 
+                        src={imgLinkPage} 
+                        className="addcd-img-block__main-img"
+                    />
+                    <div className="addcd-img-block__dop-img-block">
+                        {dopImages.map((item, index)=>{
+                            return(
+                                <>
+                                    <img 
+                                        src={item} 
+                                        className="addcd-img-block__dop-img"
+                                    />
+                                </>
+                            );
+                        })}
+                    </div>
+                        
+                </div>
+                
+               
+
+
+
+
+
+
+
 
                 <br/><br/><br/><br/>
 
