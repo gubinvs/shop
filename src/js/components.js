@@ -5,9 +5,7 @@
 export const components = {
     
     id: 1,
-
     mainImagePage:  "https://encomponent.ru/img/img-product/LC1D09M7/contactor-LC1D09M7.jpg", 
-    
     vendorCode: "LC1D32M7",
     nameComponent: "Электромеханический контактор - Schneider Electric",
     manufacturer: "Schneider Electric",

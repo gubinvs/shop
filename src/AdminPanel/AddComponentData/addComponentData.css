@@ -44,6 +44,10 @@
     font-weight: 800;
 }
 
+.acd-data-block__name_min {
+    font-size: 14px;
+}
+
 .acd-data-block__input {
     width: 500px;
     padding-left: 20px;
@@ -131,5 +135,6 @@
 
 .reguest-button:hover {
     background-color:#F3DE09;
-    
 }
+
+/*==== Вывод JSON ====*/

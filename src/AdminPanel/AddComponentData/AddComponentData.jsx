@@ -31,11 +31,41 @@ const AddComponentData =()=> {
     const [discrParamParam, setDiscrParamParam] = useState('');
     // =====================================================
     const [warehouse, setWarehouse] = useState([]);
-    // По умолчанию для селекта ставим "Санкт-Петербург", так как это первая опция
-    const [selectedWarehouse, setSelectedWarehouse] = useState("Санкт-Петербург");
+    const [selectedWarehouse, setSelectedWarehouse] = useState("Санкт-Петербург"); // По умолчанию для селекта ставим "Санкт-Петербург", так как это первая опция
     const [warehouseQuantity, setWarehouseQuantity] = useState("");
+    // =====================================================
     const [characteristics, setCharacteristics] = useState([]);
+    const [charName, setCharName] = useState("");
+    const [charValue, setCharValue] = useState("");
+    // =====================================================
     const [file, setFile] = useState([]);
+    const [fileName, setFileName] = useState("");
+    const [fileUrl, setFileUrl] = useState("");
+
+    // =====================================================
+    const addDataServer = () => {
+        var reguest = {
+            mainImagePage: imgLinkPage,
+            vendorCode: vendorCode,
+            nameComponent: nameComponent,
+            manufacturer: manufacturer,
+            quantity: quantity,
+            deliveryТime: deliveryТime,
+            price: price,
+            bestseller: bestseller,
+            chapter: chapter,
+            linkPage: linkPage, 
+            basketImgPath: basketImgPath,
+            productDescription: productDescription,
+            origin: origin,
+            ozonLink: ozonLink,
+            dopImages: dopImages,
+            discriptionParam: discriptionParam,
+            warehouse: warehouse,
+            characteristics: characteristics,
+            file: file
+        };
+    };
 
     // Добавление формы ввода данных о ссылках на дополнительные картинки, (не более 3 шт.)
     const addDopImagesLink = (itemLink) => {
@@ -80,6 +110,34 @@ const AddComponentData =()=> {
         
         // Сбрасываем только инпут количества после добавления
         setWarehouseQuantity("");
+    };
+
+    // Функция добавления новой характеристики в массив
+    const addCharacteristic = (name, value) => {
+    if (!name.trim() || !value.trim()) return; // Не добавляем пустые поля
+    
+    setCharacteristics([
+        ...characteristics,
+        { name: name.trim(), value: value.trim() }
+    ]);
+    
+    // Очищаем инпуты после успешного добавления
+    setCharName("");
+    setCharValue("");
+    };
+
+    // Функция добавления нового файла в массив
+    const addFile = (name, url) => {
+    if (!name.trim() || !url.trim()) return; // Проверка на пустые поля
+    
+    setFile([
+        ...file,
+        { name: name.trim(), url: url.trim() }
+    ]);
+    
+    // Очищаем инпуты после добавления
+    setFileName("");
+    setFileUrl("");
     };
 
     return(
@@ -216,7 +274,7 @@ const AddComponentData =()=> {
 
                 <div className="result-regust-data-block">
                     <div className="add-component-data__data-block">
-                        <div className="acd-data-block__name">Ссылка на страницу товара:</div>
+                        <div className="acd-data-block__name acd-data-block__name_min">Ссылка на страницу товара: /SearchResults?vendorCode=LC1D25M7</div>
                         <input 
                             className="acd-data-block__input" 
                             value={linkPage}
@@ -225,6 +283,9 @@ const AddComponentData =()=> {
                             }} 
                         />
                     </div>
+                </div>
+                
+                <div className="result-regust-data-block">
                     <div className="add-component-data__data-block">
                         <div className="acd-data-block__name">Ссылка на основную картинку товара:</div>
                         <input 
@@ -404,28 +465,97 @@ const AddComponentData =()=> {
 
                 <div className="result-regust-data-block">
                     <h3 className="add-component-data__title">Характеристики товара:</h3>
-                    <div className="add-component-data__data-block">
-                        <div className="acd-data-block__name">Наименование характеристики:</div>
-                        <div className="acd-data-block__name">Значение характеристики:</div>
-                    </div>
-                    <div className="add-component-data__data-block">
-                        <input className="acd-data-block__input acd-data-block__input_param" />
-                        <input className="acd-data-block__input" />
-                    </div>
-                    <div className="acd-data-block__add-data-button">+</div>
+                    {/* 1. Вывод списка уже добавленных характеристик */}
+                    {characteristics.map((item, index) => {
+                        return ( 
+                            <>
+                                <div className="add-component-data__data-block">
+                                    <div className="acd-data-block__name">Наименование характеристики:</div>
+                                    <div className="acd-data-block__name">Значение характеристики:</div>
+                                </div>
+                                <div key={index} className="add-component-data__data-block">
+                                    <div className="acd-data-block__name acd-data-block__name_result">{item.name}</div>
+                                    <div className="acd-data-block__name acd-data-block__name_result">{item.value}</div>
+                                </div>
+                            </>
 
-                    <br/><br/>
+                        );
+                    })}
 
+                    {/* 2. Форма для ввода новой характеристики (например, если их меньше 20) */}
+                    {characteristics.length <= 20 ? (
+                        <>
+                           
+                            <div className="add-component-data__data-block">
+                                <input 
+                                    className="acd-data-block__input acd-data-block__input_param" 
+                                    value={charName}
+                                    onChange={(e) => setCharName(e.target.value)}
+                                    placeholder="Например, Материал"
+                                />
+                                <input 
+                                    className="acd-data-block__input" 
+                                    value={charValue}
+                                    onChange={(e) => setCharValue(e.target.value)}
+                                    placeholder="Например, Хлопок"
+                                />
+                            </div>
+                            <div 
+                                className="acd-data-block__add-data-button"
+                                onClick={() => addCharacteristic(charName, charValue)}
+                            >+</div>
+                        </>
+                    ) : ""}
+                </div>    
+                
+                <div className="result-regust-data-block">
                     <h3 className="add-component-data__title">Ссылки на файлы документации:</h3>
-                    <div className="add-component-data__data-block">
-                        <div className="acd-data-block__name">Наименование файла документации:</div>
-                        <div className="acd-data-block__name">Ссылка на файл:</div>
-                    </div>
-                    <div className="add-component-data__data-block">
-                        <input className="acd-data-block__input acd-data-block__input_param" />
-                        <input className="acd-data-block__input" />
-                    </div>
-                    <div className="acd-data-block__add-data-button">+</div>                    
+                    {/* 1. Вывод списка уже добавленных документов */}
+                    {file.map((item, index) => {
+                        return (    
+                            <>
+                                <div className="add-component-data__data-block">
+                                    <div className="acd-data-block__name">Наименование файла документации:</div>
+                                    <div className="acd-data-block__name">Ссылка на файл:</div>
+                                </div>
+                                <div key={index} className="add-component-data__data-block">
+                                    <div className="acd-data-block__name acd-data-block__name_result">{item.name}</div>
+                                    <div className="acd-data-block__name acd-data-block__name_result">
+                                        {/* Выводим ссылку как кликабельный тег <a> */}
+                                        <a href={item.url} target="_blank" rel="noreferrer" className="acd-data-block__link">
+                                            {item.url}
+                                        </a>
+                                    </div>
+                                </div>
+                            </> 
+                        );
+                    })}
+
+                    {/* 2. Форма ввода нового файла (показывается, если файлов, например, меньше 10) */}
+                    {file.length <= 10 ? (
+                        <>
+                       
+                            <div className="add-component-data__data-block">
+                                <input 
+                                    className="acd-data-block__input acd-data-block__input_param" 
+                                    value={fileName}
+                                    onChange={(e) => setFileName(e.target.value)}
+                                    placeholder="Например, Инструкция по сборке"
+                                />
+                                <input 
+                                    className="acd-data-block__input" 
+                                    value={fileUrl}
+                                    onChange={(e) => setFileUrl(e.target.value)}
+                                    placeholder="Например, https://example.com"
+                                />
+                            </div>
+                            <div 
+                                className="acd-data-block__add-data-button"
+                                onClick={() => addFile(fileName, fileUrl)}
+                            >+</div>
+                        </>
+                    ) : ""}
+               
                 </div>
 
                 <div className="result-regust-data-block">
@@ -449,7 +579,11 @@ const AddComponentData =()=> {
                         </div> 
                     </div>                    
                 </div>
-                <div className="reguest-button">Записать данные товара</div>
+
+                <div 
+                    className="reguest-button"
+                    onClick={addDataServer}
+                >Записать данные товара</div>
             </div>
         </>
     );
