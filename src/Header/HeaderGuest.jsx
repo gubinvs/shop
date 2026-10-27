@@ -139,7 +139,8 @@ const HeaderGuest = () => {
         localStorage.setItem("vendorCode_GoToPageComponent", vendorCode);
 
         if (location.pathname === '/SearchResults') {
-            window.location.reload(); // 🔹 перезагружает текущую страницу
+            window.location.href = "/SearchResults?vendorCode=" + vendorCode // 🔹 перезагружает текущую страницу
+
         } else {
             navigate('/SearchResults?vendorCode=' + vendorCode); // 🔹 переходит на страницу
         }

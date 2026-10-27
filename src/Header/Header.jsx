@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./header.css";
 import ApiUrl from '../js/ApiUrl';
-import { chapterBp, chapterK, chapterSch, chapterPlk, chapterMplk, OpenSection, chapterContactor} from "../js/LinkSectionGroup.js";
+import { chapterPlk, chapterMplk, OpenSection, chapterContactor} from "../js/LinkSectionGroup.js";
 import { handleAddToBasket } from "../js/handleAddToBasket.js";
 
 
@@ -152,7 +152,8 @@ const Header = () => {
         localStorage.setItem("vendorCode_GoToPageComponent", vendorCode);
 
         if (location.pathname === '/SearchResults') {
-            window.location.reload(); // 🔹 перезагружает текущую страницу
+           window.location.href = "/SearchResults?vendorCode=" + vendorCode // 🔹 перезагружает текущую страницу
+                      
         } else {
             navigate('/SearchResults?vendorCode=' + vendorCode); // 🔹 переходит на страницу
         }
