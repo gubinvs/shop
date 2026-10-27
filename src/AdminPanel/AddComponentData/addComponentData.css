@@ -35,7 +35,13 @@
 .acd-data-block__name {
     font-size: 20px;
     margin-right: 20px;
+    color: #696969;
 
+}
+
+.acd-data-block__name_result {
+    color: #00008B;
+    font-weight: 800;
 }
 
 .acd-data-block__input {
@@ -61,6 +67,14 @@
     padding-right: 6px;
     border: 1px solid #F3DE09;
     border-radius: 10px;
+}
+
+.acd-data-block__select_catalog {
+    width: 500px;
+}
+
+.acd-data-block__input_textarea {
+    min-height: 300px;
 }
 
 .acd-data-block__add-data-button {
@@ -89,30 +103,6 @@
     width: 150px;
     margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .result-regust-data-block {
