@@ -2,9 +2,14 @@ import { use, useEffect, useState } from "react";
 import "./addComponentData.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
 import react from "react";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner.jsx";
+import ApiUrl from "../../js/ApiUrl";
 
 
 const AddComponentData =()=> {
+
+    const [loading, setLoading] = useState(false);
+    if (loading) {return(<LoadingSpinner />)}
 
     {/* --- Данные вводимые в форму для запоминания -- */}
     const [vendorCode, setVendorCode] = useState('');
@@ -44,6 +49,9 @@ const AddComponentData =()=> {
 
     // =====================================================
     const addDataServer = () => {
+
+        setLoading(true);
+
         var reguest = {
             mainImagePage: imgLinkPage,
             vendorCode: vendorCode,
@@ -84,6 +92,8 @@ const AddComponentData =()=> {
         } catch (error) {
             console.error("Ошибка сети или API:", error);
         }
+
+        window.location.reload();
     };
 
     // Добавление формы ввода данных о ссылках на дополнительные картинки, (не более 3 шт.)
