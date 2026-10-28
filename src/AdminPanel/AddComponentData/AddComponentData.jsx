@@ -65,6 +65,25 @@ const AddComponentData =()=> {
             characteristics: characteristics,
             file: file
         };
+
+        // Отправляем запрос на сервер
+        try 
+        {
+            var response = await fetch(`${ApiUrl}/v1/AddNewProductDataSystem`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(reguest),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data.text);
+                } else {
+                    console.error("Ошибка при получении данных в ответе сервера API");
+                }
+        } catch (error) {
+            console.error("Ошибка сети или API:", error);
+        }
     };
 
     // Добавление формы ввода данных о ссылках на дополнительные картинки, (не более 3 шт.)
