@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { use, useEffect, useState } from "react";
 import "./addComponentData.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
 import react from "react";
@@ -9,6 +9,7 @@ import ApiUrl from "../../js/ApiUrl";
 const AddComponentData =()=> {
 
     const [loading, setLoading] = useState(false);
+    
 
     {/* --- Данные вводимые в форму для запоминания -- */}
     const [vendorCode, setVendorCode] = useState('');
@@ -46,7 +47,6 @@ const AddComponentData =()=> {
     const [fileName, setFileName] = useState("");
     const [fileUrl, setFileUrl] = useState("");
 
-
     // =====================================================
     const addDataServer = async () => {
 
@@ -73,6 +73,8 @@ const AddComponentData =()=> {
             characteristics: characteristics,
             file: file
         };
+
+  
 
         // Отправляем запрос на сервер
         try 
@@ -147,7 +149,7 @@ const AddComponentData =()=> {
     
     setCharacteristics([
         ...characteristics,
-        { name: name.trim(), value: value.trim() }
+        { name: name.trim(), characteristic: value.trim() }
     ]);
     
     // Очищаем инпуты после успешного добавления
@@ -161,7 +163,7 @@ const AddComponentData =()=> {
     
     setFile([
         ...file,
-        { name: name.trim(), url: url.trim() }
+        { name: name.trim(), link: url.trim() }
     ]);
     
     // Очищаем инпуты после добавления
@@ -170,6 +172,7 @@ const AddComponentData =()=> {
     };
 
     if (loading) {return(<LoadingSpinner />)}
+
     return(
         <>
             <div className="add-component-data__container">
@@ -447,7 +450,7 @@ const AddComponentData =()=> {
                 
                 <div className="result-regust-data-block">
                     <h2 className="add-component-data__title">Наличие на складах:</h2>
-                    {/* 1. Вывод списка уже добавленных складов */}   
+                    {/* 1. Вывод списка уже добавленных складов */}
                     <div className="add-component-data__data-block">
                         <div className="acd-data-block__name">Наименование склада:</div>
                         <div className="acd-data-block__name">Наличие на складе:</div>
@@ -495,7 +498,7 @@ const AddComponentData =()=> {
 
                 <div className="result-regust-data-block">
                     <h3 className="add-component-data__title">Характеристики товара:</h3>
-                    {/* 1. Вывод списка уже добавленных характеристик */} 
+                    {/* 1. Вывод списка уже добавленных характеристик */}
                     <div className="add-component-data__data-block">
                         <div className="acd-data-block__name">Наименование характеристики:</div>
                         <div className="acd-data-block__name">Значение характеристики:</div>
@@ -503,10 +506,9 @@ const AddComponentData =()=> {
                     {characteristics.map((item, index) => {
                         return ( 
                             <>
-                               
                                 <div key={index} className="add-component-data__data-block">
                                     <div className="acd-data-block__name acd-data-block__name_result">{item.name}</div>
-                                    <div className="acd-data-block__name acd-data-block__name_result">{item.value}</div>
+                                    <div className="acd-data-block__name acd-data-block__name_result">{item.characteristic}</div>
                                 </div>
                             </>
 
@@ -541,7 +543,7 @@ const AddComponentData =()=> {
                 
                 <div className="result-regust-data-block">
                     <h3 className="add-component-data__title">Ссылки на файлы документации:</h3>
-                    {/* 1. Вывод списка уже добавленных документов */}    
+                    {/* 1. Вывод списка уже добавленных документов */}
                     <div className="add-component-data__data-block">
                         <div className="acd-data-block__name">Наименование файла документации:</div>
                         <div className="acd-data-block__name">Ссылка на файл:</div>
@@ -554,7 +556,7 @@ const AddComponentData =()=> {
                                     <div className="acd-data-block__name acd-data-block__name_result">
                                         {/* Выводим ссылку как кликабельный тег <a> */}
                                         <a href={item.url} target="_blank" rel="noreferrer" className="acd-data-block__link">
-                                            {item.url}
+                                            {item.link}
                                         </a>
                                     </div>
                                 </div>
