@@ -48,7 +48,7 @@ const AddComponentData =()=> {
     const [fileUrl, setFileUrl] = useState("");
 
     // =====================================================
-    const addDataServer = () => {
+    const addDataServer = async () => {
 
         setLoading(true);
 
