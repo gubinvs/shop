@@ -1,6 +1,5 @@
 import "../index.css";
 import "./adminPanel.css";
-import "./AddComponentData/addComponentData.css"
 import NavigationBar from "../AdminPanel/NavigationBar/NavigationBar.jsx";
 import MainSectionAdminPanel from "./MainSectionAdminPanel.jsx";
 
@@ -15,12 +14,6 @@ const AdminPanel =()=> {
                 <NavigationBar />
                 <div className="admin-panel__main-block">
                     <>
-                        <div 
-                            className="add-component-data-button"
-                            onClick={()=>{window.location.href="/AddComponentData"}}
-                        >
-                            Добавить новый товар
-                        </div>
                         <MainSectionAdminPanel />
                     </>  
                 </div>

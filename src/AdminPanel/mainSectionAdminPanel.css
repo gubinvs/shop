@@ -10,3 +10,38 @@
 .button-update {
     margin-bottom: 100px;
 }
+
+.admin-panel__main-block {
+    padding-top: 50px;
+    padding-left: 40px;
+}
+
+.main-section-admin-panel__button-block {
+    display: flex;
+}
+
+.add-data-button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: 50px;
+    padding-top: 8px;
+    padding-right: 20px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #F3DE09;
+    border: 1px solid #F3DE09;
+    color: #1D252C;
+    cursor: pointer;
+}
+
+.add-data-button:hover {
+    background-color: #F3DE09;
+    border: 1px solid #1D252C;
+}
+
+.add-data-button__new-component {
+    margin-right: 20px;
+}
