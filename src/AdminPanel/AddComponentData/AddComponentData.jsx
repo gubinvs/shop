@@ -446,14 +446,14 @@ const AddComponentData =()=> {
                 
                 <div className="result-regust-data-block">
                     <h2 className="add-component-data__title">Наличие на складах:</h2>
-                    {/* 1. Вывод списка уже добавленных складов */}
+                    {/* 1. Вывод списка уже добавленных складов */}   
+                    <div className="add-component-data__data-block">
+                        <div className="acd-data-block__name">Наименование склада:</div>
+                        <div className="acd-data-block__name">Наличие на складе:</div>
+                    </div>
                     {warehouse.map((item, index) => {
                         return (   
                             <>
-                                <div className="add-component-data__data-block">
-                                    <div className="acd-data-block__name">Наименование склада:</div>
-                                    <div className="acd-data-block__name">Наличие на складе:</div>
-                                </div>
                                 <div key={index} className="add-component-data__data-block">
                                     <div className="acd-data-block__name acd-data-block__name_result">{item.name}</div>
                                     <div className="acd-data-block__name acd-data-block__name_result">{item.quantity} шт.</div>
@@ -494,14 +494,15 @@ const AddComponentData =()=> {
 
                 <div className="result-regust-data-block">
                     <h3 className="add-component-data__title">Характеристики товара:</h3>
-                    {/* 1. Вывод списка уже добавленных характеристик */}
+                    {/* 1. Вывод списка уже добавленных характеристик */} 
+                    <div className="add-component-data__data-block">
+                        <div className="acd-data-block__name">Наименование характеристики:</div>
+                        <div className="acd-data-block__name">Значение характеристики:</div>
+                    </div>
                     {characteristics.map((item, index) => {
                         return ( 
                             <>
-                                <div className="add-component-data__data-block">
-                                    <div className="acd-data-block__name">Наименование характеристики:</div>
-                                    <div className="acd-data-block__name">Значение характеристики:</div>
-                                </div>
+                               
                                 <div key={index} className="add-component-data__data-block">
                                     <div className="acd-data-block__name acd-data-block__name_result">{item.name}</div>
                                     <div className="acd-data-block__name acd-data-block__name_result">{item.value}</div>
@@ -539,14 +540,14 @@ const AddComponentData =()=> {
                 
                 <div className="result-regust-data-block">
                     <h3 className="add-component-data__title">Ссылки на файлы документации:</h3>
-                    {/* 1. Вывод списка уже добавленных документов */}
+                    {/* 1. Вывод списка уже добавленных документов */}    
+                    <div className="add-component-data__data-block">
+                        <div className="acd-data-block__name">Наименование файла документации:</div>
+                        <div className="acd-data-block__name">Ссылка на файл:</div>
+                    </div>
                     {file.map((item, index) => {
                         return (    
                             <>
-                                <div className="add-component-data__data-block">
-                                    <div className="acd-data-block__name">Наименование файла документации:</div>
-                                    <div className="acd-data-block__name">Ссылка на файл:</div>
-                                </div>
                                 <div key={index} className="add-component-data__data-block">
                                     <div className="acd-data-block__name acd-data-block__name_result">{item.name}</div>
                                     <div className="acd-data-block__name acd-data-block__name_result">
