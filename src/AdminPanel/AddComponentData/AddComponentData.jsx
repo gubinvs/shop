@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "./addComponentData.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
 import react from "react";
@@ -9,7 +9,6 @@ import ApiUrl from "../../js/ApiUrl";
 const AddComponentData =()=> {
 
     const [loading, setLoading] = useState(false);
-    if (loading) {return(<LoadingSpinner />)}
 
     {/* --- Данные вводимые в форму для запоминания -- */}
     const [vendorCode, setVendorCode] = useState('');
@@ -169,6 +168,7 @@ const AddComponentData =()=> {
     setFileUrl("");
     };
 
+    if (loading) {return(<LoadingSpinner />)}
     return(
         <>
             <div className="add-component-data__container">
