@@ -8,6 +8,7 @@ import NewDirectoryGroupsMin from '../DirectoryGroups/NewDirectoryGroupsMin.jsx'
 import DeliverySection from "../DeliveryAndPayment/DeliverySection.jsx";
 import Footer from "../Footer/Footer.jsx";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
+import BannerOzon from "../Banners/BannerOzon.jsx";
 
 
 const Home = () => {    
@@ -40,6 +41,9 @@ const Home = () => {
             {/* ---- Маленькие карточки каталога ---- */}
             <NewDirectoryGroupsMin />
 
+            {/* --- Баннер ОЗОН Доставка ---- */}
+            <BannerOzon />
+            
             {/*--- Карточки товара, количество выдаваемых карточек ограничивается передаваемым параметром quantityCart  ----*/}
             <GroupOfCards cardData={products} quantityCart={20} />
 

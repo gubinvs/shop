@@ -4,11 +4,15 @@ import PageComponentMainSection from "./PageComponentMainSection.jsx";
 import PageComponentCharacteristicsSection from "./PageComponentCharacteristicsSection.jsx";
 import PageComponentDocFileSection from "./PageComponentDocFileSection.jsx";
 import Footer from "../Footer/NewFooter.jsx";
+import BannerOzon from "../Banners/BannerOzon.jsx";
 
 const PageComponent = ({dataComponent})=> {
 
     return(
         <>
+            {/* --- Баннер ОЗОН Доставка ---- */}
+            <BannerOzon />
+
             {/*Главная секция товара с фото, краткими характеристиками и кнопками для покупок*/}
             <PageComponentMainSection dataComponent={dataComponent} />
 
