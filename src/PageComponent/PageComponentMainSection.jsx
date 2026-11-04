@@ -296,13 +296,13 @@ const PageComponentMainSection = ({dataComponent}) => {
                                 {/* Политика ОПД */}
                                 <div className="check-box">
                                     <input
-                                    className="check-box__input"
-                                    type="checkbox"
-                                    name="chekBox"
-                                    id="opd-checkbox"
-                                    checked={agree}
-                                    onChange={(e) => setAgree(e.target.checked)}
-                                    required
+                                        className="check-box__input"
+                                        type="checkbox"
+                                        name="chekBox"
+                                        id="opd-checkbox"
+                                        checked={agree}
+                                        onChange={(e) => setAgree(e.target.checked)}
+                                        required
                                     />
                                     <div className="check-box__discr">
                                     {/* Для лучшего UX и доступности связываем текст с чекбоксом через label */}
